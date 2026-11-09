@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>서온해람시 : 한국형 신도시 에디터</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- 상단 툴바 -->
+    <header class="topbar">
+      <div class="logo">
+        <span class="icon">🏙️</span>
+        <div class="title-group">
+          <h1>서온해람시 <span class="badge">CS2 Edition</span></h1>
+          <p class="subtitle">시티즈 2 스타일 한국형 신도시 도로망 & 구역 에디터</p>
+        </div>
+      </div>
+      <div class="actions">
+        <button id="btn-toggle-view" class="btn btn-view-mode" title="2D 편집과 3D 조감도 전환 (단축키: Tab 또는 V)">
+          🏙️ 3D 조감도
+        </button>
+        <button id="btn-preset" class="btn btn-primary" title="판교·광교 모델의 이상적 신도시 템플릿 로드">
+          ✨ 이상적 신도시 템플릿
+        </button>
+        <button id="btn-clear" class="btn btn-secondary">🗑️ 전체 초기화</button>
+        <button id="btn-export" class="btn btn-accent">💾 CS2 JSON 내보내기</button>
+      </div>
+    </header>
+
+    <!-- 메인 레이아웃 -->
+    <div class="main-container">
+      <!-- 중앙 캔버스 영역 -->
+      <main class="canvas-area">
+        <canvas id="simCanvas"></canvas>
+        <canvas id="simCanvas3D" style="display: none;"></canvas>
+        
+        <!-- 실시간 CS2 HUD 가이드라인 (거리/각도 표시) -->
+        <div id="road-hud" class="road-hud" style="display: none;">
+          <span id="hud-length">0m</span>
+          <span id="hud-angle">90°</span>
+        </div>
+
+        <!-- 3D 조감도 HUD 컨트롤 오버레이 -->
+        <div id="hud-3d-controls" class="hud-3d-controls" style="display: none;">
+          <div class="hud-3d-bar">
+            <div class="hud-3d-group">
+              <span class="hud-label">🏙️ 조감도 시점:</span>
+              <button class="btn-chip active" id="view-preset-south" title="정면 남향 조감도 (참고 사진 앵글)">🦅 전면 조감</button>
+              <button class="btn-chip" id="view-preset-iso" title="45도 대각 입체 조감도">🧭 대각 뷰</button>
+              <button class="btn-chip" id="view-preset-low" title="도심 저각 투시도">🏢 저각 뷰</button>
+              <button class="btn-chip" id="view-preset-top" title="수직 부감 탑다운">🗺️ 수직 부감</button>
+            </div>
+            <div class="hud-3d-separator"></div>
+            <div class="hud-3d-group">
+              <span class="hud-label">카메라 조작:</span>
+              <button class="btn-chip" id="btn-cam-rotate-left" title="좌회전 (Q)">↺ 좌회전</button>
+              <button class="btn-chip" id="btn-cam-rotate-right" title="우회전 (E)">↻ 우회전</button>
+              <button class="btn-chip" id="btn-cam-tilt-up" title="기울기 올리기 (R)">🔼 세우기</button>
+              <button class="btn-chip" id="btn-cam-tilt-down" title="기울기 낮추기 (F)">🔽 눕히기</button>
+              <button class="btn-chip" id="btn-cam-zoom-in" title="확대 (+)">➕ 확대</button>
+              <button class="btn-chip" id="btn-cam-zoom-out" title="축소 (-)">➖ 축소</button>
+              <button class="btn-chip" id="btn-cam-autorotate" title="시네마틱 360도 턴테이블">🔄 자동회전</button>
+            </div>
+            <div class="hud-3d-separator"></div>
+            <div class="hud-3d-group">
+              <button class="btn-chip btn-chip-return" id="btn-3d-exit" title="2D 편집으로 돌아가기">↩️ 2D 편집</button>
+            </div>
+          </div>
+          <div class="hud-3d-help">
+            🖱️ [좌클릭 드래그] 3D 회전·기울기 | [우클릭 드래그] 화면 이동 | [휠] 줌 | [WASD/QE/RF] 비행 조작 | [Tab/V] 2D 전환
+          </div>
+        </div>
+
+        <div class="canvas-overlay-top">
+          <div class="scale-indicator">1 Grid = 100m (한국 신도시 스케일)</div>
+          <div class="cursor-pos" id="cursorPos">X: 0m, Y: 0m</div>
+          <div class="nav-help">⌨️ [WASD] 화면 이동 | [우클릭 드래그] 패닝 | [휠] 줌</div>
+        </div>
+
+        <!-- CS2 스타일 스냅 및 서브툴바 오버레이 (캔버스 상단 중앙) -->
+        <div class="tool-subbar">
+          <div class="subbar-group">
+            <span class="subbar-label">도로 그리기 모드:</span>
+            <button class="sub-btn active" data-submode="straight" title="직선 모드">📏 직선</button>
+            <button class="sub-btn" data-submode="curve" title="3점 곡선 모드">↪️ 곡선</button>
+            <button class="sub-btn" data-submode="move" title="노드 이동 (Move It)">✋ 이동 (Move It)</button>
+          </div>
+          <div class="subbar-separator"></div>
+          <div class="subbar-group">
+            <span class="subbar-label">스냅 옵션:</span>
+            <label class="toggle-chip"><input type="checkbox" id="snap-angle" checked> 📐 각도(90°/45°)</label>
+            <label class="toggle-chip"><input type="checkbox" id="snap-grid" checked> 🧲 그리드</label>
+            <label class="toggle-chip"><input type="checkbox" id="snap-road" checked> 🔗 교차로 자동분할</label>
+          </div>
+        </div>
+      </main>
+
+      <!-- 우측 분석 및 인스펙터 패널 -->
+      <aside class="sidebar-right">
+        <div class="panel-card">
+          <h3>📊 신도시 도시공학 지표</h3>
+          <div class="stat-grid">
+            <div class="stat-box">
+              <span class="label">계획 인구</span>
+              <strong id="stat-population" class="val">0 명</strong>
+            </div>
+            <div class="stat-box">
+              <span class="label">일자리 수</span>
+              <strong id="stat-jobs" class="val">0 개</strong>
+            </div>
+            <div class="stat-box">
+              <span class="label">도로 총연장</span>
+              <strong id="stat-roads" class="val">0 km</strong>
+            </div>
+            <div class="stat-box">
+              <span class="label">통근 원활도</span>
+              <strong id="stat-commute" class="val">100%</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <h3>🚦 실시간 교통 흐름 (Traffic)</h3>
+          <div class="traffic-meter">
+            <div class="meter-bar">
+              <div id="traffic-smooth" class="bar smooth" style="width: 80%;"></div>
+              <div id="traffic-slow" class="bar slow" style="width: 15%;"></div>
+              <div id="traffic-congested" class="bar congested" style="width: 5%;"></div>
+            </div>
+            <div class="meter-legend">
+              <span class="dot-smooth">● 원활 <b id="val-smooth">80%</b></span>
+              <span class="dot-slow">● 서행 <b id="val-slow">15%</b></span>
+              <span class="dot-congested">● 정체 <b id="val-congested">5%</b></span>
+            </div>
+          </div>
+          <div id="bottleneck-alert" class="alert-box" style="display: none;">
+            ⚠️ <strong>병목 구간 감지됨!</strong><br>
+            <span id="bottleneck-text">주간선 합류부 차선 확장이 필요합니다.</span>
+          </div>
+        </div>
+
+        <div class="panel-card" id="inspector-card">
+          <h3>🔍 선택 요소 정보</h3>
+          <div id="inspector-empty" class="empty-msg">도로나 노드를 클릭하면 상세 정보가 표시됩니다.</div>
+          <div id="inspector-content" style="display: none;">
+            <p><strong>종류:</strong> <span id="insp-type">-</span></p>
+            <p><strong>차선 수:</strong> <span id="insp-lanes">-</span></p>
+            <p><strong>길이:</strong> <span id="insp-length">-</span></p>
+            <p><strong>현재 통행량:</strong> <span id="insp-flow">-</span></p>
+            <div class="btn-group-upgrade">
+              <button id="btn-upgrade-lane" class="btn btn-sm btn-primary">➕ 1차선 확장</button>
+              <button id="btn-downgrade-lane" class="btn btn-sm btn-secondary">➖ 1차선 축소</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- 하단 CS2 메인 도구 독 (Dock) -->
+    <footer class="bottom-dock">
+      <div class="dock-tabs">
+        <button class="dock-tab active" data-category="roads">🛣️ 도로 건설</button>
+        <button class="dock-tab" data-category="zones">🏢 구역 지정 (Zoning)</button>
+        <button class="dock-tab" data-category="bulldoze">🚜 철거 (Bulldozer)</button>
+      </div>
+
+      <!-- 도로 선택 도구 덱 -->
+      <div class="dock-items" id="items-roads">
+        <button class="tool-item active" data-tool="road" data-type="highway">
+          <span class="color-chip c-highway"></span>
+          <span class="name">주간선대로 (8차선)</span>
+          <span class="desc">중앙 BRT 전용차로</span>
+        </button>
+        <button class="tool-item" data-tool="road" data-type="arterial">
+          <span class="color-chip c-arterial"></span>
+          <span class="name">보조간선대로 (4차선)</span>
+          <span class="desc">슈퍼블록 외곽도로</span>
+        </button>
+        <button class="tool-item" data-tool="road" data-type="local">
+          <span class="color-chip c-local"></span>
+          <span class="name">생활집산도로 (2차선)</span>
+          <span class="desc">단지 진입·먹자골목</span>
+        </button>
+        <button class="tool-item" data-tool="road" data-type="parkway">
+          <span class="color-chip c-parkway"></span>
+          <span class="name">선형 보행녹지축</span>
+          <span class="desc">수변 산책·자전거길</span>
+        </button>
+      </div>
+
+      <!-- 구역(Zoning) 도구 덱 -->
+      <div class="dock-items" id="items-zones" style="display: none;">
+        <button class="tool-item" data-tool="zone" data-type="residential">
+          <span class="color-chip c-res"></span>
+          <span class="name">아파트 슈퍼블록</span>
+          <span class="desc">대단지 + 초품아</span>
+        </button>
+        <button class="tool-item" data-tool="zone" data-type="commercial">
+          <span class="color-chip c-com"></span>
+          <span class="name">중심상업 & 환승센터</span>
+          <span class="desc">복합쇼핑몰·상가</span>
+        </button>
+        <button class="tool-item" data-tool="zone" data-type="industrial">
+          <span class="color-chip c-ind"></span>
+          <span class="name">테크노밸리 (R&D)</span>
+          <span class="desc">지식산업센터·연구소</span>
+        </button>
+        <button class="tool-item" data-tool="zone" data-type="park">
+          <span class="color-chip c-park"></span>
+          <span class="name">수변생태공원</span>
+          <span class="desc">하천·근린공원 녹지</span>
+        </button>
+        <button class="tool-item" data-tool="zone" data-type="dezone">
+          <span class="color-chip c-dezone"></span>
+          <span class="name">구역 해제 (지우개)</span>
+          <span class="desc">배치된 구역 삭제</span>
+        </button>
+      </div>
+
+      <!-- 철거 도구 덱 -->
+      <div class="dock-items" id="items-bulldoze" style="display: none;">
+        <div class="bulldoze-info">
+          🚜 마우스를 도로 위에 올리면 붉은색으로 강조되며, 클릭하면 즉시 철거됩니다.
+        </div>
+      </div>
+
+      <!-- 우측 시뮬레이션 상태 컨트롤 -->
+      <div class="dock-sim-controls">
+        <button id="btn-play" class="btn-ctrl active">⏸ 일시정지</button>
+        <div class="speed-selector">
+          <button class="btn-speed active" data-speed="1">1x</button>
+          <button class="btn-speed" data-speed="2">2x</button>
+          <button class="btn-speed" data-speed="5">5x</button>
+        </div>
+        <div class="car-badge">
+          🚗 <strong id="car-count">0</strong>대
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="korean_newtown_preset.js"></script>
+  <script src="view3d.js"></script>
+  <script src="simulator.js"></script>
+</body>
+</html>

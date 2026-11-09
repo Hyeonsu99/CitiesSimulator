@@ -1,0 +1,6 @@
+.workboard/
+__pycache__/
+*.py[cod]
+screenshots/
+*.bak
+CS2_NewTown_Layout.json
