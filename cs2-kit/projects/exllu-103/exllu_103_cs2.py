@@ -160,7 +160,7 @@ WS = K.WindowSet()
 GLS = K.MeshBuilder(A)  # glass panes in front of the _Win quads (main only)
 
 
-def window(mb, stage, axis, c, s, a0, a1, z0, z1, floor, unit, mull=(), jambs=(True, True)):
+def window(mb, stage, axis, c, s, a0, a1, z0, z1, floor, unit, mull=(0.38,), jambs=(True, True)):
     """_Win quad + (main only) projecting white frame, sill and painted mullions/transom.
     jambs=(False, ..) drops the jamb at that end (corner window meeting a corner post)."""
     if stage == 0:
@@ -177,7 +177,7 @@ def window(mb, stage, axis, c, s, a0, a1, z0, z1, floor, unit, mull=(), jambs=(T
         for u in mull:  # never at u=0.5 so the window centre stays unblocked
             a = a0 + (a1 - a0) * u
             K.paint(mb, axis, c, s, a - 0.03, a + 0.03, z0, z1, "frame", layer=3)
-        zt = z0 + 0.74 * (z1 - z0)
+        zt = z0 + 0.55 * (z1 - z0)
         K.paint(mb, axis, c, s, a0, a1, zt, zt + 0.05, "frame", layer=4)
 
 
@@ -190,11 +190,12 @@ def louver(mb, stage, axis, c, s, a0, a1, z0, z1):
             K.paint(mb, axis, c, s, a0 + 0.08, a1 - 0.08, z - 0.015, z + 0.015, "louver_line", layer=9)
 
 
-WIDE = (0.2, 0.4, 0.6, 0.8)
+WIDE = (0.1, 0.4, 0.46, 0.54, 0.6, 0.9)   # two sash units (narrow + wide each), paired mullion at the joint (user-03/11)
+PAIR = (0.18, 0.46, 0.54, 0.82)          # shorter windows: narrow, wide | wide, narrow
 BAYW = 0.4                   # right-wing bay window projection (estimated)
 TZ = 1.05                    # raised terrace / lobby floor level = porch landing (7 x 0.15 m)
 CW = 0.15                    # corner window stops this far from the wall corner; a post fills the gap
-SIDE_WINS = ((7.4, 10.2, (0.3, 0.7)), (12.0, 14.8, (0.3, 0.7)), (16.4, 20.0, (0.3, 0.7)))  # lobby floor only
+SIDE_WINS = ((7.4, 10.2, PAIR), (12.0, 14.8, PAIR), (16.4, 20.0, PAIR))  # lobby floor only
 # upper floors (user-07/08): front flank = corner window, pale centre y 6.4-14.8 with small windows that change
 # per floor + one white panel, back flank = one wide window
 SIDE_PALE = (6.4, 14.8)
@@ -210,11 +211,11 @@ SIDE_BACK = (16.0, 20.2)
 # full-height dark slot ~9 m from the front corner, pairs of small windows either side of it, wide windows outside
 SL0, SL1, SLD = 8.8, 10.4, 1.2   # slot y range / depth (estimated from the panorama)
 NW_WINS = ((6.6, 7.4, 1.1, ()), (7.8, 8.5, 1.1, ()), (10.7, 11.4, 1.1, ()), (11.8, 12.5, 1.1, ()),
-           (13.0, 15.6, SILL, (0.3, 0.7)), (16.4, 20.2, SILL, WIDE))
+           (13.0, 15.6, SILL, PAIR), (16.4, 20.2, SILL, WIDE))
 # back (user-01, read as the back elevation): flat bay x < 2 with mixed wide/narrow windows,
 # white shaft x 2..5 (no windows), balcony bay x > 5 with wide multi-pane windows
-BACK_WINS = ((-15.2, -12.2, (0.3, 0.7)), (-11.4, -7.4, WIDE), (-6.6, -5.4, ()), (-4.4, -0.8, (0.3, 0.7)),
-             (5.6, 9.6, (0.3, 0.7)), (10.4, 15.2, WIDE))
+BACK_WINS = ((-15.2, -12.2, PAIR), (-11.4, -7.4, WIDE), (-6.6, -5.4, ()), (-4.4, -0.8, PAIR),
+             (5.6, 9.6, PAIR), (10.4, 15.2, WIDE))
 CENTRE_SEQ = (0, 1, 0, 2, 0, 0, 1, 2, 0, 1, 0, 0, 2)   # SE side centre order (estimated)
 
 
@@ -222,14 +223,14 @@ def corner_bay(mb, stage, sgn, z, f, u, front=True):
     """Front corner of a wing: one window wrapping round the corner (user-04), dark glass on top floors (user-02/05)."""
     top = f >= TOPG
     z0, z1 = (z + 0.3, z + FH - 0.3) if top else (z + SILL, z + HEAD)
-    mull = (0.2, 0.4, 0.6, 0.8) if not top else (0.12, 0.26, 0.4, 0.6, 0.74, 0.88)
+    mull = WIDE if not top else (0.12, 0.26, 0.4, 0.6, 0.74, 0.88)
     # front face: corner end is the outer end (a1 for the right wing, a0 for the left)
     a0, a1 = (-(X - CW), -10.4) if sgn < 0 else (10.4, X - CW)
     if front:
         window(mb, stage, "y", 0, -1, a0, a1, z0, z1, f, u, mull,
                jambs=(sgn > 0, sgn < 0))
     # side face: a = y, corner end is a0 (y = 0)
-    window(mb, stage, "x", sgn * X, sgn, CW, 5.4, z0, z1, f, u + 1, (0.3, 0.7) if not top else (0.25, 0.75),
+    window(mb, stage, "x", sgn * X, sgn, CW, 5.4, z0, z1, f, u + 1, PAIR if not top else (0.25, 0.75),
            jambs=(False, True))
     if stage == 0 and front:
         K.corner_post(mb, sgn * X, 0.0, sgn, -1, 0.12, z0, z1, "frame")
@@ -246,7 +247,7 @@ def floor_facade(mb, stage, f):
         u = corner_bay(mb, stage, sgn, z, f, u, front=not band)
         if not band:
             # user-10: corner window, window, white louver, small window, then the slot
-            window(mb, stage, "y", 0, -1, *a(6.6, 9.2), z0, z1, f, u, (1 / 3, 2 / 3)); u += 1
+            window(mb, stage, "y", 0, -1, *a(6.6, 9.2), z0, z1, f, u, PAIR); u += 1
             louver(mb, stage, "y", 0, -1, *a(3.2, 4.4), z + 0.4, z1)
             if sgn > 0:   # right wing: small bay window with glazed returns (user-03)
                 if stage == 0:
@@ -275,7 +276,7 @@ def ground_floor(mb, stage):
     window(mb, stage, "y", 0, -1, 6.0, 15.4, z0, z1, 0, u, (0.2, 0.4, 0.6, 0.8)); u += 1
     # left wing pilotis stay open (user-03: bicycle parking, no glazing); slot: door off the raised terrace
     window(mb, stage, "y", RD, -1, -0.6, 0.6, TZ + 0.05, TZ + 2.3, 0, u); u += 1
-    window(mb, stage, "x", X, 1, 1.0, 5.4, zs0, zs1, 0, u, (0.3, 0.7)); u += 1   # right side front bay
+    window(mb, stage, "x", X, 1, 1.0, 5.4, zs0, zs1, 0, u, PAIR); u += 1   # right side front bay
     for sgn in (-1, 1):
         for a0, a1, m in SIDE_WINS:
             window(mb, stage, "x", sgn * X, sgn, a0, a1, zs0, zs1, 0, u, m); u += 1
@@ -567,7 +568,7 @@ def build(stage):
     mb.box(RX, X - SLD, SL0, SL1, GH, H, dict(rw, right="louver_back"), skip=("bottom", "front", "back", "left"))
     # user-10 / sv-front: front wings dark stone up to PALE_F, pale above; the narrow slot stays dark stone
     for sgn in (-1, 1):
-        K.paint(mb, "y", 0, -1, *sorted((sgn * 10.2, sgn * RX)), zf(PALE_F), H, "pale")
+        K.paint(mb, "y", 0, -1, *sorted((sgn * 10.2, sgn * 3.0)), zf(PALE_F), H, "pale")   # user-11: dark stone strips |x| < 3 beside the slot, full height
         K.paint(mb, "y", 0, -1, *sorted((sgn * X, sgn * 10.2)), zf(PALE_F), zf(TOPG), "pale")   # dark glass above
     for sgn in (-1, 1):  # top floors: corner bays turn to dark glass (front + side)
         K.paint(mb, "y", 0, -1, *sorted((sgn * X, sgn * 10.2)), zf(TOPG), H, "dark_glass")

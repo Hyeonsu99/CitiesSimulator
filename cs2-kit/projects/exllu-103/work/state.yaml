@@ -517,9 +517,9 @@
    "fbx": null
   },
   "fix": {
-   "at": "2026-11-10T14:22:18",
+   "at": "2026-11-10T14:36:36",
    "mode": "final",
-   "status": "PASS",
+   "status": "INCOMPLETE",
    "label": "fix",
    "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
    "checks": {
@@ -529,13 +529,14 @@
     "photo": "PASS",
     "tiles": "PASS",
     "lod": "PASS",
-    "fbx": "PASS"
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
    },
-   "generator_hash": "aadd8460d347c1495a01833121986e8062a0971a2b6f8339fe23f4d4d625dce2",
+   "generator_hash": "e585f0df37a82630a8f8b03e1da1fd9babbafd37c49c319961c521ca3e22064e",
    "preview": {
     "path": "previews/HighriseTower103_L1_5x4.png",
     "exists": true,
-    "sha256": "80c93ce8d86e135aba47d1a3aed7124692ccf6abbd21ac4cb5792e2c9d47a622",
+    "sha256": "8dfdcca389c40a604f7348ba3a22a85b827b02dc41de1a05878c4159713fc608",
     "key": null
    },
    "fbx": null
@@ -733,14 +734,39 @@
     "key": null
    },
    "fbx": null
+  },
+  "frames": {
+   "at": "2026-11-10T14:37:28",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "frames",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "087433f80b8704bd2e4f3506f4871178a0836b65f8139707dbe047a79a7f101f",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "44d16380222a376baf7aabe53b7661b0e4bcf7a18e4b54b4496cd94984643ca9",
+    "key": null
+   },
+   "fbx": null
   }
  },
- "updated_at": "2026-11-10T14:23:04",
+ "updated_at": "2026-11-10T14:37:28",
  "current_stage": "final:INCOMPLETE",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "aadd8460d347c1495a01833121986e8062a0971a2b6f8339fe23f4d4d625dce2",
+ "generator_hash": "087433f80b8704bd2e4f3506f4871178a0836b65f8139707dbe047a79a7f101f",
  "visual_review": "NOT_CHECKED",
- "reviewed_preview_hash": "b7ea7dc8cbe544a69aa60a02691c52f6923f9459878f9e5a62ba760b501ea6e8",
+ "reviewed_preview_hash": "2607a74aae3e68ea91043ac0592d556bc401135d900e847619a8bf0f7bd13b3e",
  "last_gate": {
   "mode": "final",
   "status": "INCOMPLETE",
