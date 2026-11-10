@@ -581,7 +581,9 @@ def build(stage):
     # street view (2025-03, SSW): the back base is the same dark granite as the sides, up to PALE_F
     K.paint(mb, "y", D, 1, SHX1, X, 0, zf(PALE_F), "stone")
     K.paint(mb, "y", D, 1, -X, SHX0, 0, zf(PALE_F), "stone")
-    # back above PALE_F: plain pale, no ledges (Kakao roadview 2025-09, 81 m SSW; the street-view "grey bay" was shade)
+    # back above PALE_F: SE half (x < shaft) grey, NW half pale, no ledges (Kakao roadview 2023-02 overcast, 81 m SSW;
+    # the 2025-09 sunny view washes the grey out; matches the Naver street view 2025-03 from the south)
+    K.paint(mb, "y", D, 1, -X, SHX0, zf(PALE_F), H, "grey_stone")
     mb.box(SHX0, SHX1, D, D + 0.5, 0, H + 1.3, "white_shaft", skip=("bottom", "front"))
     K.paint(mb, "y", D + 0.5, 1, SHX0, SHX1, 0, zf(4), "grey_stone")
     # pilotis columns under the left wing

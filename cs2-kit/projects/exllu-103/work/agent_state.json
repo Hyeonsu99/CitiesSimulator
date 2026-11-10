@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "b2ff983844feb6ed59ec7034ad8fc56c0192ed1ef3f380cb430db91e3e2b214a",
- "current_preview_hash": "8f0017feb0b8097149fbdf2e50db9b2b6949166051e34b89767383f77c106273",
+ "generator_hash": "143747eb5c232960f84d18b49a636e80f75aa872698b175c15e2662194bb8b88",
+ "current_preview_hash": "0ecf621240a1a021f1224131483b6717f547d3c137fd3e8d3057c763a86ea92a",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-103",
@@ -30,7 +30,7 @@
   },
   "asset": "HighriseTower103_L1_5x4",
   "label": "fix",
-  "time": "2026-11-10 15:57:52",
+  "time": "2026-11-10 16:15:55",
   "build": {
    "asset": "HighriseTower103_L1_5x4",
    "fbx": true,
@@ -52,21 +52,21 @@
     "zmin": 0.0,
     "coords": "generator coordinates (before pivot move)",
     "tris": {
-     "main": 77196,
+     "main": 77884,
      "win": 2808,
      "gls": 2808,
-     "lod1": 16022,
+     "lod1": 16710,
      "lod1_win": 2808,
-     "lod2": 292,
+     "lod2": 294,
      "lod2_win": 2808
     },
     "verts": {
-     "main": 154392,
+     "main": 155768,
      "win": 5616,
      "gls": 5616,
-     "lod1": 32044,
+     "lod1": 33420,
      "lod1_win": 5616,
-     "lod2": 584,
+     "lod2": 588,
      "lod2_win": 5616
     },
     "coplanar": {
@@ -89,7 +89,7 @@
      "LOD2_Emissive": "1024x1024 RGB"
     },
     "texel_px_per_m": {
-     "p10": 23.6,
+     "p10": 24.9,
      "median": 96.0,
      "p90": 96.0
     },
@@ -100,7 +100,7 @@
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 17.5
+    "time_s": 14.3
    },
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
@@ -167,9 +167,9 @@
   "agent": {
    "status": "PASS",
    "verts": {
-    "LOD0": 154392,
-    "LOD1": 32044,
-    "LOD2": 584
+    "LOD0": 155768,
+    "LOD1": 33420,
+    "LOD2": 588
    },
    "action_tags": [],
    "exact_fix_instruction": "no fix needed"
@@ -186,12 +186,12 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-103",
- "updated_at": "2026-11-10T15:58:15",
- "visual_review_note": "refuge floor 26: louvers instead of windows on all faces (Naver VR tour screenshots)",
+ "updated_at": "2026-11-10T16:16:16",
+ "visual_review_note": "back: grey SE half (x<2) above floor 7 from Kakao 2023-02 overcast view",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower103_L1_5x4.png",
-   "sha256": "8f0017feb0b8097149fbdf2e50db9b2b6949166051e34b89767383f77c106273"
+   "sha256": "0ecf621240a1a021f1224131483b6717f547d3c137fd3e8d3057c763a86ea92a"
   },
   {
    "file": "previews/photo_check/facade_front.png",
@@ -218,5 +218,5 @@
    "sha256": "d5a5b1722f498961bd7beca3ee6a528a5ebeb62f5f6f79b075412266543f2130"
   }
  ],
- "reviewed_preview_hash": "8f0017feb0b8097149fbdf2e50db9b2b6949166051e34b89767383f77c106273"
+ "reviewed_preview_hash": "0ecf621240a1a021f1224131483b6717f547d3c137fd3e8d3057c763a86ea92a"
 }
