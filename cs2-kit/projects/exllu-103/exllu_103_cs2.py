@@ -100,6 +100,14 @@ def obs_glass(ctx):
     ctx.gloss[...] = np.where(fr, 0.5, 0.92)
 
 
+def skylight(ctx):
+    """Skylight glass: thin grey frame per 1.8 m pane, sky reflection gradient."""
+    ctx.rgb += (ctx.v * 30.0 - 8.0)[..., None]
+    m = (ctx.u < 0.025) | (ctx.u > 0.975) | (ctx.v < 0.025) | (ctx.v > 0.975)
+    ctx.rgb[m] = np.array([150, 156, 160], np.float32)
+    ctx.gloss[...] = np.where(m, 0.4, 0.93)
+
+
 TEX = {  # tile = one 2.4 m x one storey, so joints line up with floors
     "stone": dict(tile=(2.4, FH), px=256, painter=lambda c: granite(c, 2, 4, 0.3, 7.0)),
     "pale": dict(tile=(2.4, FH), px=256, painter=lambda c: granite(c, 2, 3, 0.12, 2.5)),
@@ -108,7 +116,7 @@ TEX = {  # tile = one 2.4 m x one storey, so joints line up with floors
     "window": dict(px=1024, painter=window_glass, emissive=(255, 205, 150)),
     "pier_pink": dict(tile=(1.2, 1.2), px=128, painter=lambda c: granite(c, 1, 2, 0.2, 9.0)),
     "crown_glass": dict(tile=(1.2, OBS_GH), px=128, painter=lambda c: obs_glass(c), emissive=(255, 228, 185)),
-    "obs_roof": dict(tile=(1.2, 1.2), px=64, painter=lambda c: mesh_grid(c, 1, 0.05, (225, 228, 226))),
+    "obs_roof": dict(tile=(1.8, 1.8), px=128, painter=lambda c: skylight(c)),
     "heli_net": dict(tile=(0.6, 0.6), px=64, painter=lambda c: mesh_grid(c, 4, 0.10, (178, 182, 184))),
     "grating": dict(tile=(0.6, 0.6), px=64, painter=lambda c: mesh_grid(c, 12, 0.25, (70, 72, 74))),
     "heli_light": dict(px=32, painter=lambda c: c.emis.__setitem__(Ellipsis, 1.0), emissive=(110, 255, 140)),
@@ -123,7 +131,7 @@ for name, color, metal, gloss, px in (
         ("crown_white", (232, 233, 230), 0.1, 0.4, 64), # helipad core / rim (user-01)
         ("deck_under", (62, 66, 70), 0.2, 0.35, 64),    # dark helipad underside (user-01)
         ("crown_glass", (120, 172, 164), 0.5, 0.9, 128), # light green reflective observatory glass (roof.jpg, user-01)
-        ("obs_roof", (92, 128, 132), 0.5, 0.85, 64),    # gridded glass roof (satellite)
+        ("obs_roof", (64, 84, 100), 0.6, 0.92, 128),    # dark blue-grey skylight glass (satellite)
         ("railing", (200, 203, 205), 0.6, 0.5, 64),
         ("dark_glass", (62, 76, 88), 0.5, 0.85, 64),    # top-floor corner glazing spandrels (user-02/05)
         ("frame", (236, 237, 235), 0.3, 0.5, 64),       # white window frames
@@ -325,6 +333,7 @@ def ring(mb, cx, cy, r0, z0, r1, z1, region, n, flip=False, rot=0.0):
 # the SE edge of the deck; SE half is plain roof. user-01: white core + V struts under a dark sloped underside.
 # Research: helipad + observatory on each tower, top 160-160.7 m. Sizes estimated.
 SHX0, SHX1 = 2.0, 5.0        # back white shaft (user-01); the helipad core rises above it
+BAY1 = 12.2                  # back grey bay ends here; pale strip to the corner (street view bC, ~7 m bay)
 HX, HY = 4.5, 10.5           # deck centre (aerial: 36 % from the NW end)
 HS, HCORE = 6.85, 1.3        # deck half-size (13.7 m, Naver satellite) / core radius
 HZ0 = H + 7.2                # underside meets the core
@@ -381,7 +390,15 @@ def observatory(mb, stage):
     mb.box(OX0, OX1, OY0, OY1, H, zp, "pale", skip=("bottom",))                               # plinth
     g = 0.15
     mb.box(OX0 + g, OX1 - g, OY0 + g, OY1 - g, zp, zc, "crown_glass", skip=("bottom", "top"))  # glazing
-    mb.box(OX0, OX1, OY0, OY1, zc, OZ, dict(top="obs_roof", default="crown_white"))           # coping + roof
+    mb.box(OX0, OX1, OY0, OY1, zc, OZ, dict(top="roof", default="crown_white"))               # coping + roof
+    if stage > 1:
+        return
+    # raised skylight lanterns only where the roof is open to the sky: NW and SW strips beyond the deck (satellite)
+    xd, yd, t = HX + HS + 0.25, HY + HS + 0.25, 0.5
+    mb.box(xd, OX1 - 0.3, OY0 + 0.3, OY1 - 0.3, OZ, OZ + t, dict(top="obs_roof", default="crown_white"),
+           skip=("bottom",))                                                                       # NW lantern
+    mb.box(OX0 + 0.8, xd, yd, OY1 - 0.3, OZ, OZ + t, dict(top="obs_roof", default="crown_white"),
+           skip=("bottom", "right"))                                                              # SW lantern
     if stage > 0:
         return
     for axis, c, s, a0, a1 in (("y", OY0 + g, -1, OX0 + g, OX1 - g), ("y", OY1 - g, 1, OX0 + g, OX1 - g),
@@ -545,7 +562,7 @@ def build(stage):
     # street view (2025-03, SSW): the back base is the same dark granite as the sides, up to PALE_F
     K.paint(mb, "y", D, 1, SHX1, X, 0, zf(PALE_F), "stone")
     K.paint(mb, "y", D, 1, -X, SHX0, 0, zf(PALE_F), "stone")
-    K.paint(mb, "y", D, 1, SHX1, X, zf(30), H, "grey_stone")
+    K.paint(mb, "y", D, 1, SHX1, BAY1, zf(PALE_F), H, "grey_stone")   # grey bay from the base up (street view bC/bkz)
     mb.box(SHX0, SHX1, D, D + 0.5, 0, H + 1.3, "white_shaft", skip=("bottom", "front"))
     K.paint(mb, "y", D + 0.5, 1, SHX0, SHX1, 0, zf(4), "grey_stone")
     # pilotis columns under the left wing
@@ -559,7 +576,7 @@ def build(stage):
             elif f == NF:
                 ledges(mb, H, 0.5, 0.35, "grey_trim")            # cornice
             else:
-                ledges(mb, zf(f), LEDGE_P, LEDGE_T, "grey_trim" if f >= 30 else "pale_trim", f >= PALE_F)
+                ledges(mb, zf(f), LEDGE_P, LEDGE_T, "grey_trim", f >= PALE_F)
     # parapet (pale crown)
     PH = H + 1.3
     for x0, x1 in ((-X, -RX), (RX, X)):

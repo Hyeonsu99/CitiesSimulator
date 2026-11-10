@@ -7,7 +7,7 @@ floor_height_m: 2.94             # floors 2-50 (TASK)
 lobby_height_m: 5.24             # estimated: raised so the top = 160 m (research)
 footprint_m: {width: 32, depth: 21}
 height_m: 149.3                  # roof slab (5.24 + 49 x 2.94); parapet 150.6, helipad deck 159.1, rail top 160.0
-tris: {main: 73040, gls: 2724, lod1: 16286, lod2: 292, windows: 1362}   # main slightly above the 60k target, below the 95k warning
+tris: {main: 72706, gls: 2724, lod1: 15952, lod2: 292, windows: 1362}   # main slightly above the 60k target, below the 95k warning
 front_recess_m: {half_width: 5.5, depth: 2.0}   # estimated
 materials:
   stone_dark: [88, 82, 80]          # estimated from user-02/03/05
@@ -44,7 +44,7 @@ roof:
     access_stair: "switchback steel stair from the main roof to the platform: 2 x 24 open treads, white stringers, steel handrails, frame posts, X bracing"   # estimated (frame seen from above only)
     lights: "28 green emissive perimeter lights on the grey deck band (7 per side)"   # standard helideck practice, not photographed
     underside: "white core r 1.3 with a collar node 0.7-1.3 m above the observatory roof; 8 struts fan from the collar to the dark dish; 8 white radial ribs 0.2 m below the dish; 8 warm downlights (roof.jpg sibling glows at night); the 4 loose SE posts were removed (platform cantilevers with the net slab)"   # estimated from user-01
-  observatory: "2026-11-10 rework: 0.6 m pale plinth, glazing set back 0.15 m (light green reflective framed panels 1.2 m, transom at 2.6 m, warm interior glow at night), 0.35 m white coping, gridded glass roof, white mullions every 2.4 m (roof.jpg / user-01 glass crowns; estimated). Before: green glass box under the deck x -3..15.2, y 3..20.2, h 4.6, wall mullions + roof grid (aerial: glass grid shows NW/SW of the deck). Old note: x -14..-3, 1.4 m mullions + transom"  # estimated from user-01 / roof.jpg
+  observatory: "2026-11-10: roof under the deck is plain; raised dark blue-grey skylight lanterns only on the exposed NW/SW strips (satellite). Earlier rework: 0.6 m pale plinth, glazing set back 0.15 m (light green reflective framed panels 1.2 m, transom at 2.6 m, warm interior glow at night), 0.35 m white coping, gridded glass roof, white mullions every 2.4 m (roof.jpg / user-01 glass crowns; estimated). Before: green glass box under the deck x -3..15.2, y 3..20.2, h 4.6, wall mullions + roof grid (aerial: glass grid shows NW/SW of the deck). Old note: x -14..-3, 1.4 m mullions + transom"  # estimated from user-01 / roof.jpg
 textures:
   window: "atlas window cell 1024 px: green-tinted glass (68,110,110), sky gradient, glint streak, curtains on ~45 % of slots, ~30 % lit (emissive 255,205,150)"  # synthesized
   glass_pane: "_Gls quad 2.5 cm in front of every window, (150,185,180) gloss 0.9"
@@ -61,8 +61,10 @@ photo_mismatch_notes:
   - "Centre irregular windows (user-05): 3 layouts in a fixed estimated sequence, not a per-floor photo read."
   - "TEXEL warning (30%): from plain-colour ledge/trim faces on untiled cells; the checker says to ignore it for plain colours."
   - "Back is from one distant 120 px photo (user-01); floor counts of the grey zones and window positions are estimated."
-  - "Front not re-checked by street view: the north panoramas (2022-01) did not frame the tower; front still rests on user-02..05."
-  - "Back: street view from SSW is partly hidden by pines; only the dark base (floors 0-6) was readable, upper grey bay / shaft layout kept from user-01."
+  - "photo_refs.json (front sv-front, SE user-07, NW sv-nw; sv-* = perspective views projected from Naver street-view cubemaps by camera yaw): layout matches by eye (dark base to floor 7, pale centre, NW slot at ~45 %, front wings/recess). The automatic floor-pitch check reads photo 1.25-1.8 m vs model 5.9 m against the known 2.94 m (50 floors, TASK + CTBUH): aliasing at ~2.9 px/m, below the 20 px/m the kit needs, so all refs are confidence low and floors are not changed."
+  - "Tile compare: front centre column agreement only 12-29 % (photo centre bay shows stepped ledges, model centre has scattered small windows); not changed this round."
+  - "Front verified from street view (pano 5PyV.., 49 m N, nearly frontal): dark stepped wings, pale centre bays, central recess, darker top corners - no change needed."
+  - "Back (street view 9Ksq.., 104 m S): grey bay runs from floor 7 to the top, ~7 m wide with a pale strip to the corner; shaft position kept from user-01. Back is not in photo_refs: its right edge is ambiguous and the base is hidden by pines."
   - "Small stair with steel rail beside the pale pilotis column (entrance photo 1) not modeled: too little of it is visible."
   - "NW side from Naver street view; panoramas are 45-80 m away behind pine trees, so window positions and slot depth are estimated; top-floor NW corner glazing not visible."
   - "Naver Land VR tour does not exist for this complex (id 100330); naver_vr.py capture not possible. Side/aerial photos supplied by the user."

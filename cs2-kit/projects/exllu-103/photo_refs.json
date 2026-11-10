@@ -1,0 +1,127 @@
+{
+  "_note": "Created 2026-11-10 by the agent. sv-*.png are perspective views projected from Naver street-view cubemaps (pano ids in work notes); corners read on a 50 px grid. Back face omitted: its right edge is ambiguous and the base is hidden by pines. yaw_deg set explicitly on the side refs: the checker's default left/right yaw looks at the inside of the wall for this model.",
+  "facades": [
+    {
+      "file": "photos/sv-front.png",
+      "side": "front",
+      "name": "front_sv",
+      "corners": [
+        [
+          752,
+          178
+        ],
+        [
+          862,
+          192
+        ],
+        [
+          940,
+          915
+        ],
+        [
+          545,
+          925
+        ]
+      ],
+      "size_m": [
+        33.1,
+        150.6
+      ],
+      "box": [
+        -16.6,
+        16.6,
+        -0.6,
+        2.3,
+        0,
+        150.6
+      ],
+      "confidence": "low",
+      "occluded": "base below ~5 m behind cars and trees; porch projects 4 m in front of the wall; resolution only ~2.9 px/m over the 150 m wall (kit needs >= 20 px/m to read windows/floors), so floor/bay periodicity is not trustworthy",
+      "paint": {
+        "use_for_color": false
+      }
+    },
+    {
+      "file": "photos/user-07-side.png",
+      "side": "left",
+      "name": "se_user07",
+      "corners": [
+        [
+          150,
+          2
+        ],
+        [
+          270,
+          2
+        ],
+        [
+          445,
+          705
+        ],
+        [
+          100,
+          705
+        ]
+      ],
+      "size_m": [
+        21.0,
+        150.6
+      ],
+      "box": [
+        -16.6,
+        -15.7,
+        0,
+        21,
+        0,
+        150.6
+      ],
+      "confidence": "low",
+      "occluded": "top cut at the image edge (roof height estimated), lowest floors partly behind trees",
+      "paint": {
+        "use_for_color": false
+      },
+      "yaw_deg": 90
+    },
+    {
+      "file": "photos/sv-nw.png",
+      "side": "right",
+      "name": "nw_sv",
+      "corners": [
+        [
+          740,
+          92
+        ],
+        [
+          850,
+          62
+        ],
+        [
+          905,
+          935
+        ],
+        [
+          684,
+          935
+        ]
+      ],
+      "size_m": [
+        21.0,
+        150.6
+      ],
+      "box": [
+        15.7,
+        16.6,
+        0,
+        21,
+        0,
+        150.6
+      ],
+      "confidence": "low",
+      "occluded": "lower third behind pines; bottom corners extrapolated along the wall edges",
+      "paint": {
+        "use_for_color": false
+      },
+      "yaw_deg": -90
+    }
+  ]
+}
