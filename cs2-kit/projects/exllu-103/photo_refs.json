@@ -1,5 +1,5 @@
 {
-  "_note": "Created 2026-11-10 by the agent. sv-*.png are perspective views projected from Naver street-view cubemaps (pano ids in work notes); corners read on a 50 px grid. Back face omitted: its right edge is ambiguous and the base is hidden by pines. yaw_deg set explicitly on the side refs: the checker's default left/right yaw looks at the inside of the wall for this model. 2026-11-10: front ref switched from the street-view projection to user-11-front (user photo, whole front in frame). Back ref added from user-12-back (user photo).",
+  "_note": "Created 2026-11-10 by the agent. sv-*.png are perspective views projected from Naver street-view cubemaps (pano ids in work notes); corners read on a 50 px grid. Back face omitted: its right edge is ambiguous and the base is hidden by pines. yaw_deg set explicitly on the side refs: the checker's default left/right yaw looks at the inside of the wall for this model. 2026-11-10: front ref switched from the street-view projection to user-11-front (user photo, whole front in frame).",
   "facades": [
     {
       "file": "photos/user-11-front.png",
@@ -122,46 +122,6 @@
         "use_for_color": false
       },
       "yaw_deg": -90
-    },
-    {
-      "file": "photos/user-12-back.png",
-      "side": "back",
-      "name": "back_user12",
-      "corners": [
-        [
-          197,
-          72
-        ],
-        [
-          370,
-          97
-        ],
-        [
-          600,
-          1765
-        ],
-        [
-          45,
-          1765
-        ]
-      ],
-      "size_m": [
-        33.1,
-        150.6
-      ],
-      "box": [
-        -16.6,
-        16.6,
-        18.7,
-        21.6,
-        0,
-        150.6
-      ],
-      "confidence": "low",
-      "occluded": "base behind trees and cars (bottom corners extrapolated along the wall edges); top read at the flank parapets, the glass crown rises above them; strong upward perspective",
-      "paint": {
-        "use_for_color": false
-      }
     }
   ]
 }
