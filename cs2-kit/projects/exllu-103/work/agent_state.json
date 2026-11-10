@@ -3,7 +3,7 @@
  "current_stage": "review:PASS",
  "generator": "exllu_103_cs2.py",
  "generator_hash": "143747eb5c232960f84d18b49a636e80f75aa872698b175c15e2662194bb8b88",
- "current_preview_hash": "0ecf621240a1a021f1224131483b6717f547d3c137fd3e8d3057c763a86ea92a",
+ "current_preview_hash": "0b21071592fe3bae8fa460277ff7f79b8d17ab56a20ea5e24a04f560d280c034",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-103",
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
   "asset": "HighriseTower103_L1_5x4",
-  "label": "fix",
-  "time": "2026-11-10 16:15:55",
+  "label": "cleanup",
+  "time": "2026-11-10 16:25:54",
   "build": {
    "asset": "HighriseTower103_L1_5x4",
    "fbx": true,
@@ -100,7 +100,7 @@
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 14.3
+    "time_s": 17.4
    },
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
@@ -186,12 +186,12 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-103",
- "updated_at": "2026-11-10T16:16:16",
- "visual_review_note": "back: grey SE half (x<2) above floor 7 from Kakao 2023-02 overcast view",
+ "updated_at": "2026-11-10T16:26:02",
+ "visual_review_note": "cleanup only (old generator copies, unused generic_spec.json); model unchanged",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower103_L1_5x4.png",
-   "sha256": "0ecf621240a1a021f1224131483b6717f547d3c137fd3e8d3057c763a86ea92a"
+   "sha256": "0b21071592fe3bae8fa460277ff7f79b8d17ab56a20ea5e24a04f560d280c034"
   },
   {
    "file": "previews/photo_check/facade_front.png",
@@ -218,5 +218,5 @@
    "sha256": "d5a5b1722f498961bd7beca3ee6a528a5ebeb62f5f6f79b075412266543f2130"
   }
  ],
- "reviewed_preview_hash": "0ecf621240a1a021f1224131483b6717f547d3c137fd3e8d3057c763a86ea92a"
+ "reviewed_preview_hash": "0b21071592fe3bae8fa460277ff7f79b8d17ab56a20ea5e24a04f560d280c034"
 }
