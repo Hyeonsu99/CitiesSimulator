@@ -1,0 +1,580 @@
+{
+ "version": 1,
+ "project": "exllu-103",
+ "stages": {
+  "mass": {
+   "at": "2026-11-10T08:46:28",
+   "mode": "quick",
+   "status": "PASS",
+   "label": "mass",
+   "gate": "output/GeumgangExlluTower_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "NOT_CHECKED",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "NOT_CHECKED",
+    "fbx": "NOT_CREATED"
+   },
+   "generator_hash": "12a77b35680d1114802eaca7627b481b3f96fc7526416fa5e4bc982758d1ed58",
+   "preview": null,
+   "fbx": null
+  },
+  "facade": {
+   "at": "2026-11-10T08:46:35",
+   "mode": "visual",
+   "status": "INCOMPLETE",
+   "label": "facade",
+   "gate": "output/GeumgangExlluTower_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "NOT_CHECKED",
+    "fbx": "NOT_CREATED",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "12a77b35680d1114802eaca7627b481b3f96fc7526416fa5e4bc982758d1ed58",
+   "preview": {
+    "path": "previews/GeumgangExlluTower_L1_5x4.png",
+    "exists": true,
+    "sha256": "35fe93c13808409bc3b931a6f15ea32ed72d769c3f88c5db1c7e5e5007caf88c",
+    "key": null
+   },
+   "fbx": null
+  },
+  "facade2": {
+   "at": "2026-11-10T08:47:13",
+   "mode": "visual",
+   "status": "INCOMPLETE",
+   "label": "facade2",
+   "gate": "output/GeumgangExlluTower_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "NOT_CHECKED",
+    "fbx": "NOT_CREATED",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "12a77b35680d1114802eaca7627b481b3f96fc7526416fa5e4bc982758d1ed58",
+   "preview": {
+    "path": "previews/GeumgangExlluTower_L1_5x4.png",
+    "exists": true,
+    "sha256": "718020d7524afa487e441d041c8c8fad664682aabeb4c5d151742eebbca36696",
+    "key": null
+   },
+   "fbx": null
+  },
+  "final": {
+   "at": "2026-11-10T08:47:35",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "final",
+   "gate": "output/GeumgangExlluTower_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "12a77b35680d1114802eaca7627b481b3f96fc7526416fa5e4bc982758d1ed58",
+   "preview": {
+    "path": "previews/GeumgangExlluTower_L1_5x4.png",
+    "exists": true,
+    "sha256": "0e3e28d69cf07e2a0ff8a30a60f938177adb409aeded5f859c9fb7b8c067b76b",
+    "key": null
+   },
+   "fbx": null
+  },
+  "roof_103": {
+   "at": "2026-11-10T08:53:59",
+   "mode": "visual",
+   "status": "FAIL",
+   "label": "roof_103",
+   "gate": "output/GeumgangExlluTower_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "FAIL",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "NOT_CHECKED",
+    "fbx": "NOT_CREATED"
+   },
+   "generator_hash": "e7481bd4ae6c1be23aa79aa785caa7b43376b8c24a0da768ba8152aa4e3c09e3",
+   "preview": {
+    "path": "previews/GeumgangExlluTower_L1_5x4.png",
+    "exists": true,
+    "sha256": "dd5e6f768bac26308c5f3d45934b01ecf7677e26c40c430513769b9e0d8a8a45",
+    "key": null
+   },
+   "fbx": null
+  },
+  "roof_103b": {
+   "at": "2026-11-10T08:54:11",
+   "mode": "visual",
+   "status": "INCOMPLETE",
+   "label": "roof_103b",
+   "gate": "output/GeumgangExlluTower_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "NOT_CHECKED",
+    "fbx": "NOT_CREATED",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "aaca8f5caf3d0d7481d02fdc929a674ceace27f2b55a2d824510e89796c6d4ee",
+   "preview": {
+    "path": "previews/GeumgangExlluTower_L1_5x4.png",
+    "exists": true,
+    "sha256": "96bf3a2d3642ecc95754b3df1c0d68d02bb4dd4480c448b77586c6cf5c49eb54",
+    "key": null
+   },
+   "fbx": null
+  },
+  "103_roof": {
+   "at": "2026-11-10T08:54:37",
+   "mode": "final",
+   "status": "FAIL",
+   "label": "103_roof",
+   "gate": "output/GeumgangExlluTower_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "FAIL",
+    "fbx": "PASS"
+   },
+   "generator_hash": "aaca8f5caf3d0d7481d02fdc929a674ceace27f2b55a2d824510e89796c6d4ee",
+   "preview": {
+    "path": "previews/GeumgangExlluTower_L1_5x4.png",
+    "exists": true,
+    "sha256": "aafc27e7847fa8a7db32653e43553dd34b58977da414848c9f58326f6ecb9983",
+    "key": null
+   },
+   "fbx": null
+  },
+  "103_v2": {
+   "at": "2026-11-10T08:55:06",
+   "mode": "final",
+   "status": "FAIL",
+   "label": "103_v2",
+   "gate": "output/GeumgangExlluTower_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "FAIL",
+    "fbx": "PASS"
+   },
+   "generator_hash": "935c12147d6c633b0f197caf9c5c957ee54eea72fa4ace5b169d8f140bb44937",
+   "preview": {
+    "path": "previews/GeumgangExlluTower_L1_5x4.png",
+    "exists": true,
+    "sha256": "753df9ae35550ba26a5f2efda31a138007ef168a92c616b9ca093cd0b5393778",
+    "key": null
+   },
+   "fbx": null
+  },
+  "103_v3": {
+   "at": "2026-11-10T08:55:36",
+   "mode": "final",
+   "status": "FAIL",
+   "label": "103_v3",
+   "gate": "output/GeumgangExlluTower_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "FAIL",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "PASS",
+    "fbx": "PASS"
+   },
+   "generator_hash": "a8e2409cab6407670efd33770aaaf603c3daad614184c8253c397dd4ab4872db",
+   "preview": {
+    "path": "previews/GeumgangExlluTower_L1_5x4.png",
+    "exists": true,
+    "sha256": "c1925dc743bba3320f3084da80e27449cf5f4ab82e29973b6bd041f7217ad206",
+    "key": null
+   },
+   "fbx": null
+  },
+  "103_v4": {
+   "at": "2026-11-10T08:55:59",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "103_v4",
+   "gate": "output/GeumgangExlluTower_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "af668901532264c773fef1a1f49ca927f6638f33ff22728fcaaaab1145fd28c9",
+   "preview": {
+    "path": "previews/GeumgangExlluTower_L1_5x4.png",
+    "exists": true,
+    "sha256": "d9c0964c029f5208aa93bff95a82c397a884f21996b58aeba4376c3be901d32f",
+    "key": null
+   },
+   "fbx": null
+  },
+  "flank_dark": {
+   "at": "2026-11-10T08:59:42",
+   "mode": "visual",
+   "status": "INCOMPLETE",
+   "label": "flank_dark",
+   "gate": "output/GeumgangExlluTower_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "NOT_CHECKED",
+    "fbx": "NOT_CREATED",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "2cb988fb5d3a829543ee5abefbeff8ce67c7d111a0e72950c863390eb518dac9",
+   "preview": {
+    "path": "previews/GeumgangExlluTower_L1_5x4.png",
+    "exists": true,
+    "sha256": "60724ed84ef691e3b1bbe0473abaf19977f2841b70a1b1a42334ff6ff1780f6b",
+    "key": null
+   },
+   "fbx": null
+  },
+  "entrance_portal": {
+   "at": "2026-11-10T09:00:08",
+   "mode": "final",
+   "status": "FAIL",
+   "label": "entrance_portal",
+   "gate": "output/GeumgangExlluTower_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "FAIL",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "PASS",
+    "fbx": "PASS"
+   },
+   "generator_hash": "cd2af761357cb7fe44f26564bf27d10843950f139d5726ff02463ca2ad2db946",
+   "preview": {
+    "path": "previews/GeumgangExlluTower_L1_5x4.png",
+    "exists": true,
+    "sha256": "2626f09e43b72ab2501de9798b17ed195e80ca53f4de4c9c706193299987a893",
+    "key": null
+   },
+   "fbx": null
+  },
+  "entrance_portal2": {
+   "at": "2026-11-10T09:00:46",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "entrance_portal2",
+   "gate": "output/GeumgangExlluTower_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "3b35a6ecf9b03c68615df748fd0397c528d1fea04b1f8afd3279533d1953d535",
+   "preview": {
+    "path": "previews/GeumgangExlluTower_L1_5x4.png",
+    "exists": true,
+    "sha256": "45168d3e6d885e0776046071d6ccadbad2d08a3db6dbbcecf1f16c695c792766",
+    "key": null
+   },
+   "fbx": null
+  },
+  "v2_custom": {
+   "at": "2026-11-10T09:09:20",
+   "mode": "visual",
+   "status": "INCOMPLETE",
+   "label": "v2_custom",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "NOT_CHECKED",
+    "fbx": "NOT_CREATED",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "adc8d64bd10ea6fb7de9d8603bf9cb841abc3ef1b3b64ec803b51b046bc586dd",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "cea83696305a20716a7394c555cc33d99d577399f81a16b68b1dcbc79d26d8a0",
+    "key": null
+   },
+   "fbx": null
+  },
+  "v2_final": {
+   "at": "2026-11-10T09:10:01",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "v2_final",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "6dd73f38a0a8e4f54d398ca456f2ffedde0377f2e339b2ec18fd76872337565f",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "424648a628764c1eb8d259e92e0b8e5f0787d27dd4967e083488f1c13307bee4",
+    "key": null
+   },
+   "fbx": null
+  },
+  "v3_crown_tex": {
+   "at": "2026-11-10T09:15:43",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "v3_crown_tex",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "b6319e26f0a1193b00ad105fa45451bba17ea9fa53a57313a7d7b263d54a87fc",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "2935df79c9d5ccef8a1c0ffcdab98fa758bb318388efed0e2c0d3f85a5f6acdb",
+    "key": null
+   },
+   "fbx": null
+  },
+  "v4_height_corners": {
+   "at": "2026-11-10T09:19:41",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "v4_height_corners",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "385451b7fea552eb81e6fa14ae4b65da374bb9b351d39df85435792a4436efa6",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "cbe9ca2c3c1e485dba75ede03b20fb54609015eaed25388a18c7a4f2731dfdec",
+    "key": null
+   },
+   "fbx": null
+  },
+  "v4_final": {
+   "at": "2026-11-10T09:20:35",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "v4_final",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "a1e22ba92a6dc258cbabe95313aee1a6dd2b6fea4d226e21f29aa1832f2e7bef",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "89652f34e5ee6592bc2a894060b0c32ad3db7d75b3120ad159b711dc84267e08",
+    "key": null
+   },
+   "fbx": null
+  },
+  "v5_back_glass": {
+   "at": "2026-11-10T09:32:33",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "v5_back_glass",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "ca630a394ab6bb1a4bc74b4bde6b1aa49ad420c000d55b1cb5c45e561b7d0511",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "f16e9e4e563f84bb0c5b9514dfd0a004516f3dfae66c68d417a28df05bfc4eaf",
+    "key": null
+   },
+   "fbx": null
+  },
+  "v5_final": {
+   "at": "2026-11-10T09:33:33",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "v5_final",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "4bf14342a8504f493652f3e9de1549af74dcbc4a6c20831c18c10c973c9a3c0f",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "525d3a58b4fbb21048dcbe419b19d4489abe98a449e07a9e9aa0034d5217e420",
+    "key": null
+   },
+   "fbx": null
+  },
+  "v6_side_crown": {
+   "at": "2026-11-10T10:07:02",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "v6_side_crown",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "5f60399c287a957a4fc2c569a6e832643480ec5bf76f160065912159adf93bc7",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "ac91a49203b3bfc8e19de3b3a075a04c3bf3298491ec419ad8b14eb893afb9e4",
+    "key": null
+   },
+   "fbx": null
+  },
+  "fix": {
+   "at": "2026-11-10T11:13:26",
+   "mode": "final",
+   "status": "FAIL",
+   "label": "fix",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "FAIL",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "FAIL",
+    "fbx": "PASS"
+   },
+   "generator_hash": "1ad422c634eb429f9a48e9ab2357a5d9f7520adda65faeb73103a3dd964af7a4",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "b96e562b45870d5a7974bb2f09a6ca581ce1c0255090808df2d48651a15f06b5",
+    "key": null
+   },
+   "fbx": null
+  },
+  "heli": {
+   "at": "2026-11-10T11:16:42",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "heli",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "4a1c8e5619ef70195347362cae704881cc5086f50e3c12c57b3cafff6ee2ea88",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "62e73d48fdc9b9b07a7965fe054584a20ac647d041d39ce43438bd5312332b86",
+    "key": null
+   },
+   "fbx": null
+  }
+ },
+ "updated_at": "2026-11-10T11:16:42",
+ "current_stage": "final:INCOMPLETE",
+ "generator": "exllu_103_cs2.py",
+ "generator_hash": "4a1c8e5619ef70195347362cae704881cc5086f50e3c12c57b3cafff6ee2ea88",
+ "visual_review": "NOT_CHECKED",
+ "reviewed_preview_hash": "e792f843f932f04b787432fd606846e79344afc81e4b45ab06f60ac7b6deb394",
+ "last_gate": {
+  "mode": "final",
+  "status": "INCOMPLETE",
+  "path": "output/HighriseTower103_L1_5x4/_check/gate.json"
+ }
+}

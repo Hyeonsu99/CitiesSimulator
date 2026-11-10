@@ -1,0 +1,73 @@
+CS2 건축 에셋 키트 - Claude Code 사용법
+=====================================
+
+1. 준비
+-------
+Python 3.9+, numpy, Pillow, Blender 5.2를 준비합니다.
+Blender가 없어도 quick/visual은 가능하지만 FBX와 최종 LOD 검사는 불가능합니다.
+
+키트 루트에서:
+  pip install numpy pillow
+  python tools/project.py init
+  python tools/run_blender.py --find
+
+2. 새 건축물
+-----------
+  python tools/project.py new my-apt
+커튼월이면:
+  python tools/project.py new my-apt --template cw
+
+projects/my-apt/photos/에 사진과 선택적 GLB를 넣습니다.
+TASK.md의 아는 값만 채우고 모르는 값은 비웁니다.
+실제 단지 이름·브랜드는 에셋 이름과 텍스처에 넣지 않습니다.
+
+3. Claude Code 실행
+------------------
+키트 루트에서 Claude Code를 열고:
+  /build
+추가 요청이 있으면:
+  /build 옥상 물탱크 디테일 강조
+
+다른 명령:
+  /resume                 저장된 다음 행동부터 재개
+  /photo-refs             사진 좌표 생성·검증
+  /fix 3층 난간만 수정    범위 수정과 변경 비교
+
+스킬은 모두 같은 tools/agent.py를 사용합니다.
+직접 환경을 확인하려면:
+  python tools/agent.py doctor --project my-apt --json
+
+4. 검증
+-------
+quick  = OBJ와 규격 검사만 빠르게
+visual = 미리보기와 사진 비교
+final  = FBX, 사진, 타일, LOD를 모두 검사
+
+PASS는 요청한 검사 통과, FAIL은 실패, INCOMPLETE는 필수 검사/이미지 확인 누락입니다.
+NOT_CHECKED를 PASS로 해석하지 마세요.
+
+visual/final 후 미리보기와 표시된 비교 그림을 보고:
+  python tools/agent.py review --project my-apt --status PASS --note "reviewed final images" --json
+
+Stop 훅은 final/fix가 PASS가 아닌 채 끝나면 다음 행동을 알려 줍니다.
+
+5. 사진
+-------
+모든 사진과 확대를 반복해서 읽지 않고 연락판 → 대표 사진 → 필요한 확대 순서로 봅니다.
+  python tools/agent.py photos --project my-apt --page 0 --page-size 30 --json
+
+확인한 사진은 기록합니다.
+  python tools/agent.py observe --project my-apt --photo photos/front.jpg --side front --note "36 floors" --json
+
+사용자가 만든 photo_refs.json은 수정하지 않습니다.
+
+6. 결과 위치
+-----------
+output/<에셋>/          FBX와 텍스처
+previews/              미리보기와 사진 비교
+work/agent_state.json  재개용 상태
+work/observations.json 사진 관찰 기록
+STATUS.md              짧은 인수인계
+
+상세한 명령은 TOOLS_CLAUDE.md, 작업 순서는 docs/agent/WORKFLOW.md에 있습니다.
+최종 실제 크기, 창, 알파, 야간 조명, 정면, 입구, 시그니처 등록은 게임에서 확인하세요.

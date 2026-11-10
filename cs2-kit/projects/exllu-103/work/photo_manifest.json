@@ -1,0 +1,112 @@
+{
+ "photos": [
+  {
+   "file": "photos\\aerial.png",
+   "sha256": "640bf7099706add2ce7677c2d639353bda2ad480e9f52a6aefc0a26ffe438d33",
+   "size": [
+    700,
+    700
+   ],
+   "mtime_ns": 1794267953564015400,
+   "bytes": 791649,
+   "duplicate_of": null,
+   "observed": true
+  },
+  {
+   "file": "photos\\roof.jpg",
+   "sha256": "9de138d38ab17d7dc9e0d4a5e0579f6024f3431925038a692077a0fa1c491c62",
+   "size": [
+    518,
+    387
+   ],
+   "mtime_ns": 1794267953190431300,
+   "bytes": 35075,
+   "duplicate_of": null,
+   "observed": true
+  },
+  {
+   "file": "photos\\site.jpg",
+   "sha256": "0841c2184ae28072dbcb6fb5523dcd5fc735e78a47182b950f7776b3a6b04114",
+   "size": [
+    2992,
+    2578
+   ],
+   "mtime_ns": 1794267953126562800,
+   "bytes": 834311,
+   "duplicate_of": null,
+   "observed": true
+  },
+  {
+   "file": "photos\\user-01-tower.png",
+   "sha256": "eb7998ed3a1dc29e784465f67780ad8a6049564c537acc13483a14860ff8dbc6",
+   "size": [
+    120,
+    446
+   ],
+   "mtime_ns": 1794268248205740200,
+   "bytes": 99246,
+   "duplicate_of": null,
+   "observed": true
+  },
+  {
+   "file": "photos\\user-02-facade.png",
+   "sha256": "96e2f586c92e005b6e07c530ad0df90eca8811472a27014c766b4424420ccc53",
+   "size": [
+    833,
+    954
+   ],
+   "mtime_ns": 1794268301264262400,
+   "bytes": 948942,
+   "duplicate_of": null,
+   "observed": true
+  },
+  {
+   "file": "photos\\user-03-entrance.png",
+   "sha256": "2a361feef5845d71ab4d133d0bcd051bb8352e201d7055e67e84667f51f6e18d",
+   "size": [
+    1186,
+    866
+   ],
+   "mtime_ns": 1794268315057099400,
+   "bytes": 1401126,
+   "duplicate_of": null,
+   "observed": true
+  },
+  {
+   "file": "photos\\user-04-corner.png",
+   "sha256": "16ede7a2ac0d64312538f1a37f96ba0803a75affa8b23f3ee31438c224d2adf3",
+   "size": [
+    1154,
+    952
+   ],
+   "mtime_ns": 1794268335532089100,
+   "bytes": 1911798,
+   "duplicate_of": null,
+   "observed": true
+  },
+  {
+   "file": "photos\\user-05-elevation.png",
+   "sha256": "b3c624fa4c92adced92731ff172a22717cb53ebcb8d499d030d4c786b664c217",
+   "size": [
+    591,
+    920
+   ],
+   "mtime_ns": 1794268354438333700,
+   "bytes": 642706,
+   "duplicate_of": null,
+   "observed": true
+  },
+  {
+   "file": "photos\\user-06-roof.png",
+   "sha256": "0a7cbd2a1b0cf9e0d6ccab154a84bf1484e49f2f105c7c8cbd755b740b1f293c",
+   "size": [
+    467,
+    326
+   ],
+   "mtime_ns": 1794268382900286300,
+   "bytes": 181378,
+   "duplicate_of": null,
+   "observed": true
+  }
+ ]
+}

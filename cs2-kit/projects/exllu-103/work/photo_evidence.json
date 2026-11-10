@@ -1,0 +1,23 @@
+{
+ "photos": {
+  "site": {
+   "file": "photos\\site.jpg",
+   "sha256": "0841c2184ae28072dbcb6fb5523dcd5fc735e78a47182b950f7776b3a6b04114",
+   "view": "oblique",
+   "wall_id": "tower:front_left",
+   "usable_for": "color",
+   "occluded": "lower stories obscured; tower number not visible",
+   "confidence": "low",
+   "note": "Facade appearance only; depth and exact identity unknown"
+  }
+ },
+ "walls": {
+  "tower:front_left": {
+   "wall_id": "tower:front_left",
+   "photo_ids": [
+    "site"
+   ]
+  }
+ },
+ "features": []
+}

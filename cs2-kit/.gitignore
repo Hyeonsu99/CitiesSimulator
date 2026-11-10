@@ -1,0 +1,39 @@
+# 파이썬
+__pycache__/
+*.py[cod]
+
+# 로컬/생성물
+blender_path.txt
+tools/blender_py.txt
+.venv-bpy/
+*.zip
+*.blend
+*.blend1
+*.fbx
+
+# 작업 폴더: CitiesSimulator 저장소에서는 프로젝트 소스(생성기·YAML·TASK·작업 메모·사진)를 함께 버전 관리.
+# 다시 만들 수 있는 큰 생성물만 제외한다.
+/projects/*/backup/
+/projects/*/output/
+/projects/*/previews/
+/projects/*/work/logs/
+/projects/.current
+/previews/
+/output/
+/capture/out/
+/capture/urls_*.txt
+/capture/.chrome-vr/
+
+# 편집기/OS
+.claude/*
+!.claude/settings.json
+!.claude/skills/
+!.claude/skills/**
+!.claude/hooks/
+!.claude/hooks/**
+.claude/**/__pycache__/
+.DS_Store
+Thumbs.db
+
+# 로컬 검토 메모 (커밋하지 않음)
+REMAINING_improvements_*.md

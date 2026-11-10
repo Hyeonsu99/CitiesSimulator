@@ -1,0 +1,74 @@
+{
+ "0841c2184ae28072dbcb6fb5523dcd5fc735e78a47182b950f7776b3a6b04114": {
+  "file": "photos\\site.jpg",
+  "side": "front",
+  "note": "Oblique actual photograph; pale towers, projecting balconies, teal glazed crown; tower identity and lower floors obscured.",
+  "observed_at": "2026-11-10T08:46:06"
+ },
+ "9de138d38ab17d7dc9e0d4a5e0579f6024f3431925038a692077a0fa1c491c62": {
+  "file": "photos\\roof.jpg",
+  "side": "roof",
+  "note": "Actual roof photograph; green glazed sloped crown and window frame proportions, photo does not identify tower.",
+  "observed_at": "2026-11-10T08:46:06"
+ },
+ "640bf7099706add2ce7677c2d639353bda2ad480e9f52a6aefc0a26ffe438d33": {
+  "file": "photos\\aerial.png",
+  "side": "aerial",
+  "note": "Architectural visualization, not as-built survey; tower grouping and indicative profiles only.",
+  "observed_at": "2026-11-10T08:46:06"
+ },
+ "eb7998ed3a1dc29e784465f67780ad8a6049564c537acc13483a14860ff8dbc6": {
+  "file": "photos\\user-01-tower.png",
+  "side": "back",
+  "note": "Read as BACK elevation (only all-white wide face; front has dark wings+portal). White central shaft continuing into the helipad core; grey stone base ~6 floors (viewer-left = world +x) and ~12 floors (world -x); grey balcony bay with ledges from ~floor 30 on world +x; green-tinted multi-pane windows; observatory glass box on world -x.",
+  "observed_at": "2026-11-10T09:33:46"
+ },
+ "96e2f586c92e005b6e07c530ad0df90eca8811472a27014c766b4424420ccc53": {
+  "file": "photos\\user-02-facade.png",
+  "side": "front",
+  "note": "Front oblique; outer corner bays dark grey-brown stone full height with per-floor projecting slab ledges; centre pale; dark lower floors.",
+  "observed_at": "2026-11-10T08:59:29"
+ },
+ "2a361feef5845d71ab4d133d0bcd051bb8352e201d7055e67e84667f51f6e18d": {
+  "file": "photos\\user-03-entrance.png",
+  "side": "front",
+  "note": "Entrance: dark granite portal frame, pink granite pier with 103, cantilever canopy, stair; pilotis with columns left of recess; deep central recess pale with narrow windows.",
+  "observed_at": "2026-11-10T08:59:30"
+ },
+ "16ede7a2ac0d64312538f1a37f96ba0803a75affa8b23f3ee31438c224d2adf3": {
+  "file": "photos\\user-04-corner.png",
+  "side": "front",
+  "note": "Corner close-up; dark stone base with 103 numeral, glass curtain lobby at ground.",
+  "observed_at": "2026-11-10T08:59:30"
+ },
+ "b3c624fa4c92adced92731ff172a22717cb53ebcb8d499d030d4c786b664c217": {
+  "file": "photos\\user-05-elevation.png",
+  "side": "front",
+  "note": "Frontal elevation; dark flank bays full height, pale centre panel with irregular small windows, ledges every floor on flanks.",
+  "observed_at": "2026-11-10T08:59:30"
+ },
+ "0a7cbd2a1b0cf9e0d6ccab154a84bf1484e49f2f105c7c8cbd755b740b1f293c": {
+  "file": "photos\\user-06-roof.png",
+  "side": "roof",
+  "note": "Overhead; square green helipad with white H circle on raised roof deck, pale roof slab.",
+  "observed_at": "2026-11-10T08:59:30"
+ },
+ "264ba1f0be693ee3948d3a92f1171f768a0c36f46638f54c5cb0d2b4014a3947": {
+  "file": "photos\\user-07-side.png",
+  "side": "left",
+  "note": "SE side face (x=-16), camera SE parking lot looking NW (user-09). Dark stone flanks with per-floor stepped ledges at both corners; pale centre with 3-4 irregular small windows + white panels; flank: one wide window per floor; top ~10 floors both corners dark glass, centre top glass; ground kids' painted panels.",
+  "observed_at": "2026-11-10T10:04:21"
+ },
+ "8b526c50ae099cafd9f799fd0c6b3796ffb386a9ab3ce4938071db884c7675c7": {
+  "file": "photos\\user-08-side.png",
+  "side": "left",
+  "note": "Same SE side face as user-07, more frontal: confirms flank/centre split ~1/4-1/2-1/4 and stepped corner ledges; user-02/05 show this same face.",
+  "observed_at": "2026-11-10T10:04:21"
+ },
+ "d9f4245778be5bccdda06fa638059912994f46c6a7fe8d1d0afd96570d9f1906": {
+  "file": "photos\\user-09-aerial-camera.png",
+  "side": "roof",
+  "note": "Oblique aerial with camera marker. Long axis NW-SE; square helipad deck ~16 m at ~36% from NW end; dark glass grid (observatory) under/around deck on NW and SW sides; white steel frame at deck SE edge; SE half plain pale roof.",
+  "observed_at": "2026-11-10T10:04:21"
+ }
+}
