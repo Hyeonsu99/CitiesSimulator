@@ -78,7 +78,7 @@ def window_glass(ctx):
     ctx.rgb[cmask] = ctx.rgb[cmask] * 0.35 + np.array([200, 190, 170], np.float32) * 0.65
     lit = ((h * 13) % 1.0) < 0.3
     ctx.emis[...] = np.where(lit, 1.0, 0.0)
-    ctx.gloss[...] = 0.92
+    ctx.gloss[...] = 0.4
 
 
 def mesh_grid(ctx, n, w, col):
@@ -97,7 +97,7 @@ def obs_glass(ctx):
     ctx.rgb += (ctx.v * 46.0 - 14.0)[..., None]
     fr = (mx < 0.035) | (mx > ctx.tile[0] - 0.035) | (mz < 0.05) | (mz > ctx.tile[1] - 0.05) |          ((mz > 2.58) & (mz < 2.64))
     ctx.rgb[fr] = np.array([210, 214, 212], np.float32)
-    ctx.emis[...] = np.where(fr, 0.0, np.where(mz < 2.58, 0.55, 0.3))
+    ctx.emis[...] = np.where(fr, 0.0, np.where(mz < 2.58, 0.06, 0.03))
     ctx.gloss[...] = np.where(fr, 0.5, 0.92)
 
 
@@ -121,7 +121,7 @@ TEX = {  # tile = one 2.4 m x one storey, so joints line up with floors
     "heli_net": dict(tile=(0.6, 0.6), px=64, painter=lambda c: mesh_grid(c, 4, 0.10, (178, 182, 184))),
     "grating": dict(tile=(0.6, 0.6), px=64, painter=lambda c: mesh_grid(c, 12, 0.25, (70, 72, 74))),
     "heli_light": dict(px=32, painter=lambda c: c.emis.__setitem__(Ellipsis, 1.0), emissive=(110, 255, 140)),
-    "under_light": dict(px=32, painter=lambda c: c.emis.__setitem__(Ellipsis, 1.0), emissive=(255, 214, 160)),
+    "under_light": dict(px=32, painter=lambda c: c.emis.__setitem__(Ellipsis, 0.15), emissive=(255, 214, 160)),
 }
 
 A = K.Atlas(size=4096, pad=16)
@@ -146,7 +146,7 @@ for name, color, metal, gloss, px in (
         ("heli_white", (232, 234, 226), 0.0, 0.25, 64),
         ("pier_pink", (176, 140, 130), 0.0, 0.4, 128),
         ("canopy", (160, 163, 162), 0.2, 0.45, 128),
-        ("glass", (150, 185, 180), 0.0, 0.9, 64),       # _Gls pane over every window (green tint, photos)
+        ("glass", (150, 185, 180), 0.0, 0.35, 64),      # _Gls pane over every window (green tint, photos)
         ("grey_stone", (168, 168, 164), 0.0, 0.3, 128), # back base + upper bay (user-01)
         ("pale_trim", (226, 224, 218), 0.0, 0.3, 64),  # back ledges, lower floors (user-01)
         ("grey_trim", (150, 151, 148), 0.0, 0.3, 64),  # back ledges, grey upper bay (user-01)
@@ -171,7 +171,6 @@ def window(mb, stage, axis, c, s, a0, a1, z0, z1, floor, unit, mull=(0.38,), jam
         return
     if stage == 0:
         WS.add_face(axis, c, s, a0, a1, z0, z1, floor=floor, unit=unit)
-        GLS.rect(K.face_pts(axis, c + s * 0.025, s, a0, a1, z0, z1), "glass")  # between _Win (2 cm) and mullions (3 cm)
         if jambs[0]:
             K.axbox(mb, axis, c, s, a0 - 0.1, a0, 0, 0.12, z0, z1, "frame", skip=("top", "bottom"))
         if jambs[1]:

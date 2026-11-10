@@ -16,7 +16,7 @@
  "tris": {
   "main": 77884,
   "win": 2808,
-  "gls": 2808,
+  "gls": 0,
   "lod1": 16710,
   "lod1_win": 2808,
   "lod1_gls": 0,
@@ -428,9 +428,7 @@
   "win": [
    "window"
   ],
-  "gls": [
-   "glass"
-  ],
+  "gls": [],
   "lod1": [
    "canopy",
    "crown_glass",

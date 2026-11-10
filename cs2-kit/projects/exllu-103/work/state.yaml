@@ -928,12 +928,137 @@
     "key": null
    },
    "fbx": null
+  },
+  "dim_helipad": {
+   "at": "2026-11-10T22:58:39",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "dim_helipad",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "a93efa650aa652aded1666b4423f3a6dc80d55f06c827998ee28fa086e6b9092",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "22b9febcf610007ff2dcb567b65313d6bb48eee20a97b662487680d45d257d38",
+    "key": null
+   },
+   "fbx": null
+  },
+  "dim_crown": {
+   "at": "2026-11-10T22:59:36",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "dim_crown",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "7edeab3503a07e48be1074a0ed5b275999ec4a9b40d60d5262d3b44b20103669",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "f763108741c03d4e2a320d0bdd9bb78e4e2f1aa6e551b138aa62d7b7d0a94f0e",
+    "key": null
+   },
+   "fbx": null
+  },
+  "reduced_window_gloss": {
+   "at": "2026-11-10T23:08:18",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "reduced_window_gloss",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "5897562c69aff0228ec9e0c8f41d3dc9a9e060f895695024c144318a3e308c65",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "2ee1d2d4f0fbdab9f54b8ea94f70f8b7cfe37f27e9d19d472f293e042d5c4fd0",
+    "key": null
+   },
+   "fbx": null
+  },
+  "glass_separation": {
+   "at": "2026-11-10T23:13:12",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "glass_separation",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "237ea7269b0a12c571c71fca38c47b30732a21b667c6826fddcbabf2fce63358",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "f728d80df92a84f712dc968b0c7c86057d7e0593914b87b5ac6770bacbce09a8",
+    "key": null
+   },
+   "fbx": null
+  },
+  "test_no_glass": {
+   "at": "2026-11-10T23:26:38",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "test_no_glass",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "96e23a3248a246f80c3ca38150dd06a6a1e7a2779a0faebe01400f0ea1d5ebd5",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "2ddfd04d50caa6d83183982376ce511087bae4c648b001363a3540e359db3d06",
+    "key": null
+   },
+   "fbx": null
   }
  },
- "updated_at": "2026-11-10T22:26:09",
+ "updated_at": "2026-11-10T23:26:38",
  "current_stage": "final:INCOMPLETE",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "b3c1b9f4ad646227b7329312c07e624680fdb3352ed41e6ee5f1246f760cec59",
+ "generator_hash": "96e23a3248a246f80c3ca38150dd06a6a1e7a2779a0faebe01400f0ea1d5ebd5",
  "visual_review": "NOT_CHECKED",
  "reviewed_preview_hash": "0b21071592fe3bae8fa460277ff7f79b8d17ab56a20ea5e24a04f560d280c034",
  "last_gate": {
