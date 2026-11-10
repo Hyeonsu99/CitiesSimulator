@@ -7,7 +7,7 @@ floor_height_m: 2.94             # floors 2-50 (TASK)
 lobby_height_m: 5.24             # estimated: raised so the top = 160 m (research)
 footprint_m: {width: 32, depth: 21}
 height_m: 149.3                  # roof slab (5.24 + 49 x 2.94); parapet 150.6, helipad deck 159.1, rail top 160.0
-tris: {main: 71926, gls: 2724, lod1: 15414, lod2: 272, windows: 1362}   # main slightly above the 60k target, below the 95k warning
+tris: {main: 72246, gls: 2724, lod1: 15526, lod2: 272, windows: 1362}   # main slightly above the 60k target, below the 95k warning
 front_recess_m: {half_width: 5.5, depth: 2.0}   # estimated
 materials:
   stone_dark: [88, 82, 80]          # estimated from user-02/03/05
@@ -43,6 +43,7 @@ roof:
     access_platform: "steel grating 1.5 m on the SE edge, same slab as the net"
     access_stair: "switchback steel stair from the main roof to the platform: 2 x 24 open treads, white stringers, steel handrails, frame posts, X bracing"   # estimated (frame seen from above only)
     lights: "28 green emissive perimeter lights on the grey deck band (7 per side)"   # standard helideck practice, not photographed
+    underside: "white core r 1.3 with a collar node 0.7-1.3 m above the observatory roof; 8 struts fan from the collar to the dark dish; 8 white radial ribs 0.2 m below the dish; 8 warm downlights (roof.jpg sibling glows at night); the 4 loose SE posts were removed (platform cantilevers with the net slab)"   # estimated from user-01
   observatory: "green glass box under the deck x -3..15.2, y 3..20.2, h 4.6, wall mullions + roof grid (aerial: glass grid shows NW/SW of the deck). Old note: x -14..-3, 1.4 m mullions + transom"  # estimated from user-01 / roof.jpg
 textures:
   window: "atlas window cell 1024 px: green-tinted glass (68,110,110), sky gradient, glint streak, curtains on ~45 % of slots, ~30 % lit (emissive 255,205,150)"  # synthesized

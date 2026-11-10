@@ -96,6 +96,7 @@ TEX = {  # tile = one 2.4 m x one storey, so joints line up with floors
     "heli_net": dict(tile=(0.6, 0.6), px=64, painter=lambda c: mesh_grid(c, 4, 0.10, (178, 182, 184))),
     "grating": dict(tile=(0.6, 0.6), px=64, painter=lambda c: mesh_grid(c, 12, 0.25, (70, 72, 74))),
     "heli_light": dict(px=32, painter=lambda c: c.emis.__setitem__(Ellipsis, 1.0), emissive=(110, 255, 140)),
+    "under_light": dict(px=32, painter=lambda c: c.emis.__setitem__(Ellipsis, 1.0), emissive=(255, 214, 160)),
 }
 
 A = K.Atlas(size=4096, pad=16)
@@ -125,6 +126,7 @@ for name, color, metal, gloss, px in (
         ("heli_net", (72, 76, 80), 0.6, 0.4, 64),       # helideck perimeter safety net (steel mesh)
         ("grating", (128, 132, 134), 0.6, 0.35, 64),    # access platform / stair treads
         ("heli_light", (90, 230, 120), 0.0, 0.6, 32),   # green perimeter lights (emissive)
+        ("under_light", (250, 236, 210), 0.0, 0.6, 32), # warm downlights under the deck (roof.jpg sibling at night)
         ("window", (70, 110, 110), 0.0, 0.9, 1024)):
     A.add(name, color=color, ctrl=(0, 0, 0), metal=metal, gloss=gloss, **dict(dict(px=px), **TEX.get(name, {})))
 
@@ -307,7 +309,7 @@ def ring(mb, cx, cy, r0, z0, r1, z1, region, n, flip=False, rot=0.0):
 # Research: helipad + observatory on each tower, top 160-160.7 m. Sizes estimated.
 SHX0, SHX1 = 2.0, 5.0        # back white shaft (user-01); the helipad core rises above it
 HX, HY = 4.5, 10.5           # deck centre (aerial: 36 % from the NW end)
-HS, HCORE = 6.85, 1.8        # deck half-size (13.7 m, Naver satellite) / core radius
+HS, HCORE = 6.85, 1.3        # deck half-size (13.7 m, Naver satellite) / core radius
 HZ0 = H + 7.2                # underside meets the core
 HZ1 = H + 9.2                # underside meets the deck edge
 HZT = H + 9.8                # deck top; rail top H + 10.7 = 160.0 m
@@ -329,13 +331,7 @@ def crown(mb, stage):
     mb.box(HX - 6.0, HX + 6.0, HY - 6.0, HY + 6.0, HZT, HZT + 0.03, "heli_green", skip=("bottom",))
     mb.box(OX0, OX1, OY0, OY1, H, OZ, "crown_glass", skip=("bottom",))           # observatory
     if stage < 2:
-        for i in range(6):  # V struts from the core (inside the observatory roof) to the underside
-            a = 2 * math.pi * (i + 0.5) / 6
-            r1 = 5.0
-            d = r1 * max(abs(math.cos(a)), abs(math.sin(a)))                       # square (Chebyshev) distance
-            z1 = HZ0 + (HZ1 - HZ0) * (d - 1.84) / (HS - 1.84) + 0.1
-            prism(mb, (HX + 1.2 * math.cos(a), HY + 1.2 * math.sin(a), OZ - 0.3),
-                  (HX + r1 * math.cos(a), HY + r1 * math.sin(a), z1), 0.45, "crown_white")
+        heli_underside(mb, stage)
         zt = HZT + 0.03
         s = 6.0 / 6.6
         for x0, x1, y0, y1 in ((-6.1, -5.95, -6.1, 6.1), (5.95, 6.1, -6.1, 6.1), (-5.95, 5.95, -6.1, -5.95),
@@ -351,9 +347,6 @@ def crown(mb, stage):
         ring(mb, HX, HY, RC + 0.02, HZT, RC + 0.02, HZT + 0.9, "railing", 4, rot=SQ, flip=True)
         ring(mb, HX, HY, RC + 0.07, HZT + 0.9, RC + 0.02, HZT + 0.9, "railing", 4, rot=SQ)  # rail top cap
         # white steel frame on the SE (-x) edge of the deck (aerial): posts from the observatory roof
-        fx = HX - HS - 0.6
-        for yy in (HY - 5, HY - 1.7, HY + 1.7, HY + 5):
-            mb.box(fx - 0.15, fx + 0.15, yy - 0.15, yy + 0.15, OZ, HZT - 0.19, "crown_white", skip=("bottom", "top"))
         heli_access(mb)
         # observatory mullions (walls) and roof grid
         nx, ny = 12, 11
@@ -379,6 +372,45 @@ def crown(mb, stage):
 
 NET = 1.5                    # safety net width (user-06 / satellite: light band round the deck; estimated)
 PX0 = HX - HS - NET          # access platform outer edge (SE side)
+
+
+def under_z(d):
+    """Height of the sloped square underside at Chebyshev distance d from the deck centre."""
+    return HZ0 + (HZ1 - HZ0) * (d - 1.84) / (HS - 1.84)
+
+
+def heli_underside(mb, stage):
+    """Underside structure (user-01: white core, struts fanning out from a node on the core under a dark dish;
+    roof.jpg: the sibling deck's underside glows at night). Collar node on the core, 8 struts from the collar
+    to the underside, 8 white radial ribs hanging under the dark surface, warm downlights between the ribs."""
+    zc0, zc1 = OZ + 0.7, OZ + 1.3                                            # collar band on the core
+    n = 32 if stage == 0 else 16
+    ring(mb, HX, HY, HCORE + 0.18, zc0, HCORE + 0.18, zc1, "crown_white", n)
+    ring(mb, HX, HY, HCORE + 0.18, zc1, HCORE, zc1, "crown_white", n)               # collar top
+    ring(mb, HX, HY, HCORE + 0.18, zc0, HCORE, zc0, "crown_white", n, flip=True)    # collar bottom
+    for i in range(8):
+        a = 2 * math.pi * (i + 0.5) / 8
+        c, s = math.cos(a), math.sin(a)
+        k = max(abs(c), abs(s))                                              # radius -> Chebyshev distance
+        d1 = 0.78 * HS
+        prism(mb, (HX + (HCORE + 0.1) * c, HY + (HCORE + 0.1) * s, (zc0 + zc1) / 2),
+              (HX + d1 / k * c, HY + d1 / k * s, under_z(d1) + 0.15), 0.42, "crown_white")   # strut
+    if stage > 0:
+        return
+    for i in range(8):                                                       # radial ribs, 0.2 m below the dish
+        a = 2 * math.pi * i / 8
+        c, s = math.cos(a), math.sin(a)
+        k = max(abs(c), abs(s))
+        d0, d1 = 2.0, HS - 0.15
+        prism(mb, (HX + d0 / k * c, HY + d0 / k * s, under_z(d0) - 0.2),
+              (HX + d1 / k * c, HY + d1 / k * s, under_z(d1) - 0.2), 0.22, "crown_white")
+    for i in range(8):                                                       # warm downlights between the ribs
+        a = 2 * math.pi * (i + 0.5) / 8
+        c, s = math.cos(a), math.sin(a)
+        d = 4.6
+        x, y = HX + d / max(abs(c), abs(s)) * c, HY + d / max(abs(c), abs(s)) * s
+        z = under_z(d)
+        mb.box(x - 0.3, x + 0.3, y - 0.3, y + 0.3, z - 0.16, z - 0.04, "under_light", skip=("top",))
 
 
 def heli_net(mb):

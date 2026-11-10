@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "4a1c8e5619ef70195347362cae704881cc5086f50e3c12c57b3cafff6ee2ea88",
- "current_preview_hash": "62e73d48fdc9b9b07a7965fe054584a20ac647d041d39ce43438bd5312332b86",
+ "generator_hash": "f5f99c8ae672bb7d5c1b1ab0e5da862cfa68b64a49fa5d355f8ea56a4350c7b9",
+ "current_preview_hash": "9fc1a6bc41ab79dd7c6cfad06446940e7cb63a09d50899a88463fa6bfbfcff63",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-103",
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
   "asset": "HighriseTower103_L1_5x4",
-  "label": "heli",
-  "time": "2026-11-10 11:16:42",
+  "label": "fix",
+  "time": "2026-11-10 11:36:58",
   "build": {
    "asset": "HighriseTower103_L1_5x4",
    "fbx": true,
@@ -52,19 +52,19 @@
     "zmin": 0.0,
     "coords": "generator coordinates (before pivot move)",
     "tris": {
-     "main": 71926,
+     "main": 72246,
      "win": 2724,
      "gls": 2724,
-     "lod1": 15414,
+     "lod1": 15526,
      "lod1_win": 2724,
      "lod2": 272,
      "lod2_win": 2724
     },
     "verts": {
-     "main": 143852,
+     "main": 144492,
      "win": 5448,
      "gls": 5448,
-     "lod1": 30828,
+     "lod1": 31052,
      "lod1_win": 5448,
      "lod2": 544,
      "lod2_win": 5448
@@ -100,7 +100,7 @@
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 9.0
+    "time_s": 9.2
    },
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
@@ -129,8 +129,8 @@
   "agent": {
    "status": "PASS",
    "verts": {
-    "LOD0": 143852,
-    "LOD1": 30828,
+    "LOD0": 144492,
+    "LOD1": 31052,
     "LOD2": 544
    },
    "action_tags": [],
@@ -148,13 +148,13 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-103",
- "updated_at": "2026-11-10T11:17:20",
- "visual_review_note": "v15_heli/v15_heli_night + #overview: steel-mesh safety net on NE/NW/SW deck edges, grating platform SE, switchback steel access stair with stringers/rails/posts/X bracing, 28 green perimeter lights glowing at night; LOD check PASS (no holes from below)",
+ "updated_at": "2026-11-10T11:37:23",
+ "visual_review_note": "v18_under/v18_under_night + overview: slimmer core r1.3 with collar node, 8 struts fanning to the dish, 8 white radial ribs, warm downlights glowing at night, loose SE posts removed; LOD PASS",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower103_L1_5x4.png",
-   "sha256": "62e73d48fdc9b9b07a7965fe054584a20ac647d041d39ce43438bd5312332b86"
+   "sha256": "9fc1a6bc41ab79dd7c6cfad06446940e7cb63a09d50899a88463fa6bfbfcff63"
   }
  ],
- "reviewed_preview_hash": "62e73d48fdc9b9b07a7965fe054584a20ac647d041d39ce43438bd5312332b86"
+ "reviewed_preview_hash": "9fc1a6bc41ab79dd7c6cfad06446940e7cb63a09d50899a88463fa6bfbfcff63"
 }
