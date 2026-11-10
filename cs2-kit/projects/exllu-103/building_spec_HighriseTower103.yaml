@@ -7,7 +7,7 @@ floor_height_m: 2.94             # floors 2-50 (TASK)
 lobby_height_m: 5.24             # estimated: raised so the top = 160 m (research)
 footprint_m: {width: 32, depth: 21}
 height_m: 149.3                  # roof slab (5.24 + 49 x 2.94); parapet 150.6, helipad deck 159.1, rail top 160.0
-tris: {main: 72498, gls: 2692, lod1: 17296, lod2: 294, windows: 2692}   # main above the 60k target, below the 95k warning
+tris: {main: 78740, gls: 2866, lod1: 17022, lod2: 294, windows: 2866}   # main above the 60k target, below the 95k warning
 front_recess_m: {half_width: 1.0, depth: 2.0}   # user-10-front: ~2 m dark slot; depth estimated
 materials:
   stone_dark: [88, 82, 80]          # estimated from user-02/03/05
@@ -20,7 +20,7 @@ facade:
   window_sill_head_m: [0.75, 2.45]  # estimated
   front_wing: "corner window wrapping onto the side with a corner post (5.45 m + 5.25 m), pale AC-louver column (x 7.8-9.9), narrow window on stone"
   front_centre: "no centre bay: a 2 m full-height dark stone slot (user-10-front). Each wing from the corner: corner window, 3-pane window (6.6-9.2), white louver (3.2-4.4), small window (1.4-2.6), slot; front dark stone to floor 7, pale above except dark stone strips |x| < 3 m beside the slot full height (user-11), corners dark glass from floor 41"   # widths estimated from user-10
-  sides: "user-07/08 (SE side, camera position in user-09; user-02/05 are the same face): floors 1-6 all dark stone with full-width ledges (PALE_F=7, floor count estimated); dark stone flanks, ledges stepping out at the corners, pale centre y 6.4-14.8 with 3-4 small windows changing per floor + one white panel, back flank one wide window, floors 41-50 dark glass on both flanks. SE side only; street view se_hi (2022-01): back flank pale with dark ledges above floor 7 (front flank stays dark stone). NW side (+x): see nw_side."
+  sides: "SE side (-x) from user-12-se (close, frontal; same face as user-07/08, daycare windows at the base; taken ~70 m SE): floors 1-6 dark stone with full-width ledges (PALE_F=7, estimated); dark stone flanks ~3 m at both ends full height with a ledge every floor; pale centre y 3-18 above; regular windows each floor (flank windows, wide windows, small windows, white shutter column y 10.1-12.0); teal glass band y 4.8-13.4 on the top 4 floors; no corner window wraps onto this side. Supersedes the street-view se_hi reading (pale back flank). NW side (+x): see nw_side."   # positions estimated from one photo row
   nw_side: "Naver street view 2025-03 (pano adGlg2QXhpiqd0i7KIdUew, ~47 m WNW of the tower; satellite confirms helipad at the WNW end): floors 1-6 dark stone + full ledges like SE; above: all pale, no side ledges, no dark-glass flanks; full-height dark slot y 8.8-10.4, depth 1.2 (estimated); small window pairs y 6.6-8.5 / 10.7-12.5, wide windows 13.0-15.6 and 16.4-20.2 (estimated)"
   back: "user-01 read as back (street view from SSW, 2025-03, shows the same vertical sign strip); base dark granite to floor 7 across the face (street view; replaces the earlier grey 6/12 stepping); white shaft x 2-5 (0.5 m out) to parapet top; grey balcony bay x>5 from floor 30; back ledges only on x>5 (pale below 30, grey above); 6 windows per floor"  # floor counts estimated from a 120 px photo
 ground:

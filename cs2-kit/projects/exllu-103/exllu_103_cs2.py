@@ -196,17 +196,15 @@ BAYW = 0.4                   # right-wing bay window projection (estimated)
 TZ = 1.05                    # raised terrace / lobby floor level = porch landing (7 x 0.15 m)
 CW = 0.15                    # corner window stops this far from the wall corner; a post fills the gap
 SIDE_WINS = ((7.4, 10.2, PAIR), (12.0, 14.8, PAIR), (16.4, 20.0, PAIR))  # lobby floor only
-# upper floors (user-07/08): front flank = corner window, pale centre y 6.4-14.8 with small windows that change
-# per floor + one white panel, back flank = one wide window
-SIDE_PALE = (6.4, 14.8)
+# SE side (-x), user-12-se (close, frontal; same face as user-07/08): dark stone flanks ~3 m at both ends full height
+# with a ledge every floor, pale centre above PALE_F, teal glass band on the top 4 floors, regular windows each floor
+# (positions read along one row of user-12, estimated); no corner window wraps onto this side
+SIDE_PALE = (3.0, 18.0)
 PALE_F = 7                   # user-07: side centre is dark stone with full-width ledges below this floor (estimated count)
-SIDE_LOUVER = (11.45, 12.15)
-SIDE_CENTRE = (
-    (((7.0, 8.4), (9.9, 11.1), (12.6, 14.0)), SILL),
-    (((7.0, 8.8), (10.1, 10.9), (12.6, 14.2)), SILL),
-    (((7.0, 7.8), (8.2, 9.0), (10.0, 11.0), (12.6, 14.0)), 1.1),
-)
-SIDE_BACK = (16.0, 20.2)
+SIDE_LOUVER = (10.1, 12.0)   # white shutter column
+SE_WINS = ((0.6, 2.2, (0.38,)), (3.6, 6.2, PAIR), (7.3, 8.1, ()), (8.4, 9.8, (0.38,)), (12.3, 13.2, ()),
+           (14.3, 16.8, PAIR), (18.2, 20.4, (0.38,)))
+SE_GLASS = (4.8, 13.4)       # top glass band (user-12)
 # NW side (+x), Naver street view 2025-03 (pano adGlg.., ~47 m WNW): pale above PALE_F with no side ledges,
 # full-height dark slot ~9 m from the front corner, pairs of small windows either side of it, wide windows outside
 SL0, SL1, SLD = 8.8, 10.4, 1.2   # slot y range / depth (estimated from the panorama)
@@ -216,7 +214,6 @@ NW_WINS = ((6.6, 7.4, 1.1, ()), (7.8, 8.5, 1.1, ()), (10.7, 11.4, 1.1, ()), (11.
 # white shaft x 2..5 (no windows), balcony bay x > 5 with wide multi-pane windows
 BACK_WINS = ((-15.2, -12.2, PAIR), (-11.4, -7.4, WIDE), (-6.6, -5.4, ()), (-4.4, -0.8, PAIR),
              (5.6, 9.6, PAIR), (10.4, 15.2, WIDE))
-CENTRE_SEQ = (0, 1, 0, 2, 0, 0, 1, 2, 0, 1, 0, 0, 2)   # SE side centre order (estimated)
 
 
 def corner_bay(mb, stage, sgn, z, f, u, front=True):
@@ -230,8 +227,9 @@ def corner_bay(mb, stage, sgn, z, f, u, front=True):
         window(mb, stage, "y", 0, -1, a0, a1, z0, z1, f, u, mull,
                jambs=(sgn > 0, sgn < 0))
     # side face: a = y, corner end is a0 (y = 0)
-    window(mb, stage, "x", sgn * X, sgn, CW, 5.4, z0, z1, f, u + 1, PAIR if not top else (0.25, 0.75),
-           jambs=(False, True))
+    if sgn > 0:   # the wrap is on the NW corner only (user-04); the SE side has its own flank window (user-12)
+        window(mb, stage, "x", sgn * X, sgn, CW, 5.4, z0, z1, f, u + 1, PAIR if not top else (0.25, 0.75),
+               jambs=(False, True))
     if stage == 0 and front:
         K.corner_post(mb, sgn * X, 0.0, sgn, -1, 0.12, z0, z1, "frame")
     return u + 2
@@ -259,11 +257,9 @@ def floor_facade(mb, stage, f):
         # slot side wall (left wing faces +x, right wing faces -x)
         window(mb, stage, "x", sgn * RX, -sgn, 0.6, 1.5, z0, z1, f, u); u += 1
     window(mb, stage, "y", RD, -1, -0.55, 0.55, z0, z1, f, u); u += 1   # slot back wall: one small window per floor (user-03)
-    swins, ssill = SIDE_CENTRE[CENTRE_SEQ[(f + 5) % len(CENTRE_SEQ)]]
-    for a0, a1 in swins:                                     # SE side (user-07/08)
-        window(mb, stage, "x", -X, -1, a0, a1, z + ssill, z1, f, u); u += 1
+    for a0, a1, m in SE_WINS:                                # SE side (user-12)
+        window(mb, stage, "x", -X, -1, a0, a1, z0, z1, f, u, m); u += 1
     louver(mb, stage, "x", -X, -1, *SIDE_LOUVER, z + 0.4, z1)
-    window(mb, stage, "x", -X, -1, *SIDE_BACK, z0, z1, f, u, WIDE); u += 1
     for a0, a1, sl, m in NW_WINS:                            # NW side (street view)
         window(mb, stage, "x", X, 1, a0, a1, z + sl, z1, f, u, m); u += 1
     for a0, a1, m in BACK_WINS:
@@ -572,10 +568,10 @@ def build(stage):
         K.paint(mb, "y", 0, -1, *sorted((sgn * X, sgn * 10.2)), zf(PALE_F), zf(TOPG), "pale")   # dark glass above
     for sgn in (-1, 1):  # top floors: corner bays turn to dark glass (front + side)
         K.paint(mb, "y", 0, -1, *sorted((sgn * X, sgn * 10.2)), zf(TOPG), H, "dark_glass")
-    K.paint(mb, "x", -X, -1, 0.0, 5.6, zf(TOPG), H, "dark_glass")              # SE side only (user-07/08)
-    K.paint(mb, "x", -X, -1, 15.4, D, zf(TOPG), H, "dark_glass")
-    K.paint(mb, "x", -X, -1, *SIDE_PALE, zf(PALE_F), H, "pale")
-    K.paint(mb, "x", -X, -1, SIDE_PALE[1], D, zf(PALE_F), zf(TOPG), "pale")   # back flank pale, ledges stay (se_hi)
+    K.paint(mb, "x", -X, -1, *SIDE_PALE, zf(PALE_F), zf(NF - 4), "pale")      # SE side (user-12)
+    K.paint(mb, "x", -X, -1, SIDE_PALE[0], SE_GLASS[0], zf(NF - 4), H, "pale")
+    K.paint(mb, "x", -X, -1, *SE_GLASS, zf(NF - 4), H, "dark_glass")
+    K.paint(mb, "x", -X, -1, SE_GLASS[1], SIDE_PALE[1], zf(NF - 4), H, "pale")
     for a0, a1 in ((0.0, SL0), (SL1, D)):                                      # NW side all pale (street view)
         K.paint(mb, "x", X, 1, a0, a1, zf(PALE_F), H, "pale")
     # back (user-01): light grey stone base stepping 6 / 12 floors, grey upper balcony bay, white shaft
