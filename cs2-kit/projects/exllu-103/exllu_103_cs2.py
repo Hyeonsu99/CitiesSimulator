@@ -212,13 +212,11 @@ NW_WINS = ((6.6, 7.4, 1.1, ()), (7.8, 8.5, 1.1, ()), (10.7, 11.4, 1.1, ()), (11.
 # white shaft x 2..5 (no windows), balcony bay x > 5 with wide multi-pane windows
 BACK_WINS = ((-15.2, -12.2, (0.3, 0.7)), (-11.4, -7.4, WIDE), (-6.6, -5.4, ()), (-4.4, -0.8, (0.3, 0.7)),
              (5.6, 9.6, (0.3, 0.7)), (10.4, 15.2, WIDE))
-# centre panel: user-05 shows windows that change from floor to floor (sizes, pairs)
-CENTRE = (
-    (((-4.4, -3.0), (-0.7, 0.7), (3.0, 4.4)), SILL),
-    (((-4.6, -2.6), (-0.5, 0.5), (2.6, 4.6)), SILL),
-    (((-4.4, -3.2), (-1.0, -0.2), (0.2, 1.0), (3.2, 4.4)), 1.1),
-)
-CENTRE_SEQ = (0, 1, 0, 2, 0, 0, 1, 2, 0, 1, 0, 0, 2)   # fixed irregular order (estimated)
+# front centre (recess back wall): street view sv-front + user-03 show the same windows on every floor with a
+# ledge per floor (user-05, the old source, is the SE side). Centre 3-pane window between the louvers,
+# 2-pane windows outside them (widths estimated)
+CENTRE = ((-4.6, -2.8, (0.3, 0.7)), (-1.2, 1.2, (1 / 3, 2 / 3)), (2.8, 4.6, (0.3, 0.7)))
+CENTRE_SEQ = (0, 1, 0, 2, 0, 0, 1, 2, 0, 1, 0, 0, 2)   # SE side centre order (estimated)
 
 
 def corner_bay(mb, stage, sgn, z, f, u):
@@ -250,9 +248,8 @@ def floor_facade(mb, stage, f):
         # recess side wall (left wing faces +x, right wing faces -x)
         window(mb, stage, "x", sgn * RX, -sgn, 0.6, 1.5, z0, z1, f, u); u += 1
         louver(mb, stage, "y", RD, -1, *a(1.4, 2.3), z + 0.4, z1)
-    wins, sill = CENTRE[CENTRE_SEQ[f % len(CENTRE_SEQ)]]
-    for a0, a1 in wins:
-        window(mb, stage, "y", RD, -1, a0, a1, z + sill, z1, f, u); u += 1
+    for a0, a1, m in CENTRE:
+        window(mb, stage, "y", RD, -1, a0, a1, z0, z1, f, u, m); u += 1
     swins, ssill = SIDE_CENTRE[CENTRE_SEQ[(f + 5) % len(CENTRE_SEQ)]]
     for a0, a1 in swins:                                     # SE side (user-07/08)
         window(mb, stage, "x", -X, -1, a0, a1, z + ssill, z1, f, u); u += 1
@@ -282,6 +279,7 @@ def ground_floor(mb, stage):
 def ledges(mb, z, p, t, back="stone_trim", side_gap=False):
     """Ring ledge round the tower except the recess; touching faces skipped (no coplanar pairs).
     side_gap: the side ledges stop at the pale side centre (user-07: flanks only above PALE_F)."""
+    mb.box(-RX, RX, RD - p, RD, z, z + t, "stone_trim", skip=("back", "left", "right"))   # across the recess (sv-front)
     mb.box(-X - p, -RX, -p, 0, z, z + t, "stone_trim", skip=("back",))
     if side_gap:   # SE: flanks only; NW: no side ledge (street view), front/back ledges end in a corner piece
         mb.box(RX, X, -p, 0, z, z + t, "stone_trim", skip=("back", "right"))
@@ -549,7 +547,7 @@ def build(stage):
     # pale strips on the wings beside the recess, dark stone base on the centre (user-03/05)
     for sgn in (-1, 1):
         K.paint(mb, "y", 0, -1, *sorted((sgn * 9.9, sgn * 7.8)), zf(2), H, "pale")
-    K.paint(mb, "y", RD, -1, -RX, RX, 0, zf(2), "stone")
+    K.paint(mb, "y", RD, -1, -RX, RX, 0, zf(PALE_F), "stone")   # dark up to PALE_F like the sides (sv-front base view)
     for sgn in (-1, 1):  # top floors: corner bays turn to dark glass (front + side)
         K.paint(mb, "y", 0, -1, *sorted((sgn * X, sgn * 10.2)), zf(TOPG), H, "dark_glass")
     K.paint(mb, "x", -X, -1, 0.0, 5.6, zf(TOPG), H, "dark_glass")              # SE side only (user-07/08)

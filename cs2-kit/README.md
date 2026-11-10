@@ -178,6 +178,7 @@ python tools/style_catalog.py --project my-apt --json
 | 도면·치수 텍스트 | 지원 | `TASK.md`와 `generic_spec.json`에 직접 적습니다. 창·재질은 사진이나 스타일로 보완합니다. |
 | 자연어만 (사진 없음) | 부분 지원 | 스타일·층수 초안은 나오지만 베이·입구·색은 추정입니다. 사진 게이트는 비어 있습니다. |
 | 드론·360 사진 | 부분 지원 | 드론 사진은 일반 사진처럼 씁니다. 360/equirectangular는 `tools/crop_360.py`로 원근 크롭한 뒤 넣습니다. |
+| 네이버 거리뷰 | 부분 지원 | `tools/naver_pano_view.py OUTDIR PANO_ID name:yaw:pitch:fov`로 큐브맵을 받아 나침반 방위로 원근 투영합니다. 지도 뷰어의 URL 각도는 다른 촬영본으로 바뀌어 믿을 수 없습니다. 해상도가 낮아 층·창 판독은 어렵습니다. |
 | IFC·CAD·BIM | 변환 필요 | `tools/ifc_to_glb.py`로 변환 경로를 확인하고 GLB로 내보낸 뒤 `glb-mass`를 씁니다. |
 | 다른 3D 에셋 | 매스 참고만 | GLB로 가져와 매스만 단순화합니다. 원본 메시·텍스처는 에셋에 복사하지 않습니다. |
 | 영상 워크스루 | 부분 지원 | `tools/video_frames.py`로 프레임을 추출해 사진으로 넣습니다. 자동 정합은 없습니다. |
