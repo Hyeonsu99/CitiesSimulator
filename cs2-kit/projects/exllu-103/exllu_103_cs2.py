@@ -134,6 +134,7 @@ for name, color, metal, gloss, px in (
         ("obs_roof", (64, 84, 100), 0.6, 0.92, 128),    # dark blue-grey skylight glass (satellite)
         ("railing", (200, 203, 205), 0.6, 0.5, 64),
         ("dark_glass", (62, 76, 88), 0.5, 0.85, 64),    # top-floor corner glazing spandrels (user-02/05)
+        ("se_glass", (112, 160, 166), 0.5, 0.9, 64),     # SE top glass band, teal (user-12; hazy photo, tone estimated)
         ("frame", (236, 237, 235), 0.3, 0.5, 64),       # white window frames
         ("louver", (230, 231, 229), 0.2, 0.4, 64),      # AC louver panels
         ("louver_back", (58, 60, 62), 0.0, 0.3, 64),
@@ -570,7 +571,7 @@ def build(stage):
         K.paint(mb, "y", 0, -1, *sorted((sgn * X, sgn * 10.2)), zf(TOPG), H, "dark_glass")
     K.paint(mb, "x", -X, -1, *SIDE_PALE, zf(PALE_F), zf(NF - 4), "pale")      # SE side (user-12)
     K.paint(mb, "x", -X, -1, SIDE_PALE[0], SE_GLASS[0], zf(NF - 4), H, "pale")
-    K.paint(mb, "x", -X, -1, *SE_GLASS, zf(NF - 4), H, "dark_glass")
+    K.paint(mb, "x", -X, -1, *SE_GLASS, zf(NF - 4), H, "se_glass")
     K.paint(mb, "x", -X, -1, SE_GLASS[1], SIDE_PALE[1], zf(NF - 4), H, "pale")
     for a0, a1 in ((0.0, SL0), (SL1, D)):                                      # NW side all pale (street view)
         K.paint(mb, "x", X, 1, a0, a1, zf(PALE_F), H, "pale")

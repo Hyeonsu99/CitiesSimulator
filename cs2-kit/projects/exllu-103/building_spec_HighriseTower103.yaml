@@ -70,3 +70,4 @@ photo_mismatch_notes:
   - "The vertical sign lettering on the back shaft is not modeled (no sign text in assets)."
   - "TASK.md text is corrupted ('?' bytes); only the numbers (50 floors, 32x21 m, 2.94 m) were readable."
 window_frames: "two sash units per wide window (narrow + wide each, paired mullion at the joint), shorter windows narrow-wide|wide-narrow, small windows one off-centre mullion, transom at 55 % of the window height (user-03, user-11)"   # estimated proportions
+back_streetview_search: "2026-11-10: the back (SW) faces the expressway. Panoramas Ts4Os.., 5wAI.., EmotB.., u5Sab.., Zs3k.. (SW/W, 97-174 m) are behind noise walls or trees, with other towers in front; none shows the 103 back clearly enough to read. pqxW1.. (west of the porch) confirms the tower position. Back stays at the earlier street-view reading (9Ksq.., 104 m S)."
