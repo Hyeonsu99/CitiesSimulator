@@ -1,16 +1,16 @@
 # STATUS.md - agent handoff
 
 ## Current stage
-review:PASS
+review:FAIL
 
 ## Generator
 exllu_103_cs2.py
 
 ## Last verification
-PASS
+FAIL
 
 ## Next action
-all requested checks passed
+python tools/agent.py cycle --project exllu-103 --generator exllu_103_cs2.py --mode final --json
 
 ## Notes
 Machine state: work/agent_state.json. Photo observations: work/observations.json.

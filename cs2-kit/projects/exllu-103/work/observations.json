@@ -70,5 +70,23 @@
   "side": "roof",
   "note": "Oblique aerial with camera marker. Long axis NW-SE; square helipad deck ~16 m at ~36% from NW end; dark glass grid (observatory) under/around deck on NW and SW sides; white steel frame at deck SE edge; SE half plain pale roof.",
   "observed_at": "2026-11-10T10:04:21"
+ },
+ "75e670b749cc8ce4554901bebd772ee02829d4d9323c0928c1f1d54b547b163f": {
+  "file": "photos\\sv-front.png",
+  "side": "front",
+  "note": "Existing street-view capture: pale upper cladding, contrasting dark lower floors, strong vertical dark recessed strip and projecting horizontal slabs; perspective and trees obscure exact dimensions.",
+  "observed_at": "2026-11-10T22:20:36"
+ },
+ "47c5d234fb9d6f1e897f1aa387f50f48b0604ec51a4c65b509b6583670baa468": {
+  "file": "photos\\sv-nw.png",
+  "side": "left",
+  "note": "Existing street-view capture: pale upper mass and narrow dark central recess; trees obscure lower facade, so base dimensions are uncertain.",
+  "observed_at": "2026-11-10T22:20:36"
+ },
+ "7ec8eaff391f7d70f84f3ddd5e0e56951a7217ba8791239041665457e17b8d44": {
+  "file": "photos\\kakao-back-hi.png",
+  "side": "back",
+  "note": "Existing September 2025 Kakao road-view capture: rear facade has two visibly different vertical window patterns and pale cladding; strong sun and tree cover limit color and lower-floor measurement.",
+  "observed_at": "2026-11-10T22:20:37"
  }
 }

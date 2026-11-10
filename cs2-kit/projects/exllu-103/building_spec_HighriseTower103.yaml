@@ -16,7 +16,7 @@ materials:
   pier_pink_granite: [176, 140, 130] # estimated from user-03
   helipad_green: [74, 140, 104]     # estimated from user-06
 facade:
-  ledges: "stone ring every floor, 0.55 m out x 0.28 m (estimated, user-07: ~2x thickness out, ~1/10 storey); side ledges skip the pale centre y 6.4-14.8 from floor 7 (user-07); floor-2 podium band 0.6 x 0.55; cornice 0.5 x 0.35"
+  ledges: "stone ring every floor, 0.55 m out x 0.28 m (estimated, user-07: ~2x thickness out, ~1/10 storey); upper front ledges pale (estimated from user-11); side ledges skip the pale centre y 6.4-14.8 from floor 7 (user-07); floor-2 podium band 0.6 x 0.55; cornice 0.5 x 0.35"
   window_sill_head_m: [0.75, 2.45]  # estimated
   front_wing: "corner window wrapping onto the side with a corner post (5.45 m + 5.25 m), pale AC-louver column (x 7.8-9.9), narrow window on stone"
   front_centre: "no centre bay: a 2 m full-height dark stone slot (user-10-front). Each wing from the corner: corner window, 3-pane window (6.6-9.2), white louver (3.2-4.4), small window (1.4-2.6), slot; front dark stone to floor 7, pale above except dark stone strips |x| < 3 m beside the slot full height (user-11), corners dark glass from floor 41"   # widths estimated from user-10

@@ -1,0 +1,487 @@
+{
+ "asset": "HighriseTower103_L1_5x4",
+ "lot": [
+  5,
+  4
+ ],
+ "size": [
+  33.2,
+  26.0,
+  160.052
+ ],
+ "pivot_shift": [
+  -0.0,
+  -8.600000000000001
+ ],
+ "tris": {
+  "main": 77884,
+  "win": 2808,
+  "gls": 2808,
+  "lod1": 16710,
+  "lod1_win": 2808,
+  "lod1_gls": 0,
+  "lod2": 294,
+  "lod2_win": 2808
+ },
+ "windows": 1404,
+ "tex": 4096,
+ "lod1_tex": 4096,
+ "lod2_tex": 1024,
+ "warnings": [],
+ "notes": {},
+ "dropped_windows": 0,
+ "atlas": {
+  "size": 4096,
+  "pad": 16,
+  "cells": {
+   "stone": {
+    "rect": [
+     1072,
+     16,
+     256,
+     256
+    ],
+    "tile": [
+     2.4,
+     2.94
+    ],
+    "variants": 1,
+    "px": 256
+   },
+   "stone_trim": {
+    "rect": [
+     2736,
+     16,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "pale": {
+    "rect": [
+     1360,
+     16,
+     256,
+     256
+    ],
+    "tile": [
+     2.4,
+     2.94
+    ],
+    "variants": 1,
+    "px": 256
+   },
+   "crown_white": {
+    "rect": [
+     2832,
+     16,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "deck_under": {
+    "rect": [
+     2928,
+     16,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "crown_glass": {
+    "rect": [
+     1936,
+     16,
+     128,
+     128
+    ],
+    "tile": [
+     1.2,
+     3.65
+    ],
+    "variants": 1,
+    "px": 128
+   },
+   "obs_roof": {
+    "rect": [
+     2096,
+     16,
+     128,
+     128
+    ],
+    "tile": [
+     1.8,
+     1.8
+    ],
+    "variants": 1,
+    "px": 128
+   },
+   "railing": {
+    "rect": [
+     3024,
+     16,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "dark_glass": {
+    "rect": [
+     2256,
+     16,
+     128,
+     128
+    ],
+    "tile": [
+     1.35,
+     2.94
+    ],
+    "variants": 1,
+    "px": 128
+   },
+   "se_glass": {
+    "rect": [
+     3120,
+     16,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "frame": {
+    "rect": [
+     3216,
+     16,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "louver": {
+    "rect": [
+     3312,
+     16,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "louver_back": {
+    "rect": [
+     3408,
+     16,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "louver_line": {
+    "rect": [
+     3504,
+     16,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "roof": {
+    "rect": [
+     3600,
+     16,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "deck": {
+    "rect": [
+     3696,
+     16,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "heli_green": {
+    "rect": [
+     3792,
+     16,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "heli_white": {
+    "rect": [
+     3888,
+     16,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "pier_pink": {
+    "rect": [
+     2416,
+     16,
+     128,
+     128
+    ],
+    "tile": [
+     1.2,
+     1.2
+    ],
+    "variants": 1,
+    "px": 128
+   },
+   "canopy": {
+    "rect": [
+     2576,
+     16,
+     128,
+     128
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 128
+   },
+   "glass": {
+    "rect": [
+     3984,
+     16,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "grey_stone": {
+    "rect": [
+     1648,
+     16,
+     256,
+     256
+    ],
+    "tile": [
+     2.4,
+     2.94
+    ],
+    "variants": 1,
+    "px": 256
+   },
+   "pale_trim": {
+    "rect": [
+     16,
+     1072,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "grey_trim": {
+    "rect": [
+     112,
+     1072,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "white_shaft": {
+    "rect": [
+     208,
+     1072,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "heli_net": {
+    "rect": [
+     304,
+     1072,
+     64,
+     64
+    ],
+    "tile": [
+     0.6,
+     0.6
+    ],
+    "variants": 1,
+    "px": 64
+   },
+   "grating": {
+    "rect": [
+     400,
+     1072,
+     64,
+     64
+    ],
+    "tile": [
+     0.6,
+     0.6
+    ],
+    "variants": 1,
+    "px": 64
+   },
+   "heli_light": {
+    "rect": [
+     496,
+     1072,
+     32,
+     32
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 32
+   },
+   "under_light": {
+    "rect": [
+     560,
+     1072,
+     32,
+     32
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 32
+   },
+   "window": {
+    "rect": [
+     16,
+     16,
+     1024,
+     1024
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 1024
+   }
+  }
+ },
+ "tags": {
+  "main": [
+   "canopy",
+   "crown_glass",
+   "crown_white",
+   "dark_glass",
+   "deck",
+   "deck_under",
+   "frame",
+   "glass",
+   "grating",
+   "grey_stone",
+   "grey_trim",
+   "heli_green",
+   "heli_light",
+   "heli_net",
+   "heli_white",
+   "louver",
+   "louver_back",
+   "louver_line",
+   "obs_roof",
+   "pale",
+   "pale_trim",
+   "pier_pink",
+   "railing",
+   "roof",
+   "se_glass",
+   "stone",
+   "stone_trim",
+   "under_light",
+   "white_shaft"
+  ],
+  "win": [
+   "window"
+  ],
+  "gls": [
+   "glass"
+  ],
+  "lod1": [
+   "canopy",
+   "crown_glass",
+   "crown_white",
+   "dark_glass",
+   "deck",
+   "deck_under",
+   "frame",
+   "glass",
+   "grating",
+   "grey_stone",
+   "grey_trim",
+   "heli_green",
+   "heli_net",
+   "heli_white",
+   "louver_back",
+   "obs_roof",
+   "pale",
+   "pale_trim",
+   "pier_pink",
+   "roof",
+   "se_glass",
+   "stone",
+   "stone_trim",
+   "white_shaft"
+  ],
+  "lod1_win": [
+   "window"
+  ],
+  "lod1_gls": [],
+  "lod2": [
+   "canopy",
+   "crown_glass",
+   "crown_white",
+   "dark_glass",
+   "deck",
+   "deck_under",
+   "grey_stone",
+   "heli_green",
+   "louver_back",
+   "pale",
+   "pier_pink",
+   "roof",
+   "se_glass",
+   "stone",
+   "stone_trim",
+   "white_shaft"
+  ],
+  "lod2_win": [
+   "window"
+  ]
+ },
+ "metadata": {}
+}

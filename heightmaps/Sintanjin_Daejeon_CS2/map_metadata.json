@@ -1,0 +1,46 @@
+{
+  "map_name": "Sintanjin_Daejeon_Geumgang_CS2",
+  "description": "Cities: Skylines 2 & 1 Real-world Heightmap & Resource Map centered on Sintanjin & Daejeon Metropolitan Area",
+  "user_specification": "Northern boundary (Top) anchored to Geumgang River & Gyeongbu Expressway bridge at Sintanjin",
+  "geographic_bounds": {
+    "north_latitude": 36.4585,
+    "south_latitude": 36.329501354683735,
+    "west_longitude": 127.33210089702794,
+    "east_longitude": 127.49189910297207,
+    "center_latitude": 36.394000677341865,
+    "center_longitude": 127.412,
+    "width_km": 14.336,
+    "height_km": 14.336,
+    "area_sq_km": 205.520896
+  },
+  "elevation_metrics": {
+    "min_meters": 14.95179557800293,
+    "max_meters": 424.5147705078125,
+    "mean_meters": 99.62568664550781,
+    "water_base_level_meters": 24.0,
+    "highest_peak": "Gyejoksan (계족산 423m)"
+  },
+  "files": {
+    "cs2_heightmap_4096_standard": "heightmap_cs2_4096_std.png",
+    "cs2_heightmap_4096_normalized": "heightmap_cs2_4096_normalized.png",
+    "cs1_heightmap_1081": "heightmap_cs1_1081.png",
+    "preview_8bit": "heightmap_preview_8bit.png",
+    "resource_fertile_4096": "resource_fertile_4096.png",
+    "resource_forest_4096": "resource_forest_4096.png",
+    "resource_ore_4096": "resource_ore_4096.png",
+    "resource_oil_4096": "resource_oil_4096.png",
+    "resource_underground_water_4096": "resource_underground_water_4096.png",
+    "preview_topography_hillshade": "preview_topography_hillshade.png",
+    "preview_resources_combined": "preview_resources_combined.png",
+    "preview_satellite_alignment": "preview_satellite_alignment.png",
+    "preview_map_regions_annotated": "preview_map_regions_annotated.png"
+  },
+  "cs2_import_settings": {
+    "resolution": "4096 x 4096",
+    "format": "16-bit PNG (single channel)",
+    "scale_x_meters": 14336,
+    "scale_y_meters": 14336,
+    "suggested_max_height": 500.0,
+    "suggested_sea_level": 24.0
+  }
+}

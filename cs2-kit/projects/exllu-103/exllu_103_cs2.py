@@ -135,7 +135,7 @@ for name, color, metal, gloss, px in (
         ("obs_roof", (64, 84, 100), 0.6, 0.92, 128),    # dark blue-grey skylight glass (satellite)
         ("railing", (200, 203, 205), 0.6, 0.5, 64),
         ("dark_glass", (62, 76, 88), 0.5, 0.85, 64),    # top-floor corner glazing spandrels (user-02/05)
-        ("se_glass", (112, 160, 166), 0.5, 0.9, 64),     # SE top glass band, teal (user-12; hazy photo, tone estimated)
+        ("se_glass", (165, 193, 195), 0.5, 0.9, 64),     # SE top glass band, pale blue-grey (user-12; tone estimated)
         ("frame", (236, 237, 235), 0.3, 0.5, 64),       # white window frames
         ("louver", (230, 231, 229), 0.2, 0.4, 64),      # AC louver panels
         ("louver_back", (58, 60, 62), 0.0, 0.3, 64),
@@ -289,10 +289,11 @@ def ground_floor(mb, stage):
 def ledges(mb, z, p, t, back="stone_trim", side_gap=False):
     """Ring ledge round the tower except the recess; touching faces skipped (no coplanar pairs).
     side_gap: the side ledges stop at the pale side centre (user-07: flanks only above PALE_F)."""
-    mb.box(-X - p, -RX, -p, 0, z, z + t, "stone_trim", skip=("back",))
+    front = "pale_trim" if side_gap else "stone_trim"  # estimated: pale upper storey bands, user-11
+    mb.box(-X - p, -RX, -p, 0, z, z + t, front, skip=("back",))
     if side_gap:   # SE: flanks only; NW: no side ledge (street view); front ledge ends in a corner piece; no back ledge
-        mb.box(RX, X, -p, 0, z, z + t, "stone_trim", skip=("back", "right"))
-        mb.box(X, X + p, -p, 0, z, z + t, "stone_trim", skip=("left",))
+        mb.box(RX, X, -p, 0, z, z + t, front, skip=("back", "right"))
+        mb.box(X, X + p, -p, 0, z, z + t, front, skip=("left",))
         for y0, y1, ends in ((0, SIDE_PALE[0], ("front",)), (SIDE_PALE[1], D, ())):
             mb.box(-X - p, -X, y0, y1, z, z + t, "stone_trim", skip=ends + ("right",))
         return
