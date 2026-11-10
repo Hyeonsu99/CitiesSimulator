@@ -517,7 +517,7 @@
    "fbx": null
   },
   "fix": {
-   "at": "2026-11-10T13:37:38",
+   "at": "2026-11-10T13:52:58",
    "mode": "final",
    "status": "FAIL",
    "label": "fix",
@@ -531,11 +531,11 @@
     "lod": "PASS",
     "fbx": "PASS"
    },
-   "generator_hash": "be34eef74c95412aea7c3bdd5c3167a1d849f694781b549cec791c7a75535e24",
+   "generator_hash": "2c025c32c8b46eb7da12ec799a4ca82455468a9f73aaedb014506b4ad4252dd2",
    "preview": {
     "path": "previews/HighriseTower103_L1_5x4.png",
     "exists": true,
-    "sha256": "bf636750887812ef80a58b4bbcf6ab3c718788d188b70dff57ce8f0803d146c0",
+    "sha256": "923e1a92fd39f1651799950f3f3675f7cb91a50e794bb4e79aa95ac1ad6d830b",
     "key": null
    },
    "fbx": null
@@ -683,14 +683,39 @@
     "key": null
    },
    "fbx": null
+  },
+  "slot": {
+   "at": "2026-11-10T13:53:42",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "slot",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "decc10e19a08f92f1eae780477d0948ea46b431f45910218e149c01f7e46d46a",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "b7ea7dc8cbe544a69aa60a02691c52f6923f9459878f9e5a62ba760b501ea6e8",
+    "key": null
+   },
+   "fbx": null
   }
  },
- "updated_at": "2026-11-10T13:39:22",
+ "updated_at": "2026-11-10T13:53:42",
  "current_stage": "final:INCOMPLETE",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "b8916fcb2b9512948c2669f02e4d2e872183cc2ada21a3fc936a34395f96410b",
+ "generator_hash": "decc10e19a08f92f1eae780477d0948ea46b431f45910218e149c01f7e46d46a",
  "visual_review": "NOT_CHECKED",
- "reviewed_preview_hash": "17109763a61488c735ecd691ac5ead978045f3c4032712c8618dab06e4e1620b",
+ "reviewed_preview_hash": "b5a9a0ed3e9e99cf9ec742b44fe54d9c3f36cab56eb7787d0262d0db98374f2e",
  "last_gate": {
   "mode": "final",
   "status": "INCOMPLETE",

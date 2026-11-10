@@ -33,7 +33,7 @@ def zf(f):
     return 0.0 if f == 0 else GH + (f - 1) * FH
 
 X = W / 2
-RX, RD = 5.5, 2.0                             # front recess half-width / depth (estimated)
+RX, RD = 1.0, 2.0                             # front slot half-width (user-10: ~2 m wide) / depth (estimated)
 PIL = RD                                      # left-wing pilotis back wall flush with the recess (user-03, estimated)
 LEDGE_P, LEDGE_T = 0.55, 0.28                 # per-floor ledge projection / thickness (estimated; user-07: ~2x thickness out, ~1/10 storey)
 SILL, HEAD = 0.75, 2.45                       # window sill / head above floor (estimated)
@@ -212,10 +212,6 @@ NW_WINS = ((6.6, 7.4, 1.1, ()), (7.8, 8.5, 1.1, ()), (10.7, 11.4, 1.1, ()), (11.
 # white shaft x 2..5 (no windows), balcony bay x > 5 with wide multi-pane windows
 BACK_WINS = ((-15.2, -12.2, (0.3, 0.7)), (-11.4, -7.4, WIDE), (-6.6, -5.4, ()), (-4.4, -0.8, (0.3, 0.7)),
              (5.6, 9.6, (0.3, 0.7)), (10.4, 15.2, WIDE))
-# front centre (recess back wall): street view sv-front + user-03 show the same windows on every floor with a
-# ledge per floor (user-05, the old source, is the SE side). Centre 3-pane window between the louvers,
-# 2-pane windows outside them (widths estimated)
-CENTRE = ((-4.6, -2.8, (0.3, 0.7)), (-1.2, 1.2, (1 / 3, 2 / 3)), (2.8, 4.6, (0.3, 0.7)))
 CENTRE_SEQ = (0, 1, 0, 2, 0, 0, 1, 2, 0, 1, 0, 0, 2)   # SE side centre order (estimated)
 
 
@@ -243,13 +239,12 @@ def floor_facade(mb, stage, f):
     for sgn in (-1, 1):  # front wings, mirrored
         a = lambda p, q: (min(sgn * p, sgn * q), max(sgn * p, sgn * q))
         u = corner_bay(mb, stage, sgn, z, f, u)
-        louver(mb, stage, "y", 0, -1, *a(8.4, 9.4), z + 0.4, z1)
-        window(mb, stage, "y", 0, -1, *a(6.0, 7.4), z0, z1, f, u); u += 1
-        # recess side wall (left wing faces +x, right wing faces -x)
+        # user-10: corner window, window, white louver, small window, then the slot
+        window(mb, stage, "y", 0, -1, *a(6.6, 9.2), z0, z1, f, u, (1 / 3, 2 / 3)); u += 1
+        louver(mb, stage, "y", 0, -1, *a(3.2, 4.4), z + 0.4, z1)
+        window(mb, stage, "y", 0, -1, *a(1.4, 2.6), z0, z1, f, u); u += 1
+        # slot side wall (left wing faces +x, right wing faces -x)
         window(mb, stage, "x", sgn * RX, -sgn, 0.6, 1.5, z0, z1, f, u); u += 1
-        louver(mb, stage, "y", RD, -1, *a(1.4, 2.3), z + 0.4, z1)
-    for a0, a1, m in CENTRE:
-        window(mb, stage, "y", RD, -1, a0, a1, z0, z1, f, u, m); u += 1
     swins, ssill = SIDE_CENTRE[CENTRE_SEQ[(f + 5) % len(CENTRE_SEQ)]]
     for a0, a1 in swins:                                     # SE side (user-07/08)
         window(mb, stage, "x", -X, -1, a0, a1, z + ssill, z1, f, u); u += 1
@@ -264,9 +259,8 @@ def floor_facade(mb, stage, f):
 def ground_floor(mb, stage):
     z0, z1, u = 0.3, GH - 0.6, 0          # double-height lobby glazing
     zs0, zs1 = SILL, GH - 0.8
-    window(mb, stage, "y", RD, -1, -4.6, 4.6, z0, z1, 0, u, (0.2, 0.4, 0.6, 0.8)); u += 1
     window(mb, stage, "y", 0, -1, 6.0, 15.4, z0, z1, 0, u, (0.2, 0.4, 0.6, 0.8)); u += 1
-    for a0, a1 in ((-14.6, -11.4), (-10.1, -6.9)):  # either side of the middle pilotis column
+    for a0, a1 in ((-14.6, -11.4), (-10.1, -6.9), (-5.1, -1.6)):  # either side of the middle pilotis column
         window(mb, stage, "y", PIL, -1, a0, a1, z0, z1, 0, u, (0.3, 0.7)); u += 1
     window(mb, stage, "x", X, 1, 1.0, 5.4, zs0, zs1, 0, u, (0.3, 0.7)); u += 1   # right side front bay
     for sgn in (-1, 1):
@@ -279,7 +273,6 @@ def ground_floor(mb, stage):
 def ledges(mb, z, p, t, back="stone_trim", side_gap=False):
     """Ring ledge round the tower except the recess; touching faces skipped (no coplanar pairs).
     side_gap: the side ledges stop at the pale side centre (user-07: flanks only above PALE_F)."""
-    mb.box(-RX, RX, RD - p, RD, z, z + t, "stone_trim", skip=("back", "left", "right"))   # across the recess (sv-front)
     mb.box(-X - p, -RX, -p, 0, z, z + t, "stone_trim", skip=("back",))
     if side_gap:   # SE: flanks only; NW: no side ledge (street view), front/back ledges end in a corner piece
         mb.box(RX, X, -p, 0, z, z + t, "stone_trim", skip=("back", "right"))
@@ -535,19 +528,19 @@ def build(stage):
     mb = K.MeshBuilder(A, split_tiles=(stage < 2))
     wing = dict(front="stone", back="pale", left="stone", right="stone", top="roof", bottom="stone")
     # body: wings + recessed centre; centre skips its side faces (inside the wings)
-    mb.box(-X, -RX, 0, D, GH, H, dict(wing, right="pale"))
+    mb.box(-X, -RX, 0, D, GH, H, wing)
     mb.box(-X, -RX, PIL, D, 0, GH, "stone", skip=("top", "bottom"))
-    mb.box(-RX, RX, RD, D, 0, H, dict(front="pale", back="pale", top="roof"), skip=("left", "right", "bottom"))
+    mb.box(-RX, RX, RD, D, 0, H, dict(front="stone", back="pale", top="roof"), skip=("left", "right", "bottom"))
     # right wing split round the NW full-height slot (street view): slot walls dark stone, slot back darker
-    rw = dict(wing, left="pale")
+    rw = wing
     mb.box(RX, X, 0, SL0, 0, H, dict(rw, back="stone"), skip=("bottom",))
     mb.box(RX, X, SL1, D, 0, H, dict(rw, front="stone"), skip=("bottom",))
     mb.box(RX, X, SL0, SL1, 0, GH, rw, skip=("bottom", "front", "back", "left"))
     mb.box(RX, X - SLD, SL0, SL1, GH, H, dict(rw, right="louver_back"), skip=("bottom", "front", "back", "left"))
-    # pale strips on the wings beside the recess, dark stone base on the centre (user-03/05)
+    # user-10 / sv-front: front wings dark stone up to PALE_F, pale above; the narrow slot stays dark stone
     for sgn in (-1, 1):
-        K.paint(mb, "y", 0, -1, *sorted((sgn * 9.9, sgn * 7.8)), zf(2), H, "pale")
-    K.paint(mb, "y", RD, -1, -RX, RX, 0, zf(PALE_F), "stone")   # dark up to PALE_F like the sides (sv-front base view)
+        K.paint(mb, "y", 0, -1, *sorted((sgn * 10.2, sgn * RX)), zf(PALE_F), H, "pale")
+        K.paint(mb, "y", 0, -1, *sorted((sgn * X, sgn * 10.2)), zf(PALE_F), zf(TOPG), "pale")   # dark glass above
     for sgn in (-1, 1):  # top floors: corner bays turn to dark glass (front + side)
         K.paint(mb, "y", 0, -1, *sorted((sgn * X, sgn * 10.2)), zf(TOPG), H, "dark_glass")
     K.paint(mb, "x", -X, -1, 0.0, 5.6, zf(TOPG), H, "dark_glass")              # SE side only (user-07/08)
