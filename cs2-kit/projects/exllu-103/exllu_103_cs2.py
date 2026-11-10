@@ -214,8 +214,8 @@ NW_WINS = ((6.6, 7.4, 1.1, ()), (7.8, 8.5, 1.1, ()), (10.7, 11.4, 1.1, ()), (11.
            (13.0, 15.6, SILL, PAIR), (16.4, 20.2, SILL, WIDE))
 # back (user-01, read as the back elevation): flat bay x < 2 with mixed wide/narrow windows,
 # white shaft x 2..5 (no windows), balcony bay x > 5 with wide multi-pane windows
-BACK_WINS = ((-15.2, -12.2, PAIR), (-11.4, -7.4, WIDE), (-6.6, -5.4, ()), (-4.4, -0.8, PAIR),
-             (5.6, 9.6, PAIR), (10.4, 15.2, WIDE))
+BACK_WINS = ((-14.4, -12.6, PAIR), (-10.2, -7.2, PAIR), (-5.6, -4.6, (0.38,)), (-2.8, -1.8, (0.38,)),
+             (-0.6, 0.6, (0.38,)), (5.6, 6.6, (0.38,)), (7.2, 10.2, PAIR), (12.6, 14.4, PAIR))   # user-12 (estimated widths)
 CENTRE_SEQ = (0, 1, 0, 2, 0, 0, 1, 2, 0, 1, 0, 0, 2)   # SE side centre order (estimated)
 
 
@@ -293,13 +293,15 @@ def ledges(mb, z, p, t, back="stone_trim", side_gap=False):
         mb.box(X, X + p, -p, 0, z, z + t, "stone_trim", skip=("left",))
         for y0, y1, ends in ((0, SIDE_PALE[0], ("front",)), (SIDE_PALE[1], D, ())):
             mb.box(-X - p, -X, y0, y1, z, z + t, "stone_trim", skip=ends + ("right",))
-        mb.box(SHX1, X, D, D + p, z, z + t, back, skip=("front", "left", "right"))
+        mb.box(-X - p, -BFL, D, D + p, z, z + t, back, skip=("front",))          # back flanks only (user-12)
+        mb.box(BFL, X, D, D + p, z, z + t, back, skip=("front", "right"))
         mb.box(X, X + p, D, D + p, z, z + t, back, skip=("left",))
         return
     mb.box(RX, X + p, -p, 0, z, z + t, "stone_trim", skip=("back",))
     mb.box(-X - p, -X, 0, D, z, z + t, "stone_trim", skip=("front", "right"))
     mb.box(X, X + p, 0, D, z, z + t, "stone_trim", skip=("front", "back", "left"))
-    mb.box(SHX1, X + p, D, D + p, z, z + t, back, skip=("front", "left"))  # back: balcony bay only (user-01)
+    mb.box(-X - p, SHX0, D, D + p, z, z + t, back, skip=("front", "right"))  # back: full width below PALE_F (user-12)
+    mb.box(SHX1, X + p, D, D + p, z, z + t, back, skip=("front", "left"))
 
 
 def prism(mb, p0, p1, w, region):
@@ -338,7 +340,7 @@ def ring(mb, cx, cy, r0, z0, r1, z1, region, n, flip=False, rot=0.0):
 # the SE edge of the deck; SE half is plain roof. user-01: white core + V struts under a dark sloped underside.
 # Research: helipad + observatory on each tower, top 160-160.7 m. Sizes estimated.
 SHX0, SHX1 = 2.0, 5.0        # back white shaft (user-01); the helipad core rises above it
-BAY1 = 12.2                  # back grey bay ends here; pale strip to the corner (street view bC, ~7 m bay)
+BFL = 11.0                   # back dark flanks |x| > BFL (user-12, ~5 m each; estimated)
 HX, HY = 4.5, 10.5           # deck centre (aerial: 36 % from the NW end)
 HS, HCORE = 6.85, 1.3        # deck half-size (13.7 m, Naver satellite) / core radius
 HZ0 = H + 7.2                # underside meets the core
@@ -580,9 +582,13 @@ def build(stage):
         K.paint(mb, "x", X, 1, a0, a1, zf(PALE_F), H, "pale")
     # back (user-01): light grey stone base stepping 6 / 12 floors, grey upper balcony bay, white shaft
     # street view (2025-03, SSW): the back base is the same dark granite as the sides, up to PALE_F
-    K.paint(mb, "y", D, 1, SHX1, X, 0, zf(PALE_F), "stone")
-    K.paint(mb, "y", D, 1, -X, SHX0, 0, zf(PALE_F), "stone")
-    K.paint(mb, "y", D, 1, SHX1, BAY1, zf(PALE_F), H, "grey_stone")   # grey bay from the base up (street view bC/bkz)
+    # user-12 (back, close): dark stone flanks |x| > BFL full height, dark base below PALE_F, pale centre,
+    # teal glass on the top floors left of the shaft
+    K.paint(mb, "y", D, 1, -X, -BFL, 0, H, "stone")
+    K.paint(mb, "y", D, 1, BFL, X, 0, H, "stone")
+    K.paint(mb, "y", D, 1, -BFL, SHX0, 0, zf(PALE_F), "stone")
+    K.paint(mb, "y", D, 1, SHX1, BFL, 0, zf(PALE_F), "stone")
+    K.paint(mb, "y", D, 1, -8.6, SHX0, zf(NF - 4), H, "dark_glass")
     mb.box(SHX0, SHX1, D, D + 0.5, 0, H + 1.3, "white_shaft", skip=("bottom", "front"))
     K.paint(mb, "y", D + 0.5, 1, SHX0, SHX1, 0, zf(4), "grey_stone")
     # pilotis columns under the left wing
@@ -596,7 +602,7 @@ def build(stage):
             elif f == NF:
                 ledges(mb, H, 0.5, 0.35, "grey_trim")            # cornice
             else:
-                ledges(mb, zf(f), LEDGE_P, LEDGE_T, "grey_trim", f >= PALE_F)
+                ledges(mb, zf(f), LEDGE_P, LEDGE_T, "stone_trim", f >= PALE_F)
     # parapet (pale crown)
     PH = H + 1.3
     for x0, x1 in ((-X, -RX), (RX, X)):
