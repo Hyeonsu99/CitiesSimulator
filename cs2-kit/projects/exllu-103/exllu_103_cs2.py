@@ -25,6 +25,7 @@ import cs2kit as K  # noqa: E402
 W, D, FH, NF = 32.0, 21.0, 2.94, 50          # TASK: 32 x 21 m, 2.94 m, 50 floors
 GH = 5.24                                     # lobby storey: raised so the helipad rail top = 160.0 m (research)
 H = GH + FH * (NF - 1)                        # 149.3
+REF_F = 26                                    # refuge floor (Naver VR tour band, ~24 rows above / 22 below; +-1, estimated)
 TOPG = 41                                     # floors >= TOPG: dark glass corner bays (user-02/05)
 
 
@@ -163,7 +164,11 @@ GLS = K.MeshBuilder(A)  # glass panes in front of the _Win quads (main only)
 
 def window(mb, stage, axis, c, s, a0, a1, z0, z1, floor, unit, mull=(0.38,), jambs=(True, True)):
     """_Win quad + (main only) projecting white frame, sill and painted mullions/transom.
-    jambs=(False, ..) drops the jamb at that end (corner window meeting a corner post)."""
+    jambs=(False, ..) drops the jamb at that end (corner window meeting a corner post).
+    On the refuge floor every opening is a louver instead (Naver VR tour: window-less band at mid height)."""
+    if floor == REF_F:
+        louver(mb, stage, axis, c, s, a0, a1, z0 - 0.35, z1)
+        return
     if stage == 0:
         WS.add_face(axis, c, s, a0, a1, z0, z1, floor=floor, unit=unit)
         GLS.rect(K.face_pts(axis, c + s * 0.025, s, a0, a1, z0, z1), "glass")  # between _Win (2 cm) and mullions (3 cm)
