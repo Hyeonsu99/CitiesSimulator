@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "f5f99c8ae672bb7d5c1b1ab0e5da862cfa68b64a49fa5d355f8ea56a4350c7b9",
- "current_preview_hash": "9fc1a6bc41ab79dd7c6cfad06446940e7cb63a09d50899a88463fa6bfbfcff63",
+ "generator_hash": "7c34c752d022aaa38990fa785d86ad93bd8db21bdb73112707d401a755b7c819",
+ "current_preview_hash": "58b5ff3a3a7eed034babe512bc9622f84c7c51ddc74520eb1533fbd155586701",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-103",
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
   "asset": "HighriseTower103_L1_5x4",
-  "label": "fix",
-  "time": "2026-11-10 11:36:58",
+  "label": "observatory",
+  "time": "2026-11-10 11:41:15",
   "build": {
    "asset": "HighriseTower103_L1_5x4",
    "fbx": true,
@@ -38,7 +38,9 @@
   },
   "check": {
    "errors": [],
-   "warnings": [],
+   "warnings": [
+    "TEXEL: 26% of faces > 1 m2 are below 64 px/m (blurry). Ignore for plain-color faces"
+   ],
    "info": {
     "size": [
      33.2,
@@ -52,21 +54,21 @@
     "zmin": 0.0,
     "coords": "generator coordinates (before pivot move)",
     "tris": {
-     "main": 72246,
+     "main": 73040,
      "win": 2724,
      "gls": 2724,
-     "lod1": 15526,
+     "lod1": 16286,
      "lod1_win": 2724,
-     "lod2": 272,
+     "lod2": 292,
      "lod2_win": 2724
     },
     "verts": {
-     "main": 144492,
+     "main": 146080,
      "win": 5448,
      "gls": 5448,
-     "lod1": 31052,
+     "lod1": 32572,
      "lod1_win": 5448,
-     "lod2": 544,
+     "lod2": 584,
      "lod2_win": 5448
     },
     "coplanar": {
@@ -89,7 +91,7 @@
      "LOD2_Emissive": "1024x1024 RGB"
     },
     "texel_px_per_m": {
-     "p10": 18.2,
+     "p10": 18.7,
      "median": 96.0,
      "p90": 96.0
     },
@@ -100,7 +102,7 @@
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 9.2
+    "time_s": 9.3
    },
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
@@ -129,9 +131,9 @@
   "agent": {
    "status": "PASS",
    "verts": {
-    "LOD0": 144492,
-    "LOD1": 31052,
-    "LOD2": 544
+    "LOD0": 146080,
+    "LOD1": 32572,
+    "LOD2": 584
    },
    "action_tags": [],
    "exact_fix_instruction": "no fix needed"
@@ -148,13 +150,13 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-103",
- "updated_at": "2026-11-10T11:37:23",
- "visual_review_note": "v18_under/v18_under_night + overview: slimmer core r1.3 with collar node, 8 struts fanning to the dish, 8 white radial ribs, warm downlights glowing at night, loose SE posts removed; LOD PASS",
+ "updated_at": "2026-11-10T11:41:32",
+ "visual_review_note": "v19_obs/v19_obs_night + overview: observatory now framed reflective glass with transom, pale plinth, set-back glazing, white coping, projecting mullions every 2.4 m, gridded glass roof, warm interior glow at night; geometry-only diff outside box 0 (UV-only changes from atlas reallocation)",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower103_L1_5x4.png",
-   "sha256": "9fc1a6bc41ab79dd7c6cfad06446940e7cb63a09d50899a88463fa6bfbfcff63"
+   "sha256": "58b5ff3a3a7eed034babe512bc9622f84c7c51ddc74520eb1533fbd155586701"
   }
  ],
- "reviewed_preview_hash": "9fc1a6bc41ab79dd7c6cfad06446940e7cb63a09d50899a88463fa6bfbfcff63"
+ "reviewed_preview_hash": "58b5ff3a3a7eed034babe512bc9622f84c7c51ddc74520eb1533fbd155586701"
 }

@@ -517,9 +517,9 @@
    "fbx": null
   },
   "fix": {
-   "at": "2026-11-10T11:37:03",
+   "at": "2026-11-10T11:40:38",
    "mode": "final",
-   "status": "INCOMPLETE",
+   "status": "PASS",
    "label": "fix",
    "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
    "checks": {
@@ -529,14 +529,13 @@
     "photo": "NOT_APPLICABLE",
     "tiles": "NOT_APPLICABLE",
     "lod": "PASS",
-    "fbx": "PASS",
-    "visual_review": "NOT_CHECKED"
+    "fbx": "PASS"
    },
-   "generator_hash": "f5f99c8ae672bb7d5c1b1ab0e5da862cfa68b64a49fa5d355f8ea56a4350c7b9",
+   "generator_hash": "7c34c752d022aaa38990fa785d86ad93bd8db21bdb73112707d401a755b7c819",
    "preview": {
     "path": "previews/HighriseTower103_L1_5x4.png",
     "exists": true,
-    "sha256": "9fc1a6bc41ab79dd7c6cfad06446940e7cb63a09d50899a88463fa6bfbfcff63",
+    "sha256": "ccb2ff033e926f1a3a4fbdba128a8b5af298b8790d1683f80b2cf0825e5e288e",
     "key": null
    },
    "fbx": null
@@ -565,14 +564,39 @@
     "key": null
    },
    "fbx": null
+  },
+  "observatory": {
+   "at": "2026-11-10T11:41:15",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "observatory",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "7c34c752d022aaa38990fa785d86ad93bd8db21bdb73112707d401a755b7c819",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "58b5ff3a3a7eed034babe512bc9622f84c7c51ddc74520eb1533fbd155586701",
+    "key": null
+   },
+   "fbx": null
   }
  },
- "updated_at": "2026-11-10T11:37:03",
- "current_stage": "fix:INCOMPLETE",
+ "updated_at": "2026-11-10T11:41:15",
+ "current_stage": "final:INCOMPLETE",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "f5f99c8ae672bb7d5c1b1ab0e5da862cfa68b64a49fa5d355f8ea56a4350c7b9",
+ "generator_hash": "7c34c752d022aaa38990fa785d86ad93bd8db21bdb73112707d401a755b7c819",
  "visual_review": "NOT_CHECKED",
- "reviewed_preview_hash": "62e73d48fdc9b9b07a7965fe054584a20ac647d041d39ce43438bd5312332b86",
+ "reviewed_preview_hash": "9fc1a6bc41ab79dd7c6cfad06446940e7cb63a09d50899a88463fa6bfbfcff63",
  "last_gate": {
   "mode": "final",
   "status": "INCOMPLETE",

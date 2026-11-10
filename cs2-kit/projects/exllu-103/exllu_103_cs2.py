@@ -86,6 +86,20 @@ def mesh_grid(ctx, n, w, col):
     ctx.rgb[m] = np.array(col, np.float32)
 
 
+OBS_GH = 3.65                # observatory glass height between plinth (0.6) and coping (0.35); see observatory()
+
+
+def obs_glass(ctx):
+    """Observatory curtain wall panel (1.2 m x full height): thin frame, transom at 2.6 m, sky reflection brighter
+    towards the top, lit interior at night (roof.jpg: the sibling glass crown glows)."""
+    mx, mz = ctx.meters()
+    ctx.rgb += (ctx.v * 46.0 - 14.0)[..., None]
+    fr = (mx < 0.035) | (mx > ctx.tile[0] - 0.035) | (mz < 0.05) | (mz > ctx.tile[1] - 0.05) |          ((mz > 2.58) & (mz < 2.64))
+    ctx.rgb[fr] = np.array([210, 214, 212], np.float32)
+    ctx.emis[...] = np.where(fr, 0.0, np.where(mz < 2.58, 0.55, 0.3))
+    ctx.gloss[...] = np.where(fr, 0.5, 0.92)
+
+
 TEX = {  # tile = one 2.4 m x one storey, so joints line up with floors
     "stone": dict(tile=(2.4, FH), px=256, painter=lambda c: granite(c, 2, 4, 0.3, 7.0)),
     "pale": dict(tile=(2.4, FH), px=256, painter=lambda c: granite(c, 2, 3, 0.12, 2.5)),
@@ -93,6 +107,8 @@ TEX = {  # tile = one 2.4 m x one storey, so joints line up with floors
     "grey_stone": dict(tile=(2.4, FH), px=256, painter=lambda c: granite(c, 2, 4, 0.18, 4.0)),
     "window": dict(px=1024, painter=window_glass, emissive=(255, 205, 150)),
     "pier_pink": dict(tile=(1.2, 1.2), px=128, painter=lambda c: granite(c, 1, 2, 0.2, 9.0)),
+    "crown_glass": dict(tile=(1.2, OBS_GH), px=128, painter=lambda c: obs_glass(c), emissive=(255, 228, 185)),
+    "obs_roof": dict(tile=(1.2, 1.2), px=64, painter=lambda c: mesh_grid(c, 1, 0.05, (225, 228, 226))),
     "heli_net": dict(tile=(0.6, 0.6), px=64, painter=lambda c: mesh_grid(c, 4, 0.10, (178, 182, 184))),
     "grating": dict(tile=(0.6, 0.6), px=64, painter=lambda c: mesh_grid(c, 12, 0.25, (70, 72, 74))),
     "heli_light": dict(px=32, painter=lambda c: c.emis.__setitem__(Ellipsis, 1.0), emissive=(110, 255, 140)),
@@ -106,7 +122,8 @@ for name, color, metal, gloss, px in (
         ("pale", (224, 222, 214), 0.0, 0.3, 128),       # pale centre panels
         ("crown_white", (232, 233, 230), 0.1, 0.4, 64), # helipad core / rim (user-01)
         ("deck_under", (62, 66, 70), 0.2, 0.35, 64),    # dark helipad underside (user-01)
-        ("crown_glass", (96, 150, 140), 0.4, 0.85, 64), # green glazed observatory (user-01, roof.jpg)
+        ("crown_glass", (120, 172, 164), 0.5, 0.9, 128), # light green reflective observatory glass (roof.jpg, user-01)
+        ("obs_roof", (92, 128, 132), 0.5, 0.85, 64),    # gridded glass roof (satellite)
         ("railing", (200, 203, 205), 0.6, 0.5, 64),
         ("dark_glass", (62, 76, 88), 0.5, 0.85, 64),    # top-floor corner glazing spandrels (user-02/05)
         ("frame", (236, 237, 235), 0.3, 0.5, 64),       # white window frames
@@ -329,7 +346,7 @@ def crown(mb, stage):
     ring(mb, HX, HY, RC, HZ1, RC, HZT, "crown_white", 4, rot=SQ)                   # deck edge
     ring(mb, HX, HY, RC, HZT, 0.85, HZT, "deck", 4, rot=SQ)                        # deck top
     mb.box(HX - 6.0, HX + 6.0, HY - 6.0, HY + 6.0, HZT, HZT + 0.03, "heli_green", skip=("bottom",))
-    mb.box(OX0, OX1, OY0, OY1, H, OZ, "crown_glass", skip=("bottom",))           # observatory
+    observatory(mb, stage)
     if stage < 2:
         heli_underside(mb, stage)
         zt = HZT + 0.03
@@ -348,23 +365,6 @@ def crown(mb, stage):
         ring(mb, HX, HY, RC + 0.07, HZT + 0.9, RC + 0.02, HZT + 0.9, "railing", 4, rot=SQ)  # rail top cap
         # white steel frame on the SE (-x) edge of the deck (aerial): posts from the observatory roof
         heli_access(mb)
-        # observatory mullions (walls) and roof grid
-        nx, ny = 12, 11
-        for k in range(1, nx):
-            x = OX0 + k * (OX1 - OX0) / nx
-            K.paint(mb, "y", OY0, -1, x - 0.04, x + 0.04, H, OZ, "frame", layer=2)
-            K.paint(mb, "y", OY1, 1, x - 0.04, x + 0.04, H, OZ, "frame", layer=2)
-            mb.rect(K.up_quad([(x - 0.04, OY0, OZ + 0.01), (x + 0.04, OY0, OZ + 0.01),
-                               (x + 0.04, OY1, OZ + 0.01), (x - 0.04, OY1, OZ + 0.01)]), "frame")
-        for k in range(1, ny):
-            y = OY0 + k * (OY1 - OY0) / ny
-            K.paint(mb, "x", OX0, -1, y - 0.04, y + 0.04, H, OZ, "frame", layer=2)
-            K.paint(mb, "x", OX1, 1, y - 0.04, y + 0.04, H, OZ, "frame", layer=2)
-            mb.rect(K.up_quad([(OX0, y - 0.04, OZ + 0.02), (OX1, y - 0.04, OZ + 0.02),
-                               (OX1, y + 0.04, OZ + 0.02), (OX0, y + 0.04, OZ + 0.02)]), "frame")
-        for axis, c, s, a0, a1 in (("y", OY0, -1, OX0, OX1), ("y", OY1, 1, OX0, OX1),
-                                   ("x", OX0, -1, OY0, OY1), ("x", OX1, 1, OY0, OY1)):
-            K.paint(mb, axis, c, s, a0, a1, H + 2.3, H + 2.4, "frame", layer=3)
 
     if stage < 2:
         heli_net(mb)
@@ -372,6 +372,24 @@ def crown(mb, stage):
 
 NET = 1.5                    # safety net width (user-06 / satellite: light band round the deck; estimated)
 PX0 = HX - HS - NET          # access platform outer edge (SE side)
+
+
+def observatory(mb, stage):
+    """Glass observatory under the deck: pale stone plinth, glazing set back 0.15 m, white coping with a gridded
+    glass roof, projecting white mullions every 2.4 m (replaces the earlier plain teal box)."""
+    zp, zc = H + 0.6, OZ - 0.35
+    mb.box(OX0, OX1, OY0, OY1, H, zp, "pale", skip=("bottom",))                               # plinth
+    g = 0.15
+    mb.box(OX0 + g, OX1 - g, OY0 + g, OY1 - g, zp, zc, "crown_glass", skip=("bottom", "top"))  # glazing
+    mb.box(OX0, OX1, OY0, OY1, zc, OZ, dict(top="obs_roof", default="crown_white"))           # coping + roof
+    if stage > 0:
+        return
+    for axis, c, s, a0, a1 in (("y", OY0 + g, -1, OX0 + g, OX1 - g), ("y", OY1 - g, 1, OX0 + g, OX1 - g),
+                               ("x", OX0 + g, -1, OY0 + g, OY1 - g), ("x", OX1 - g, 1, OY0 + g, OY1 - g)):
+        n = int((a1 - a0) / 2.4)
+        for k in range(1, n + 1):
+            a = a0 + k * (a1 - a0) / (n + 1)
+            K.axbox(mb, axis, c, s, a - 0.06, a + 0.06, 0, 0.14, zp, zc, "crown_white", skip=("top", "bottom"))
 
 
 def under_z(d):
