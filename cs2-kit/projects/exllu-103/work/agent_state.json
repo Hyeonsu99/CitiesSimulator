@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "c6a38c797c68fd82c72f021c93e87c43feba5b60df3acc7cd21c99b4a4ea7a0f",
- "current_preview_hash": "4e3671f2a3520544bb211f1d68ab68b5bc860fc0480fa4203e72bbb16a6431a4",
+ "generator_hash": "1a0f4d631996c16cb9918d6bd0614da29b017d93f182bca8eb91abe0fd06985c",
+ "current_preview_hash": "e617ed614f9918b553cddecf251330d6daf0b46e47fac352511fe5c92de7c818",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-103",
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
   "asset": "HighriseTower103_L1_5x4",
-  "label": "seglass",
-  "time": "2026-11-10 15:31:08",
+  "label": "fix",
+  "time": "2026-11-10 15:50:16",
   "build": {
    "asset": "HighriseTower103_L1_5x4",
    "fbx": true,
@@ -52,21 +52,21 @@
     "zmin": 0.0,
     "coords": "generator coordinates (before pivot move)",
     "tris": {
-     "main": 78686,
+     "main": 77740,
      "win": 2866,
      "gls": 2866,
-     "lod1": 16968,
+     "lod1": 16022,
      "lod1_win": 2866,
-     "lod2": 294,
+     "lod2": 292,
      "lod2_win": 2866
     },
     "verts": {
-     "main": 157372,
+     "main": 155480,
      "win": 5732,
      "gls": 5732,
-     "lod1": 33936,
+     "lod1": 32044,
      "lod1_win": 5732,
-     "lod2": 588,
+     "lod2": 584,
      "lod2_win": 5732
     },
     "coplanar": {
@@ -89,7 +89,7 @@
      "LOD2_Emissive": "1024x1024 RGB"
     },
     "texel_px_per_m": {
-     "p10": 20.4,
+     "p10": 24.2,
      "median": 96.0,
      "p90": 96.0
     },
@@ -100,7 +100,7 @@
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 12.3
+    "time_s": 20.0
    },
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
@@ -167,9 +167,9 @@
   "agent": {
    "status": "PASS",
    "verts": {
-    "LOD0": 157372,
-    "LOD1": 33936,
-    "LOD2": 588
+    "LOD0": 155480,
+    "LOD1": 32044,
+    "LOD2": 584
    },
    "action_tags": [],
    "exact_fix_instruction": "no fix needed"
@@ -186,12 +186,12 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-103",
- "updated_at": "2026-11-10T15:31:19",
- "visual_review_note": "SE top glass band teal (se_glass); geometry outside 0, UV-only reallocation",
+ "updated_at": "2026-11-10T15:50:47",
+ "visual_review_note": "back above floor 7 plain pale, no back ledges (Kakao roadview 81 m SSW, 2025-09)",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower103_L1_5x4.png",
-   "sha256": "4e3671f2a3520544bb211f1d68ab68b5bc860fc0480fa4203e72bbb16a6431a4"
+   "sha256": "e617ed614f9918b553cddecf251330d6daf0b46e47fac352511fe5c92de7c818"
   },
   {
    "file": "previews/photo_check/facade_front.png",
@@ -218,5 +218,5 @@
    "sha256": "047b593fe2f27018a0dfd0e57094653de0261d264ec508653b7f6ea111b6c600"
   }
  ],
- "reviewed_preview_hash": "4e3671f2a3520544bb211f1d68ab68b5bc860fc0480fa4203e72bbb16a6431a4"
+ "reviewed_preview_hash": "e617ed614f9918b553cddecf251330d6daf0b46e47fac352511fe5c92de7c818"
 }

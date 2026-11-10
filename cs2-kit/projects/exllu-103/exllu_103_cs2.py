@@ -285,13 +285,11 @@ def ledges(mb, z, p, t, back="stone_trim", side_gap=False):
     """Ring ledge round the tower except the recess; touching faces skipped (no coplanar pairs).
     side_gap: the side ledges stop at the pale side centre (user-07: flanks only above PALE_F)."""
     mb.box(-X - p, -RX, -p, 0, z, z + t, "stone_trim", skip=("back",))
-    if side_gap:   # SE: flanks only; NW: no side ledge (street view), front/back ledges end in a corner piece
+    if side_gap:   # SE: flanks only; NW: no side ledge (street view); front ledge ends in a corner piece; no back ledge
         mb.box(RX, X, -p, 0, z, z + t, "stone_trim", skip=("back", "right"))
         mb.box(X, X + p, -p, 0, z, z + t, "stone_trim", skip=("left",))
         for y0, y1, ends in ((0, SIDE_PALE[0], ("front",)), (SIDE_PALE[1], D, ())):
             mb.box(-X - p, -X, y0, y1, z, z + t, "stone_trim", skip=ends + ("right",))
-        mb.box(SHX1, X, D, D + p, z, z + t, back, skip=("front", "left", "right"))
-        mb.box(X, X + p, D, D + p, z, z + t, back, skip=("left",))
         return
     mb.box(RX, X + p, -p, 0, z, z + t, "stone_trim", skip=("back",))
     mb.box(-X - p, -X, 0, D, z, z + t, "stone_trim", skip=("front", "right"))
@@ -335,7 +333,6 @@ def ring(mb, cx, cy, r0, z0, r1, z1, region, n, flip=False, rot=0.0):
 # the SE edge of the deck; SE half is plain roof. user-01: white core + V struts under a dark sloped underside.
 # Research: helipad + observatory on each tower, top 160-160.7 m. Sizes estimated.
 SHX0, SHX1 = 2.0, 5.0        # back white shaft (user-01); the helipad core rises above it
-BAY1 = 12.2                  # back grey bay ends here; pale strip to the corner (street view bC, ~7 m bay)
 HX, HY = 4.5, 10.5           # deck centre (aerial: 36 % from the NW end)
 HS, HCORE = 6.85, 1.3        # deck half-size (13.7 m, Naver satellite) / core radius
 HZ0 = H + 7.2                # underside meets the core
@@ -579,7 +576,7 @@ def build(stage):
     # street view (2025-03, SSW): the back base is the same dark granite as the sides, up to PALE_F
     K.paint(mb, "y", D, 1, SHX1, X, 0, zf(PALE_F), "stone")
     K.paint(mb, "y", D, 1, -X, SHX0, 0, zf(PALE_F), "stone")
-    K.paint(mb, "y", D, 1, SHX1, BAY1, zf(PALE_F), H, "grey_stone")   # grey bay from the base up (street view bC/bkz)
+    # back above PALE_F: plain pale, no ledges (Kakao roadview 2025-09, 81 m SSW; the street-view "grey bay" was shade)
     mb.box(SHX0, SHX1, D, D + 0.5, 0, H + 1.3, "white_shaft", skip=("bottom", "front"))
     K.paint(mb, "y", D + 0.5, 1, SHX0, SHX1, 0, zf(4), "grey_stone")
     # pilotis columns under the left wing
