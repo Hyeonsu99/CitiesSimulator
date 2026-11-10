@@ -137,6 +137,7 @@ for name, color, metal, gloss, px in (
         ("frame", (236, 237, 235), 0.3, 0.5, 64),       # white window frames
         ("louver", (230, 231, 229), 0.2, 0.4, 64),      # AC louver panels
         ("louver_back", (58, 60, 62), 0.0, 0.3, 64),
+        ("louver_line", (204, 206, 204), 0.0, 0.3, 64),   # faint lines on the white shutters (user-03)
         ("roof", (120, 122, 122), 0.0, 0.3, 64),
         ("deck", (150, 152, 150), 0.0, 0.3, 64),
         ("heli_green", (74, 140, 104), 0.0, 0.25, 64),
@@ -186,10 +187,12 @@ def louver(mb, stage, axis, c, s, a0, a1, z0, z1):
         n = int((z1 - z0) / 0.3)
         for i in range(1, n):
             z = z0 + i * (z1 - z0) / n
-            K.paint(mb, axis, c, s, a0 + 0.08, a1 - 0.08, z - 0.02, z + 0.02, "louver_back", layer=9)
+            K.paint(mb, axis, c, s, a0 + 0.08, a1 - 0.08, z - 0.015, z + 0.015, "louver_line", layer=9)
 
 
 WIDE = (0.2, 0.4, 0.6, 0.8)
+BAYW = 0.4                   # right-wing bay window projection (estimated)
+TZ = 1.05                    # raised terrace / lobby floor level = porch landing (7 x 0.15 m)
 CW = 0.15                    # corner window stops this far from the wall corner; a post fills the gap
 SIDE_WINS = ((7.4, 10.2, (0.3, 0.7)), (12.0, 14.8, (0.3, 0.7)), (16.4, 20.0, (0.3, 0.7)))  # lobby floor only
 # upper floors (user-07/08): front flank = corner window, pale centre y 6.4-14.8 with small windows that change
@@ -215,19 +218,20 @@ BACK_WINS = ((-15.2, -12.2, (0.3, 0.7)), (-11.4, -7.4, WIDE), (-6.6, -5.4, ()), 
 CENTRE_SEQ = (0, 1, 0, 2, 0, 0, 1, 2, 0, 1, 0, 0, 2)   # SE side centre order (estimated)
 
 
-def corner_bay(mb, stage, sgn, z, f, u):
+def corner_bay(mb, stage, sgn, z, f, u, front=True):
     """Front corner of a wing: one window wrapping round the corner (user-04), dark glass on top floors (user-02/05)."""
     top = f >= TOPG
     z0, z1 = (z + 0.3, z + FH - 0.3) if top else (z + SILL, z + HEAD)
     mull = (0.2, 0.4, 0.6, 0.8) if not top else (0.12, 0.26, 0.4, 0.6, 0.74, 0.88)
     # front face: corner end is the outer end (a1 for the right wing, a0 for the left)
     a0, a1 = (-(X - CW), -10.4) if sgn < 0 else (10.4, X - CW)
-    window(mb, stage, "y", 0, -1, a0, a1, z0, z1, f, u, mull,
-           jambs=(sgn > 0, sgn < 0))
+    if front:
+        window(mb, stage, "y", 0, -1, a0, a1, z0, z1, f, u, mull,
+               jambs=(sgn > 0, sgn < 0))
     # side face: a = y, corner end is a0 (y = 0)
     window(mb, stage, "x", sgn * X, sgn, CW, 5.4, z0, z1, f, u + 1, (0.3, 0.7) if not top else (0.25, 0.75),
            jambs=(False, True))
-    if stage == 0:
+    if stage == 0 and front:
         K.corner_post(mb, sgn * X, 0.0, sgn, -1, 0.12, z0, z1, "frame")
     return u + 2
 
@@ -238,13 +242,22 @@ def floor_facade(mb, stage, f):
     z0, z1, u = z + SILL, z + HEAD, 0
     for sgn in (-1, 1):  # front wings, mirrored
         a = lambda p, q: (min(sgn * p, sgn * q), max(sgn * p, sgn * q))
-        u = corner_bay(mb, stage, sgn, z, f, u)
-        # user-10: corner window, window, white louver, small window, then the slot
-        window(mb, stage, "y", 0, -1, *a(6.6, 9.2), z0, z1, f, u, (1 / 3, 2 / 3)); u += 1
-        louver(mb, stage, "y", 0, -1, *a(3.2, 4.4), z + 0.4, z1)
-        window(mb, stage, "y", 0, -1, *a(1.4, 2.6), z0, z1, f, u); u += 1
+        band = f == 1 and sgn < 0           # user-03: floor 1 of the left wing is a solid stone band over the pilotis
+        u = corner_bay(mb, stage, sgn, z, f, u, front=not band)
+        if not band:
+            # user-10: corner window, window, white louver, small window, then the slot
+            window(mb, stage, "y", 0, -1, *a(6.6, 9.2), z0, z1, f, u, (1 / 3, 2 / 3)); u += 1
+            louver(mb, stage, "y", 0, -1, *a(3.2, 4.4), z + 0.4, z1)
+            if sgn > 0:   # right wing: small bay window with glazed returns (user-03)
+                if stage == 0:
+                    mb.box(1.3, 2.7, -BAYW, 0, z0 - 0.1, z1 + 0.1, dict(left="glass", right="glass", default="frame"),
+                           skip=("back",))
+                window(mb, stage, "y", -BAYW, -1, 1.4, 2.6, z0, z1, f, u); u += 1
+            else:
+                window(mb, stage, "y", 0, -1, -2.6, -1.4, z0, z1, f, u); u += 1
         # slot side wall (left wing faces +x, right wing faces -x)
         window(mb, stage, "x", sgn * RX, -sgn, 0.6, 1.5, z0, z1, f, u); u += 1
+    window(mb, stage, "y", RD, -1, -0.55, 0.55, z0, z1, f, u); u += 1   # slot back wall: one small window per floor (user-03)
     swins, ssill = SIDE_CENTRE[CENTRE_SEQ[(f + 5) % len(CENTRE_SEQ)]]
     for a0, a1 in swins:                                     # SE side (user-07/08)
         window(mb, stage, "x", -X, -1, a0, a1, z + ssill, z1, f, u); u += 1
@@ -260,8 +273,8 @@ def ground_floor(mb, stage):
     z0, z1, u = 0.3, GH - 0.6, 0          # double-height lobby glazing
     zs0, zs1 = SILL, GH - 0.8
     window(mb, stage, "y", 0, -1, 6.0, 15.4, z0, z1, 0, u, (0.2, 0.4, 0.6, 0.8)); u += 1
-    for a0, a1 in ((-14.6, -11.4), (-10.1, -6.9), (-5.1, -1.6)):  # either side of the middle pilotis column
-        window(mb, stage, "y", PIL, -1, a0, a1, z0, z1, 0, u, (0.3, 0.7)); u += 1
+    # left wing pilotis stay open (user-03: bicycle parking, no glazing); slot: door off the raised terrace
+    window(mb, stage, "y", RD, -1, -0.6, 0.6, TZ + 0.05, TZ + 2.3, 0, u); u += 1
     window(mb, stage, "x", X, 1, 1.0, 5.4, zs0, zs1, 0, u, (0.3, 0.7)); u += 1   # right side front bay
     for sgn in (-1, 1):
         for a0, a1, m in SIDE_WINS:
@@ -524,6 +537,21 @@ def entrance(mb, stage):
                 mb.box(x - 0.03, x + 0.03, yy - 0.03, yy + 0.03, zb, 0.9 + rail_z(yy), "railing", skip=("bottom",))
 
 
+def terrace(mb, stage):
+    """Raised stone terrace in front of the slot, level with the porch landing, steel rails on the open edges
+    (user-03: rails left of the slot and beside the porch; extent estimated)."""
+    mb.box(-4.0, 5.8, -2.0, 0, 0, TZ, dict(top="canopy", default="stone_trim"), skip=("back", "bottom"))
+    mb.box(-4.0, RX, 0, RD, 0, TZ, dict(top="canopy", default="stone_trim"),
+           skip=("front", "back", "right", "bottom"))
+    if stage:
+        return
+    for p0, p1 in (((-3.92, -1.92), (5.72, -1.92)), ((-3.92, -1.92), (-3.92, 1.9))):
+        for dz in (0.45, 0.9):
+            prism(mb, (p0[0], p0[1], TZ + dz), (p1[0], p1[1], TZ + dz), 0.05, "railing")
+    for x, y in [(-3.92 + i * 1.6, -1.92) for i in range(7)] + [(-3.92, 0.0), (-3.92, 1.9)]:
+        mb.box(x - 0.03, x + 0.03, y - 0.03, y + 0.03, TZ, TZ + 0.92, "railing", skip=("bottom",))
+
+
 def build(stage):
     mb = K.MeshBuilder(A, split_tiles=(stage < 2))
     wing = dict(front="stone", back="pale", left="stone", right="stone", top="roof", bottom="stone")
@@ -580,6 +608,10 @@ def build(stage):
     mb.box(-X, X, D - 0.3, D, H, PH, "pale", skip=("bottom",))
     crown(mb, stage)
     entrance(mb, stage)
+    if stage < 2:
+        terrace(mb, stage)
+        # floor 1 of the left wing: solid grey granite band over the pilotis (user-03); ledges cap top and bottom
+        mb.box(-X, -RX, -0.3, 0, zf(1) + LEDGE_T, zf(2), "grey_stone", skip=("back", "top", "bottom"))
     # windows (WindowSet is shared by all LODs; frames only in main)
     if stage == 0:
         ground_floor(mb, stage)

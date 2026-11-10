@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "decc10e19a08f92f1eae780477d0948ea46b431f45910218e149c01f7e46d46a",
- "current_preview_hash": "b7ea7dc8cbe544a69aa60a02691c52f6923f9459878f9e5a62ba760b501ea6e8",
+ "generator_hash": "aadd8460d347c1495a01833121986e8062a0971a2b6f8339fe23f4d4d625dce2",
+ "current_preview_hash": "2607a74aae3e68ea91043ac0592d556bc401135d900e847619a8bf0f7bd13b3e",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-103",
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
   "asset": "HighriseTower103_L1_5x4",
-  "label": "slot",
-  "time": "2026-11-10 13:53:42",
+  "label": "lowfront",
+  "time": "2026-11-10 14:23:04",
   "build": {
    "asset": "HighriseTower103_L1_5x4",
    "fbx": true,
@@ -52,22 +52,22 @@
     "zmin": 0.0,
     "coords": "generator coordinates (before pivot move)",
     "tris": {
-     "main": 70408,
-     "win": 2604,
-     "gls": 2604,
-     "lod1": 17266,
-     "lod1_win": 2604,
+     "main": 72498,
+     "win": 2692,
+     "gls": 2692,
+     "lod1": 17296,
+     "lod1_win": 2692,
      "lod2": 294,
-     "lod2_win": 2604
+     "lod2_win": 2692
     },
     "verts": {
-     "main": 140816,
-     "win": 5208,
-     "gls": 5208,
-     "lod1": 34532,
-     "lod1_win": 5208,
+     "main": 144996,
+     "win": 5384,
+     "gls": 5384,
+     "lod1": 34592,
+     "lod1_win": 5384,
      "lod2": 588,
-     "lod2_win": 5208
+     "lod2_win": 5384
     },
     "coplanar": {
      "main": 0,
@@ -89,18 +89,18 @@
      "LOD2_Emissive": "1024x1024 RGB"
     },
     "texel_px_per_m": {
-     "p10": 20.4,
+     "p10": 19.6,
      "median": 96.0,
      "p90": 96.0
     },
-    "windows": 1302,
+    "windows": 1346,
     "win_dropped": 0,
     "win_blocked": {
      "win": 0,
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 9.4
+    "time_s": 9.8
    },
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
@@ -109,14 +109,14 @@
    "mismatch": 0,
    "lines": [
     "INFO     front floor pitch: photo 1.25 m / model 5.90 m (+372%)  -> photo shows ~120 floor bands over the wall height, model ~26 (model needs MORE floors or lower floor height) (low-confidence photo evidence - do not auto-change floors)",
-    "INFO     front window bay pitch: photo 3.80 m / model 1.75 m (-54%)  (bays differ - check window columns)",
-    "INFO     front edge agreement 57%",
-    "INFO     left floor pitch: photo 1.80 m / model 5.90 m (+228%)  -> photo shows ~84 floor bands over the wall height, model ~26 (model needs MORE floors or lower floor height) (weak pattern in photo or model - LOW_CONFIDENCE, check by eye) (low-confidence photo evidence - do not auto-change floors)",
+    "INFO     front window bay pitch: photo 3.80 m / model 1.55 m (-59%)  (bays differ - check window columns)",
+    "INFO     front edge agreement 59%",
+    "INFO     left floor pitch: photo 1.80 m / model 2.95 m (+64%)  -> photo shows ~84 floor bands over the wall height, model ~51 (model needs MORE floors or lower floor height) (weak pattern in photo or model - LOW_CONFIDENCE, check by eye) (low-confidence photo evidence - do not auto-change floors)",
     "INFO     left window bay pitch: photo 2.35 m / model 5.35 m (+128%)  (bays differ - check window columns)",
-    "INFO     left edge agreement 47%",
+    "INFO     left edge agreement 46%",
     "INFO     right floor pitch: photo 1.65 m / model 5.90 m (+258%)  -> photo shows ~91 floor bands over the wall height, model ~26 (model needs MORE floors or lower floor height) (weak pattern in photo or model - LOW_CONFIDENCE, check by eye) (low-confidence photo evidence - do not auto-change floors)",
     "INFO     right window bay pitch: photo 11.85 m / model 1.65 m (-86%)  (bays differ - check window columns)",
-    "INFO     right edge agreement 51%"
+    "INFO     right edge agreement 50%"
    ],
    "status": "PASS"
   },
@@ -124,51 +124,51 @@
    "checked": true,
    "status": "PASS",
    "simplified": [
-    "TILE front r16c1 x[11,22]m z[0,9]m recall 23% precision 37%  SIMPLIFIED",
-    "TILE front r5c2 x[22,33]m z[97,106]m recall 26% precision 22%  SIMPLIFIED",
-    "TILE front r9c0 x[0,11]m z[62,71]m recall 27% precision 48%  SIMPLIFIED",
-    "TILE left r0c1 x[10,21]m z[142,151]m recall 14% precision 0%  SIMPLIFIED",
-    "TILE left r16c1 x[10,21]m z[0,9]m recall 27% precision 48%  SIMPLIFIED",
-    "TILE left r1c1 x[10,21]m z[133,142]m recall 28% precision 8%  SIMPLIFIED",
-    "TILE right r16c1 x[10,21]m z[0,9]m recall 31% precision 9%  SIMPLIFIED",
-    "TILE right r1c0 x[0,10]m z[133,142]m recall 32% precision 10%  SIMPLIFIED",
-    "TILE right r10c0 x[0,10]m z[53,62]m recall 34% precision 73%  SIMPLIFIED"
+    "TILE front r16c1 x[11,22]m z[0,9]m recall 19% precision 39%  SIMPLIFIED",
+    "TILE front r16c0 x[0,11]m z[0,9]m recall 19% precision 36%  SIMPLIFIED",
+    "TILE front r6c0 x[0,11]m z[89,97]m recall 26% precision 42%  SIMPLIFIED",
+    "TILE left r0c1 x[10,21]m z[142,151]m recall 0% precision 0%  SIMPLIFIED",
+    "TILE left r12c0 x[0,10]m z[35,44]m recall 24% precision 54%  SIMPLIFIED",
+    "TILE left r11c0 x[0,10]m z[44,53]m recall 24% precision 30%  SIMPLIFIED",
+    "TILE right r1c0 x[0,10]m z[133,142]m recall 33% precision 9%  SIMPLIFIED",
+    "TILE right r10c0 x[0,10]m z[53,62]m recall 34% precision 71%  SIMPLIFIED",
+    "TILE right r8c0 x[0,10]m z[71,80]m recall 35% precision 45%  SIMPLIFIED"
    ],
    "detail": [
-    "DETAIL front recall 39% precision 43% worst r16c1 (23%) simplified_tiles 50/51",
-    "DETAIL left recall 38% precision 36% worst r0c1 (14%) simplified_tiles 32/34",
-    "DETAIL right recall 45% precision 43% worst r16c1 (31%) simplified_tiles 25/34"
+    "DETAIL front recall 38% precision 43% worst r16c1 (19%) simplified_tiles 51/51",
+    "DETAIL left recall 38% precision 37% worst r0c1 (0%) simplified_tiles 31/34",
+    "DETAIL right recall 45% precision 43% worst r1c0 (33%) simplified_tiles 26/34"
    ],
    "detail_color": [
     "DETAIL_COLOR front tiles_off 7/51 (dE>14; trusted tiles only)",
-    "DETAIL_COLOR left tiles_off 16/33 (dE>14; trusted tiles only)",
+    "DETAIL_COLOR left tiles_off 19/33 (dE>14; trusted tiles only)",
     "DETAIL_COLOR right tiles_off 8/29 (dE>14; trusted tiles only)"
    ],
    "color_off": [
-    "COLOR front r16c2 x[22,33]m photo #5d5d5c model #90afa6 dE 32  COLOR_OFF confidence=trusted",
-    "COLOR front r16c0 x[0,11]m photo #474441 model #62888a dE 29  COLOR_OFF confidence=trusted",
-    "COLOR front r14c1 x[11,22]m photo #9bb6ad model #5f7675 dE 24  COLOR_OFF confidence=trusted",
-    "COLOR left r5c1 x[10,21]m photo #a9c7b7 model #5b8285 dE 28  COLOR_OFF confidence=trusted",
-    "COLOR left r14c0 x[0,10]m photo #484c4a model #8a9191 dE 28  COLOR_OFF confidence=trusted",
-    "COLOR left r12c0 x[0,10]m photo #626f68 model #a9a8a2 dE 24  COLOR_OFF confidence=trusted",
-    "COLOR right r16c0 x[0,10]m photo #1c1718 model #4d6f72 dE 39  COLOR_OFF confidence=trusted",
-    "COLOR right r15c0 x[0,10]m photo #251f22 model #5a7477 dE 37  COLOR_OFF confidence=trusted",
+    "COLOR front r16c2 x[22,33]m photo #5c5c5d model #90afa6 dE 32  COLOR_OFF confidence=trusted",
+    "COLOR front r0c2 x[22,33]m photo #bbd1d3 model #6a9294 dE 25  COLOR_OFF confidence=trusted",
+    "COLOR front r2c2 x[22,33]m photo #b2c4c8 model #658f92 dE 23  COLOR_OFF confidence=trusted",
+    "COLOR left r12c0 x[0,10]m photo #626a67 model #aaaba4 dE 26  COLOR_OFF confidence=trusted",
+    "COLOR left r14c0 x[0,10]m photo #484849 model #5d8386 dE 25  COLOR_OFF confidence=trusted",
+    "COLOR left r3c1 x[10,21]m photo #a6bbbe model #5d8487 dE 23  COLOR_OFF confidence=trusted",
+    "COLOR right r16c0 x[0,10]m photo #1c1718 model #4d6f71 dE 39  COLOR_OFF confidence=trusted",
+    "COLOR right r15c0 x[0,10]m photo #251f22 model #4e7173 dE 36  COLOR_OFF confidence=trusted",
     "COLOR right r14c0 x[0,10]m photo #312b2e model #81817d dE 36  COLOR_OFF confidence=trusted"
    ],
-   "tiles_off": 31,
+   "tiles_off": 34,
    "tiles_total": 113
   },
   "lod": {
    "checked": true,
    "status": "PASS",
-   "line": "LODCHECK PASS main max 0.012% (az 112, el +25) bad_views 0/64 | lod1 max 0.000% (az 0, el -10) bad_views 0/64 | lod2 max 0.002% (az 338, el +25) bad_views 0/64  -> previews\\lod_check\\HighriseTower103_L1_5x4",
+   "line": "LODCHECK PASS main max 0.012% (az 112, el +25) bad_views 0/64 | lod1 max 0.006% (az 248, el +50) bad_views 0/64 | lod2 max 0.009% (az 248, el +50) bad_views 0/64  -> previews\\lod_check\\HighriseTower103_L1_5x4",
    "notes": []
   },
   "agent": {
    "status": "PASS",
    "verts": {
-    "LOD0": 140816,
-    "LOD1": 34532,
+    "LOD0": 144996,
+    "LOD1": 34592,
     "LOD2": 588
    },
    "action_tags": [],
@@ -186,37 +186,37 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-103",
- "updated_at": "2026-11-10T13:54:10",
- "visual_review_note": "user-10 front: 2 m dark slot, wing order corner/window/louver/small window, pale above floor 7; tiles_off 47->31; outside diff only the parapet round the slot (z 150.6)",
+ "updated_at": "2026-11-10T14:23:16",
+ "visual_review_note": "user-03 low front: slot back-wall windows + door, open pilotis, floor-1 grey band, raised terrace with rails, white shutters, right-wing bay windows; geometry outside diff 0 (UV-only reallocation)",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower103_L1_5x4.png",
-   "sha256": "b7ea7dc8cbe544a69aa60a02691c52f6923f9459878f9e5a62ba760b501ea6e8"
+   "sha256": "2607a74aae3e68ea91043ac0592d556bc401135d900e847619a8bf0f7bd13b3e"
   },
   {
    "file": "previews/photo_check/facade_front.png",
-   "sha256": "7b9206709abaf0848a7f09a57888efc6fa464ca5f8359bb127b4f65ca9ac0434"
+   "sha256": "7ea9f93f44366e6ab4fbfd0a7cbbaf5fb8f13e69ed3ba875ca2e2edf3fd23e5f"
   },
   {
    "file": "previews/photo_check/facade_left.png",
-   "sha256": "d77ef92c45225707b650d30a0cda266c3cdc1e11b9730f5478b2b1d7eed7954d"
+   "sha256": "e0d102db4cf53ca5bb0a92543785f5490d4d0f5ab021ba253ee5b5c2b5d140aa"
   },
   {
    "file": "previews/photo_check/facade_right.png",
-   "sha256": "2fb3ba534311e095a9b58fb346215759b75a0a11a211af71b0dd9e966f50bd16"
+   "sha256": "4be901690b6ea00fb66a06b926ebdb743bebcebd7cc27613b798f0bb8e774466"
   },
   {
    "file": "previews/tiles/front_map.png",
-   "sha256": "69c2afb21b953fcb8bdd1bbcd6f6fa6c37ab383afd5233ce24af12807845ea6e"
+   "sha256": "f408f3657229f9f4bb0be003821faa15f67839624c841434d2b2e24b62591029"
   },
   {
    "file": "previews/tiles/left_map.png",
-   "sha256": "480a1914cb8aff841c754469a7dbd222be2a1dbdd7e9daa16fa827de714dae0b"
+   "sha256": "e5563cc05f64b503fe0928fbeb28d864f4023017ed39749a0960eb7bc296ac6c"
   },
   {
    "file": "previews/tiles/right_map.png",
-   "sha256": "7534f61e54da210bd0d90fb42f0f207fd6c2ab36cd912a0d6d5abb36b206060c"
+   "sha256": "1b30d2f1bd593f903541d5c57eb858c881fbc1773f98eab01768fc6e0c426a29"
   }
  ],
- "reviewed_preview_hash": "b7ea7dc8cbe544a69aa60a02691c52f6923f9459878f9e5a62ba760b501ea6e8"
+ "reviewed_preview_hash": "2607a74aae3e68ea91043ac0592d556bc401135d900e847619a8bf0f7bd13b3e"
 }

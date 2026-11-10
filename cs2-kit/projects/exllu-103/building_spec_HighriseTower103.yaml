@@ -7,7 +7,7 @@ floor_height_m: 2.94             # floors 2-50 (TASK)
 lobby_height_m: 5.24             # estimated: raised so the top = 160 m (research)
 footprint_m: {width: 32, depth: 21}
 height_m: 149.3                  # roof slab (5.24 + 49 x 2.94); parapet 150.6, helipad deck 159.1, rail top 160.0
-tris: {main: 72706, gls: 2724, lod1: 15952, lod2: 292, windows: 1362}   # main slightly above the 60k target, below the 95k warning
+tris: {main: 72498, gls: 2692, lod1: 17296, lod2: 294, windows: 2692}   # main above the 60k target, below the 95k warning
 front_recess_m: {half_width: 1.0, depth: 2.0}   # user-10-front: ~2 m dark slot; depth estimated
 materials:
   stone_dark: [88, 82, 80]          # estimated from user-02/03/05
@@ -24,7 +24,7 @@ facade:
   nw_side: "Naver street view 2025-03 (pano adGlg2QXhpiqd0i7KIdUew, ~47 m WNW of the tower; satellite confirms helipad at the WNW end): floors 1-6 dark stone + full ledges like SE; above: all pale, no side ledges, no dark-glass flanks; full-height dark slot y 8.8-10.4, depth 1.2 (estimated); small window pairs y 6.6-8.5 / 10.7-12.5, wide windows 13.0-15.6 and 16.4-20.2 (estimated)"
   back: "user-01 read as back (street view from SSW, 2025-03, shows the same vertical sign strip); base dark granite to floor 7 across the face (street view; replaces the earlier grey 6/12 stepping); white shaft x 2-5 (0.5 m out) to parapet top; grey balcony bay x>5 from floor 30; back ledges only on x>5 (pale below 30, grey above); 6 windows per floor"  # floor counts estimated from a 120 px photo
 ground:
-  pilotis: "left wing open 2 m deep; 1.2 m dark granite corner pier, open bay, 0.7 m pale grey column at x -6 (entrance photo 1)"   # estimated
+  pilotis: "left wing open 2 m deep, no glazing (user-03: bicycle parking); 1.2 m dark granite corner pier, 0.7 m pale grey column at x -6; floor 1 above it is a solid grey granite band 0.3 m proud (no windows)"   # estimated
   lobby_glazing: "centre and right wing"
 entrance:   # user entrance photos (2026-11-10)
   position_x_m: [7.4, 15.7]          # estimated
@@ -64,7 +64,7 @@ photo_mismatch_notes:
   - "Tile compare: front colour tiles off 47 -> 31 of 113 after the user-10 front rework (narrow slot, pale above floor 7). Edge recall stays ~40 %: street view is ~2.9 px/m."
   - "Front: street view (pano 5PyV.., 49 m N) was too coarse to read the centre; user-10-front (close, frontal) settled it: narrow 2 m slot, no 11 m recess."
   - "Back (street view 9Ksq.., 104 m S): grey bay runs from floor 7 to the top, ~7 m wide with a pale strip to the corner; shaft position kept from user-01. Back is not in photo_refs: its right edge is ambiguous and the base is hidden by pines."
-  - "Small stair with steel rail beside the pale pilotis column (entrance photo 1) not modeled: too little of it is visible."
+  - "Raised terrace (x -4..5.8, 2 m deep, level with the porch landing 1.05 m) with steel rails in front of the slot, slot door + one small slot window per floor, right-wing small windows as 0.4 m bay windows, white shutter louvers (all from user-03; extents estimated). photo_refs not extended with user-03: its left edge is cut off and the porch hides the bottom-right corner, so four wall corners cannot be read."
   - "NW side from Naver street view; panoramas are 45-80 m away behind pine trees, so window positions and slot depth are estimated; top-floor NW corner glazing not visible."
   - "Naver Land VR tour does not exist for this complex (id 100330); naver_vr.py capture not possible. Side/aerial photos supplied by the user."
   - "The vertical sign lettering on the back shaft is not modeled (no sign text in assets)."

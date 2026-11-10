@@ -517,25 +517,25 @@
    "fbx": null
   },
   "fix": {
-   "at": "2026-11-10T13:52:58",
+   "at": "2026-11-10T14:22:18",
    "mode": "final",
-   "status": "FAIL",
+   "status": "PASS",
    "label": "fix",
    "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
    "checks": {
     "build": "PASS",
-    "geometry": "FAIL",
+    "geometry": "PASS",
     "preview": "PASS",
     "photo": "PASS",
     "tiles": "PASS",
     "lod": "PASS",
     "fbx": "PASS"
    },
-   "generator_hash": "2c025c32c8b46eb7da12ec799a4ca82455468a9f73aaedb014506b4ad4252dd2",
+   "generator_hash": "aadd8460d347c1495a01833121986e8062a0971a2b6f8339fe23f4d4d625dce2",
    "preview": {
     "path": "previews/HighriseTower103_L1_5x4.png",
     "exists": true,
-    "sha256": "923e1a92fd39f1651799950f3f3675f7cb91a50e794bb4e79aa95ac1ad6d830b",
+    "sha256": "80c93ce8d86e135aba47d1a3aed7124692ccf6abbd21ac4cb5792e2c9d47a622",
     "key": null
    },
    "fbx": null
@@ -708,14 +708,39 @@
     "key": null
    },
    "fbx": null
+  },
+  "lowfront": {
+   "at": "2026-11-10T14:23:04",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "lowfront",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "aadd8460d347c1495a01833121986e8062a0971a2b6f8339fe23f4d4d625dce2",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "2607a74aae3e68ea91043ac0592d556bc401135d900e847619a8bf0f7bd13b3e",
+    "key": null
+   },
+   "fbx": null
   }
  },
- "updated_at": "2026-11-10T13:53:42",
+ "updated_at": "2026-11-10T14:23:04",
  "current_stage": "final:INCOMPLETE",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "decc10e19a08f92f1eae780477d0948ea46b431f45910218e149c01f7e46d46a",
+ "generator_hash": "aadd8460d347c1495a01833121986e8062a0971a2b6f8339fe23f4d4d625dce2",
  "visual_review": "NOT_CHECKED",
- "reviewed_preview_hash": "b5a9a0ed3e9e99cf9ec742b44fe54d9c3f36cab56eb7787d0262d0db98374f2e",
+ "reviewed_preview_hash": "b7ea7dc8cbe544a69aa60a02691c52f6923f9459878f9e5a62ba760b501ea6e8",
  "last_gate": {
   "mode": "final",
   "status": "INCOMPLETE",
