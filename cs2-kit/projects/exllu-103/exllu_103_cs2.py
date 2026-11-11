@@ -22,6 +22,14 @@ def find_kit():
 sys.path.insert(0, find_kit())
 import cs2kit as K  # noqa: E402
 
+# ponytail: temporary in-game flicker test switch (set EXLLU_FLICKER_TEST); remove once the cause is known.
+#   nomull = no painted mullions/transoms; far = mullions/transoms 7-8 cm out instead of 3-4 cm;
+#   winoff = nomull + window quad 6 cm off the wall (5 cm clear of the 1 cm paint layer)
+FLICKER_TEST = os.environ.get("EXLLU_FLICKER_TEST", "")
+assert FLICKER_TEST in ("", "nomull", "far", "winoff"), FLICKER_TEST
+if FLICKER_TEST == "winoff":
+    K.WIN_OFF = 0.06
+
 W, D, FH, NF = 32.0, 21.0, 2.94, 50          # TASK: 32 x 21 m, 2.94 m, 50 floors
 GH = 5.24                                     # lobby storey: raised so the helipad rail top = 160.0 m (research)
 H = GH + FH * (NF - 1)                        # 149.3
@@ -179,11 +187,14 @@ def window(mb, stage, axis, c, s, a0, a1, z0, z1, floor, unit, mull=(0.38,), jam
         K.axbox(mb, axis, c, s, a0 - e0, a1 + e1, 0, 0.12, z1, z1 + 0.1, "frame")
         K.axbox(mb, axis, c, s, a0 - (0.15 if jambs[0] else 0.0), a1 + (0.15 if jambs[1] else 0.0),
                 0, 0.18, z0 - 0.1, z0, "frame")
+        if FLICKER_TEST in ("nomull", "winoff"):
+            return
+        lm = 7 if FLICKER_TEST == "far" else 3
         for u in mull:  # never at u=0.5 so the window centre stays unblocked
             a = a0 + (a1 - a0) * u
-            K.paint(mb, axis, c, s, a - 0.03, a + 0.03, z0, z1, "frame", layer=3)
+            K.paint(mb, axis, c, s, a - 0.03, a + 0.03, z0, z1, "frame", layer=lm)
         zt = z0 + 0.55 * (z1 - z0)
-        K.paint(mb, axis, c, s, a0, a1, zt, zt + 0.05, "frame", layer=4)
+        K.paint(mb, axis, c, s, a0, a1, zt, zt + 0.05, "frame", layer=lm + 1)
 
 
 def louver(mb, stage, axis, c, s, a0, a1, z0, z1):

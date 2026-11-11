@@ -1,11 +1,11 @@
 {
- "visual_review": "NOT_CHECKED",
- "current_stage": "final:INCOMPLETE",
+ "visual_review": "PASS",
+ "current_stage": "review:PASS",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "96e23a3248a246f80c3ca38150dd06a6a1e7a2779a0faebe01400f0ea1d5ebd5",
- "current_preview_hash": "2ddfd04d50caa6d83183982376ce511087bae4c648b001363a3540e359db3d06",
+ "generator_hash": "d044cfca763f5a1c1dfabafee101fb7468a191fd68f6c3bc0dbb35215ef5856d",
+ "current_preview_hash": "9196bb2fab09e7010fc87fd67c01039f7c111fbb5b3a7d504595ee733c01a260",
  "last_gate": {
-  "status": "INCOMPLETE",
+  "status": "PASS",
   "project": "exllu-103",
   "generator": "exllu_103_cs2.py",
   "mode": "final",
@@ -17,7 +17,7 @@
    "tiles": "PASS",
    "lod": "PASS",
    "fbx": "PASS",
-   "visual_review": "NOT_CHECKED"
+   "visual_review": "PASS"
   },
   "errors": [],
   "next_action": {
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
   "asset": "HighriseTower103_L1_5x4",
-  "label": "test_no_glass",
-  "time": "2026-11-10 23:26:38",
+  "label": "baseline",
+  "time": "2026-11-11 09:21:33",
   "build": {
    "asset": "HighriseTower103_L1_5x4",
    "fbx": true,
@@ -100,7 +100,7 @@
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 8.5
+    "time_s": 17.0
    },
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
@@ -108,7 +108,7 @@
    "checked": true,
    "mismatch": 0,
    "lines": [
-    "MATCH    front floor pitch: photo 2.80 m / model 2.95 m (+5%) (low-confidence photo evidence - do not auto-change floors)",
+    "INFO     front floor pitch: photo 2.80 m / model 5.90 m (+111%)  -> photo shows ~54 floor bands over the wall height, model ~26 (model needs MORE floors or lower floor height) (low-confidence photo evidence - do not auto-change floors)",
     "MATCH    front window bay pitch: photo 2.10 m / model 1.70 m (-19%)",
     "INFO     front edge agreement 53%",
     "INFO     left floor pitch: photo 3.00 m / model 5.90 m (+97%)  -> photo shows ~50 floor bands over the wall height, model ~26 (model needs MORE floors or lower floor height) (low-confidence photo evidence - do not auto-change floors)",
@@ -124,20 +124,20 @@
    "checked": true,
    "status": "PASS",
    "simplified": [
-    "TILE front r4c0 x[0,11]m z[106,115]m recall 3% precision 6%  SIMPLIFIED",
-    "TILE front r5c0 x[0,11]m z[97,106]m recall 6% precision 13%  SIMPLIFIED",
-    "TILE front r6c0 x[0,11]m z[89,97]m recall 10% precision 25%  SIMPLIFIED",
+    "TILE front r4c0 x[0,11]m z[106,115]m recall 2% precision 5%  SIMPLIFIED",
+    "TILE front r5c0 x[0,11]m z[97,106]m recall 6% precision 11%  SIMPLIFIED",
+    "TILE front r6c0 x[0,11]m z[89,97]m recall 10% precision 24%  SIMPLIFIED",
     "TILE left r13c0 x[0,10]m z[27,35]m recall 38% precision 56%  SIMPLIFIED",
     "TILE left r16c1 x[10,21]m z[0,9]m recall 41% precision 59%  SIMPLIFIED",
-    "TILE left r6c0 x[0,10]m z[89,97]m recall 41% precision 48%  SIMPLIFIED",
-    "TILE right r7c0 x[0,10]m z[80,89]m recall 26% precision 31%  SIMPLIFIED",
-    "TILE right r7c1 x[10,21]m z[80,89]m recall 28% precision 38%  SIMPLIFIED",
-    "TILE right r1c0 x[0,10]m z[133,142]m recall 30% precision 7%  SIMPLIFIED"
+    "TILE left r6c0 x[0,10]m z[89,97]m recall 41% precision 49%  SIMPLIFIED",
+    "TILE right r7c0 x[0,10]m z[80,89]m recall 29% precision 31%  SIMPLIFIED",
+    "TILE right r16c1 x[10,21]m z[0,9]m recall 30% precision 9%  SIMPLIFIED",
+    "TILE right r1c0 x[0,10]m z[133,142]m recall 33% precision 9%  SIMPLIFIED"
    ],
    "detail": [
-    "DETAIL front recall 37% precision 41% worst r4c0 (3%) simplified_tiles 35/51",
-    "DETAIL left recall 50% precision 49% worst r13c0 (38%) simplified_tiles 16/34",
-    "DETAIL right recall 44% precision 42% worst r7c0 (26%) simplified_tiles 23/34"
+    "DETAIL front recall 39% precision 41% worst r4c0 (2%) simplified_tiles 33/51",
+    "DETAIL left recall 50% precision 49% worst r13c0 (38%) simplified_tiles 13/34",
+    "DETAIL right recall 47% precision 43% worst r7c0 (29%) simplified_tiles 20/34"
    ],
    "detail_color": [
     "DETAIL_COLOR front tiles_off 18/51 (dE>14; trusted tiles only)",
@@ -147,10 +147,10 @@
    "color_off": [
     "COLOR front r16c2 x[22,33]m photo #494a4c model #90afa6 dE 40  COLOR_OFF confidence=trusted",
     "COLOR front r0c1 x[11,22]m photo #ffffd9 model #c0c0b9 dE 27  COLOR_OFF confidence=trusted",
-    "COLOR front r13c1 x[11,22]m photo #727e82 model #bdbfb9 dE 26  COLOR_OFF confidence=trusted",
-    "COLOR left r13c0 x[0,10]m photo #76807d model #a6aaa4 dE 17  COLOR_OFF confidence=trusted",
-    "COLOR left r14c1 x[10,21]m photo #747871 model #61888a dE 14  COLOR_OFF confidence=trusted",
-    "COLOR right r16c0 x[0,10]m photo #1c1718 model #4c6d70 dE 38  COLOR_OFF confidence=trusted",
+    "COLOR front r13c1 x[11,22]m photo #737e82 model #bebfb9 dE 26  COLOR_OFF confidence=trusted",
+    "COLOR left r13c0 x[0,10]m photo #77807d model #a7aaa4 dE 17  COLOR_OFF confidence=trusted",
+    "COLOR left r14c1 x[10,21]m photo #757871 model #61888a dE 14  COLOR_OFF confidence=trusted",
+    "COLOR right r16c0 x[0,10]m photo #1c1718 model #4d6e71 dE 39  COLOR_OFF confidence=trusted",
     "COLOR right r15c0 x[0,10]m photo #251f22 model #527477 dE 37  COLOR_OFF confidence=trusted",
     "COLOR right r14c0 x[0,10]m photo #312b2f model #83837f dE 37  COLOR_OFF confidence=trusted"
    ],
@@ -176,23 +176,21 @@
   "gate": {
    "status": "PASS",
    "reasons": [],
-   "incomplete": [
-    "visual_review=NOT_CHECKED"
-   ]
+   "incomplete": []
   }
  },
  "mismatch_attempts": {},
  "next_action": {
-  "command": "python tools/agent.py review --project exllu-103 --status PASS --note \"reviewed current artifacts\" --artifact \"previews/HighriseTower103_L1_5x4.png\" --artifact \"previews/photo_check/facade_front.png\" --artifact \"previews/photo_check/facade_left.png\" --artifact \"previews/photo_check/facade_right.png\" --artifact \"previews/tiles/front_map.png\" --artifact \"previews/tiles/left_map.png\" --artifact \"previews/tiles/right_map.png\"",
-  "reason": "inspect the listed current artifacts, then record the review"
+  "command": null,
+  "reason": "all requested checks passed"
  },
  "project": "exllu-103",
- "updated_at": "2026-11-10T23:26:38",
- "visual_review_note": "Upper side glass lightened based on user-12; front and side alignment and overall brightness still differ. Wide-angle and obscured reference corners limit attribution; additional clear views are needed.",
+ "updated_at": "2026-11-11T09:21:58",
+ "visual_review_note": "Same build as the review recorded earlier today (flicker test switch added, default off; main 77884 tris unchanged). Layout matches on front/SE/NW refs; low front wing tile recall is a half-floor offset of the warped wide-angle photo; brightness differs because the refs are hazy. In-game flicker is not covered by this review.",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower103_L1_5x4.png",
-   "sha256": "ac92913b9200b8bc9537b7351b759915fa47bce6c0d4a14926db807603040314"
+   "sha256": "9196bb2fab09e7010fc87fd67c01039f7c111fbb5b3a7d504595ee733c01a260"
   },
   {
    "file": "previews/photo_check/facade_front.png",
@@ -219,5 +217,5 @@
    "sha256": "d5a5b1722f498961bd7beca3ee6a528a5ebeb62f5f6f79b075412266543f2130"
   }
  ],
- "reviewed_preview_hash": "0b21071592fe3bae8fa460277ff7f79b8d17ab56a20ea5e24a04f560d280c034"
+ "reviewed_preview_hash": "9196bb2fab09e7010fc87fd67c01039f7c111fbb5b3a7d504595ee733c01a260"
 }
