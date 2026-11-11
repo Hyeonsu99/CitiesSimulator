@@ -72,7 +72,7 @@
    "fbx": null
   },
   "final": {
-   "at": "2026-11-11T16:17:43",
+   "at": "2026-11-11T16:40:02",
    "mode": "final",
    "status": "INCOMPLETE",
    "label": "",
@@ -87,11 +87,11 @@
     "fbx": "PASS",
     "visual_review": "NOT_CHECKED"
    },
-   "generator_hash": "4c9a8d7f1dd97121a9b34bb803209a8f1c442d5188efe3496ffb2de3cf47c21f",
+   "generator_hash": "2f905c356b4903fc1bb4919d19bb69d693a16fff99b8a568a93ffcc5b75b4331",
    "preview": {
     "path": "previews/HighriseTower103_L1_5x4.png",
     "exists": true,
-    "sha256": "05b753273469fd10312c617a652ab11e116977cab269a12f537767c8e1993b11",
+    "sha256": "6a4656659378ac490ea93a476404cb57f480175702f915e4707234d9640b9901",
     "key": null
    },
    "fbx": null
@@ -1280,7 +1280,7 @@
    "fbx": null
   },
   "quick": {
-   "at": "2026-11-11T16:16:58",
+   "at": "2026-11-11T16:38:51",
    "mode": "quick",
    "status": "PASS",
    "label": "",
@@ -1294,7 +1294,7 @@
     "lod": "NOT_CHECKED",
     "fbx": "NOT_CREATED"
    },
-   "generator_hash": "4c9a8d7f1dd97121a9b34bb803209a8f1c442d5188efe3496ffb2de3cf47c21f",
+   "generator_hash": "2f905c356b4903fc1bb4919d19bb69d693a16fff99b8a568a93ffcc5b75b4331",
    "preview": null,
    "fbx": null
   },
@@ -1324,12 +1324,12 @@
    "fbx": null
   }
  },
- "updated_at": "2026-11-11T16:17:43",
+ "updated_at": "2026-11-11T16:40:02",
  "current_stage": "final:INCOMPLETE",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "4c9a8d7f1dd97121a9b34bb803209a8f1c442d5188efe3496ffb2de3cf47c21f",
+ "generator_hash": "2f905c356b4903fc1bb4919d19bb69d693a16fff99b8a568a93ffcc5b75b4331",
  "visual_review": "NOT_CHECKED",
- "reviewed_preview_hash": "d51404fc8af87b0c3a02a56c6aa186b5cdc8c27b7a45cb2da1b751bd6dfc27c1",
+ "reviewed_preview_hash": "05b753273469fd10312c617a652ab11e116977cab269a12f537767c8e1993b11",
  "last_gate": {
   "mode": "final",
   "status": "INCOMPLETE",

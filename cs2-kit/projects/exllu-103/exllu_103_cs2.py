@@ -413,7 +413,7 @@ def floor_facade(mb, stage, f):
 def ground_floor(mb, stage):
     z0, z1, u = 0.3, GH - 0.6, 0          # double-height lobby glazing
     zs0, zs1 = SILL, GH - 0.8
-    window(mb, stage, "y", 0, -1, 6.0, 15.4, z0, z1, 0, u, (0.2, 0.4, 0.6, 0.8)); u += 1
+    window(mb, stage, "y", 0, -1, 14.2, 15.4, z0, z1, 0, u); u += 1
     # left wing pilotis stay open (user-03: bicycle parking, no glazing); slot: door off the raised terrace
     window(mb, stage, "y", RD, -1, -0.6, 0.6, TZ + 0.05, TZ + 2.3, 0, u); u += 1
     window(mb, stage, "x", X, 1, 1.0, 5.4, zs0, zs1, 0, u, PAIR); u += 1   # right side front bay
@@ -698,12 +698,14 @@ def entrance(mb, stage):
     yl = EY + ST_N * ST_T                                                                     # landing front
     for i in range(ST_N):                                                                     # steps
         y0 = EY + i * ST_T
-        mb.box(8.6, 13.7, y0, y0 + ST_T if i < ST_N - 1 else -1.6, 0, ST_R * (i + 1), "canopy",
+        mb.box(8.6, 13.7, y0, y0 + ST_T, 0, ST_R * (i + 1), "canopy",
                skip=("bottom", "back", "left", "right"))
     zl = ST_N * ST_R
-    mb.box(8.6, 13.7, -1.7, -1.6, zl, EZ0, {"front": "vestibule", "default": "stone_trim"}, skip=("bottom", "top"))
+    mb.box(8.6, 13.7, yl, 0, 0, zl, "canopy", skip=("bottom", "back", "left", "right"))     # landing extends to tower
+    mb.box(8.6, 13.7, -0.05, 0.0, zl, EZ0, {"front": "vestibule", "default": "stone_trim"},
+           skip=("bottom", "top", "back", "left", "right"))                                  # entrance doors at facade
     for x0, x1, y0 in ((8.2, 8.6, EY + 1.1), (13.7, 14.1, EY + 1.8)):                         # cheek walls
-        mb.box(x0, x1, y0, -1.6, 0, zl + 0.2, "stone_trim", skip=("bottom", "front"))       # front touches pier
+        mb.box(x0, x1, y0, 0, 0, zl + 0.2, "stone_trim", skip=("bottom", "front", "back"))  # cheek walls to tower
     if stage == 0:
         ya = EY + 0.2
         rail_z = lambda y: ST_R + (y - ya) / (yl - ya) * (zl - ST_R)                           # stair pitch line
@@ -714,17 +716,17 @@ def entrance(mb, stage):
                 yy = ya + k * (yl - ya - 0.1) / 3
                 zb = ST_R * min(ST_N, 1 + int((yy - EY) / ST_T))                              # tread under the post
                 mb.box(x - 0.03, x + 0.03, yy - 0.03, yy + 0.03, zb, 0.9 + rail_z(yy), "railing", skip=("bottom",))
-        # right side safety railing: multi-bar railing along stair and landing (user photo: open with railing)
+        # right side safety railing: multi-bar railing along stair and landing to tower (user photo: open with railing)
         xr = 13.66
         for dz in (0.90, 0.72, 0.54, 0.36, 0.18):
             prism(mb, (xr, ya, dz + rail_z(ya)), (xr, yl, dz + rail_z(yl)), 0.04 if dz < 0.9 else 0.05, "railing")
-            prism(mb, (xr, yl, dz + zl), (xr, -1.6, dz + zl), 0.04 if dz < 0.9 else 0.05, "railing")
+            prism(mb, (xr, yl, dz + zl), (xr, 0.0, dz + zl), 0.04 if dz < 0.9 else 0.05, "railing")
         for k in range(4):
             yy = ya + k * (yl - ya - 0.1) / 3
             zb = ST_R * min(ST_N, 1 + int((yy - EY) / ST_T))
             mb.box(xr - 0.03, xr + 0.03, yy - 0.025, yy + 0.025, zb, 0.9 + rail_z(yy), "railing", skip=("bottom",))
-        mb.box(xr - 0.03, xr + 0.03, yl - 0.025, yl + 0.025, zl, zl + 0.9, "railing", skip=("bottom",))
-        mb.box(xr - 0.03, xr + 0.03, -1.6 - 0.025, -1.6 + 0.025, zl, zl + 0.9, "railing", skip=("bottom",))
+        for yy in (yl, (yl + 0.0) / 2, 0.0):                                                  # landing posts
+            mb.box(xr - 0.03, xr + 0.03, yy - 0.025, yy + 0.025, zl, zl + 0.9, "railing", skip=("bottom",))
 
 
 def terrace(mb, stage):

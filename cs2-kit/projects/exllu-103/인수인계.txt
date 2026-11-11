@@ -91,3 +91,12 @@ winoff(90) 순서로 나란히 불러올 수 있다. 이 뷰어는 게임과 렌
 - 지주 폭(0.06 m)과 레일 폭(0.04~0.05 m)을 분리하여 동일 평면 겹침(coplanar z-fighting) 완전 방지.
 - final 게이트 7개 항목 ALL PASS, visual review PASS.
 - asset-viewer의 미리보기 파일 및 import_test_no_glass의 FBX 갱신 완료.
+
+2026-11-11 추가 (5): 사용자 도면 및 실물 사진 기반 현관 랜딩·출입문·난간 완전 연결 (/fix)
+- 사용자 지시 이미지(uploaded_media_0_1794382064350.jpg) 및 현관 실물 사진(uploaded_media_1_1794382064350.jpg)을 반영:
+  1. 출입문 위치를 기존 가설 위치(y=-1.6)에서 본체 파사드 벽면(y=0)으로 이동 배치.
+  2. 계단 상부 랜딩 바닥(z=1.05)을 계단 끝(yl=-1.68)부터 본체 파사드 벽면(y=0)까지 연속 연장.
+  3. 우측 5단 안전 난간 및 화강석 뺨벽을 계단 상부 랜딩을 따라 본체 파사드 벽면(y=0)까지 완전 연결.
+  4. 1층 우측 로비 창문(x=14.2~15.4)을 현관문과 뺨벽 영역과 분리하여 창문 가림(WIN_BLOCKED) 0건 달성.
+- final 게이트 7개 항목 ALL PASS, visual review PASS.
+- asset-viewer 미리보기 및 import_test_no_glass FBX 갱신 완료.
