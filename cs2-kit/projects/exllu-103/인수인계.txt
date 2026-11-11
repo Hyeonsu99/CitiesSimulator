@@ -83,3 +83,11 @@ winoff(90) 순서로 나란히 불러올 수 있다. 이 뷰어는 게임과 렌
 - 좌측 기둥과 본체 벽면 사이 측벽(stone_trim), 현관문 뒤 바닥(z=zl)을 본체 파사드까지 연결.
 - final 게이트 7개 항목(build, geometry, preview, photo, tiles, lod, fbx) 모두 PASS, visual review PASS.
 - asset-viewer의 미리보기 파일 및 import_test_no_glass의 FBX 갱신 완료.
+
+2026-11-11 추가 (4): 현관 출입문 우측면 개방 구조 및 5단 안전 난간 반영
+- 사용자 제공 실물 사진(uploaded_media_1794380454446.jpg)에 따라, 출입문 정면 기준 우측면은 벽체로 막히지 않고 캐노피 아래가 뚫려 있는 구조임을 확인.
+- 우측면의 솔리드 측벽을 제거하고 개방된 포르티코 구조로 복원.
+- 계단 우측단(x=13.66) 및 상부 랜딩에 실물 사진과 동일한 5단 강철 안전 난간(상부 핸드레일 + 4단 중간 레일 + 수직 지주) 설치.
+- 지주 폭(0.06 m)과 레일 폭(0.04~0.05 m)을 분리하여 동일 평면 겹침(coplanar z-fighting) 완전 방지.
+- final 게이트 7개 항목 ALL PASS, visual review PASS.
+- asset-viewer의 미리보기 파일 및 import_test_no_glass의 FBX 갱신 완료.
