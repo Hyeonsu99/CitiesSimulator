@@ -10,6 +10,9 @@
   창 앞의 `_Gls` 유리 메시는 야간에 카메라를 움직이면 창이 떨려 보인다 -> 창 앞 유리 메시를 만들지 않는다(`_Win` 만 쓴다).
 - scope=night | applies_to=emissive_textures | source=exllu-103 사용자 스크린샷 2026-11-11 | confidence=verified-in-game
   넓은 면(바닥, 표식, 유리 벽)에 발광을 넣으면 값이 0.02 여도 면 전체가 네온처럼 빛난다 -> 발광은 작은 등기구 면에만 넣고 넓은 면은 0 으로 둔다.
+- scope=night | applies_to=window_texture | source=exllu-103 사용자 게임 시험 2026-11-11 | confidence=verified-in-game
+  창 텍스처에서 불 켜진 칸과 꺼진 칸이 붙어 있으면 멀리서나 비스듬히 볼 때 불빛이 옆 창 가장자리로 번져 벽에 점이 줄지어 보인다
+  -> 불 켜진 창은 5x5 큰 칸 중 이어진 몇 칸에 모으고 둘레 16 px 는 끈다. 창을 큰 칸에 무작위로 배정해 건물에서는 흩어져 보이게 한다(exllu-103 생성기의 LIT_CELLS, window()).
 
 ## 사진과 치수
 - 층 번호는 특징 층(대피층 등)부터 센다. 매물 표시 층수·손으로 센 번호는 ±1 틀린다. 번호는 항상 그림으로 확인.
