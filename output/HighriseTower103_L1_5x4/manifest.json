@@ -1,0 +1,617 @@
+{
+ "asset": "HighriseTower103_L1_5x4",
+ "lot": [
+  5,
+  4
+ ],
+ "size": [
+  33.2,
+  26.0,
+  162.48
+ ],
+ "pivot_shift": [
+  -0.0,
+  -8.600000000000001
+ ],
+ "tris": {
+  "main": 78736,
+  "win": 2808,
+  "gls": 0,
+  "lod1": 17526,
+  "lod1_win": 2808,
+  "lod1_gls": 0,
+  "lod2": 302,
+  "lod2_win": 2808
+ },
+ "windows": 1404,
+ "tex": 4096,
+ "lod1_tex": 4096,
+ "lod2_tex": 1024,
+ "warnings": [],
+ "notes": {},
+ "dropped_windows": 0,
+ "atlas": {
+  "size": 4096,
+  "pad": 16,
+  "cells": {
+   "stone": {
+    "rect": [
+     2096,
+     16,
+     1024,
+     1024
+    ],
+    "tile": [
+     2.4,
+     2.94
+    ],
+    "variants": 1,
+    "px": 1024
+   },
+   "stone_trim": {
+    "rect": [
+     2896,
+     3152,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "pale": {
+    "rect": [
+     16,
+     2096,
+     1024,
+     1024
+    ],
+    "tile": [
+     2.4,
+     2.94
+    ],
+    "variants": 1,
+    "px": 1024
+   },
+   "crown_white": {
+    "rect": [
+     2992,
+     3152,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "deck_under": {
+    "rect": [
+     3088,
+     3152,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "crown_glass": {
+    "rect": [
+     560,
+     3152,
+     256,
+     256
+    ],
+    "tile": [
+     1.2,
+     3.65
+    ],
+    "variants": 1,
+    "px": 256
+   },
+   "obs_roof": {
+    "rect": [
+     848,
+     3152,
+     256,
+     256
+    ],
+    "tile": [
+     1.8,
+     1.8
+    ],
+    "variants": 1,
+    "px": 256
+   },
+   "railing": {
+    "rect": [
+     3184,
+     3152,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "dark_glass": {
+    "rect": [
+     1136,
+     3152,
+     256,
+     256
+    ],
+    "tile": [
+     1.35,
+     2.94
+    ],
+    "variants": 1,
+    "px": 256
+   },
+   "se_glass": {
+    "rect": [
+     3280,
+     3152,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "frame": {
+    "rect": [
+     3376,
+     3152,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "louver": {
+    "rect": [
+     1424,
+     3152,
+     256,
+     256
+    ],
+    "tile": [
+     0.6,
+     2.05
+    ],
+    "variants": 1,
+    "px": 256
+   },
+   "louver_back": {
+    "rect": [
+     3472,
+     3152,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "roof": {
+    "rect": [
+     3184,
+     2096,
+     512,
+     512
+    ],
+    "tile": [
+     4.0,
+     4.0
+    ],
+    "variants": 1,
+    "px": 512
+   },
+   "deck": {
+    "rect": [
+     3568,
+     3152,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "heli_green": {
+    "rect": [
+     3664,
+     3152,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "heli_white": {
+    "rect": [
+     3760,
+     3152,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "pier_pink": {
+    "rect": [
+     16,
+     3152,
+     512,
+     512
+    ],
+    "tile": [
+     1.2,
+     1.2
+    ],
+    "variants": 1,
+    "px": 512
+   },
+   "canopy": {
+    "rect": [
+     1712,
+     3152,
+     256,
+     256
+    ],
+    "tile": [
+     1.2,
+     1.2
+    ],
+    "variants": 1,
+    "px": 256
+   },
+   "glass": {
+    "rect": [
+     3856,
+     3152,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "grey_stone": {
+    "rect": [
+     1072,
+     2096,
+     1024,
+     1024
+    ],
+    "tile": [
+     2.4,
+     2.94
+    ],
+    "variants": 1,
+    "px": 1024
+   },
+   "pale_trim": {
+    "rect": [
+     3952,
+     3152,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "grey_trim": {
+    "rect": [
+     16,
+     3696,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "white_shaft": {
+    "rect": [
+     2000,
+     3152,
+     256,
+     256
+    ],
+    "tile": [
+     2.4,
+     2.94
+    ],
+    "variants": 1,
+    "px": 256
+   },
+   "heli_net": {
+    "rect": [
+     112,
+     3696,
+     64,
+     64
+    ],
+    "tile": [
+     0.6,
+     0.6
+    ],
+    "variants": 1,
+    "px": 64
+   },
+   "grating": {
+    "rect": [
+     208,
+     3696,
+     64,
+     64
+    ],
+    "tile": [
+     0.6,
+     0.6
+    ],
+    "variants": 1,
+    "px": 64
+   },
+   "heli_light": {
+    "rect": [
+     400,
+     3696,
+     32,
+     32
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 32
+   },
+   "clerestory": {
+    "rect": [
+     2576,
+     3152,
+     128,
+     128
+    ],
+    "tile": [
+     0.85,
+     0.64
+    ],
+    "variants": 1,
+    "px": 128
+   },
+   "vestibule": {
+    "rect": [
+     2128,
+     2096,
+     1024,
+     1024
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 1024
+   },
+   "soffit": {
+    "rect": [
+     2288,
+     3152,
+     256,
+     256
+    ],
+    "tile": [
+     1.2,
+     1.2
+    ],
+    "variants": 1,
+    "px": 256
+   },
+   "ent_light": {
+    "rect": [
+     464,
+     3696,
+     32,
+     32
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 32
+   },
+   "soil": {
+    "rect": [
+     304,
+     3696,
+     64,
+     64
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 64
+   },
+   "deck_lit": {
+    "rect": [
+     2736,
+     3152,
+     128,
+     128
+    ],
+    "tile": [
+     1.8357142857142856,
+     0.85
+    ],
+    "variants": 1,
+    "px": 128
+   },
+   "heli_light_y": {
+    "rect": [
+     528,
+     3696,
+     32,
+     32
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 32
+   },
+   "obst_light": {
+    "rect": [
+     592,
+     3696,
+     32,
+     32
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 32
+   },
+   "flood_light": {
+    "rect": [
+     656,
+     3696,
+     32,
+     32
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 32
+   },
+   "windsock": {
+    "rect": [
+     720,
+     3696,
+     32,
+     32
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 32
+   },
+   "under_light": {
+    "rect": [
+     784,
+     3696,
+     32,
+     32
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 32
+   },
+   "window": {
+    "rect": [
+     16,
+     16,
+     2048,
+     2048
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 2048
+   }
+  }
+ },
+ "tags": {
+  "main": [
+   "canopy",
+   "clerestory",
+   "crown_glass",
+   "crown_white",
+   "dark_glass",
+   "deck",
+   "deck_lit",
+   "deck_under",
+   "ent_light",
+   "flood_light",
+   "frame",
+   "glass",
+   "grating",
+   "grey_stone",
+   "grey_trim",
+   "heli_green",
+   "heli_light",
+   "heli_light_y",
+   "heli_net",
+   "heli_white",
+   "louver",
+   "louver_back",
+   "obs_roof",
+   "obst_light",
+   "pale",
+   "pale_trim",
+   "pier_pink",
+   "railing",
+   "roof",
+   "se_glass",
+   "soffit",
+   "soil",
+   "stone",
+   "stone_trim",
+   "under_light",
+   "vestibule",
+   "white_shaft",
+   "windsock"
+  ],
+  "win": [
+   "window"
+  ],
+  "gls": [],
+  "lod1": [
+   "canopy",
+   "clerestory",
+   "crown_glass",
+   "crown_white",
+   "dark_glass",
+   "deck",
+   "deck_lit",
+   "deck_under",
+   "frame",
+   "grating",
+   "grey_stone",
+   "grey_trim",
+   "heli_green",
+   "heli_net",
+   "heli_white",
+   "louver_back",
+   "obs_roof",
+   "pale",
+   "pale_trim",
+   "pier_pink",
+   "roof",
+   "se_glass",
+   "soffit",
+   "stone",
+   "stone_trim",
+   "vestibule",
+   "white_shaft"
+  ],
+  "lod1_win": [
+   "window"
+  ],
+  "lod1_gls": [],
+  "lod2": [
+   "crown_glass",
+   "crown_white",
+   "dark_glass",
+   "deck",
+   "deck_under",
+   "grey_stone",
+   "heli_green",
+   "louver_back",
+   "pale",
+   "pier_pink",
+   "roof",
+   "se_glass",
+   "soffit",
+   "stone",
+   "stone_trim",
+   "white_shaft"
+  ],
+  "lod2_win": [
+   "window"
+  ]
+ },
+ "metadata": {}
+}
