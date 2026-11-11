@@ -3,7 +3,7 @@
  "current_stage": "review:PASS",
  "generator": "exllu_103_cs2.py",
  "generator_hash": "aac9b773665efb83520d8809f2e2a77dc997b1da3fc9861322c68826badd9616",
- "current_preview_hash": "b699869b47738484a9d0b87d7876b32a3468ac973e0b78c4edfef1535147c1ba",
+ "current_preview_hash": "6695845b45ddea07ac8636fe9afb41ba9b1c318271f2a8681c2fc6e1d4be0976",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-103",
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
   "asset": "HighriseTower103_L1_5x4",
-  "label": "helilights",
-  "time": "2026-11-11 09:58:20",
+  "label": "flicker_base",
+  "time": "2026-11-11 10:26:01",
   "build": {
    "asset": "HighriseTower103_L1_5x4",
    "fbx": true,
@@ -100,7 +100,7 @@
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 14.3
+    "time_s": 16.9
    },
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
@@ -185,12 +185,12 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-103",
- "updated_at": "2026-11-11T10:02:31",
- "visual_review_note": "Helideck lighting added (roof only; facades unchanged, geometry diff outside the roof box = 0): perimeter light pools, yellow circle lights, lit pad/markings, rail floodlights, red obstruction lights, windsock. Checked in kit night render (v31_heli_lights_night.png) and in the local Asset Simulator at 127.0.0.1:5183/?preview=103 (v31_asset_simulator_night.png). Facade review as recorded earlier today.",
+ "updated_at": "2026-11-11T10:26:03",
+ "visual_review_note": "Baseline rebuilt after regenerating the four flicker test sets with the new helideck lighting (same generator and build as the review recorded earlier today, main 78298 tris).",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower103_L1_5x4.png",
-   "sha256": "b699869b47738484a9d0b87d7876b32a3468ac973e0b78c4edfef1535147c1ba"
+   "sha256": "6695845b45ddea07ac8636fe9afb41ba9b1c318271f2a8681c2fc6e1d4be0976"
   },
   {
    "file": "previews/photo_check/facade_front.png",
@@ -217,5 +217,5 @@
    "sha256": "d5a5b1722f498961bd7beca3ee6a528a5ebeb62f5f6f79b075412266543f2130"
   }
  ],
- "reviewed_preview_hash": "b699869b47738484a9d0b87d7876b32a3468ac973e0b78c4edfef1535147c1ba"
+ "reviewed_preview_hash": "6695845b45ddea07ac8636fe9afb41ba9b1c318271f2a8681c2fc6e1d4be0976"
 }
