@@ -47,11 +47,93 @@ PIL = RD                                      # left-wing pilotis back wall flus
 LEDGE_P, LEDGE_T = 0.55, 0.28                 # per-floor ledge projection / thickness (estimated; user-07: ~2x thickness out, ~1/10 storey)
 SILL, HEAD = 0.75, 2.45                       # window sill / head above floor (estimated)
 
-def granite(ctx, cols, rows, darken, speck):
-    """Cladding slabs (joints) + granite speckle + slight slab-to-slab tone shift."""
-    ctx.joints(cols=cols, rows=rows, width_m=0.008, depth=1.0, stagger=0.0, darken=darken, tone=4.0)
-    ctx.rgb += (ctx.rng.normal(0, speck, (ctx.h, ctx.w)).astype("float32"))[..., None]
-    ctx.rgb += ctx.noise(24, speck * 0.6, 3, seed=5)[..., None]
+def granite(ctx, cols, rows, darken, speck, polish=0.0):
+    """Granite cladding: bevelled slab joints, slab-to-slab tone shift, crystal speckle at three scales,
+    faint rain streaks and a gloss map (polished slabs, matt joints). Sized for 512-1024 px tiles."""
+    k = ctx.w / 256.0
+    d = ctx.joints(cols=cols, rows=rows, width_m=0.010, depth=1.4, stagger=0.0, darken=darken, tone=5.0)
+    ctx.grain(amp=speck * 0.9, scale_px=max(2, int(1.5 * k)), height=0.5, seed=3)         # crystals
+    ctx.rgb += ctx.noise(max(4, int(7 * k)), speck * 0.7, 3, seed=5)[..., None]             # mottling
+    ctx.rgb += ctx.noise(max(16, int(40 * k)), speck * 0.5, 2, seed=9)[..., None]           # cloudy patches
+    ctx.stains(amount=0.05, scale_px=max(32, int(64 * k)), streaks=0.6, seed=2)
+    ctx.gloss[...] = np.clip(ctx.gloss + polish + 0.06 * ctx.noise(max(8, int(20 * k)), 1.0, 2, seed=11), 0.05, 0.95)
+    ctx.gloss[d > 0.2] = 0.15
+
+
+def paving(ctx, n):
+    """Honed stone paving / panels: n x n slabs per tile, fine grain, slightly darker joints."""
+    ctx.joints(cols=n, rows=n, width_m=0.006, depth=1.0, darken=0.22, tone=3.0)
+    ctx.grain(amp=3.0, scale_px=2, height=0.3, seed=4)
+    ctx.rgb += ctx.noise(24, 3.0, 2, seed=6)[..., None]
+
+
+def roofing(ctx):
+    """Flat roof membrane: 2 m sheets with lap joints, patchy weathering, puddle stains."""
+    ctx.joints(cols=2, rows=2, width_m=0.02, depth=0.6, darken=0.12, tone=3.0)
+    ctx.grain(amp=4.0, scale_px=2, height=0.4, seed=7)
+    ctx.rgb += ctx.noise(48, 7.0, 3, seed=8)[..., None]
+    ctx.stains(amount=0.10, scale_px=96, streaks=0.0, seed=12)
+
+
+def shutter(ctx):
+    """White louvre shutter panel (user-03): frame per 0.6 m leaf, slats every 0.11 m with a shadow line each."""
+    mx, mz = ctx.meters()
+    sl = (mz / 0.11) % 1.0
+    ctx.rgb -= (np.clip(1.0 - sl / 0.22, 0, 1) * 46.0)[..., None]                # shadow under each slat
+    ctx.rgb += (np.clip((sl - 0.7) / 0.3, 0, 1) * 8.0)[..., None]                # lit slat edge
+    ctx.height += sl * 0.8
+    fr = (mx < 0.035) | (mx > ctx.tile[0] - 0.035) | (mz < 0.05) | (mz > ctx.tile[1] - 0.05)
+    ctx.rgb[fr] = np.array([236, 237, 234], np.float32)
+    ctx.height[fr] = 1.2
+
+
+def clerestory(ctx):
+    """Porch clerestory strip: dark glass panes with a slim white mullion at each tile edge, sky gradient."""
+    mx, mz = ctx.meters()
+    ctx.rgb += (ctx.v * 26.0 - 6.0)[..., None]
+    fr = (mx < 0.025) | (mx > ctx.tile[0] - 0.025) | (mz < 0.03) | (mz > ctx.tile[1] - 0.03)
+    ctx.rgb[fr] = np.array([225, 227, 224], np.float32)
+    ctx.gloss[...] = np.where(fr, 0.4, 0.9)
+    ctx.emis[...] = np.where(fr, 0.0, 0.10)
+
+
+VEST_W, VEST_H = 5.1, 2.75   # vestibule glazing: clear width between the cheek walls / landing to soffit
+
+
+def vestibule(ctx):
+    """Entrance glazing baked into one texture (no overlay faces): stainless frame, sidelights, a pair of doors
+    with pull handles and kick plates, transom lights, dark lobby glass with a warm lit interior at night."""
+    x, z = ctx.u * VEST_W, ctx.v * VEST_H
+    ctx.rgb[...] = np.array([46, 62, 66], np.float32)
+    ctx.rgb += (ctx.v * 34.0)[..., None]                                          # sky reflection
+    ctx.rgb += (((x * 0.6 + z) % 1.7 < 0.10) * 16.0)[..., None]                   # glint
+    ctx.gloss[...] = 0.9
+    ctx.emis[...] = 0.22 + 0.10 * (z < 2.1)
+    steel = np.array([172, 176, 178], np.float32)
+    fr = (x < 0.07) | (x > VEST_W - 0.07) | (z < 0.06) | (z > VEST_H - 0.07) | (np.abs(z - 2.15) < 0.035)
+    for xm in (1.05, VEST_W - 1.05):                                              # sidelight mullions
+        fr |= np.abs(x - xm) < 0.035
+    door = (x > 1.05) & (x < VEST_W - 1.05) & (z < 2.15)
+    fr |= door & ((np.abs(x - VEST_W / 2) < 0.03) | (np.abs(x - 1.8) < 0.025) | (np.abs(x - (VEST_W - 1.8)) < 0.025))
+    kick = door & (z < 0.28) & (np.abs(x - VEST_W / 2) < 0.75)
+    pull = (np.abs(np.abs(x - VEST_W / 2) - 0.14) < 0.02) & (z > 0.85) & (z < 1.45)
+    ctx.rgb[fr | kick] = steel
+    ctx.rgb[pull] = np.array([214, 216, 216], np.float32)
+    m = fr | kick | pull
+    ctx.gloss[m] = 0.6
+    ctx.emis[m] = 0.0
+    ctx.height[m] = 1.0
+
+
+def soffit(ctx):
+    """Porch soffit: pale panels (one per tile) with a recessed warm downlight at the centre."""
+    mx, mz = ctx.meters()
+    edge = (mx < 0.012) | (mx > ctx.tile[0] - 0.012) | (mz < 0.012) | (mz > ctx.tile[1] - 0.012)
+    ctx.rgb[edge] *= 0.72
+    ctx.rgb += ctx.noise(16, 2.0, 2, seed=4)[..., None]
+    d = np.hypot(mx - ctx.tile[0] / 2, mz - ctx.tile[1] / 2)
+    ctx.emis[...] = np.clip(1.0 - (d / 0.075) ** 4, 0, 1) + 0.22 * np.exp(-(d / 0.35) ** 2)
+    ctx.rgb[(d > 0.075) & (d < 0.10)] = np.array([120, 122, 122], np.float32)      # trim ring
 
 
 def glass_mullions(ctx):
@@ -77,16 +159,29 @@ def window_glass(ctx):
     sid = (np.floor(sv).astype(np.int64) * g * n + np.floor(su).astype(np.int64))
     fu, fv = su % 1.0, sv % 1.0
     h = (sid * 2654435761) % 1000 / 1000.0          # stable per-slot random
-    ctx.rgb[...] = np.array([68, 110, 110], np.float32) + ((h - 0.5) * 16)[..., None]
-    ctx.rgb += (fv * 42)[..., None]                   # sky reflection, brighter towards the top
+    h2, h3 = (h * 7) % 1.0, (h * 13) % 1.0
+    ctx.rgb[...] = np.array([64, 106, 108], np.float32) + ((h - 0.5) * 18)[..., None]
+    ctx.rgb += (fv * 46 - 6)[..., None]                               # sky reflection, brighter towards the top
     m = (fu * 0.7 + fv) % 1.0
-    ctx.rgb += (((m > 0.30) & (m < 0.37)) * 22.0)[..., None]   # glint streak
-    curt = (h * 7 % 1.0) < 0.45
-    cmask = curt & ((fu < 0.13) | (fu > 0.87))
-    ctx.rgb[cmask] = ctx.rgb[cmask] * 0.35 + np.array([200, 190, 170], np.float32) * 0.65
-    lit = ((h * 13) % 1.0) < 0.3
-    ctx.emis[...] = np.where(lit, 1.0, 0.0)
-    ctx.gloss[...] = 0.4
+    ctx.rgb += (((m > 0.30) & (m < 0.37)) * 20.0)[..., None]          # glint streak
+    ctx.rgb += (((m > 0.62) & (m < 0.64)) * 12.0)[..., None]
+    edge = np.minimum(np.minimum(fu, 1 - fu), np.minimum(fv, 1 - fv))
+    ctx.rgb *= (0.72 + 0.28 * np.clip(edge / 0.035, 0, 1))[..., None]  # reveal shadow at the frame
+    curt = h2 < 0.45                                                  # side curtains with folds
+    cw = 0.10 + 0.08 * h3
+    cmask = curt & ((fu < cw) | (fu > 1 - cw))
+    fold = 0.82 + 0.18 * np.sin(fu * 90.0 + h * 40.0)
+    cloth = np.array([204, 194, 174], np.float32) * fold[..., None]
+    ctx.rgb[cmask] = ctx.rgb[cmask] * 0.3 + cloth[cmask] * 0.7
+    blind = (~curt) & (h2 > 0.72) & (fv > 0.45 + 0.4 * h3)            # roller blind drawn part-way
+    slat = 0.9 + 0.1 * np.sin(fv * 160.0)
+    shade = np.array([214, 212, 204], np.float32) * slat[..., None]
+    ctx.rgb[blind] = ctx.rgb[blind] * 0.25 + shade[blind] * 0.75
+    lit = h3 < 0.3
+    level = 0.6 + 0.4 * ((h * 29) % 1.0)                              # rooms are not equally bright
+    glow = level * (0.75 + 0.25 * fv) * np.where(cmask | blind, 0.55, 1.0)
+    ctx.emis[...] = np.where(lit, glow, 0.0)
+    ctx.gloss[...] = np.where(cmask | blind, 0.25, 0.42)
 
 
 def mesh_grid(ctx, n, w, col):
@@ -131,14 +226,22 @@ def skylight(ctx):
 
 
 TEX = {  # tile = one 2.4 m x one storey, so joints line up with floors
-    "stone": dict(tile=(2.4, FH), px=256, painter=lambda c: granite(c, 2, 4, 0.3, 7.0)),
-    "pale": dict(tile=(2.4, FH), px=256, painter=lambda c: granite(c, 2, 3, 0.12, 2.5)),
-    "dark_glass": dict(tile=(1.35, FH), px=128, painter=lambda c: glass_mullions(c)),
-    "grey_stone": dict(tile=(2.4, FH), px=256, painter=lambda c: granite(c, 2, 4, 0.18, 4.0)),
-    "window": dict(px=1024, painter=window_glass, emissive=(255, 205, 150)),
-    "pier_pink": dict(tile=(1.2, 1.2), px=128, painter=lambda c: granite(c, 1, 2, 0.2, 9.0)),
-    "crown_glass": dict(tile=(1.2, OBS_GH), px=128, painter=lambda c: obs_glass(c), emissive=(255, 228, 185)),
-    "obs_roof": dict(tile=(1.8, 1.8), px=128, painter=lambda c: skylight(c)),
+    "stone": dict(tile=(2.4, FH), px=1024, painter=lambda c: granite(c, 2, 4, 0.3, 7.0, 0.12)),
+    "pale": dict(tile=(2.4, FH), px=1024, painter=lambda c: granite(c, 2, 3, 0.12, 2.5)),
+    "dark_glass": dict(tile=(1.35, FH), px=256, painter=lambda c: glass_mullions(c)),
+    "grey_stone": dict(tile=(2.4, FH), px=1024, painter=lambda c: granite(c, 2, 4, 0.18, 4.0)),
+    "window": dict(px=2048, painter=window_glass, emissive=(255, 205, 150)),
+    "pier_pink": dict(tile=(1.2, 1.2), px=512, painter=lambda c: granite(c, 1, 2, 0.2, 9.0, 0.15)),
+    "crown_glass": dict(tile=(1.2, OBS_GH), px=256, painter=lambda c: obs_glass(c), emissive=(255, 228, 185)),
+    "obs_roof": dict(tile=(1.8, 1.8), px=256, painter=lambda c: skylight(c)),
+    "roof": dict(tile=(4.0, 4.0), px=512, painter=roofing),
+    "canopy": dict(tile=(1.2, 1.2), px=256, painter=lambda c: paving(c, 2)),
+    "white_shaft": dict(tile=(2.4, FH), px=256, painter=lambda c: paving(c, 2)),
+    "louver": dict(tile=(0.6, 2.05), px=256, painter=shutter),
+    "clerestory": dict(tile=(0.85, 0.64), px=128, painter=clerestory, emissive=(255, 232, 196)),
+    "vestibule": dict(px=1024, painter=vestibule, emissive=(255, 226, 184)),
+    "soffit": dict(tile=(1.2, 1.2), px=256, painter=soffit, emissive=(255, 226, 184)),
+    "ent_light": dict(px=32, painter=lambda c: c.emis.__setitem__(Ellipsis, 0.8), emissive=(255, 226, 184)),
     "heli_net": dict(tile=(0.6, 0.6), px=64, painter=lambda c: mesh_grid(c, 4, 0.10, (178, 182, 184))),
     "grating": dict(tile=(0.6, 0.6), px=64, painter=lambda c: mesh_grid(c, 12, 0.25, (70, 72, 74))),
     "heli_light": dict(px=32, painter=lambda c: c.emis.__setitem__(Ellipsis, 1.0), emissive=(110, 255, 140)),
@@ -167,7 +270,6 @@ for name, color, metal, gloss, px in (
         ("frame", (236, 237, 235), 0.3, 0.5, 64),       # white window frames
         ("louver", (230, 231, 229), 0.2, 0.4, 64),      # AC louver panels
         ("louver_back", (58, 60, 62), 0.0, 0.3, 64),
-        ("louver_line", (204, 206, 204), 0.0, 0.3, 64),   # faint lines on the white shutters (user-03)
         ("roof", (120, 122, 122), 0.0, 0.3, 64),
         ("deck", (150, 152, 150), 0.0, 0.3, 64),
         ("heli_green", (74, 140, 104), 0.0, 0.25, 64),
@@ -182,6 +284,11 @@ for name, color, metal, gloss, px in (
         ("heli_net", (72, 76, 80), 0.6, 0.4, 64),       # helideck perimeter safety net (steel mesh)
         ("grating", (128, 132, 134), 0.6, 0.35, 64),    # access platform / stair treads
         ("heli_light", (90, 230, 120), 0.0, 0.6, 32),   # green perimeter lights (emissive)
+        ("clerestory", (44, 58, 66), 0.5, 0.9, 128),    # porch clerestory panes with baked mullions
+        ("vestibule", (46, 62, 66), 0.3, 0.9, 1024),    # entrance doors and sidelights, baked
+        ("soffit", (206, 208, 204), 0.0, 0.3, 256),     # porch soffit panels with downlights
+        ("ent_light", (250, 240, 220), 0.0, 0.6, 32),   # wall lights on the porch piers
+        ("soil", (62, 50, 40), 0.0, 0.1, 64),           # planter top
         ("deck_lit", (150, 152, 150), 0.0, 0.3, 128),   # deck band with a light pool per perimeter light
         ("heli_light_y", (240, 208, 96), 0.0, 0.6, 32), # yellow touchdown circle lights
         ("obst_light", (226, 62, 50), 0.0, 0.6, 32),    # red aviation obstruction lights
@@ -224,11 +331,7 @@ def window(mb, stage, axis, c, s, a0, a1, z0, z1, floor, unit, mull=(0.38,), jam
 
 def louver(mb, stage, axis, c, s, a0, a1, z0, z1):
     if stage == 0:
-        K.axbox(mb, axis, c, s, a0, a1, 0, 0.08, z0, z1, "louver")
-        n = int((z1 - z0) / 0.3)
-        for i in range(1, n):
-            z = z0 + i * (z1 - z0) / n
-            K.paint(mb, axis, c, s, a0 + 0.08, a1 - 0.08, z - 0.015, z + 0.015, "louver_line", layer=9)
+        K.axbox(mb, axis, c, s, a0, a1, 0, 0.08, z0, z1, "louver")   # slats baked into the texture
 
 
 WIDE = (0.1, 0.4, 0.46, 0.54, 0.6, 0.9)   # two sash units (narrow + wide each), paired mullion at the joint (user-03/11)
@@ -581,7 +684,7 @@ def entrance(mb, stage):
     raised stair between stone cheek walls with steel handrails; recessed dark glass vestibule.
     The "103" numerals and the sign lettering are not modeled (no sign text)."""
     mb.box(7.5, 15.55, EY, 0, EZ0, EZT, dict(front="pale", right="pale", left="stone", top="roof",
-                                             bottom="canopy"), skip=("back",))
+                                             bottom="soffit"), skip=("back",))
     mb.box(7.4, 8.6, EY - 0.1, EY + 1.1, 0, EZT + 0.1, "stone_trim", skip=("bottom",))         # left pier
     mb.box(13.7, 15.7, EY - 0.2, EY + 1.8, 0, EZT + 0.3, dict(top="stone_trim", default="pier_pink"),
            skip=("bottom",))                                                                  # corner pier
@@ -589,7 +692,7 @@ def entrance(mb, stage):
         return
     for axis, c, s, a0, a1 in (("y", EY, -1, 8.6, 13.7), ("x", 15.55, 1, EY + 1.8, 0.0)):
         K.paint(mb, axis, c, s, a0, a1, EZC, EZT, "stone", layer=2)                           # cap band
-        K.paint(mb, axis, c, s, a0 + 0.2, a1 - 0.2, EZB + 0.08, EZC - 0.08, "dark_glass", layer=2)  # clerestory
+        K.paint(mb, axis, c, s, a0 + 0.2, a1 - 0.2, EZB + 0.08, EZC - 0.08, "clerestory", layer=2)  # clerestory
         K.paint(mb, axis, c, s, a0, a1, EZB, EZB + 0.08, "frame", layer=3)
     yl = EY + ST_N * ST_T                                                                     # landing front
     for i in range(ST_N):                                                                     # steps
@@ -597,13 +700,13 @@ def entrance(mb, stage):
         mb.box(8.6, 13.7, y0, y0 + ST_T if i < ST_N - 1 else -1.6, 0, ST_R * (i + 1), "canopy",
                skip=("bottom", "back", "left", "right"))
     zl = ST_N * ST_R
-    mb.box(8.6, 13.7, -1.7, -1.6, zl, EZ0, {"front": "glass", "default": "stone_trim"}, skip=("bottom", "top"))
+    mb.box(8.6, 13.7, -1.7, -1.6, zl, EZ0, {"front": "vestibule", "default": "stone_trim"}, skip=("bottom", "top"))
     for x0, x1, y0 in ((8.2, 8.6, EY + 1.1), (13.7, 14.1, EY + 1.8)):                         # cheek walls
         mb.box(x0, x1, y0, -1.6, 0, zl + 0.2, "stone_trim", skip=("bottom", "front"))       # front touches pier
     if stage == 0:
         ya = EY + 0.2
         rail_z = lambda y: ST_R + (y - ya) / (yl - ya) * (zl - ST_R)                           # stair pitch line
-        for x in (8.75, 13.55):                                                               # handrails
+        for x in (8.75, 11.15, 13.55):                                                        # handrails
             for dz in (0.9, 0.45):
                 prism(mb, (x, ya, dz + rail_z(ya)), (x, yl, dz + rail_z(yl)), 0.05, "railing")
             for k in range(4):
@@ -625,6 +728,14 @@ def terrace(mb, stage):
             prism(mb, (p0[0], p0[1], TZ + dz), (p1[0], p1[1], TZ + dz), 0.05, "railing")
     for x, y in [(-3.92 + i * 1.6, -1.92) for i in range(7)] + [(-3.92, 0.0), (-3.92, 1.9)]:
         mb.box(x - 0.03, x + 0.03, y - 0.03, y + 0.03, TZ, TZ + 0.92, "railing", skip=("bottom",))
+
+
+def entrance_extras(mb):
+    """Warm wall lights on the two porch piers and a low granite planter beside the stair (main LOD only)."""
+    # on the pier faces towards the stair: a lamp on the pier fronts would push the lot depth past 26 m (5x5)
+    mb.box(8.6, 8.66, EY + 0.3, EY + 0.6, 2.4, 2.75, "ent_light", skip=("left",))
+    mb.box(13.64, 13.7, EY + 0.3, EY + 0.6, 2.4, 2.75, "ent_light", skip=("right",))
+    mb.box(5.95, 7.25, -3.9, -2.6, 0, 0.6, dict(top="soil", default="stone_trim"), skip=("bottom",))
 
 
 def build(stage):
@@ -690,6 +801,8 @@ def build(stage):
                 mb.box(xc - 0.12, xc + 0.12, yc - 0.12, yc + 0.12, PH, PH + 0.25, "obst_light", skip=("bottom",))
     crown(mb, stage)
     entrance(mb, stage)
+    if stage == 0:
+        entrance_extras(mb)
     if stage < 2:
         terrace(mb, stage)
         # floor 1 of the left wing: solid grey granite band over the pilotis (user-03); ledges cap top and bottom
