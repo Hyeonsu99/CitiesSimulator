@@ -6,6 +6,10 @@
 ## 규격·내보내기
 - FBX 는 `FBX_SCALE_NONE`(CS2 는 FBX 단위를 무시하고 cm 로 읽음). Blender 5.x 는 API 가 달라 cs2kit 이 처리한다. 인게임·FBX 는 이 환경에서 검증 못 함 → 보고에 "게임에서 확인할 것"으로 남긴다.
 - 메인 재질 1개, `_Win`/`_Gls` 는 재질 없음, LOD1 < 메인 50%, LOD2 ≤ 500 tris, 이름에 밑줄 금지.
+- scope=night | applies_to=all_buildings | source=exllu-103 사용자 게임 시험 2026-11-11 | confidence=verified-in-game
+  창 앞의 `_Gls` 유리 메시는 야간에 카메라를 움직이면 창이 떨려 보인다 -> 창 앞 유리 메시를 만들지 않는다(`_Win` 만 쓴다).
+- scope=night | applies_to=emissive_textures | source=exllu-103 사용자 스크린샷 2026-11-11 | confidence=verified-in-game
+  넓은 면(바닥, 표식, 유리 벽)에 발광을 넣으면 값이 0.02 여도 면 전체가 네온처럼 빛난다 -> 발광은 작은 등기구 면에만 넣고 넓은 면은 0 으로 둔다.
 
 ## 사진과 치수
 - 층 번호는 특징 층(대피층 등)부터 센다. 매물 표시 층수·손으로 센 번호는 ±1 틀린다. 번호는 항상 그림으로 확인.

@@ -517,11 +517,11 @@
    "fbx": null
   },
   "fix": {
-   "at": "2026-11-11T14:53:54",
+   "at": "2026-11-11T22:42:50",
    "mode": "final",
-   "status": "INCOMPLETE",
+   "status": "PASS",
    "label": "fix",
-   "gate": "output/HighriseTower103_L1_5x5/_check/gate.json",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
    "checks": {
     "build": "PASS",
     "geometry": "PASS",
@@ -529,14 +529,13 @@
     "photo": "PASS",
     "tiles": "PASS",
     "lod": "PASS",
-    "fbx": "PASS",
-    "visual_review": "NOT_CHECKED"
+    "fbx": "PASS"
    },
-   "generator_hash": "cb5b163f2680b0f6c42892179ec7a867ec1e1bd6efd6e502bf942b3c8041b165",
+   "generator_hash": "06c49af33c78cbed5bec4b9085025f7271d8791faf7d8264ca1ba70efd65dc7a",
    "preview": {
-    "path": "previews/HighriseTower103_L1_5x5.png",
+    "path": "previews/HighriseTower103_L1_5x4.png",
     "exists": true,
-    "sha256": "c8cd0a67e6ff8b61ced2ac8c290839aa34577d71cae235198466e198da96b778",
+    "sha256": "d347d6d95f8466328c148a2d3dc58370feb80cd1e47e3a10ae8c60deee76cea9",
     "key": null
    },
    "fbx": null
@@ -1322,14 +1321,164 @@
     "key": null
    },
    "fbx": null
+  },
+  "fix-lights-rail": {
+   "at": "2026-11-11T22:14:54",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "fix-lights-rail",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "7abb425fa550eaa7202093748600179e55d22b7bdc9834f2cd6ff28d78aa8c93",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "fb183711623dfb4cfb8a53c72e17632c10bd1a075a18349432e0cf01073e9280",
+    "key": null
+   },
+   "fbx": null
+  },
+  "entrance-terrace": {
+   "at": "2026-11-11T22:32:36",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "entrance-terrace",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "b984c5ba1f2152eb3ebb68c14043dda9d0b9fe2d0bdc0863a6d371b58ba4254e",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "437a3febbd9f95971aed48bb660e3a4d737101cd5d0e1bfd40092f12a2f9c703",
+    "key": null
+   },
+   "fbx": null
+  },
+  "front-top-pale": {
+   "at": "2026-11-11T22:33:46",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "front-top-pale",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "64a08698af8889769bb58daff10e23252b6b60c51094d6c8f0dfe409a1218bdf",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "4cd4fa55798aade2e4033651c0a68c6dddb880484c7233dd4f7678e1031373c1",
+    "key": null
+   },
+   "fbx": null
+  },
+  "porch-lower-heli-unlit": {
+   "at": "2026-11-11T22:43:38",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "porch-lower-heli-unlit",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "06c49af33c78cbed5bec4b9085025f7271d8791faf7d8264ca1ba70efd65dc7a",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "c895d5dd38a575f777214152edf70a2f3748c7aa23da9c8ce8fd0c9d0255ec00",
+    "key": null
+   },
+   "fbx": null
+  },
+  "window-glow-rim": {
+   "at": "2026-11-11T22:51:53",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "window-glow-rim",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "46e559e46713bc5e6fa0f76cfa27f956031ce21945cff5bee46d1919289e14ca",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "935b2d4d4ba3b093b5d7e8bb5d7e30b368cd0fe67670eca219309f5922cc4b2b",
+    "key": null
+   },
+   "fbx": null
+  },
+  "window-lit-cells": {
+   "at": "2026-11-11T22:55:16",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "window-lit-cells",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "e2c61e634464ebf6ca0b7f3bd3459e216158c77629ab976fb7d83c9f661962c4",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "47d253f707e565d7061219010db4a2c91050fe079c7cc611f1f37588c34dce99",
+    "key": null
+   },
+   "fbx": null
   }
  },
- "updated_at": "2026-11-11T16:40:02",
+ "updated_at": "2026-11-11T22:55:16",
  "current_stage": "final:INCOMPLETE",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "2f905c356b4903fc1bb4919d19bb69d693a16fff99b8a568a93ffcc5b75b4331",
+ "generator_hash": "e2c61e634464ebf6ca0b7f3bd3459e216158c77629ab976fb7d83c9f661962c4",
  "visual_review": "NOT_CHECKED",
- "reviewed_preview_hash": "05b753273469fd10312c617a652ab11e116977cab269a12f537767c8e1993b11",
+ "reviewed_preview_hash": "c895d5dd38a575f777214152edf70a2f3748c7aa23da9c8ce8fd0c9d0255ec00",
  "last_gate": {
   "mode": "final",
   "status": "INCOMPLETE",

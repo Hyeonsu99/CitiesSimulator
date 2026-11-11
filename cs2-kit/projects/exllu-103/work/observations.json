@@ -88,5 +88,23 @@
   "side": "back",
   "note": "Existing September 2025 Kakao road-view capture: rear facade has two visibly different vertical window patterns and pale cladding; strong sun and tree cover limit color and lower-floor measurement.",
   "observed_at": "2026-11-10T22:20:37"
+ },
+ "55ac41cb54eb44b641342961ca08d71a36f236e7109c8aac7b3ce2c080d13896": {
+  "file": "photos\\sv-front-far-a.png",
+  "side": "front",
+  "note": "Naver street view 2025-03-07, pano yx8H9uDHnutUZ6EQR9rJGQ, 122 m NNE of 103 (between 104 and 105), yaw 188 pitch 42 fov 50: upper half of the front, near frontal. Both wings pale up to the roof with the same windows as lower floors, no dark-glass corner blocks; dark full-height centre slot; SE side flank darker brown full height; white steel frame on the SE roof edge. ~5 px/m, hazy.",
+  "observed_at": "2026-11-11T22:34:09"
+ },
+ "96957b28e110c81c09f4b000bb3b3822e15218712e79547bdcc3f93ee5af9f77": {
+  "file": "photos\\sv-front-far-b.png",
+  "side": "front",
+  "note": "Naver street view 2025-03-07, pano TraDSbypI_0jGzB09S8Llw, 118 m N of 103, yaw 183 pitch 42 fov 50: upper front, frontal, backlit. Confirms pale wings to the top and the dark centre slot.",
+  "observed_at": "2026-11-11T22:34:09"
+ },
+ "ea02bfbf963b3db47edd3c890a5e8db39a588750637c23b181ad445f2b2a91a5": {
+  "file": "photos\\sv-front-far-b-low.png",
+  "side": "front",
+  "note": "Same pano as sv-front-far-b, pitch 14: lower front behind pines; dark base and pale wall above visible, floor count of the base not readable (trees).",
+  "observed_at": "2026-11-11T22:34:10"
  }
 }

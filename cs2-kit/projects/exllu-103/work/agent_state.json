@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "2f905c356b4903fc1bb4919d19bb69d693a16fff99b8a568a93ffcc5b75b4331",
- "current_preview_hash": "6a4656659378ac490ea93a476404cb57f480175702f915e4707234d9640b9901",
+ "generator_hash": "e2c61e634464ebf6ca0b7f3bd3459e216158c77629ab976fb7d83c9f661962c4",
+ "current_preview_hash": "47d253f707e565d7061219010db4a2c91050fe079c7cc611f1f37588c34dce99",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-103",
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
   "asset": "HighriseTower103_L1_5x4",
-  "label": "",
-  "time": "2026-11-11 16:40:02",
+  "label": "window-lit-cells",
+  "time": "2026-11-11 22:55:16",
   "build": {
    "asset": "HighriseTower103_L1_5x4",
    "fbx": true,
@@ -52,28 +52,25 @@
     "zmin": 0.0,
     "coords": "generator coordinates (before pivot move)",
     "tris": {
-     "main": 78848,
+     "main": 78922,
      "win": 2808,
-     "gls": 2808,
-     "lod1": 17550,
+     "lod1": 17972,
      "lod1_win": 2808,
-     "lod2": 294,
+     "lod2": 292,
      "lod2_win": 2808
     },
     "verts": {
-     "main": 157696,
+     "main": 157844,
      "win": 5616,
-     "gls": 5616,
-     "lod1": 35100,
+     "lod1": 35944,
      "lod1_win": 5616,
-     "lod2": 588,
+     "lod2": 584,
      "lod2_win": 5616
     },
     "coplanar": {
      "main": 0,
      "lod1": 0,
      "lod2": 0,
-     "gls": 0,
      "win": 0
     },
     "textures": {
@@ -100,7 +97,7 @@
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 18.1
+    "time_s": 8.7
    },
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
@@ -109,14 +106,14 @@
    "mismatch": 0,
    "lines": [
     "INFO     front floor pitch: photo 2.80 m / model 5.90 m (+111%)  -> photo shows ~54 floor bands over the wall height, model ~26 (model needs MORE floors or lower floor height) (low-confidence photo evidence - do not auto-change floors)",
-    "MATCH    front window bay pitch: photo 2.10 m / model 1.70 m (-19%)",
-    "INFO     front edge agreement 53%",
+    "INFO     front window bay pitch: photo 2.10 m / model 3.65 m (+74%)  (bays differ - check window columns)",
+    "INFO     front edge agreement 51%",
     "INFO     left floor pitch: photo 3.00 m / model 5.90 m (+97%)  -> photo shows ~50 floor bands over the wall height, model ~26 (model needs MORE floors or lower floor height) (low-confidence photo evidence - do not auto-change floors)",
     "INFO     left window bay pitch: photo 4.15 m / model 2.45 m (-41%)  (bays differ - check window columns)",
-    "INFO     left edge agreement 63%",
+    "INFO     left edge agreement 59%",
     "INFO     right floor pitch: photo 1.65 m / model 5.90 m (+258%)  -> photo shows ~91 floor bands over the wall height, model ~26 (model needs MORE floors or lower floor height) (weak pattern in photo or model - LOW_CONFIDENCE, check by eye) (low-confidence photo evidence - do not auto-change floors)",
     "INFO     right window bay pitch: photo 11.85 m / model 1.65 m (-86%)  (bays differ - check window columns)",
-    "INFO     right edge agreement 49%"
+    "INFO     right edge agreement 55%"
    ],
    "status": "PASS"
   },
@@ -124,37 +121,38 @@
    "checked": true,
    "status": "PASS",
    "simplified": [
-    "TILE front r4c0 x[0,11]m z[106,115]m recall 4% precision 6%  SIMPLIFIED",
-    "TILE front r5c0 x[0,11]m z[97,106]m recall 8% precision 12%  SIMPLIFIED",
-    "TILE front r3c0 x[0,11]m z[115,124]m recall 13% precision 7%  SIMPLIFIED",
-    "TILE left r16c1 x[10,21]m z[0,9]m recall 40% precision 59%  SIMPLIFIED",
-    "TILE left r6c0 x[0,10]m z[89,97]m recall 41% precision 48%  SIMPLIFIED",
-    "TILE left r13c0 x[0,10]m z[27,35]m recall 43% precision 58%  SIMPLIFIED",
-    "TILE right r0c1 x[10,21]m z[142,151]m recall 22% precision 3%  SIMPLIFIED",
-    "TILE right r8c0 x[0,10]m z[71,80]m recall 26% precision 41%  SIMPLIFIED",
-    "TILE right r10c0 x[0,10]m z[53,62]m recall 27% precision 73%  SIMPLIFIED"
+    "TILE front r0c0 x[0,11]m z[142,151]m recall 1% precision 0%  SIMPLIFIED",
+    "TILE front r1c0 x[0,11]m z[133,142]m recall 3% precision 1%  SIMPLIFIED",
+    "TILE front r2c0 x[0,11]m z[124,133]m recall 3% precision 2%  SIMPLIFIED",
+    "TILE left r7c0 x[0,10]m z[80,89]m recall 43% precision 56%  SIMPLIFIED",
+    "TILE left r13c0 x[0,10]m z[27,35]m recall 44% precision 62%  SIMPLIFIED",
+    "TILE left r11c1 x[10,21]m z[44,53]m recall 44% precision 59%  SIMPLIFIED",
+    "TILE right r1c0 x[0,10]m z[133,142]m recall 17% precision 10%  SIMPLIFIED",
+    "TILE right r7c1 x[10,21]m z[80,89]m recall 20% precision 35%  SIMPLIFIED",
+    "TILE right r16c1 x[10,21]m z[0,9]m recall 21% precision 8%  SIMPLIFIED"
    ],
    "detail": [
-    "DETAIL front recall 40% precision 40% worst r4c0 (4%) simplified_tiles 33/51",
-    "DETAIL left recall 52% precision 49% worst r16c1 (40%) simplified_tiles 13/34",
-    "DETAIL right recall 41% precision 42% worst r0c1 (22%) simplified_tiles 25/34"
+    "DETAIL front recall 35% precision 39% worst r0c0 (1%) simplified_tiles 38/51",
+    "DETAIL left recall 52% precision 48% worst r7c0 (43%) simplified_tiles 13/34",
+    "DETAIL right recall 41% precision 42% worst r1c0 (17%) simplified_tiles 27/34"
    ],
    "detail_color": [
-    "DETAIL_COLOR front tiles_off 19/51 (dE>14; trusted tiles only)",
-    "DETAIL_COLOR left tiles_off 2/34 (dE>14; trusted tiles only)",
-    "DETAIL_COLOR right tiles_off 8/29 (dE>14; trusted tiles only)"
+    "DETAIL_COLOR front tiles_off 13/51 (dE>14; trusted tiles only)",
+    "DETAIL_COLOR left tiles_off 4/34 (dE>14; trusted tiles only)",
+    "DETAIL_COLOR right tiles_off 7/29 (dE>14; trusted tiles only)"
    ],
    "color_off": [
-    "COLOR front r0c1 x[11,22]m photo #ffffd3 model #bcbbb5 dE 30  COLOR_OFF confidence=trusted",
-    "COLOR front r13c1 x[11,22]m photo #707a7e model #b8b9b3 dE 25  COLOR_OFF confidence=trusted",
-    "COLOR front r1c0 x[0,11]m photo #d3dace model #879f9d dE 24  COLOR_OFF confidence=trusted",
-    "COLOR left r13c0 x[0,10]m photo #717c79 model #a2a39e dE 16  COLOR_OFF confidence=trusted",
-    "COLOR left r2c1 x[10,21]m photo #bbc5ba model #91a09c dE 14  COLOR_OFF confidence=trusted",
-    "COLOR right r16c0 x[0,10]m photo #1b1618 model #496b6e dE 38  COLOR_OFF confidence=trusted",
-    "COLOR right r15c0 x[0,10]m photo #241e21 model #4f7275 dE 37  COLOR_OFF confidence=trusted",
-    "COLOR right r14c0 x[0,10]m photo #302a2e model #78807c dE 36  COLOR_OFF confidence=trusted"
+    "COLOR front r0c1 x[11,22]m photo #ffffd2 model #bbbab4 dE 31  COLOR_OFF confidence=trusted",
+    "COLOR front r14c2 x[22,33]m photo #b4b1aa model #5e7475 dE 27  COLOR_OFF confidence=trusted",
+    "COLOR front r13c1 x[11,22]m photo #6f7a7e model #b9b8b2 dE 25  COLOR_OFF confidence=trusted",
+    "COLOR left r13c0 x[0,10]m photo #717874 model #a2a19b dE 17  COLOR_OFF confidence=trusted",
+    "COLOR left r4c1 x[10,21]m photo #b7bcaf model #8c968f dE 15  COLOR_OFF confidence=trusted",
+    "COLOR left r2c1 x[10,21]m photo #bbc0b2 model #929990 dE 15  COLOR_OFF confidence=trusted",
+    "COLOR right r14c0 x[0,10]m photo #2f292d model #5d6963 dE 28  COLOR_OFF confidence=trusted",
+    "COLOR right r13c1 x[10,21]m photo #414140 model #7d7c78 dE 25  COLOR_OFF confidence=trusted",
+    "COLOR right r14c1 x[10,21]m photo #302c2e model #59645e dE 24  COLOR_OFF confidence=trusted"
    ],
-   "tiles_off": 29,
+   "tiles_off": 24,
    "tiles_total": 114
   },
   "lod": {
@@ -166,9 +164,9 @@
   "agent": {
    "status": "PASS",
    "verts": {
-    "LOD0": 157696,
-    "LOD1": 35100,
-    "LOD2": 588
+    "LOD0": 157844,
+    "LOD1": 35944,
+    "LOD2": 584
    },
    "action_tags": [],
    "exact_fix_instruction": "no fix needed"
@@ -185,37 +183,37 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-103",
- "updated_at": "2026-11-11T16:42:31",
- "visual_review_note": "현관 출입문 본체 벽면 배치 및 계단 랜딩 바닥과 5단 난간 본체까지 완전 연결",
+ "updated_at": "2026-11-11T22:55:46",
+ "visual_review_note": "창 불빛을 텍스처 칸 단위로 묶고 창을 칸에 무작위 배정(먼 거리에서 불 켜진 칸이 옆 어두운 창으로 번져 점으로 보이던 문제). 야간 렌더에서 불 켜진 창 28%가 고르게 흩어짐, 외벽은 변화 없음. 게임 안 모습은 미검증",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower103_L1_5x4.png",
-   "sha256": "6a4656659378ac490ea93a476404cb57f480175702f915e4707234d9640b9901"
+   "sha256": "47d253f707e565d7061219010db4a2c91050fe079c7cc611f1f37588c34dce99"
   },
   {
    "file": "previews/photo_check/facade_front.png",
-   "sha256": "30e32e0827ef8aa1d8cb99aa158e3613f7bfab1765c1a6fe4119a227a26f73bf"
+   "sha256": "94b3086c39bfb29ba98be7c25c441d5d26f1044fa357273f68364938b00444b6"
   },
   {
    "file": "previews/photo_check/facade_left.png",
-   "sha256": "f73447bc71f02f2a9605c84b470927cb53bfdd9560549fd9ccc18fa6b3328dab"
+   "sha256": "c6b13989865a4a59445d12310b89f9943527ca90ae6da7cd7d8e7597a6359c11"
   },
   {
    "file": "previews/photo_check/facade_right.png",
-   "sha256": "f123996fdaea23004309b15cbb174ffb84ecca0b7dfa64bb0ff8c7d5df9d136e"
+   "sha256": "c0698b9243b180f5bf2ae5e97b36035edaa46b19f5be22c8b42a9ff75b61d812"
   },
   {
    "file": "previews/tiles/front_map.png",
-   "sha256": "9ac2f5d81e5d2facc7db14dd3224aa23a8c0b98e150fe1d2e0c918fe03d9675a"
+   "sha256": "0a02f5c9a9f6cff0024c71aa09b3335c6ef7b5a57534f1d1716a5bf117f18f39"
   },
   {
    "file": "previews/tiles/left_map.png",
-   "sha256": "2266429851064451fd89576778274e1753345139a595437ff576069d1024d6c8"
+   "sha256": "02f512eaefb161d6396f6cb4f0771b44e0bc203353b63be10f06a998c1b69d75"
   },
   {
    "file": "previews/tiles/right_map.png",
-   "sha256": "b2722bfc5b8ecc4b63ab2a7961228d5064fbc9ec532e9994401226795bbbe569"
+   "sha256": "ff1ff4be71d10fd47f43e8a602823681ce04e334ec419e216024a2f21bcd01cf"
   }
  ],
- "reviewed_preview_hash": "6a4656659378ac490ea93a476404cb57f480175702f915e4707234d9640b9901"
+ "reviewed_preview_hash": "47d253f707e565d7061219010db4a2c91050fe079c7cc611f1f37588c34dce99"
 }
