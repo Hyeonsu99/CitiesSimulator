@@ -413,7 +413,7 @@ def floor_facade(mb, stage, f):
 def ground_floor(mb, stage):
     z0, z1, u = 0.3, GH - 0.6, 0          # double-height lobby glazing
     zs0, zs1 = SILL, GH - 0.8
-    window(mb, stage, "y", 0, -1, 6.0, 15.4, z0, z1, 0, u, (0.2, 0.4, 0.6, 0.8)); u += 1
+    window(mb, stage, "y", 0, -1, 6.0, 15.4, z0, z1, 0, u, (0.2, 0.4, 0.6, 0.8), jambs=(True, False)); u += 1
     # left wing pilotis stay open (user-03: bicycle parking, no glazing); slot: door off the raised terrace
     window(mb, stage, "y", RD, -1, -0.6, 0.6, TZ + 0.05, TZ + 2.3, 0, u); u += 1
     window(mb, stage, "x", X, 1, 1.0, 5.4, zs0, zs1, 0, u, PAIR); u += 1   # right side front bay
@@ -680,14 +680,18 @@ ST_N, ST_R, ST_T = 7, 0.15, 0.36          # stair: 7 risers of 0.15 m, 0.4 m tre
 
 def entrance(mb, stage):
     """Entrance porch (user entrance photos): deep box canopy whose front and +x faces show a pale panel band,
-    a clerestory window strip and a dark stone cap; dark granite left pier, wide pink granite corner pier;
-    raised stair between stone cheek walls with steel handrails; recessed dark glass vestibule.
+    a clerestory window strip and a dark stone cap; dark granite left pier and flank wall, wide pink granite corner pier
+    and dark granite side wall to the building facade; raised stair with steel handrails; recessed dark glass vestibule.
     The "103" numerals and the sign lettering are not modeled (no sign text)."""
     mb.box(7.5, 15.55, EY, 0, EZ0, EZT, dict(front="pale", right="pale", left="stone", top="roof",
                                              bottom="soffit"), skip=("back",))
     mb.box(7.4, 8.6, EY - 0.1, EY + 1.1, 0, EZT + 0.1, "stone_trim", skip=("bottom",))         # left pier
-    mb.box(13.7, 15.7, EY - 0.2, EY + 1.8, 0, EZT + 0.3, dict(top="stone_trim", default="pier_pink"),
+    mb.box(7.5, 8.6, EY + 1.1, 0, 0, EZ0, "stone_trim", skip=("bottom", "top", "back", "front"))  # left flank wall to tower
+    mb.box(13.7, 15.7, EY - 0.2, EY + 1.8, 0, EZT + 0.3,
+           dict(front="pier_pink", right="stone", left="stone_trim", top="stone_trim", default="stone"),
            skip=("bottom",))                                                                  # corner pier
+    mb.box(13.7, 15.55, EY + 1.8, 0, 0, EZ0, dict(right="stone", left="stone_trim", default="stone"),
+           skip=("bottom", "top", "back", "front"))                                           # right flank wall to tower
     if stage == 2:
         return
     for axis, c, s, a0, a1 in (("y", EY, -1, 8.6, 13.7), ("x", 15.55, 1, EY + 1.8, 0.0)):
@@ -700,9 +704,8 @@ def entrance(mb, stage):
         mb.box(8.6, 13.7, y0, y0 + ST_T if i < ST_N - 1 else -1.6, 0, ST_R * (i + 1), "canopy",
                skip=("bottom", "back", "left", "right"))
     zl = ST_N * ST_R
+    mb.box(8.6, 13.7, -1.6, 0, 0, zl, "canopy", skip=("bottom", "front", "back", "left", "right")) # landing behind doors
     mb.box(8.6, 13.7, -1.7, -1.6, zl, EZ0, {"front": "vestibule", "default": "stone_trim"}, skip=("bottom", "top"))
-    for x0, x1, y0 in ((8.2, 8.6, EY + 1.1), (13.7, 14.1, EY + 1.8)):                         # cheek walls
-        mb.box(x0, x1, y0, -1.6, 0, zl + 0.2, "stone_trim", skip=("bottom", "front"))       # front touches pier
     if stage == 0:
         ya = EY + 0.2
         rail_z = lambda y: ST_R + (y - ya) / (yl - ya) * (zl - ST_R)                           # stair pitch line

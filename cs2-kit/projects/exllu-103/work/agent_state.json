@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "5d1a126baf3e3ef22af752f44dedbc23c7ffab125000c9ae7d55dbf8701951ad",
- "current_preview_hash": "4fa94f3864ec6d4ddbb8818e4520d831a31ebe1efbf34a9c946120e7a13191aa",
+ "generator_hash": "653c35fca2498534f675270eca849fa0f06ec47fda6899e66a9e8bf9fa92ad88",
+ "current_preview_hash": "d51404fc8af87b0c3a02a56c6aa186b5cdc8c27b7a45cb2da1b751bd6dfc27c1",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-103",
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
   "asset": "HighriseTower103_L1_5x4",
-  "label": "flicker_base",
-  "time": "2026-11-11 14:59:50",
+  "label": "",
+  "time": "2026-11-11 15:35:09",
   "build": {
    "asset": "HighriseTower103_L1_5x4",
    "fbx": true,
@@ -52,21 +52,21 @@
     "zmin": 0.0,
     "coords": "generator coordinates (before pivot move)",
     "tris": {
-     "main": 78780,
+     "main": 78730,
      "win": 2808,
      "gls": 2808,
-     "lod1": 17570,
+     "lod1": 17526,
      "lod1_win": 2808,
-     "lod2": 294,
+     "lod2": 302,
      "lod2_win": 2808
     },
     "verts": {
-     "main": 157560,
+     "main": 157460,
      "win": 5616,
      "gls": 5616,
-     "lod1": 35140,
+     "lod1": 35052,
      "lod1_win": 5616,
-     "lod2": 588,
+     "lod2": 604,
      "lod2_win": 5616
     },
     "coplanar": {
@@ -100,7 +100,7 @@
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 11.0
+    "time_s": 15.9
    },
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
@@ -166,9 +166,9 @@
   "agent": {
    "status": "PASS",
    "verts": {
-    "LOD0": 157560,
-    "LOD1": 35140,
-    "LOD2": 588
+    "LOD0": 157460,
+    "LOD1": 35052,
+    "LOD2": 604
    },
    "action_tags": [],
    "exact_fix_instruction": "no fix needed"
@@ -185,16 +185,16 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-103",
- "updated_at": "2026-11-11T14:59:52",
- "visual_review_note": "Texture quality pass (stone/pale/grey 1024 px tiles, window 2048, new roof/paving/shutter/soffit/clerestory/vestibule textures; texel median 96 -> 385 px/m) and entrance detail (baked door set, soffit downlights, clerestory mullions, centre handrail, pier wall lights, planter). Building layout unchanged; front/SE/NW sheets as reviewed earlier. Checked close-ups v32_entrance.png, v32_entrance_night.png, v32_wall_closeup.png. In-game look not verified.",
+ "updated_at": "2026-11-11T15:36:43",
+ "visual_review_note": "현관 우측 기둥과 본체 벽면 사이의 빈 공간을 화강석 측벽으로 메우고 좌우 측벽과 현관 바닥을 본체 파사드까지 연결. 7개 게이트 항목 모두 PASS",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower103_L1_5x4.png",
-   "sha256": "4fa94f3864ec6d4ddbb8818e4520d831a31ebe1efbf34a9c946120e7a13191aa"
+   "sha256": "d51404fc8af87b0c3a02a56c6aa186b5cdc8c27b7a45cb2da1b751bd6dfc27c1"
   },
   {
    "file": "previews/photo_check/facade_front.png",
-   "sha256": "82174412d898e26192d412bd46da5e8b06de5a1745cbe739cd289fa0d2452e4f"
+   "sha256": "a0be74fdb9386ea35f53b10952957349b746a489ccf33064fedec83ab937d355"
   },
   {
    "file": "previews/photo_check/facade_left.png",
@@ -217,5 +217,5 @@
    "sha256": "b2722bfc5b8ecc4b63ab2a7961228d5064fbc9ec532e9994401226795bbbe569"
   }
  ],
- "reviewed_preview_hash": "4fa94f3864ec6d4ddbb8818e4520d831a31ebe1efbf34a9c946120e7a13191aa"
+ "reviewed_preview_hash": "d51404fc8af87b0c3a02a56c6aa186b5cdc8c27b7a45cb2da1b751bd6dfc27c1"
 }

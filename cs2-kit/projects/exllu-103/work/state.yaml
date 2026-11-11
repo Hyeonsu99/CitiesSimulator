@@ -72,7 +72,7 @@
    "fbx": null
   },
   "final": {
-   "at": "2026-11-10T22:12:41",
+   "at": "2026-11-11T15:35:09",
    "mode": "final",
    "status": "INCOMPLETE",
    "label": "",
@@ -87,11 +87,11 @@
     "fbx": "PASS",
     "visual_review": "NOT_CHECKED"
    },
-   "generator_hash": "143747eb5c232960f84d18b49a636e80f75aa872698b175c15e2662194bb8b88",
+   "generator_hash": "653c35fca2498534f675270eca849fa0f06ec47fda6899e66a9e8bf9fa92ad88",
    "preview": {
     "path": "previews/HighriseTower103_L1_5x4.png",
     "exists": true,
-    "sha256": "7e5a91a177e1806ed48f48a3f6ab8de7a96826663e0e47c854ccc56b477e49d2",
+    "sha256": "d51404fc8af87b0c3a02a56c6aa186b5cdc8c27b7a45cb2da1b751bd6dfc27c1",
     "key": null
    },
    "fbx": null
@@ -1278,14 +1278,58 @@
     "key": null
    },
    "fbx": null
+  },
+  "quick": {
+   "at": "2026-11-11T15:33:59",
+   "mode": "quick",
+   "status": "PASS",
+   "label": "",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "NOT_CHECKED",
+    "photo": "NOT_CHECKED",
+    "tiles": "NOT_CHECKED",
+    "lod": "NOT_CHECKED",
+    "fbx": "NOT_CREATED"
+   },
+   "generator_hash": "653c35fca2498534f675270eca849fa0f06ec47fda6899e66a9e8bf9fa92ad88",
+   "preview": null,
+   "fbx": null
+  },
+  "visual": {
+   "at": "2026-11-11T15:25:44",
+   "mode": "visual",
+   "status": "INCOMPLETE",
+   "label": "",
+   "gate": "output/HighriseTower103_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "NOT_CHECKED",
+    "lod": "NOT_CHECKED",
+    "fbx": "NOT_CREATED",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "653c35fca2498534f675270eca849fa0f06ec47fda6899e66a9e8bf9fa92ad88",
+   "preview": {
+    "path": "previews/HighriseTower103_L1_5x4.png",
+    "exists": true,
+    "sha256": "58b769a402cf87cc2943222dec36cd68b6dc0a5192a5a17bdbd89160ffe79f8d",
+    "key": null
+   },
+   "fbx": null
   }
  },
- "updated_at": "2026-11-11T14:59:50",
+ "updated_at": "2026-11-11T15:35:09",
  "current_stage": "final:INCOMPLETE",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "5d1a126baf3e3ef22af752f44dedbc23c7ffab125000c9ae7d55dbf8701951ad",
+ "generator_hash": "653c35fca2498534f675270eca849fa0f06ec47fda6899e66a9e8bf9fa92ad88",
  "visual_review": "NOT_CHECKED",
- "reviewed_preview_hash": "6695845b45ddea07ac8636fe9afb41ba9b1c318271f2a8681c2fc6e1d4be0976",
+ "reviewed_preview_hash": "4fa94f3864ec6d4ddbb8818e4520d831a31ebe1efbf34a9c946120e7a13191aa",
  "last_gate": {
   "mode": "final",
   "status": "INCOMPLETE",
