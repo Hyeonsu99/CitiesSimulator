@@ -7,17 +7,17 @@
  "size": [
   33.2,
   26.0,
-  160.052
+  162.48
  ],
  "pivot_shift": [
   -0.0,
   -8.600000000000001
  ],
  "tris": {
-  "main": 77884,
+  "main": 78298,
   "win": 2808,
   "gls": 0,
-  "lod1": 16710,
+  "lod1": 16766,
   "lod1_win": 2808,
   "lod1_gls": 0,
   "lod2": 294,
@@ -50,7 +50,7 @@
    },
    "stone_trim": {
     "rect": [
-     2736,
+     2896,
      16,
      64,
      64
@@ -75,7 +75,7 @@
    },
    "crown_white": {
     "rect": [
-     2832,
+     2992,
      16,
      64,
      64
@@ -86,7 +86,7 @@
    },
    "deck_under": {
     "rect": [
-     2928,
+     3088,
      16,
      64,
      64
@@ -125,7 +125,7 @@
    },
    "railing": {
     "rect": [
-     3024,
+     3184,
      16,
      64,
      64
@@ -150,7 +150,7 @@
    },
    "se_glass": {
     "rect": [
-     3120,
+     3280,
      16,
      64,
      64
@@ -161,7 +161,7 @@
    },
    "frame": {
     "rect": [
-     3216,
+     3376,
      16,
      64,
      64
@@ -172,7 +172,7 @@
    },
    "louver": {
     "rect": [
-     3312,
+     3472,
      16,
      64,
      64
@@ -183,7 +183,7 @@
    },
    "louver_back": {
     "rect": [
-     3408,
+     3568,
      16,
      64,
      64
@@ -194,7 +194,7 @@
    },
    "louver_line": {
     "rect": [
-     3504,
+     3664,
      16,
      64,
      64
@@ -205,7 +205,7 @@
    },
    "roof": {
     "rect": [
-     3600,
+     3760,
      16,
      64,
      64
@@ -216,7 +216,7 @@
    },
    "deck": {
     "rect": [
-     3696,
+     3856,
      16,
      64,
      64
@@ -227,7 +227,7 @@
    },
    "heli_green": {
     "rect": [
-     3792,
+     3952,
      16,
      64,
      64
@@ -238,8 +238,8 @@
    },
    "heli_white": {
     "rect": [
-     3888,
      16,
+     1072,
      64,
      64
     ],
@@ -274,8 +274,8 @@
    },
    "glass": {
     "rect": [
-     3984,
-     16,
+     112,
+     1072,
      64,
      64
     ],
@@ -299,7 +299,7 @@
    },
    "pale_trim": {
     "rect": [
-     16,
+     208,
      1072,
      64,
      64
@@ -310,7 +310,7 @@
    },
    "grey_trim": {
     "rect": [
-     112,
+     304,
      1072,
      64,
      64
@@ -321,7 +321,7 @@
    },
    "white_shaft": {
     "rect": [
-     208,
+     400,
      1072,
      64,
      64
@@ -332,7 +332,7 @@
    },
    "heli_net": {
     "rect": [
-     304,
+     496,
      1072,
      64,
      64
@@ -346,7 +346,7 @@
    },
    "grating": {
     "rect": [
-     400,
+     592,
      1072,
      64,
      64
@@ -360,7 +360,65 @@
    },
    "heli_light": {
     "rect": [
-     496,
+     688,
+     1072,
+     32,
+     32
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 32
+   },
+   "deck_lit": {
+    "rect": [
+     2736,
+     16,
+     128,
+     128
+    ],
+    "tile": [
+     1.8357142857142856,
+     0.85
+    ],
+    "variants": 1,
+    "px": 128
+   },
+   "heli_light_y": {
+    "rect": [
+     752,
+     1072,
+     32,
+     32
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 32
+   },
+   "obst_light": {
+    "rect": [
+     816,
+     1072,
+     32,
+     32
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 32
+   },
+   "flood_light": {
+    "rect": [
+     880,
+     1072,
+     32,
+     32
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 32
+   },
+   "windsock": {
+    "rect": [
+     944,
      1072,
      32,
      32
@@ -371,7 +429,7 @@
    },
    "under_light": {
     "rect": [
-     560,
+     1008,
      1072,
      32,
      32
@@ -400,7 +458,9 @@
    "crown_white",
    "dark_glass",
    "deck",
+   "deck_lit",
    "deck_under",
+   "flood_light",
    "frame",
    "glass",
    "grating",
@@ -408,12 +468,14 @@
    "grey_trim",
    "heli_green",
    "heli_light",
+   "heli_light_y",
    "heli_net",
    "heli_white",
    "louver",
    "louver_back",
    "louver_line",
    "obs_roof",
+   "obst_light",
    "pale",
    "pale_trim",
    "pier_pink",
@@ -423,7 +485,8 @@
    "stone",
    "stone_trim",
    "under_light",
-   "white_shaft"
+   "white_shaft",
+   "windsock"
   ],
   "win": [
    "window"
@@ -435,6 +498,7 @@
    "crown_white",
    "dark_glass",
    "deck",
+   "deck_lit",
    "deck_under",
    "frame",
    "glass",

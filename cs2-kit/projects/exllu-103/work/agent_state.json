@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "d044cfca763f5a1c1dfabafee101fb7468a191fd68f6c3bc0dbb35215ef5856d",
- "current_preview_hash": "9196bb2fab09e7010fc87fd67c01039f7c111fbb5b3a7d504595ee733c01a260",
+ "generator_hash": "aac9b773665efb83520d8809f2e2a77dc997b1da3fc9861322c68826badd9616",
+ "current_preview_hash": "b699869b47738484a9d0b87d7876b32a3468ac973e0b78c4edfef1535147c1ba",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-103",
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
   "asset": "HighriseTower103_L1_5x4",
-  "label": "baseline",
-  "time": "2026-11-11 09:21:33",
+  "label": "helilights",
+  "time": "2026-11-11 09:58:20",
   "build": {
    "asset": "HighriseTower103_L1_5x4",
    "fbx": true,
@@ -43,7 +43,7 @@
     "size": [
      33.2,
      26.0,
-     160.05
+     162.48
     ],
     "pivot_offset": [
      0.0,
@@ -52,19 +52,19 @@
     "zmin": 0.0,
     "coords": "generator coordinates (before pivot move)",
     "tris": {
-     "main": 77884,
+     "main": 78298,
      "win": 2808,
      "gls": 2808,
-     "lod1": 16710,
+     "lod1": 16766,
      "lod1_win": 2808,
      "lod2": 294,
      "lod2_win": 2808
     },
     "verts": {
-     "main": 155768,
+     "main": 156596,
      "win": 5616,
      "gls": 5616,
-     "lod1": 33420,
+     "lod1": 33532,
      "lod1_win": 5616,
      "lod2": 588,
      "lod2_win": 5616
@@ -100,7 +100,7 @@
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 17.0
+    "time_s": 14.3
    },
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
@@ -160,14 +160,14 @@
   "lod": {
    "checked": true,
    "status": "PASS",
-   "line": "LODCHECK PASS main max 0.012% (az 112, el +25) bad_views 0/64 | lod1 max 0.006% (az 248, el +50) bad_views 0/64 | lod2 max 0.009% (az 248, el +50) bad_views 0/64  -> previews\\lod_check\\HighriseTower103_L1_5x4",
+   "line": "LODCHECK PASS main max 0.015% (az 68, el -10) bad_views 0/64 | lod1 max 0.002% (az 338, el +5) bad_views 0/64 | lod2 max 0.000% (az 0, el -10) bad_views 0/64  -> previews\\lod_check\\HighriseTower103_L1_5x4",
    "notes": []
   },
   "agent": {
    "status": "PASS",
    "verts": {
-    "LOD0": 155768,
-    "LOD1": 33420,
+    "LOD0": 156596,
+    "LOD1": 33532,
     "LOD2": 588
    },
    "action_tags": [],
@@ -185,12 +185,12 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-103",
- "updated_at": "2026-11-11T09:21:58",
- "visual_review_note": "Same build as the review recorded earlier today (flicker test switch added, default off; main 77884 tris unchanged). Layout matches on front/SE/NW refs; low front wing tile recall is a half-floor offset of the warped wide-angle photo; brightness differs because the refs are hazy. In-game flicker is not covered by this review.",
+ "updated_at": "2026-11-11T10:02:31",
+ "visual_review_note": "Helideck lighting added (roof only; facades unchanged, geometry diff outside the roof box = 0): perimeter light pools, yellow circle lights, lit pad/markings, rail floodlights, red obstruction lights, windsock. Checked in kit night render (v31_heli_lights_night.png) and in the local Asset Simulator at 127.0.0.1:5183/?preview=103 (v31_asset_simulator_night.png). Facade review as recorded earlier today.",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower103_L1_5x4.png",
-   "sha256": "9196bb2fab09e7010fc87fd67c01039f7c111fbb5b3a7d504595ee733c01a260"
+   "sha256": "b699869b47738484a9d0b87d7876b32a3468ac973e0b78c4edfef1535147c1ba"
   },
   {
    "file": "previews/photo_check/facade_front.png",
@@ -217,5 +217,5 @@
    "sha256": "d5a5b1722f498961bd7beca3ee6a528a5ebeb62f5f6f79b075412266543f2130"
   }
  ],
- "reviewed_preview_hash": "9196bb2fab09e7010fc87fd67c01039f7c111fbb5b3a7d504595ee733c01a260"
+ "reviewed_preview_hash": "b699869b47738484a9d0b87d7876b32a3468ac973e0b78c4edfef1535147c1ba"
 }

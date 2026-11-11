@@ -95,6 +95,19 @@ def mesh_grid(ctx, n, w, col):
     ctx.rgb[m] = np.array(col, np.float32)
 
 
+def deck_glow(ctx):
+    """Grey deck band tile with one perimeter light at its centre: green light pool on the paving at night."""
+    mx, mz = ctx.meters()
+    d = np.hypot(mx - ctx.tile[0] / 2, mz - ctx.tile[1] / 2)
+    ctx.emis[...] = 0.5 * np.exp(-(d / 0.30) ** 2) + 0.10 * np.exp(-(d / 0.75) ** 2)
+    ctx.rgb[d < 0.17] = np.array([96, 100, 100], np.float32)          # dark fixture base ring
+
+
+def flat_emis(v):
+    return lambda c: c.emis.__setitem__(Ellipsis, v)
+
+
+DECK_W = 0.85                # grey deck band between the green pad (12 m) and the deck edge
 OBS_GH = 3.65                # observatory glass height between plinth (0.6) and coping (0.35); see observatory()
 
 
@@ -129,6 +142,13 @@ TEX = {  # tile = one 2.4 m x one storey, so joints line up with floors
     "heli_net": dict(tile=(0.6, 0.6), px=64, painter=lambda c: mesh_grid(c, 4, 0.10, (178, 182, 184))),
     "grating": dict(tile=(0.6, 0.6), px=64, painter=lambda c: mesh_grid(c, 12, 0.25, (70, 72, 74))),
     "heli_light": dict(px=32, painter=lambda c: c.emis.__setitem__(Ellipsis, 1.0), emissive=(110, 255, 140)),
+    # helideck night lighting (estimated: standard rooftop heliport layout, no night photo of this deck)
+    "deck_lit": dict(tile=((2 * 6.85 - DECK_W) / 7, DECK_W), px=128, painter=deck_glow, emissive=(110, 255, 140)),
+    "heli_green": dict(px=64, painter=flat_emis(0.07), emissive=(130, 225, 160)),      # floodlit pad
+    "heli_white": dict(px=64, painter=flat_emis(0.22), emissive=(255, 250, 236)),      # lit H / border / circle
+    "heli_light_y": dict(px=32, painter=flat_emis(1.0), emissive=(255, 214, 90)),      # touchdown circle lights
+    "obst_light": dict(px=32, painter=flat_emis(1.0), emissive=(255, 58, 40)),         # red obstruction lights
+    "flood_light": dict(px=32, painter=flat_emis(0.8), emissive=(255, 244, 222)),      # deck floodlight lens
     "under_light": dict(px=32, painter=lambda c: c.emis.__setitem__(Ellipsis, 0.15), emissive=(255, 214, 160)),
 }
 
@@ -162,6 +182,11 @@ for name, color, metal, gloss, px in (
         ("heli_net", (72, 76, 80), 0.6, 0.4, 64),       # helideck perimeter safety net (steel mesh)
         ("grating", (128, 132, 134), 0.6, 0.35, 64),    # access platform / stair treads
         ("heli_light", (90, 230, 120), 0.0, 0.6, 32),   # green perimeter lights (emissive)
+        ("deck_lit", (150, 152, 150), 0.0, 0.3, 128),   # deck band with a light pool per perimeter light
+        ("heli_light_y", (240, 208, 96), 0.0, 0.6, 32), # yellow touchdown circle lights
+        ("obst_light", (226, 62, 50), 0.0, 0.6, 32),    # red aviation obstruction lights
+        ("flood_light", (246, 244, 234), 0.0, 0.6, 32), # floodlight lens
+        ("windsock", (236, 112, 44), 0.0, 0.2, 32),     # orange wind cone
         ("under_light", (250, 236, 210), 0.0, 0.6, 32), # warm downlights under the deck (roof.jpg sibling at night)
         ("window", (70, 110, 110), 0.0, 0.9, 1024)):
     A.add(name, color=color, ctrl=(0, 0, 0), metal=metal, gloss=gloss, **dict(dict(px=px), **TEX.get(name, {})))
@@ -392,6 +417,7 @@ def crown(mb, stage):
 
     if stage < 2:
         heli_net(mb)
+        heli_lights(mb, stage)
 
 
 NET = 1.5                    # safety net width (user-06 / satellite: light band round the deck; estimated)
@@ -474,12 +500,50 @@ def heli_net(mb):
     mb.box(PX0, HX - HS, y0, y1, z0, z1, "grating", skip=("right", "front", "back"))
 
 
+def heli_lights(mb, stage):
+    """Helideck night lighting (estimated standard layout): green perimeter lights with light pools painted on
+    the deck band (pinwheel of four strips, 7 lights each), yellow touchdown-circle lights, rail-top floodlights
+    facing the pad, red obstruction lights on the deck corners, lit windsock on the NE net corner."""
+    w, z = DECK_W, HZT + 0.03                       # band flush with the green pad top
+    L = 2 * HS - w
+    T = L / 7
+    x0, x1, y0, y1 = HX - HS, HX + HS, HY - HS, HY + HS
+    strips = (((x0, y0), (1, 0), (0, 1)), ((x1, y0), (0, 1), (-1, 0)),      # origin, along, across
+              ((x1, y1), (-1, 0), (0, -1)), ((x0, y1), (0, -1), (1, 0)))
+    for (ox, oy), (ax, ay), (cx, cy) in strips:
+        mb.rect([(ox, oy, z), (ox + ax * L, oy + ay * L, z),
+                 (ox + ax * L + cx * w, oy + ay * L + cy * w, z), (ox + cx * w, oy + cy * w, z)], "deck_lit")
+        if stage == 0:
+            for i in range(7):
+                x = ox + ax * (i + 0.5) * T + cx * w / 2
+                y = oy + ay * (i + 0.5) * T + cy * w / 2
+                mb.box(x - 0.09, x + 0.09, y - 0.09, y + 0.09, z, z + 0.09, "heli_light", skip=("bottom",))
+    if stage > 0:
+        return
+    for i in range(16):                             # touchdown circle lights on the white ring
+        a = 2 * math.pi * (i + 0.5) / 16
+        x, y = HX + 3.64 * math.cos(a), HY + 3.64 * math.sin(a)
+        mb.box(x - 0.07, x + 0.07, y - 0.07, y + 0.07, HZT + 0.07, HZT + 0.13, "heli_light_y", skip=("bottom",))
+    zr = HZT + 0.9                                  # rail top
+    body = dict(default="railing", top="railing")
+    for t in (-3.2, 3.2):                           # floodlights on the rail, lens towards the pad
+        mb.box(HX + t - 0.3, HX + t + 0.3, y0 - 0.14, y0 + 0.06, zr, zr + 0.2, dict(body, back="flood_light"), skip=("bottom",))
+        mb.box(HX + t - 0.3, HX + t + 0.3, y1 - 0.06, y1 + 0.14, zr, zr + 0.2, dict(body, front="flood_light"), skip=("bottom",))
+        mb.box(x0 - 0.14, x0 + 0.06, HY + t - 0.3, HY + t + 0.3, zr, zr + 0.2, dict(body, right="flood_light"), skip=("bottom",))
+        mb.box(x1 - 0.06, x1 + 0.14, HY + t - 0.3, HY + t + 0.3, zr, zr + 0.2, dict(body, left="flood_light"), skip=("bottom",))
+    for sx in (-1, 1):                              # red obstruction lights on the deck rail corners
+        for sy in (-1, 1):
+            x, y = HX + sx * (HS + 0.03), HY + sy * (HS + 0.03)
+            mb.box(x - 0.1, x + 0.1, y - 0.1, y + 0.1, zr, zr + 0.22, "obst_light", skip=("bottom",))
+    mx, my, zn = x1 + NET - 0.3, y0 - NET + 0.3, HZT - 0.02      # windsock mast on the NE net corner
+    mb.box(mx - 0.05, mx + 0.05, my - 0.05, my + 0.05, zn, zn + 3.2, "crown_white", skip=("bottom", "top"))
+    mb.box(mx - 0.09, mx + 0.09, my - 0.09, my + 0.09, zn + 3.2, zn + 3.4, "obst_light", skip=("bottom",))
+    mb.box(mx + 0.05, mx + 0.95, my - 0.17, my + 0.17, zn + 2.6, zn + 2.94, "windsock", skip=("left",))
+    mb.box(mx + 0.95, mx + 1.5, my - 0.11, my + 0.11, zn + 2.66, zn + 2.88, "windsock", skip=("left",))
+
+
 def heli_access(mb):
-    """Green perimeter lights and the switchback steel access stair from the main roof to the SE platform."""
-    for k in range(7):                                    # perimeter lights, 7 per side, on the grey deck band
-        t = -HS + 0.8 + k * (2 * HS - 1.6) / 6
-        for x, y in ((HX + t, HY + HS - 0.3), (HX + t, HY - HS + 0.3), (HX + HS - 0.3, HY + t), (HX - HS + 0.3, HY + t)):
-            mb.box(x - 0.1, x + 0.1, y - 0.1, y + 0.1, HZT, HZT + 0.1, "heli_light", skip=("bottom",))
+    """Switchback steel access stair from the main roof to the SE platform."""
     ys, yn, n = HY - 5.6, HY + 3.2, 24                   # flights run along y outside the observatory (x < OX0)
     zt = HZT - 0.02
     zm = (H + zt) / 2
@@ -619,6 +683,11 @@ def build(stage):
     mb.box(-X, -X + 0.3, 0.3, D - 0.3, H, PH, "pale", skip=("bottom", "front", "back"))
     mb.box(X - 0.3, X, 0.3, D - 0.3, H, PH, "pale", skip=("bottom", "front", "back"))
     mb.box(-X, X, D - 0.3, D, H, PH, "pale", skip=("bottom",))
+    if stage == 0:                                  # red obstruction lights on the roof parapet corners (estimated)
+        for sx in (-1, 1):
+            for sy, yc in ((-1, 0.15), (1, D - 0.15)):
+                xc = sx * (X - 0.15)
+                mb.box(xc - 0.12, xc + 0.12, yc - 0.12, yc + 0.12, PH, PH + 0.25, "obst_light", skip=("bottom",))
     crown(mb, stage)
     entrance(mb, stage)
     if stage < 2:
