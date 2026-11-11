@@ -15,7 +15,7 @@ import concurrent.futures
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
-OUTPUT_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'heightmaps', 'Sintanjin_Daejeon_CS2')
+OUTPUT_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'sintanjin')
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # -------------------------------------------------------------

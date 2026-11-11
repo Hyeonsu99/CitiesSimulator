@@ -1,0 +1,60 @@
+Pull 받은 뒤 할 일 (다른 PC용)
+================================================================
+2026-11-11 폴더 구조를 정리했습니다. 저장소에는 소스만 있고, 설치물과 큰 생성물은 빠져 있습니다.
+아래에서 쓰는 것만 한 번씩 하면 됩니다.
+
+폴더 구조
+---------
+  planner\        신도시 도로망·교통 시뮬레이터 (예전에는 저장소 루트에 있었음)
+  cs2-kit\        CS2 건물 에셋 키트와 프로젝트 (위치 그대로)
+  asset-viewer\   FBX 에셋 미리보기 뷰어 (예전 Desktop\AssetSimulator)
+  maps\           지형 맵 (예전 heightmaps\ 와 tools\ 의 지형 스크립트)
+  skills\         Codex용 cs2-kit 스킬
+
+0. 구조 변경 때문에 한 번만 확인할 것
+   - 시뮬레이터 실행 파일이 planner\run.bat 로 옮겨졌습니다.
+     바탕화면에 예전 실행 bat을 복사해 두었다면 지우고 planner 폴더의 것을 쓰세요.
+   - 저장소 루트에 예전 폴더의 찌꺼기(__pycache__, screenshots, view3d.js.bak 등 git에 없는 파일)가
+     남아 있으면 지워도 됩니다.
+   - Desktop\AssetSimulator 를 따로 쓰고 있었다면 이제 asset-viewer 폴더를 쓰세요.
+
+1. 교통 시뮬레이터 (planner)
+   - 필요: Python 3
+   - 실행: planner\run.bat 더블클릭
+   - 검증(선택, Node.js 필요): planner 폴더에서  node tests/test_traffic.js  등
+
+2. 건물 에셋 키트 (cs2-kit) - 명령은 모두 cs2-kit 폴더에서 실행
+   a) 파이썬 패키지
+        pip install numpy pillow playwright
+      (playwright 는 거리뷰/로드뷰 캡처를 할 때만 필요)
+   b) Blender 경로 지정 (PC마다 달라서 git에 없음)
+        python tools/run_blender.py --set "C:\Program Files\Blender Foundation\Blender 5.2\blender.exe"
+      Blender 대신 bpy 모듈을 쓰는 방법은 cs2-kit\INSTALL.md 참고
+   c) 환경 점검
+        python tools/agent.py doctor --project exllu-103 --json
+   d) 다시 빌드 (미리보기 렌더와 검사 기록은 저장소에 없으므로 필요할 때)
+        python tools/agent.py cycle --project exllu-103 --generator exllu_103_cs2.py --mode final --json
+      게임용 FBX와 텍스처는 저장소에 들어 있습니다:
+        cs2-kit\projects\exllu-103\output\HighriseTower103_L1_5x4\
+        cs2-kit\projects\exllu-103\output\import_test_*\   (야간 떨림 시험본 4개)
+   e) 지금 할 일과 떨림 시험 순서:  cs2-kit\projects\exllu-103\인수인계.txt
+
+3. 에셋 미리보기 뷰어 (asset-viewer)
+   - 필요: Node.js
+   - 처음 한 번:  asset-viewer 폴더에서  npm install
+   - 실행:  asset-viewer\run.bat  ->  http://127.0.0.1:5183/ (포트가 다르면 창에 표시된 주소)
+   - 103동 바로 보기:  asset-viewer\sync_preview.bat 실행 후  http://127.0.0.1:5183/?preview=103
+     (sync_preview.bat 은 cs2-kit 의 최신 빌드 6개 파일을 public\preview 로 복사합니다)
+   - 조명은 시티즈 스카이라인 2에 가깝게 맞춘 근사치입니다. 떨림 판정은 게임에서 해야 합니다.
+
+4. 지형 맵 (maps)
+   - 결과물은 maps\sintanjin\ 에 들어 있어서 바로 쓸 수 있습니다 (MAP_GUIDE.md 참고).
+   - 다시 만들 때만:  pip install numpy pillow  후  python maps/tools/generate_cs_heightmap.py
+
+안 해도 되는 것
+---------------
+- 사진, 생성기, YAML, TASK.md, photo_refs.json, 작업 상태 파일은 모두 저장소에 있습니다.
+- 캡처용 Chrome 프로필(cs2-kit\capture\.chrome-vr)은 캡처 도구를 처음 쓸 때 자동으로 만들어집니다.
+  로그인 쿠키가 들어 있어서 git에 올리지 않습니다.
+- Claude Code 설정과 스킬(cs2-kit\.claude\)은 저장소에 있어서, cs2-kit 폴더에서 Claude Code를 열면
+  /build, /resume 등을 바로 쓸 수 있습니다.

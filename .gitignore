@@ -5,3 +5,8 @@ screenshots/
 *.bak
 CS2_NewTown_Layout.json
 *.blend1
+
+# asset-viewer: installed packages, build output, local preview copies
+asset-viewer/node_modules/
+asset-viewer/dist/
+asset-viewer/public/preview/
