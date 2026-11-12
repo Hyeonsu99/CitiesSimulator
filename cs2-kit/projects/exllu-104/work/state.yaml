@@ -1,0 +1,189 @@
+{
+ "version": 1,
+ "project": "exllu-104",
+ "stages": {
+  "final": {
+   "at": "2026-11-12T11:40:24",
+   "mode": "final",
+   "status": "FAIL",
+   "label": "",
+   "gate": "output/HighriseTower104_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "FAIL",
+    "tiles": "FAIL",
+    "lod": "PASS",
+    "fbx": "PASS"
+   },
+   "generator_hash": "7f481b6ff76131350bde3a538c8f8fb62972998055145cda2209596b63d8bb5c",
+   "preview": {
+    "path": "previews/HighriseTower104_L1_5x4.png",
+    "exists": true,
+    "sha256": "33674c3d847ff50e19144941ccaf38ed89106835d21df8a7d0eb0beae17e295c",
+    "key": null
+   },
+   "fbx": null
+  },
+  "b-plan": {
+   "at": "2026-11-12T15:48:48",
+   "mode": "final",
+   "status": "FAIL",
+   "label": "b-plan",
+   "gate": "output/HighriseTower104_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "FAIL",
+    "tiles": "FAIL",
+    "lod": "PASS",
+    "fbx": "PASS"
+   },
+   "generator_hash": "d8884250de3f5ac5fcb442462a339be0d523156a0d8532ec9b9e1faefb18efa4",
+   "preview": {
+    "path": "previews/HighriseTower104_L1_5x4.png",
+    "exists": true,
+    "sha256": "8c21681999d3ef6714c0d8a34751b46f3448ef6ac38728fa7ee2a88565ba8f59",
+    "key": null
+   },
+   "fbx": null
+  },
+  "b-endon": {
+   "at": "2026-11-12T15:56:57",
+   "mode": "final",
+   "status": "FAIL",
+   "label": "b-endon",
+   "gate": "output/HighriseTower104_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "FAIL",
+    "tiles": "FAIL",
+    "lod": "PASS",
+    "fbx": "PASS"
+   },
+   "generator_hash": "df713eb2509751782a082106c437052a53ac9e9b37e8a62f1b13e747a84d7497",
+   "preview": {
+    "path": "previews/HighriseTower104_L1_5x4.png",
+    "exists": true,
+    "sha256": "8b59d9093c3675b467169a9b1de10ec5e7d3d5619a60ac7e82aaaa38fbcea75e",
+    "key": null
+   },
+   "fbx": null
+  },
+  "b-front": {
+   "at": "2026-11-12T16:02:52",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "b-front",
+   "gate": "output/HighriseTower104_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "c695984f0518b439bef96f6527838d0680f76a9440aa81a5a4749ce378a2dcd0",
+   "preview": {
+    "path": "previews/HighriseTower104_L1_5x4.png",
+    "exists": true,
+    "sha256": "cd6d898891620fe599b01a2da52d8edd239a2872b4c3ca6f4a213391fe2fff81",
+    "key": null
+   },
+   "fbx": null
+  },
+  "b-color": {
+   "at": "2026-11-12T16:03:30",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "b-color",
+   "gate": "output/HighriseTower104_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "511f8033711c0fd2c89a06b713437d152f786850d7e1ce49757e02f33c675056",
+   "preview": {
+    "path": "previews/HighriseTower104_L1_5x4.png",
+    "exists": true,
+    "sha256": "6358ef2130971c8be89d905bef96babf3a49c09f4520c51e6ed6218de0c788aa",
+    "key": null
+   },
+   "fbx": null
+  },
+  "b-osm": {
+   "at": "2026-11-12T16:16:34",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "b-osm",
+   "gate": "output/HighriseTower104_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "473765fb19986f95b4dd4baffcb1c5436e0b652763542fbc0c90b42b5d6d756b",
+   "preview": {
+    "path": "previews/HighriseTower104_L1_5x4.png",
+    "exists": true,
+    "sha256": "27c508486f1e937397d4a54c9ff6871da0148a46e54c173b790080e22499b247",
+    "key": null
+   },
+   "fbx": null
+  },
+  "roof-stair": {
+   "at": "2026-11-12T16:39:48",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "roof-stair",
+   "gate": "output/HighriseTower104_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "970d9607482499df7590bdfd79be892e8ebacdce6b0af15e004276d4653c2dce",
+   "preview": {
+    "path": "previews/HighriseTower104_L1_5x4.png",
+    "exists": true,
+    "sha256": "500a8554a5c7ee5cc37045d2ec3cd92b3ce2a9712434cd2c4a776ffce6bfadd0",
+    "key": null
+   },
+   "fbx": null
+  }
+ },
+ "updated_at": "2026-11-12T16:39:48",
+ "current_stage": "final:INCOMPLETE",
+ "generator": "exllu_104_cs2.py",
+ "generator_hash": "970d9607482499df7590bdfd79be892e8ebacdce6b0af15e004276d4653c2dce",
+ "visual_review": "NOT_CHECKED",
+ "reviewed_preview_hash": "27c508486f1e937397d4a54c9ff6871da0148a46e54c173b790080e22499b247",
+ "last_gate": {
+  "mode": "final",
+  "status": "INCOMPLETE",
+  "path": "output/HighriseTower104_L1_5x4/_check/gate.json"
+ }
+}

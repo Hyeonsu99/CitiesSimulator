@@ -13,5 +13,4 @@ PASS
 all requested checks passed
 
 ## Notes
-Machine state: work/agent_state.json. Photo observations: work/observations.json.
-Estimated values remain in building_spec_*.yaml with # estimated.
+Type A tower (Kumgang Exllu Tower 103).

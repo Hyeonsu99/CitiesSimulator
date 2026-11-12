@@ -1,0 +1,176 @@
+{
+ "visual_review": "PASS",
+ "current_stage": "review:PASS",
+ "generator": "exllu_106_cs2.py",
+ "generator_hash": "b05721edba1672a53d7ed9637de7d05a1761483709d0b3bb281670b55f21ebdb",
+ "current_preview_hash": "bb70244c38c94e92d6b40d8d625d76b86ed76c436ed08e321e42bc87fe0d455d",
+ "last_gate": {
+  "status": "PASS",
+  "project": "exllu-106",
+  "generator": "exllu_106_cs2.py",
+  "mode": "final",
+  "checks": {
+   "build": "PASS",
+   "geometry": "PASS",
+   "preview": "PASS",
+   "photo": "PASS",
+   "tiles": "PASS",
+   "lod": "PASS",
+   "fbx": "PASS",
+   "visual_review": "PASS"
+  },
+  "errors": [],
+  "next_action": {
+   "command": null,
+   "reason": "no fix needed"
+  },
+  "artifacts": {
+   "preview": "previews\\HighriseTower106_L1_5x6.png",
+   "report": "output\\HighriseTower106_L1_5x6\\_check\\report.json"
+  },
+  "asset": "HighriseTower106_L1_5x6",
+  "label": "c-entrance",
+  "time": "2026-11-12 17:14:20",
+  "build": {
+   "asset": "HighriseTower106_L1_5x6",
+   "fbx": true,
+   "warnings": []
+  },
+  "check": {
+   "errors": [],
+   "warnings": [],
+   "info": {
+    "size": [
+     39.15,
+     45.65,
+     159.4
+    ],
+    "pivot_offset": [
+     0.0,
+     0.0
+    ],
+    "zmin": 0.0,
+    "coords": "generator coordinates (before pivot move)",
+    "tris": {
+     "main": 73428,
+     "win": 2296,
+     "lod1": 22042,
+     "lod1_win": 2296,
+     "lod2": 434,
+     "lod2_win": 2296
+    },
+    "verts": {
+     "main": 146856,
+     "win": 4592,
+     "lod1": 44084,
+     "lod1_win": 4592,
+     "lod2": 868,
+     "lod2_win": 4592
+    },
+    "coplanar": {
+     "main": 0,
+     "lod1": 0,
+     "lod2": 0,
+     "win": 0
+    },
+    "textures": {
+     "BaseColor": "4096x4096 RGBA",
+     "ControlMask": "4096x4096 RGBA",
+     "MaskMap": "4096x4096 RGBA",
+     "Normal": "4096x4096 RGB",
+     "Emissive": "4096x4096 RGB",
+     "LOD2_BaseColor": "1024x1024 RGBA",
+     "LOD2_ControlMask": "1024x1024 RGBA",
+     "LOD2_MaskMap": "1024x1024 RGBA",
+     "LOD2_Normal": "1024x1024 RGB",
+     "LOD2_Emissive": "1024x1024 RGB"
+    },
+    "texel_px_per_m": {
+     "p10": 385.1,
+     "median": 385.1,
+     "p90": 385.1
+    },
+    "windows": 1148,
+    "win_dropped": 0,
+    "win_blocked": {
+     "win": 0,
+     "lod1_win": 0,
+     "lod2_win": 0
+    },
+    "time_s": 8.7
+   },
+   "report": "output\\HighriseTower106_L1_5x6\\_check\\report.json"
+  },
+  "photo": {
+   "checked": true,
+   "mismatch": 0,
+   "lines": [
+    "INFO     front floor pitch: photo 1.80 m / model 3.15 m (+75%)  -> photo shows ~5 floor bands over the wall height, model ~3 (model needs MORE floors or lower floor height) (low-confidence photo evidence - do not auto-change floors)",
+    "INFO     front window bay pitch: photo 3.85 m / model 2.30 m (-40%)  (bays differ - check window columns)",
+    "INFO     front edge agreement 74%"
+   ],
+   "status": "PASS"
+  },
+  "tiles": {
+   "checked": true,
+   "status": "PASS",
+   "simplified": [],
+   "detail": [
+    "DETAIL front recall 52% precision 60% worst r0c0 (52%) simplified_tiles 0/1"
+   ],
+   "detail_color": [
+    "DETAIL_COLOR front tiles_off 0/1 (dE>14; trusted tiles only)"
+   ],
+   "color_off": [],
+   "tiles_off": 0,
+   "tiles_total": 1
+  },
+  "lod": {
+   "checked": true,
+   "status": "PASS",
+   "line": "LODCHECK PASS main max 0.031% (az 180, el +50) bad_views 0/64 | lod1 max 0.012% (az 135, el +50) bad_views 0/64 | lod2 max 0.000% (az 0, el -10) bad_views 0/64 marginal=1  -> previews\\lod_check\\HighriseTower106_L1_5x6",
+   "notes": [
+    "LOD margin is close to the 0.05% limit",
+    "LOD margin is close to the 0.05% limit"
+   ]
+  },
+  "agent": {
+   "status": "PASS",
+   "verts": {
+    "LOD0": 146856,
+    "LOD1": 44084,
+    "LOD2": 868
+   },
+   "action_tags": [],
+   "exact_fix_instruction": "no fix needed"
+  },
+  "gate": {
+   "status": "PASS",
+   "reasons": [],
+   "incomplete": []
+  }
+ },
+ "mismatch_attempts": {},
+ "next_action": {
+  "command": null,
+  "reason": "all requested checks passed"
+ },
+ "project": "exllu-106",
+ "updated_at": "2026-11-12T17:15:50",
+ "visual_review_note": "photo_check facade_front: 106 auction entrance photo warped onto the west-arm north wall, 3 storeys and both window columns aligned (auto floor pitch reads granite joints, ref marked low). Same-camera c_ent106: portico at the arm's outer corner, 4-pane+louvre+2-pane main wall, podium to storey 5 match; real portico ~0.6 m taller. tiles front_map ok.",
+ "visual_review_artifacts": [
+  {
+   "file": "previews/HighriseTower106_L1_5x6.png",
+   "sha256": "bb70244c38c94e92d6b40d8d625d76b86ed76c436ed08e321e42bc87fe0d455d"
+  },
+  {
+   "file": "previews/photo_check/facade_front.png",
+   "sha256": "e4ca8428d4965649f1992bcd821675d01718a4b93bc2b13dfa0a23fb692188a7"
+  },
+  {
+   "file": "previews/tiles/front_map.png",
+   "sha256": "4699e1cd2943ec6106f85faed5b4494486c428123918f81514a94919ed2859a5"
+  }
+ ],
+ "reviewed_preview_hash": "bb70244c38c94e92d6b40d8d625d76b86ed76c436ed08e321e42bc87fe0d455d"
+}

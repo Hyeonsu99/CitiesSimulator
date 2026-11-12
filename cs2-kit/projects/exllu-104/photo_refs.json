@@ -1,0 +1,46 @@
+{
+  "facades": [
+    {
+      "file": "photos/스크린샷 2026-11-12 155809.png",
+      "side": "front",
+      "name": "front_right_wing_f2_f5",
+      "corners": [
+        [
+          876,
+          115
+        ],
+        [
+          1192,
+          115
+        ],
+        [
+          1205,
+          470
+        ],
+        [
+          880,
+          470
+        ]
+      ],
+      "size_m": [
+        8.0,
+        8.82
+      ],
+      "box": [
+        1.5,
+        9.5,
+        -0.5,
+        0.5,
+        8.18,
+        17.0
+      ],
+      "confidence": "high",
+      "occluded": "none in this band; tree covers storey 1 below it",
+      "paint": {
+        "use_for_color": true
+      },
+      "paint_exclude": [],
+      "paint_include": []
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+ "version": 1,
+ "project": "exllu-102",
+ "stages": {
+  "review": {
+   "at": "2026-11-12T15:41:36",
+   "mode": "quick",
+   "status": "PASS",
+   "label": "review",
+   "gate": "output/HighriseTower102_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "NOT_CHECKED",
+    "photo": "NOT_CHECKED",
+    "tiles": "NOT_CHECKED",
+    "lod": "NOT_CHECKED",
+    "fbx": "NOT_CREATED"
+   },
+   "generator_hash": "08c7d6c91b8928942317ae0af0107ae536ff390a4d47540d6cabee6774c11464",
+   "preview": null,
+   "fbx": null
+  }
+ },
+ "updated_at": "2026-11-12T15:41:36",
+ "current_stage": "quick:PASS",
+ "generator": "exllu_102_cs2.py",
+ "generator_hash": "08c7d6c91b8928942317ae0af0107ae536ff390a4d47540d6cabee6774c11464",
+ "visual_review": "NOT_CHECKED",
+ "reviewed_preview_hash": null,
+ "last_gate": {
+  "mode": "quick",
+  "status": "PASS",
+  "path": "output/HighriseTower102_L1_5x4/_check/gate.json"
+ }
+}

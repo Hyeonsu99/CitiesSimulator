@@ -1,0 +1,157 @@
+{
+ "visual_review": "PASS",
+ "current_stage": "review:PASS",
+ "generator": "exllu_112_cs2.py",
+ "generator_hash": "ac252fbca2e61bd9b5297543cf99a536a3c69e4ff47a5f4bcb0042d349fcf4af",
+ "current_preview_hash": "9051e0aa59fb283b8a01978350d689fd86295b5eaf1bb61048d8c429c48af7b9",
+ "last_gate": {
+  "status": "PASS",
+  "project": "exllu-112",
+  "generator": "exllu_112_cs2.py",
+  "mode": "final",
+  "checks": {
+   "build": "PASS",
+   "geometry": "PASS",
+   "preview": "PASS",
+   "photo": "NOT_APPLICABLE",
+   "tiles": "NOT_APPLICABLE",
+   "lod": "PASS",
+   "fbx": "PASS",
+   "visual_review": "PASS"
+  },
+  "errors": [],
+  "next_action": {
+   "command": null,
+   "reason": "no fix needed"
+  },
+  "artifacts": {
+   "preview": "previews\\HighriseTower112_L1_5x4.png",
+   "report": "output\\HighriseTower112_L1_5x4\\_check\\report.json"
+  },
+  "asset": "HighriseTower112_L1_5x4",
+  "label": "roof-stair",
+  "time": "2026-11-12 16:42:21",
+  "build": {
+   "asset": "HighriseTower112_L1_5x4",
+   "fbx": true,
+   "warnings": []
+  },
+  "check": {
+   "errors": [],
+   "warnings": [],
+   "info": {
+    "size": [
+     30.06,
+     27.13,
+     111.94
+    ],
+    "pivot_offset": [
+     0.0,
+     0.0
+    ],
+    "zmin": 0.0,
+    "coords": "generator coordinates (before pivot move)",
+    "tris": {
+     "main": 46690,
+     "win": 1722,
+     "lod1": 8346,
+     "lod1_win": 1722,
+     "lod2": 284,
+     "lod2_win": 1722
+    },
+    "verts": {
+     "main": 93380,
+     "win": 3444,
+     "lod1": 16692,
+     "lod1_win": 3444,
+     "lod2": 568,
+     "lod2_win": 3444
+    },
+    "coplanar": {
+     "main": 0,
+     "lod1": 0,
+     "lod2": 0,
+     "win": 0
+    },
+    "textures": {
+     "BaseColor": "4096x4096 RGBA",
+     "ControlMask": "4096x4096 RGBA",
+     "MaskMap": "4096x4096 RGBA",
+     "Normal": "4096x4096 RGB",
+     "Emissive": "4096x4096 RGB",
+     "LOD2_BaseColor": "1024x1024 RGBA",
+     "LOD2_ControlMask": "1024x1024 RGBA",
+     "LOD2_MaskMap": "1024x1024 RGBA",
+     "LOD2_Normal": "1024x1024 RGB",
+     "LOD2_Emissive": "1024x1024 RGB"
+    },
+    "texel_px_per_m": {
+     "p10": 229.9,
+     "median": 385.1,
+     "p90": 385.1
+    },
+    "windows": 861,
+    "win_dropped": 0,
+    "win_blocked": {
+     "win": 0,
+     "lod1_win": 0,
+     "lod2_win": 0
+    },
+    "time_s": 4.9
+   },
+   "report": "output\\HighriseTower112_L1_5x4\\_check\\report.json"
+  },
+  "photo": {
+   "checked": false,
+   "mismatch": null,
+   "lines": [],
+   "status": "NOT_APPLICABLE"
+  },
+  "tiles": {
+   "checked": false,
+   "status": "NOT_APPLICABLE",
+   "simplified": [],
+   "detail": [],
+   "detail_color": [],
+   "color_off": [],
+   "tiles_off": 0,
+   "tiles_total": 0
+  },
+  "lod": {
+   "checked": true,
+   "status": "PASS",
+   "line": "LODCHECK PASS main max 0.004% (az 22, el -10) bad_views 0/64 | lod1 max 0.000% (az 0, el -10) bad_views 0/64 | lod2 max 0.002% (az 68, el +25) bad_views 0/64  -> previews\\lod_check\\HighriseTower112_L1_5x4",
+   "notes": []
+  },
+  "agent": {
+   "status": "PASS",
+   "verts": {
+    "LOD0": 93380,
+    "LOD1": 16692,
+    "LOD2": 568
+   },
+   "action_tags": [],
+   "exact_fix_instruction": "no fix needed"
+  },
+  "gate": {
+   "status": "PASS",
+   "reasons": [],
+   "incomplete": []
+  }
+ },
+ "mismatch_attempts": {},
+ "next_action": {
+  "command": null,
+  "reason": "all requested checks passed"
+ },
+ "project": "exllu-112",
+ "updated_at": "2026-11-12T16:42:29",
+ "visual_review_note": "Preview checked: identical to 104 (mitred roof parapet ring, closed stair cheeks). No own photo refs: photo/tiles NOT_APPLICABLE.",
+ "visual_review_artifacts": [
+  {
+   "file": "previews/HighriseTower112_L1_5x4.png",
+   "sha256": "9051e0aa59fb283b8a01978350d689fd86295b5eaf1bb61048d8c429c48af7b9"
+  }
+ ],
+ "reviewed_preview_hash": "9051e0aa59fb283b8a01978350d689fd86295b5eaf1bb61048d8c429c48af7b9"
+}

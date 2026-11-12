@@ -1,0 +1,148 @@
+{
+ "visual_review": "NOT_CHECKED",
+ "current_stage": "quick:PASS",
+ "generator": "exllu_102_cs2.py",
+ "generator_hash": "08c7d6c91b8928942317ae0af0107ae536ff390a4d47540d6cabee6774c11464",
+ "current_preview_hash": null,
+ "last_gate": {
+  "status": "PASS",
+  "project": "exllu-102",
+  "generator": "exllu_102_cs2.py",
+  "mode": "quick",
+  "checks": {
+   "build": "PASS",
+   "geometry": "PASS",
+   "preview": "NOT_CHECKED",
+   "photo": "NOT_CHECKED",
+   "tiles": "NOT_CHECKED",
+   "lod": "NOT_CHECKED",
+   "fbx": "NOT_CREATED"
+  },
+  "errors": [],
+  "next_action": {
+   "command": null,
+   "reason": "no fix needed"
+  },
+  "artifacts": {
+   "preview": null,
+   "report": "output\\HighriseTower102_L1_5x4\\_check\\report.json"
+  },
+  "asset": "HighriseTower102_L1_5x4",
+  "label": "review",
+  "time": "2026-11-12 15:41:36",
+  "build": {
+   "asset": "HighriseTower102_L1_5x4",
+   "fbx": false,
+   "warnings": []
+  },
+  "check": {
+   "errors": [],
+   "warnings": [],
+   "info": {
+    "size": [
+     33.2,
+     26.0,
+     162.48
+    ],
+    "pivot_offset": [
+     0.0,
+     0.0
+    ],
+    "zmin": 0.0,
+    "coords": "generator coordinates (before pivot move)",
+    "tris": {
+     "main": 78922,
+     "win": 2808,
+     "lod1": 17972,
+     "lod1_win": 2808,
+     "lod2": 292,
+     "lod2_win": 2808
+    },
+    "verts": {
+     "main": 157844,
+     "win": 5616,
+     "lod1": 35944,
+     "lod1_win": 5616,
+     "lod2": 584,
+     "lod2_win": 5616
+    },
+    "coplanar": {
+     "main": 0,
+     "lod1": 0,
+     "lod2": 0,
+     "win": 0
+    },
+    "textures": {
+     "BaseColor": "4096x4096 RGBA",
+     "ControlMask": "4096x4096 RGBA",
+     "MaskMap": "4096x4096 RGBA",
+     "Normal": "4096x4096 RGB",
+     "Emissive": "4096x4096 RGB",
+     "LOD2_BaseColor": "1024x1024 RGBA",
+     "LOD2_ControlMask": "1024x1024 RGBA",
+     "LOD2_MaskMap": "1024x1024 RGBA",
+     "LOD2_Normal": "1024x1024 RGB",
+     "LOD2_Emissive": "1024x1024 RGB"
+    },
+    "texel_px_per_m": {
+     "p10": 31.9,
+     "median": 385.1,
+     "p90": 385.1
+    },
+    "windows": 1404,
+    "win_dropped": 0,
+    "win_blocked": {
+     "win": 0,
+     "lod1_win": 0,
+     "lod2_win": 0
+    },
+    "time_s": 15.8
+   },
+   "report": "output\\HighriseTower102_L1_5x4\\_check\\report.json"
+  },
+  "photo": {
+   "checked": false,
+   "mismatch": null,
+   "lines": [],
+   "status": "NOT_CHECKED"
+  },
+  "tiles": {
+   "checked": false,
+   "status": "NOT_CHECKED",
+   "simplified": [],
+   "detail": [],
+   "detail_color": [],
+   "color_off": [],
+   "tiles_off": 0,
+   "tiles_total": 0
+  },
+  "lod": {
+   "checked": false,
+   "status": "NOT_CHECKED",
+   "line": null,
+   "notes": []
+  },
+  "agent": {
+   "status": "PASS",
+   "verts": {
+    "LOD0": 157844,
+    "LOD1": 35944,
+    "LOD2": 584
+   },
+   "action_tags": [],
+   "exact_fix_instruction": "no fix needed"
+  },
+  "gate": {
+   "status": "PASS",
+   "reasons": [],
+   "incomplete": []
+  }
+ },
+ "mismatch_attempts": {},
+ "next_action": {
+  "command": null,
+  "reason": "all requested checks passed"
+ },
+ "project": "exllu-102",
+ "updated_at": "2026-11-12T15:41:36"
+}

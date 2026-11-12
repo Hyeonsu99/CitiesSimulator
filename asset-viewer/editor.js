@@ -254,18 +254,35 @@ window.addEventListener('resize',resize);
 resize();
 renderer.setAnimationLoop(()=>composer.render());
 
-const preview = new URLSearchParams(location.search).get('preview');
-if(preview === '103'){
- const stem='HighriseTower103_L1_5x4';
- const transfer=new DataTransfer();
- try{
-  for(const suffix of ['.fbx','_Win.fbx','_BaseColor.png','_Normal.png','_MaskMap.png','_Emissive.png']){
-   const name=stem+suffix;
-   const response=await fetch('/preview/'+name);
-   if(!response.ok)throw Error(name);
-   transfer.items.add(new File([await response.blob()],name));
+async function loadDong(dong) {
+ const lot = ['105', '106', '107', '108'].includes(String(dong)) ? '5x6' : '5x4';  // C type: 38.4 x 44.6 m OSM outline
+ const stem = 'HighriseTower' + dong + '_L1_' + lot;
+ const transfer = new DataTransfer();
+ $('status').value = dong + '동 불러오는 중...';
+ try {
+  for (const suffix of ['.fbx', '_Win.fbx', '_BaseColor.png', '_Normal.png', '_MaskMap.png', '_Emissive.png']) {
+   const name = stem + suffix;
+   const response = await fetch('/preview/' + name);
+   if (!response.ok) throw Error(name);
+   transfer.items.add(new File([await response.blob()], name));
   }
-  $('file').files=transfer.files;
+  $('file').files = transfer.files;
   await $('file').onchange();
- }catch(error){$('status').value=error.message;}
+  $('status').value = dong + '동 로드 완료';
+ } catch (error) {
+  $('status').value = dong + '동 로드 실패: ' + error.message;
+ }
+}
+
+const dongSel = $('dong_select');
+if (dongSel) {
+ dongSel.onchange = () => {
+  if (dongSel.value) loadDong(dongSel.value);
+ };
+}
+
+const preview = new URLSearchParams(location.search).get('preview');
+if (preview) {
+ if (dongSel) dongSel.value = preview;
+ loadDong(preview);
 }

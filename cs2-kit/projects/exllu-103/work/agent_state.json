@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "e2c61e634464ebf6ca0b7f3bd3459e216158c77629ab976fb7d83c9f661962c4",
- "current_preview_hash": "47d253f707e565d7061219010db4a2c91050fe079c7cc611f1f37588c34dce99",
+ "generator_hash": "0dd282b2f0abd43014e0f095e5de053877792965c060154fe2b156b50fbd1130",
+ "current_preview_hash": "a9cde44cfd35810ee28856546f00e83a36973ae2136e1ec8254b2e145439b70e",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-103",
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
   "asset": "HighriseTower103_L1_5x4",
-  "label": "window-lit-cells",
-  "time": "2026-11-11 22:55:16",
+  "label": "final",
+  "time": "2026-11-12 08:54:46",
   "build": {
    "asset": "HighriseTower103_L1_5x4",
    "fbx": true,
@@ -97,7 +97,7 @@
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 8.7
+    "time_s": 9.9
    },
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
@@ -183,12 +183,12 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-103",
- "updated_at": "2026-11-11T22:55:46",
- "visual_review_note": "창 불빛을 텍스처 칸 단위로 묶고 창을 칸에 무작위 배정(먼 거리에서 불 켜진 칸이 옆 어두운 창으로 번져 점으로 보이던 문제). 야간 렌더에서 불 켜진 창 28%가 고르게 흩어짐, 외벽은 변화 없음. 게임 안 모습은 미검증",
+ "updated_at": "2026-11-12T08:55:04",
+ "visual_review_note": "pull 후 재빌드(생성기 내용 동일, 줄바꿈만 CRLF). 미리보기 4방향: 덩어리·헬리포트·기단·현관 정상, _Gls 없음. 사진 비교: 창 열과 층 간격 유지, 정면 날개 상부 타일 낮은 일치도는 광각 사진 펼침 어긋남(이전 리뷰와 동일), 우측은 나무 가림",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower103_L1_5x4.png",
-   "sha256": "47d253f707e565d7061219010db4a2c91050fe079c7cc611f1f37588c34dce99"
+   "sha256": "a9cde44cfd35810ee28856546f00e83a36973ae2136e1ec8254b2e145439b70e"
   },
   {
    "file": "previews/photo_check/facade_front.png",
@@ -215,5 +215,5 @@
    "sha256": "ff1ff4be71d10fd47f43e8a602823681ce04e334ec419e216024a2f21bcd01cf"
   }
  ],
- "reviewed_preview_hash": "47d253f707e565d7061219010db4a2c91050fe079c7cc611f1f37588c34dce99"
+ "reviewed_preview_hash": "a9cde44cfd35810ee28856546f00e83a36973ae2136e1ec8254b2e145439b70e"
 }

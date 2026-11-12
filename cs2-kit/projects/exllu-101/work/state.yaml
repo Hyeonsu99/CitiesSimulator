@@ -1,0 +1,110 @@
+{
+ "version": 1,
+ "project": "exllu-101",
+ "stages": {
+  "review": {
+   "at": "2026-11-12T15:41:10",
+   "mode": "quick",
+   "status": "PASS",
+   "label": "review",
+   "gate": "output/HighriseTower101_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "NOT_CHECKED",
+    "photo": "NOT_CHECKED",
+    "tiles": "NOT_CHECKED",
+    "lod": "NOT_CHECKED",
+    "fbx": "NOT_CREATED"
+   },
+   "generator_hash": "323cc6c7b1e7bb8b87a5adef0b41e06b286e03892285bed3cdeee621ce8819af",
+   "preview": null,
+   "fbx": null
+  },
+  "b-from-104": {
+   "at": "2026-11-12T16:11:44",
+   "mode": "final",
+   "status": "FAIL",
+   "label": "b-from-104",
+   "gate": "output/HighriseTower101_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "FAIL",
+    "tiles": "FAIL",
+    "lod": "PASS",
+    "fbx": "PASS"
+   },
+   "generator_hash": "d1cf2d6838d6f52f18498b63c2a4dbcd9da8020c83d4e43e0ebf9d17134277c7",
+   "preview": {
+    "path": "previews/HighriseTower101_L1_5x4.png",
+    "exists": true,
+    "sha256": "a505fc38d57ad50368d1eff6fc86ad8e7179a8ef253f938cbf37ae6f2a39ad7c",
+    "key": null
+   },
+   "fbx": null
+  },
+  "b-osm": {
+   "at": "2026-11-12T16:17:46",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "b-osm",
+   "gate": "output/HighriseTower101_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "16bb70b5cedc574ed8a5e33d275c1c416cb1d3a7ef091de91f1c8f578a711215",
+   "preview": {
+    "path": "previews/HighriseTower101_L1_5x4.png",
+    "exists": true,
+    "sha256": "d33fed2879d8b7478803dbf81d3cd9765708d1a8540b061ce396d33bf8a80e3c",
+    "key": null
+   },
+   "fbx": null
+  },
+  "roof-stair": {
+   "at": "2026-11-12T16:41:16",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "roof-stair",
+   "gate": "output/HighriseTower101_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "NOT_APPLICABLE",
+    "tiles": "NOT_APPLICABLE",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "052ad022d8408e3adfac4be11417fe5c6c2f2f6e4b59f1cfbf8e0fe24dd8f4a1",
+   "preview": {
+    "path": "previews/HighriseTower101_L1_5x4.png",
+    "exists": true,
+    "sha256": "72ec4d3627c5c48b680e03c7d42510b180b0dae00945f716f42c71000c29117c",
+    "key": null
+   },
+   "fbx": null
+  }
+ },
+ "updated_at": "2026-11-12T16:41:16",
+ "current_stage": "final:INCOMPLETE",
+ "generator": "exllu_101_cs2.py",
+ "generator_hash": "052ad022d8408e3adfac4be11417fe5c6c2f2f6e4b59f1cfbf8e0fe24dd8f4a1",
+ "visual_review": "NOT_CHECKED",
+ "reviewed_preview_hash": "d33fed2879d8b7478803dbf81d3cd9765708d1a8540b061ce396d33bf8a80e3c",
+ "last_gate": {
+  "mode": "final",
+  "status": "INCOMPLETE",
+  "path": "output/HighriseTower101_L1_5x4/_check/gate.json"
+ }
+}

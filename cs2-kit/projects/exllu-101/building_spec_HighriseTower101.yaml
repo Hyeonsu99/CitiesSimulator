@@ -1,0 +1,20 @@
+name: HighriseTower101
+lot:
+  width: 5
+  depth: 4
+dimensions:
+  width_m: 29.7   # OSM footprint way 934368139 (photo 155809 estimate 31 m, -4%)
+  depth_m: 22.8   # OSM footprint way 934368139
+  height_m: 111.6   # roof slab 108.1 + core penthouse 3.5
+floors: 36
+style: modern
+zone: ResidentialHigh
+subservice: ResidentialHigh
+signature: true
+evidence:
+  photos:
+    - ../exllu-104/photos/스크린샷 2026-11-12 155809.png   # tower 104 facade (same B type)
+  plan: OpenStreetMap way 934368139 (B-type outline shared by 101/104/109/112, 531 m2); aerial grid.png: no helipad
+estimated:
+  - side step x half-widths 11.6/9.4/11.8/10.2 symmetrised from OSM vertices (+-0.2 m)
+  - front bay split dark 5.35 / pale wing 8.0 / recess 3.0 from photo 155809 scaled to OSM width; pale from storey 5

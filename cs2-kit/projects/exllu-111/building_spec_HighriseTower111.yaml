@@ -1,0 +1,16 @@
+name: HighriseTower111
+lot:
+  width: 5
+  depth: 4
+dimensions:
+  width_m: 32.0
+  depth_m: 21.0
+  height_m: 160.0
+floors: 50
+style: modern
+zone: ResidentialHigh
+subservice: ResidentialHigh
+signature: true
+evidence:
+  photos:
+    - photos/view_ref.png

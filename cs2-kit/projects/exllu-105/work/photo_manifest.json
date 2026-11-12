@@ -1,0 +1,820 @@
+{
+ "photos": [
+  {
+   "file": "photos\\aerial.png",
+   "sha256": "640bf7099706add2ce7677c2d639353bda2ad480e9f52a6aefc0a26ffe438d33",
+   "size": [
+    700,
+    700
+   ],
+   "mtime_ns": 1794278000282371700,
+   "bytes": 791649,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\crop_slab1.png",
+   "sha256": "c70d12eb4498bd44a06de49e44dbacf8744b5b8699a3e64aae774336e6255a2d",
+   "size": [
+    250,
+    250
+   ],
+   "mtime_ns": 1794456551916012100,
+   "bytes": 123302,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\crop_slab2.png",
+   "sha256": "cccfe7a635709d9e2f2103b3da0533f78dd473623a510b5613fb4c029f2237e1",
+   "size": [
+    250,
+    300
+   ],
+   "mtime_ns": 1794456551922100200,
+   "bytes": 134975,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\crop_slab3.png",
+   "sha256": "b39eea0b7b1d79d02eb80c91a79c8d56e0ac4c402d68808a515ea0e7690bb598",
+   "size": [
+    400,
+    400
+   ],
+   "mtime_ns": 1794456566003724400,
+   "bytes": 325990,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\crop_slab4.png",
+   "sha256": "5c7bf75bb8bdaa8fa02e13e88219137f4cc3e7775d297c28b79946eedfc84891",
+   "size": [
+    300,
+    400
+   ],
+   "mtime_ns": 1794456566012240500,
+   "bytes": 238072,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\reference_105_entrance_screenshot.png",
+   "sha256": "27bfb8d49ff24c7211a94fa44044aacd6a4fe0cf7004c5eb547a51c0b8e00d91",
+   "size": [
+    1905,
+    956
+   ],
+   "mtime_ns": 1794464588037836300,
+   "bytes": 167582,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\roof_view_top_far_w.png",
+   "sha256": "81bfeee17945689386cf3cb16b730a719efdf4c839138808380eac1dadc7145d",
+   "size": [
+    800,
+    500
+   ],
+   "mtime_ns": 1794456237097976500,
+   "bytes": 613072,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\roof_view_top_n.png",
+   "sha256": "6d4e85089087d1fcfabd7994f8e37a4353908bd17219507286674268736f995a",
+   "size": [
+    800,
+    500
+   ],
+   "mtime_ns": 1794456237044784800,
+   "bytes": 548396,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\sat.png",
+   "sha256": "48b58dff705c315fdc20f30a46287b2ed0866c820ba7dbbdf017d7f8778dcc53",
+   "size": [
+    768,
+    768
+   ],
+   "mtime_ns": 1794446952672440500,
+   "bytes": 1127913,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\site.jpg",
+   "sha256": "0841c2184ae28072dbcb6fb5523dcd5fc735e78a47182b950f7776b3a6b04114",
+   "size": [
+    2992,
+    2578
+   ],
+   "mtime_ns": 1794278000288876400,
+   "bytes": 834311,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\view_mid_base.png",
+   "sha256": "9128e96886872416f87e4fd1b326f05ded649adb313d8c229a19b15a1aed8601",
+   "size": [
+    1600,
+    1100
+   ],
+   "mtime_ns": 1794446771801667600,
+   "bytes": 1944291,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\view_mid_hi.png",
+   "sha256": "b3f3cdcfa8f5328dff082c39a851914f5fbee60be69309d7177cc2cb046314b9",
+   "size": [
+    1600,
+    1100
+   ],
+   "mtime_ns": 1794446771232472000,
+   "bytes": 2985946,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\view_n_base.png",
+   "sha256": "bbb210366f38e66111ab7320ba1ad231d8121e870c05678edb4b57320a48e8e5",
+   "size": [
+    1600,
+    1100
+   ],
+   "mtime_ns": 1794446749757830200,
+   "bytes": 1952249,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\view_n_hi.png",
+   "sha256": "211c06049a4d8f30bf9b07e4ee52b8a3fa204d69f13be328be3288cd58aa8eed",
+   "size": [
+    1600,
+    1100
+   ],
+   "mtime_ns": 1794446749063475400,
+   "bytes": 2468215,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\view_ne_base.png",
+   "sha256": "1b3b139f85574d67da3a87399d4f4c75d4ac6d3969e704ce61121d9835e7b831",
+   "size": [
+    1600,
+    1100
+   ],
+   "mtime_ns": 1794446757962603900,
+   "bytes": 2491068,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\view_ne_hi.png",
+   "sha256": "1fd9a957ef00f90561b674d7538af75e099aa9416d58e17d3a7b93d95bf4f275",
+   "size": [
+    1600,
+    1100
+   ],
+   "mtime_ns": 1794446757407064600,
+   "bytes": 3135227,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\view_nw_base.png",
+   "sha256": "4ce5a353b5674a8572f86b91e4b9e7122a972ec1df9db89af382f8c513484e51",
+   "size": [
+    1600,
+    1100
+   ],
+   "mtime_ns": 1794446741898989800,
+   "bytes": 1733456,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\view_nw_hi.png",
+   "sha256": "6e6f6c3ea932fe7aac88e3df8ca9b2f135d043d07aef29cc1a4c9a9f392f0c7f",
+   "size": [
+    1600,
+    1100
+   ],
+   "mtime_ns": 1794446741333872200,
+   "bytes": 2195348,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\view_ref.png",
+   "sha256": "640bf7099706add2ce7677c2d639353bda2ad480e9f52a6aefc0a26ffe438d33",
+   "size": [
+    700,
+    700
+   ],
+   "mtime_ns": 1794451279316035300,
+   "bytes": 791649,
+   "duplicate_of": "photos\\aerial.png",
+   "observed": false
+  },
+  {
+   "file": "photos\\view_top_far_w.png",
+   "sha256": "a039d17151040392266d5bc8e524487365aeb212235b9ad9fe6384bcde5befff",
+   "size": [
+    1600,
+    1100
+   ],
+   "mtime_ns": 1794446884124006400,
+   "bytes": 2495244,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\view_top_n.png",
+   "sha256": "90ee9f4d7301263427a279ebd0444631c4b706bfa7da049817e868f2d2f43010",
+   "size": [
+    1600,
+    1100
+   ],
+   "mtime_ns": 1794446881625434800,
+   "bytes": 2234407,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\view_top_nw.png",
+   "sha256": "1b42f327903e2d378bfd47d2ad9e34f8e8b02dca1167d4d7632dc2b8c45636ce",
+   "size": [
+    1600,
+    1100
+   ],
+   "mtime_ns": 1794446882899670900,
+   "bytes": 1882424,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\view_w_full.png",
+   "sha256": "0496c581c6214a0815fd24247f2d79967550d253a5a461b305490a8f6affd59c",
+   "size": [
+    1600,
+    1100
+   ],
+   "mtime_ns": 1794446764236178200,
+   "bytes": 2659931,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\c101.png",
+   "sha256": "605aa08d0829f3a64168ef86715c7291ecefdf81ad7ed0c9e697f54d07e63fbb",
+   "size": [
+    160,
+    150
+   ],
+   "mtime_ns": 1794457037516375500,
+   "bytes": 30151,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\c102.png",
+   "sha256": "129aaef3dfadc54c74fb3b8b07ca9c174203fd4312de23218764ecccc7672a1c",
+   "size": [
+    170,
+    160
+   ],
+   "mtime_ns": 1794457037513868000,
+   "bytes": 37733,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\c103.png",
+   "sha256": "f545f9cc21d31f7975e5a260d1272ca4b33d973655df07c6e427aa28e7e4dd03",
+   "size": [
+    170,
+    160
+   ],
+   "mtime_ns": 1794457037511364900,
+   "bytes": 44346,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\c104.png",
+   "sha256": "9ba2ad16b6a83d2b5453603781214db94e243ba690bedc5680971b17b4653ddc",
+   "size": [
+    160,
+    150
+   ],
+   "mtime_ns": 1794457037508358600,
+   "bytes": 39516,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\c105.png",
+   "sha256": "6748b397f84168cd6badc3ae02490ec6d310f451625fb5659aec6a61bb95c356",
+   "size": [
+    180,
+    200
+   ],
+   "mtime_ns": 1794457037519575100,
+   "bytes": 57050,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\c106.png",
+   "sha256": "983842e26cf4e7b967ad5978ca68bd24b02ca3178b8f99e4823062ab181f5548",
+   "size": [
+    170,
+    180
+   ],
+   "mtime_ns": 1794457037522082700,
+   "bytes": 41112,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\c107.png",
+   "sha256": "031ff656b43d178c0a9eebbbb11566ffe6a0b42428bebc59e18a0df9f249c61c",
+   "size": [
+    170,
+    180
+   ],
+   "mtime_ns": 1794457037525082600,
+   "bytes": 39786,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\c108.png",
+   "sha256": "03fc36a14222bdfa198385c1a9edddd1b63f065c035a941f995e24cbbe570c55",
+   "size": [
+    170,
+    170
+   ],
+   "mtime_ns": 1794457037527623500,
+   "bytes": 42686,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\c109.png",
+   "sha256": "eb12595811db3854f44fd72bfc9eff8f5be27d023dba162a9a8a216f5f443981",
+   "size": [
+    135,
+    135
+   ],
+   "mtime_ns": 1794457037536146500,
+   "bytes": 28562,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\c110.png",
+   "sha256": "3d99a2cdfb3b6fb35d0f24c9f83641be3e2d8b9c8e44611c12b980c19370cff9",
+   "size": [
+    145,
+    140
+   ],
+   "mtime_ns": 1794457037533636800,
+   "bytes": 30705,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\c111.png",
+   "sha256": "49cc84ae91812fc1223428afe30a204b38b63f4fe17edbd06d5ffc5a61612288",
+   "size": [
+    150,
+    140
+   ],
+   "mtime_ns": 1794457037531637600,
+   "bytes": 34335,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\c112.png",
+   "sha256": "b6a050c9651b2b9c946cd806623333a3c24264a9e114f279f6e9fa05d40d7b35",
+   "size": [
+    140,
+    140
+   ],
+   "mtime_ns": 1794457037529629900,
+   "bytes": 31113,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_101.png",
+   "sha256": "488171527dab05f670ec5606ab650b1dd8771c84aece655e5dd8d2cc60563515",
+   "size": [
+    220,
+    200
+   ],
+   "mtime_ns": 1794456958030673800,
+   "bytes": 55388,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_101_fix.png",
+   "sha256": "5b3ae348f684983a1ba6ad51d3e1db93798ee3c2ef0773565a5e8331624737c0",
+   "size": [
+    140,
+    120
+   ],
+   "mtime_ns": 1794457006386411300,
+   "bytes": 21268,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_102.png",
+   "sha256": "e45198267cd1a5d88a90f330c5d77b56bd4930addd68e63acd1bb628f43204cb",
+   "size": [
+    200,
+    150
+   ],
+   "mtime_ns": 1794456958033685500,
+   "bytes": 38700,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_102_fix.png",
+   "sha256": "ca74c677c0d082f0b802ba695a15391f604376439ab81d9dd34cb93d3af43084",
+   "size": [
+    180,
+    170
+   ],
+   "mtime_ns": 1794457006373117400,
+   "bytes": 42138,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_103.png",
+   "sha256": "28a25f7b72f21613031c14396f7330a1c7e87a11f508615a0a07b5c5c6d49a6a",
+   "size": [
+    200,
+    150
+   ],
+   "mtime_ns": 1794456958036190200,
+   "bytes": 44635,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_104.png",
+   "sha256": "e9bc1d250cbaa858c339f66abce37d0efb0b9f4cddac40c255b27fcf204a249b",
+   "size": [
+    200,
+    160
+   ],
+   "mtime_ns": 1794456958038689900,
+   "bytes": 48714,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_105.png",
+   "sha256": "f4bf0b8b9eb6d161e22cef323b6968dcefc48fa6d062e4465375b05d94ecc21b",
+   "size": [
+    220,
+    220
+   ],
+   "mtime_ns": 1794456958042727300,
+   "bytes": 74455,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_106.png",
+   "sha256": "3773301fc5970bffcd941b2f625ff7a4e915ec27e72c44dab0a485d05c2ebced",
+   "size": [
+    210,
+    200
+   ],
+   "mtime_ns": 1794456958045941600,
+   "bytes": 54324,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_107.png",
+   "sha256": "4104319a34f8435b074788aa7851f2cc972307cf54960a274192f52155d7b81f",
+   "size": [
+    210,
+    180
+   ],
+   "mtime_ns": 1794456958048941400,
+   "bytes": 45835,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_107_fix.png",
+   "sha256": "6d66422bda02b1d17e2452b76aad108a912937ef84cfedb0d23cbf00dfd60f67",
+   "size": [
+    170,
+    190
+   ],
+   "mtime_ns": 1794457006376117500,
+   "bytes": 42907,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_108.png",
+   "sha256": "a99f24f5f32e92b389959b038fd63f87baa2faf4c829665cde6b36547b4f2d27",
+   "size": [
+    200,
+    180
+   ],
+   "mtime_ns": 1794456958051947100,
+   "bytes": 51883,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_108_fix.png",
+   "sha256": "a8db142c4a1b53afaafa48dc21fa1a0800e4072e525a6e485a3c6b8594894306",
+   "size": [
+    170,
+    170
+   ],
+   "mtime_ns": 1794457006378117500,
+   "bytes": 41459,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_109.png",
+   "sha256": "22503da1ace7c1357222d21f55459c78ae3c6d292c18ae99ccac2903ee85c457",
+   "size": [
+    190,
+    170
+   ],
+   "mtime_ns": 1794456958055455400,
+   "bytes": 47155,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_109_fix.png",
+   "sha256": "ab755f672ca4fc69e35fbcce2dcc58621809fd5aa27b3f9c84001c37d09b70f1",
+   "size": [
+    130,
+    130
+   ],
+   "mtime_ns": 1794457006387913300,
+   "bytes": 26179,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_110.png",
+   "sha256": "ff1bfbd7755aebadedffd278b1c8f0bec723132de3b2cb484ee44096a2aaaed4",
+   "size": [
+    170,
+    150
+   ],
+   "mtime_ns": 1794456958057960200,
+   "bytes": 37974,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_110_fix.png",
+   "sha256": "eb4ce08019604cf28133bbb29a4d5d5c56234d030968ffbcd106c7b80d61eeb2",
+   "size": [
+    140,
+    150
+   ],
+   "mtime_ns": 1794457006380122500,
+   "bytes": 30828,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_111.png",
+   "sha256": "90f4f4332f563183bb1f077cd0f0fffb343b355347f8722e91e865486f431628",
+   "size": [
+    160,
+    150
+   ],
+   "mtime_ns": 1794456958060462600,
+   "bytes": 38378,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_111_fix.png",
+   "sha256": "9350881b22f18ecaa834b26414164d579f0e02fdfb0ec73405fb3d5acdbfedab",
+   "size": [
+    140,
+    150
+   ],
+   "mtime_ns": 1794457006382400300,
+   "bytes": 33568,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_112.png",
+   "sha256": "565ec398328288dde9a05bd0f5e71dda84813e560eebf5a42116e81e758cb747",
+   "size": [
+    150,
+    160
+   ],
+   "mtime_ns": 1794456958063016500,
+   "bytes": 37583,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\dong_112_fix.png",
+   "sha256": "b29f9fc1a8cbbad66598afdbd24a1957d23389ad13085b8719af8737ce8fc587",
+   "size": [
+    130,
+    140
+   ],
+   "mtime_ns": 1794457006384408100,
+   "bytes": 28148,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\grid.png",
+   "sha256": "dd56b599ddc650986266174e89803f2fac4edd7837e00f5573db88d54808d959",
+   "size": [
+    1079,
+    1177
+   ],
+   "mtime_ns": 1794457097117040500,
+   "bytes": 1856575,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\true_101.png",
+   "sha256": "02e8aa97adf8c1028114521c2af9474dd1e95307446bed4b7999e2a109fc9a53",
+   "size": [
+    160,
+    160
+   ],
+   "mtime_ns": 1794457074882741300,
+   "bytes": 32669,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\true_102.png",
+   "sha256": "346ad4254862829863deac890cf8ee166bb5b0e017d6f246cbb64c66f294fb8f",
+   "size": [
+    160,
+    160
+   ],
+   "mtime_ns": 1794457074880240700,
+   "bytes": 33750,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\true_103.png",
+   "sha256": "cfb622ff6a4710d26fe019ffbffd324f225c2ebe92ec6aa4fd08045d3ccffa36",
+   "size": [
+    160,
+    160
+   ],
+   "mtime_ns": 1794457074877740700,
+   "bytes": 40525,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\true_104.png",
+   "sha256": "c6b345abd38a15fd057120b175533308185dea2d2a7efb9b5b4e16d6b57ed0e3",
+   "size": [
+    160,
+    160
+   ],
+   "mtime_ns": 1794457074875236100,
+   "bytes": 41392,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\true_105.png",
+   "sha256": "93822ef3e2f60ac00fdf5c123f7c1f72c6ef0cdb27232e5eefef1671b83aefcf",
+   "size": [
+    160,
+    160
+   ],
+   "mtime_ns": 1794457074885246100,
+   "bytes": 42216,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\true_106.png",
+   "sha256": "3160f08f9af663e0609d389476d9947c98d5400c160d33bb78a00035825f875f",
+   "size": [
+    160,
+    160
+   ],
+   "mtime_ns": 1794457074887758500,
+   "bytes": 37164,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\true_107.png",
+   "sha256": "5d12a75d470480f96e7cbf2900e81ac5a42d26593162c9c81f5118385bbbb7e0",
+   "size": [
+    160,
+    160
+   ],
+   "mtime_ns": 1794457074890258400,
+   "bytes": 33267,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\true_108.png",
+   "sha256": "f4c8af04efa9da7fc9204f8e9b663ae8da57690b5664f6cc153b7c91f3081b82",
+   "size": [
+    160,
+    160
+   ],
+   "mtime_ns": 1794457074892758600,
+   "bytes": 38746,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\true_109.png",
+   "sha256": "2fbc52811c6efb4bb768bb0bc080f0245fc1742f21f659bfc7ab730a80628b91",
+   "size": [
+    160,
+    160
+   ],
+   "mtime_ns": 1794457074901981400,
+   "bytes": 38605,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\true_110.png",
+   "sha256": "6386697629066c0fd603cdd11e4683b2b5e0e90d8d06e49a8c36144264c16c8e",
+   "size": [
+    160,
+    160
+   ],
+   "mtime_ns": 1794457074899268300,
+   "bytes": 38474,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\true_111.png",
+   "sha256": "cc94104c62f7f8bd5735bd1b053ba36073f22b9a974072e4aaa600e8a201bf16",
+   "size": [
+    160,
+    160
+   ],
+   "mtime_ns": 1794457074897264900,
+   "bytes": 41765,
+   "duplicate_of": null,
+   "observed": false
+  },
+  {
+   "file": "photos\\dong_crops\\true_112.png",
+   "sha256": "7d19be56c02e522b12419841e47f816d65d0a8d5ea26ed2169f4726bbddab789",
+   "size": [
+    160,
+    160
+   ],
+   "mtime_ns": 1794457074894760700,
+   "bytes": 40500,
+   "duplicate_of": null,
+   "observed": false
+  }
+ ]
+}

@@ -1,0 +1,175 @@
+{
+ "visual_review": "PASS",
+ "current_stage": "review:PASS",
+ "generator": "exllu_104_cs2.py",
+ "generator_hash": "970d9607482499df7590bdfd79be892e8ebacdce6b0af15e004276d4653c2dce",
+ "current_preview_hash": "500a8554a5c7ee5cc37045d2ec3cd92b3ce2a9712434cd2c4a776ffce6bfadd0",
+ "last_gate": {
+  "status": "PASS",
+  "project": "exllu-104",
+  "generator": "exllu_104_cs2.py",
+  "mode": "final",
+  "checks": {
+   "build": "PASS",
+   "geometry": "PASS",
+   "preview": "PASS",
+   "photo": "PASS",
+   "tiles": "PASS",
+   "lod": "PASS",
+   "fbx": "PASS",
+   "visual_review": "PASS"
+  },
+  "errors": [],
+  "next_action": {
+   "command": null,
+   "reason": "no fix needed"
+  },
+  "artifacts": {
+   "preview": "previews\\HighriseTower104_L1_5x4.png",
+   "report": "output\\HighriseTower104_L1_5x4\\_check\\report.json"
+  },
+  "asset": "HighriseTower104_L1_5x4",
+  "label": "roof-stair",
+  "time": "2026-11-12 16:39:48",
+  "build": {
+   "asset": "HighriseTower104_L1_5x4",
+   "fbx": true,
+   "warnings": []
+  },
+  "check": {
+   "errors": [],
+   "warnings": [],
+   "info": {
+    "size": [
+     30.06,
+     27.13,
+     111.94
+    ],
+    "pivot_offset": [
+     0.0,
+     0.0
+    ],
+    "zmin": 0.0,
+    "coords": "generator coordinates (before pivot move)",
+    "tris": {
+     "main": 46690,
+     "win": 1722,
+     "lod1": 8346,
+     "lod1_win": 1722,
+     "lod2": 284,
+     "lod2_win": 1722
+    },
+    "verts": {
+     "main": 93380,
+     "win": 3444,
+     "lod1": 16692,
+     "lod1_win": 3444,
+     "lod2": 568,
+     "lod2_win": 3444
+    },
+    "coplanar": {
+     "main": 0,
+     "lod1": 0,
+     "lod2": 0,
+     "win": 0
+    },
+    "textures": {
+     "BaseColor": "4096x4096 RGBA",
+     "ControlMask": "4096x4096 RGBA",
+     "MaskMap": "4096x4096 RGBA",
+     "Normal": "4096x4096 RGB",
+     "Emissive": "4096x4096 RGB",
+     "LOD2_BaseColor": "1024x1024 RGBA",
+     "LOD2_ControlMask": "1024x1024 RGBA",
+     "LOD2_MaskMap": "1024x1024 RGBA",
+     "LOD2_Normal": "1024x1024 RGB",
+     "LOD2_Emissive": "1024x1024 RGB"
+    },
+    "texel_px_per_m": {
+     "p10": 229.9,
+     "median": 385.1,
+     "p90": 385.1
+    },
+    "windows": 861,
+    "win_dropped": 0,
+    "win_blocked": {
+     "win": 0,
+     "lod1_win": 0,
+     "lod2_win": 0
+    },
+    "time_s": 5.4
+   },
+   "report": "output\\HighriseTower104_L1_5x4\\_check\\report.json"
+  },
+  "photo": {
+   "checked": true,
+   "mismatch": 0,
+   "lines": [
+    "MATCH    front floor pitch: photo 2.95 m / model 2.95 m (+0%)",
+    "INFO     front window bay pitch: photo 1.70 m / model 2.75 m (+62%)  (bays differ - check window columns)",
+    "INFO     front edge agreement 56%"
+   ],
+   "status": "PASS"
+  },
+  "tiles": {
+   "checked": true,
+   "status": "PASS",
+   "simplified": [
+    "TILE front r0c0 x[0,8]m z[0,9]m recall 35% precision 41%  SIMPLIFIED"
+   ],
+   "detail": [
+    "DETAIL front recall 35% precision 41% worst r0c0 (35%) simplified_tiles 1/1"
+   ],
+   "detail_color": [
+    "DETAIL_COLOR front tiles_off 0/1 (dE>14; trusted tiles only)"
+   ],
+   "color_off": [],
+   "tiles_off": 0,
+   "tiles_total": 1
+  },
+  "lod": {
+   "checked": true,
+   "status": "PASS",
+   "line": "LODCHECK PASS main max 0.004% (az 22, el -10) bad_views 0/64 | lod1 max 0.000% (az 0, el -10) bad_views 0/64 | lod2 max 0.002% (az 68, el +25) bad_views 0/64  -> previews\\lod_check\\HighriseTower104_L1_5x4",
+   "notes": []
+  },
+  "agent": {
+   "status": "PASS",
+   "verts": {
+    "LOD0": 93380,
+    "LOD1": 16692,
+    "LOD2": 568
+   },
+   "action_tags": [],
+   "exact_fix_instruction": "no fix needed"
+  },
+  "gate": {
+   "status": "PASS",
+   "reasons": [],
+   "incomplete": []
+  }
+ },
+ "mismatch_attempts": {},
+ "next_action": {
+  "command": null,
+  "reason": "all requested checks passed"
+ },
+ "project": "exllu-104",
+ "updated_at": "2026-11-12T16:40:33",
+ "visual_review_note": "Roof parapet now one mitred ring along the OSM outline (no gaps at steps/recess, checked iso zoom). Stair sides closed by stone cheek walls (front zoom). photo_check/tiles unchanged and aligned.",
+ "visual_review_artifacts": [
+  {
+   "file": "previews/HighriseTower104_L1_5x4.png",
+   "sha256": "500a8554a5c7ee5cc37045d2ec3cd92b3ce2a9712434cd2c4a776ffce6bfadd0"
+  },
+  {
+   "file": "previews/photo_check/facade_front.png",
+   "sha256": "8de32f648e7e80a300003772631a0b77222dff1e676ec08106fcb4dab4dd0396"
+  },
+  {
+   "file": "previews/tiles/front_map.png",
+   "sha256": "bb7f4412f50892863cded1fe4c1824c0b7134452dd9e5b043b945df94bf7822d"
+  }
+ ],
+ "reviewed_preview_hash": "500a8554a5c7ee5cc37045d2ec3cd92b3ce2a9712434cd2c4a776ffce6bfadd0"
+}

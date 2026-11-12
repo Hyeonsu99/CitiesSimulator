@@ -1,0 +1,47 @@
+{
+  "facades": [
+    {
+      "file": "photos/auction_2022-112205_106_entrance.jpg",
+      "side": "front",
+      "name": "west_arm_north_wall_f2_f5",
+      "corners": [
+        [
+          357,
+          89
+        ],
+        [
+          497,
+          89
+        ],
+        [
+          497,
+          256
+        ],
+        [
+          357,
+          256
+        ]
+      ],
+      "size_m": [
+        8.6,
+        8.82
+      ],
+      "box": [
+        10.6,
+        19.2,
+        14.0,
+        14.8,
+        8.18,
+        17.0
+      ],
+      "confidence": "low",
+      "occluded": "none in this band",
+      "paint": {
+        "use_for_color": true
+      },
+      "paint_exclude": [],
+      "paint_include": [],
+      "note": "auction photo, 140x167 px wall region at ~16 px/m with perspective. Overlay (previews/photo_check/facade_front.png) shows 3 storeys and both window columns aligned; the automatic floor-pitch reader locks onto the ~1.5 m granite panel joints (reads 1.80 m), so floor-pitch is informational only for this ref."
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+ "visual_review": "PASS",
+ "current_stage": "review:PASS",
+ "generator": "exllu_105_cs2.py",
+ "generator_hash": "f820452e467e125db8edcb06e6345d447588e4510b65a83aeeef514526a5595f",
+ "current_preview_hash": "6a480d0ce26a44ede8273abca6d17d592ef6cacd8d812d5e80a12264f7dc8076",
+ "last_gate": {
+  "status": "PASS",
+  "project": "exllu-105",
+  "generator": "exllu_105_cs2.py",
+  "mode": "final",
+  "checks": {
+   "build": "PASS",
+   "geometry": "PASS",
+   "preview": "PASS",
+   "photo": "NOT_APPLICABLE",
+   "tiles": "NOT_APPLICABLE",
+   "lod": "PASS",
+   "fbx": "PASS",
+   "visual_review": "PASS"
+  },
+  "errors": [],
+  "next_action": {
+   "command": null,
+   "reason": "no fix needed"
+  },
+  "artifacts": {
+   "preview": "previews\\HighriseTower105_L1_5x6.png",
+   "report": "output\\HighriseTower105_L1_5x6\\_check\\report.json"
+  },
+  "asset": "HighriseTower105_L1_5x6",
+  "label": "c-entrance",
+  "time": "2026-11-12 17:12:57",
+  "build": {
+   "asset": "HighriseTower105_L1_5x6",
+   "fbx": true,
+   "warnings": []
+  },
+  "check": {
+   "errors": [],
+   "warnings": [],
+   "info": {
+    "size": [
+     39.15,
+     45.65,
+     159.4
+    ],
+    "pivot_offset": [
+     0.0,
+     0.0
+    ],
+    "zmin": 0.0,
+    "coords": "generator coordinates (before pivot move)",
+    "tris": {
+     "main": 73428,
+     "win": 2296,
+     "lod1": 22042,
+     "lod1_win": 2296,
+     "lod2": 434,
+     "lod2_win": 2296
+    },
+    "verts": {
+     "main": 146856,
+     "win": 4592,
+     "lod1": 44084,
+     "lod1_win": 4592,
+     "lod2": 868,
+     "lod2_win": 4592
+    },
+    "coplanar": {
+     "main": 0,
+     "lod1": 0,
+     "lod2": 0,
+     "win": 0
+    },
+    "textures": {
+     "BaseColor": "4096x4096 RGBA",
+     "ControlMask": "4096x4096 RGBA",
+     "MaskMap": "4096x4096 RGBA",
+     "Normal": "4096x4096 RGB",
+     "Emissive": "4096x4096 RGB",
+     "LOD2_BaseColor": "1024x1024 RGBA",
+     "LOD2_ControlMask": "1024x1024 RGBA",
+     "LOD2_MaskMap": "1024x1024 RGBA",
+     "LOD2_Normal": "1024x1024 RGB",
+     "LOD2_Emissive": "1024x1024 RGB"
+    },
+    "texel_px_per_m": {
+     "p10": 385.1,
+     "median": 385.1,
+     "p90": 385.1
+    },
+    "windows": 1148,
+    "win_dropped": 0,
+    "win_blocked": {
+     "win": 0,
+     "lod1_win": 0,
+     "lod2_win": 0
+    },
+    "time_s": 8.9
+   },
+   "report": "output\\HighriseTower105_L1_5x6\\_check\\report.json"
+  },
+  "photo": {
+   "checked": false,
+   "mismatch": null,
+   "lines": [],
+   "status": "NOT_APPLICABLE"
+  },
+  "tiles": {
+   "checked": false,
+   "status": "NOT_APPLICABLE",
+   "simplified": [],
+   "detail": [],
+   "detail_color": [],
+   "color_off": [],
+   "tiles_off": 0,
+   "tiles_total": 0
+  },
+  "lod": {
+   "checked": true,
+   "status": "PASS",
+   "line": "LODCHECK PASS main max 0.031% (az 180, el +50) bad_views 0/64 | lod1 max 0.012% (az 135, el +50) bad_views 0/64 | lod2 max 0.000% (az 0, el -10) bad_views 0/64 marginal=1  -> previews\\lod_check\\HighriseTower105_L1_5x6",
+   "notes": [
+    "LOD margin is close to the 0.05% limit"
+   ]
+  },
+  "agent": {
+   "status": "PASS",
+   "verts": {
+    "LOD0": 146856,
+    "LOD1": 44084,
+    "LOD2": 868
+   },
+   "action_tags": [],
+   "exact_fix_instruction": "no fix needed"
+  },
+  "gate": {
+   "status": "PASS",
+   "reasons": [],
+   "incomplete": []
+  }
+ },
+ "mismatch_attempts": {},
+ "next_action": {
+  "command": null,
+  "reason": "all requested checks passed"
+ },
+ "project": "exllu-105",
+ "updated_at": "2026-11-12T17:15:50",
+ "visual_review_note": "Preview checked: same generator as 106 (entrance on the west-arm north wall per 106 photo, podium to storey 5). No own photo refs: photo/tiles NOT_APPLICABLE.",
+ "visual_review_artifacts": [
+  {
+   "file": "previews/HighriseTower105_L1_5x6.png",
+   "sha256": "6a480d0ce26a44ede8273abca6d17d592ef6cacd8d812d5e80a12264f7dc8076"
+  }
+ ],
+ "reviewed_preview_hash": "6a480d0ce26a44ede8273abca6d17d592ef6cacd8d812d5e80a12264f7dc8076"
+}

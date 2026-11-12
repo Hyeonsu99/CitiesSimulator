@@ -1,77 +1,16 @@
-asset: HighriseTower103_L1_5x4   # renamed: no real complex name in asset names (AGENTS rule 3)
-generator: exllu_103_cs2.py      # v2 custom generator; v1 generic kept in work/exllu_103_cs2.v1_generic.py
-level: 1
-lot: 5x4
+name: HighriseTower103
+lot:
+  width: 5
+  depth: 4
+dimensions:
+  width_m: 32.0
+  depth_m: 21.0
+  height_m: 160.0
 floors: 50
-floor_height_m: 2.94             # floors 2-50 (TASK)
-lobby_height_m: 5.24             # estimated: raised so the top = 160 m (research)
-footprint_m: {width: 32, depth: 21}
-height_m: 149.3                  # roof slab (5.24 + 49 x 2.94); parapet 150.6, helipad deck 159.1, rail top 160.0
-tris: {main: 78780, gls: 2808, lod1: 17570, lod2: 294, windows: 2808}   # main above the 60k target, below the 95k warning
-front_recess_m: {half_width: 1.0, depth: 2.0}   # user-10-front: ~2 m dark slot; depth estimated
-materials:
-  stone_dark: [88, 82, 80]          # estimated from user-02/03/05
-  pale_panel: [224, 222, 214]       # estimated
-  window_frame: [236, 237, 235]     # estimated
-  pier_pink_granite: [176, 140, 130] # estimated from user-03
-  helipad_green: [74, 140, 104]     # estimated from user-06
-facade:
-  ledges: "stone ring every floor, 0.55 m out x 0.28 m (estimated, user-07: ~2x thickness out, ~1/10 storey); upper front ledges pale (estimated from user-11); side ledges skip the pale centre y 6.4-14.8 from floor 7 (user-07); floor-2 podium band 0.6 x 0.55; cornice 0.5 x 0.35"
-  window_sill_head_m: [0.75, 2.45]  # estimated
-  front_wing: "corner window wrapping onto the side with a corner post (5.45 m + 5.25 m), pale AC-louver column (x 7.8-9.9), narrow window on stone"
-  front_centre: "no centre bay: a 2 m full-height dark stone slot (user-10-front). Each wing from the corner: corner window, 3-pane window (6.6-9.2), white louver (3.2-4.4), small window (1.4-2.6), slot; front dark stone to floor 7, pale above except dark stone strips |x| < 3 m beside the slot full height (user-11), corners dark glass from floor 41"   # widths estimated from user-10
-  sides: "SE side (-x) from user-12-se (close, frontal; same face as user-07/08, daycare windows at the base; taken ~70 m SE): floors 1-6 dark stone with full-width ledges (PALE_F=7, estimated); dark stone flanks ~3 m at both ends full height with a ledge every floor; pale centre y 3-18 above; regular windows each floor (flank windows, wide windows, small windows, white shutter column y 10.1-12.0); teal glass band y 4.8-13.4 on the top 4 floors; no corner window wraps onto this side. Supersedes the street-view se_hi reading (pale back flank). NW side (+x): see nw_side."   # positions estimated from one photo row
-  nw_side: "Naver street view 2025-03 (pano adGlg2QXhpiqd0i7KIdUew, ~47 m WNW of the tower; satellite confirms helipad at the WNW end): floors 1-6 dark stone + full ledges like SE; above: all pale, no side ledges, no dark-glass flanks; full-height dark slot y 8.8-10.4, depth 1.2 (estimated); small window pairs y 6.6-8.5 / 10.7-12.5, wide windows 13.0-15.6 and 16.4-20.2 (estimated)"
-  back: "Kakao roadview pano 1201133286 (81 m SSW): 2023-02 overcast (photos/kakao-back-2023-02.png) shows the back above floor 7 split at about the shaft: SE half (x < 2) grey stone, NW half pale; regular windows, no projecting ledges. The 2025-09 sunny view (kakao-back-*.png) washes the grey out; Naver street view 2025-03 from the south also shows the grey on the SE half. Base dark granite to floor 7 kept (lower floors behind pines in every date). White shaft x 2-5 kept from user-01 (not confirmed)."
-ground:
-  pilotis: "left wing open 2 m deep, no glazing (user-03: bicycle parking); 1.2 m dark granite corner pier, 0.7 m pale grey column at x -6; floor 1 above it is a solid grey granite band 0.3 m proud (no windows)"   # estimated
-  lobby_glazing: "centre and right wing"
-entrance:   # user entrance photos (2026-11-10)
-  position_x_m: [7.4, 15.7]          # estimated
-  porch: "box canopy y -4.2..0, soffit 3.8, pale band to 5.0, clerestory strip 5.0-5.8, dark stone cap to 6.2 (front + +x faces)"  # estimated
-  piers: "dark granite left pier 1.2 m; pink granite corner pier 2 x 2 m to 6.5 m"  # estimated
-  stair_steps: 7                     # counted; 0.15 m risers, 0.36 m treads, stone cheek walls, steel handrails
-  vestibule_glass_y_m: -1.7          # kept > 1.5 m in front of the lobby window (WIN_BLOCKED rule)
-  not_modeled: "'103' numerals and sign lettering (no sign text)"
-roof:
-  parapet_h_m: 1.3                   # estimated
-  orientation: "user-09 aerial: long axis NW-SE, model +x = NW end, front (-y) faces NE, back faces SW, left side (x=-16) faces SE"
-  helipad: "SQUARE deck 13.7 x 13.7 m (Naver satellite, scaled by the 32 m length), green pad 12 m, H circle r 3.7; was 16 m: (user-09 aerial) centred (4.5,10.5) = 36 % from the NW end, sloped dark square underside, white core r=1.8 + 6 V struts, edge rail; replaces the earlier round disk. Old note:, deck top H+9.8, on white core r=1.8 with 6 V struts, dark conical underside, rim rail; green 11x11 + H"  # estimated from user-01 crop / user-06
-  steel_frame: "4 white posts on the SE edge of the deck (aerial)"
-  heliport_detail:   # 2026-11-10; satellite / user-06 light band round the deck and white steel frame on the SE edge
-    safety_net: "flat steel-mesh net 1.5 m wide on the NE, NW and SW deck edges, flush with the deck edge"   # estimated width
-    access_platform: "steel grating 1.5 m on the SE edge, same slab as the net"
-    access_stair: "switchback steel stair from the main roof to the platform: 2 x 24 open treads, white stringers, steel handrails, frame posts, X bracing"   # estimated (frame seen from above only)
-    lights: "28 green emissive perimeter lights on the grey deck band (7 per side)"   # standard helideck practice, not photographed
-    underside: "white core r 1.3 with a collar node 0.7-1.3 m above the observatory roof; 8 struts fan from the collar to the dark dish; 8 white radial ribs 0.2 m below the dish; 8 warm downlights (roof.jpg sibling glows at night); the 4 loose SE posts were removed (platform cantilevers with the net slab)"   # estimated from user-01
-  observatory: "2026-11-10: roof under the deck is plain; raised dark blue-grey skylight lanterns only on the exposed NW/SW strips (satellite). Earlier rework: 0.6 m pale plinth, glazing set back 0.15 m (light green reflective framed panels 1.2 m, transom at 2.6 m, warm interior glow at night), 0.35 m white coping, gridded glass roof, white mullions every 2.4 m (roof.jpg / user-01 glass crowns; estimated). Before: green glass box under the deck x -3..15.2, y 3..20.2, h 4.6, wall mullions + roof grid (aerial: glass grid shows NW/SW of the deck). Old note: x -14..-3, 1.4 m mullions + transom"  # estimated from user-01 / roof.jpg
-textures:
-  window: "atlas window cell 1024 px: green-tinted glass (68,110,110), sky gradient, glint streak, curtains on ~45 % of slots, ~30 % lit (emissive 255,205,150)"  # synthesized
-  glass_pane: "_Gls quad 2.5 cm in front of every window, (150,185,180) gloss 0.9"
-  stone: "granite slabs 1.2 x 0.735 m, joints + speckle, tile 2.4 m x one storey"  # synthesized (procedural), colour from photos
-  pale: "panels 1.2 x 0.98 m, faint joints"   # synthesized
-  pier_pink: "granite 1.2 x 0.6 m"            # synthesized
-research:   # public sources, 2026-11-10
-  - "CTBUH Skyscraper Center: Kumgang Exllu Tower 103, 50 floors, 170 m architectural, completed 2012, all-concrete, residential. https://www.skyscrapercenter.com/building/kumgang-exllu-tower-103/12821"
-  - "wiki.onul.works: 103 = 50 floors above / 1 below, top height 160 m; rooftop helipad and observatory on each tower; Daejeon Daedeok-gu. https://wiki.onul.works/w/%EA%B8%88%EA%B0%95_%EC%97%91%EC%8A%AC%EB%A3%A8_%ED%83%80%EC%9B%8C"
-  - "Height: matched to 160 m (wiki) at the helipad rail by raising the lobby to 5.24 m (user request). CTBUH 170 m not matched: no photo evidence of a further 10 m."
-photo_mismatch_notes:
-  - "Top-corner dark glass removed 2026-11-11: Naver street view 2025-03 from 118-122 m in front (photos/sv-front-far-a/b, panos yx8H9uDHnutUZ6EQR9rJGQ and TraDSbypI_0jGzB09S8Llw, the gap between towers 104 and 105) shows both front wings pale to the roof with the same windows; the dark zone in user-02/05 is the SE side flank. NW side top floors still not visible (estimated: same as below)."
-  - "Wrap-around corner windows (user-04): front wing corners only; back corners unknown (no photo)."
-  - "TEXEL warning (30%): from plain-colour ledge/trim faces on untiled cells; the checker says to ignore it for plain colours."
-  - "Back is from one distant 120 px photo (user-01); floor counts of the grey zones and window positions are estimated."
-  - "photo_refs.json (front sv-front, SE user-07, NW sv-nw; sv-* = perspective views projected from Naver street-view cubemaps by camera yaw): layout matches by eye (dark base to floor 7, pale centre, NW slot at ~45 %, front wings/recess). The automatic floor-pitch check reads photo 1.25-1.8 m vs model 5.9 m against the known 2.94 m (50 floors, TASK + CTBUH): aliasing at ~2.9 px/m, below the 20 px/m the kit needs, so all refs are confidence low and floors are not changed."
-  - "Tile compare: front colour tiles off 47 -> 31 of 113 after the user-10 front rework (narrow slot, pale above floor 7). Edge recall stays ~40 %: street view is ~2.9 px/m."
-  - "Front: street view (pano 5PyV.., 49 m N) was too coarse to read the centre; user-10-front (close, frontal) settled it: narrow 2 m slot, no 11 m recess."
-  - "Back (street view 9Ksq.., 104 m S): grey bay runs from floor 7 to the top, ~7 m wide with a pale strip to the corner; shaft position kept from user-01. Back is not in photo_refs: its right edge is ambiguous and the base is hidden by pines."
-  - "Raised terrace (x -4..5.8, 2 m deep, level with the porch landing 1.05 m) with steel rails in front of the slot, slot door + one small slot window per floor, right-wing small windows as 0.4 m bay windows, white shutter louvers (all from user-03; extents estimated). photo_refs not extended with user-03: its left edge is cut off and the porch hides the bottom-right corner, so four wall corners cannot be read."
-  - "NW side from Naver street view; panoramas are 45-80 m away behind pine trees, so window positions and slot depth are estimated; top-floor NW corner glazing not visible."
-  - "Naver Land VR tour does not exist for this complex (id 100330); naver_vr.py capture not possible. Side/aerial photos supplied by the user."
-  - "The vertical sign lettering on the back shaft is not modeled (no sign text in assets)."
-  - "TASK.md text is corrupted ('?' bytes); only the numbers (50 floors, 32x21 m, 2.94 m) were readable."
-window_frames: "two sash units per wide window (narrow + wide each, paired mullion at the joint), shorter windows narrow-wide|wide-narrow, small windows one off-centre mullion, transom at 55 % of the window height (user-03, user-11)"   # estimated proportions
-back_sources: "2026-11-10 search: Naver panoramas SW are behind expressway noise walls; Google Maps satellite/3D did not load for this area; Kakao roadview (inner road between the complex and the expressway, 2012-2025, winter dates exist) gives the back; Kakao skyview confirms 103 next to the expressway with the helipad at the NW end of the roof (every tower in the complex has a rooftop helipad). Kakao past dates are reached through the viewer timeline (date menu -> dot -> compare slider). Naver aerial panoramas near the site are all 2008-11, before completion (2012): unusable."refuge_floor: "floor 26 (+-1, estimated): every opening is a louver panel, no windows, on all faces. Source: Naver land VR tour screenshots (photos/vr-103-*.png, user-captured): a window-less band at mid height on all four faces, ~24 window rows above and ~22 below. Matches the Korean rule for 50+ storey towers (a refuge floor within every 30 floors). The VR model is schematic, so it is used for the band and face layout only, not for colours or window sizes."
-heliport_lighting: "2026-11-11, estimated (standard rooftop heliport layout; no night photo of this deck): 28 green perimeter lights on the grey deck band, each with a green light pool painted into the band texture (pinwheel of four strips, tile 1.84 x 0.85 m, emissive); 16 yellow touchdown-circle lights; pad green emissive 0.07 and white markings 0.22 (floodlit look); 8 rail-top floodlights with the lens towards the pad; red obstruction lights on the 4 deck rail corners, the 4 roof parapet corners and the windsock mast; orange windsock on the NE net corner. Checked at night in the kit render and in the local Asset Simulator (127.0.0.1:5183/?preview=103). In-game emissive strength not verified (the observatory glow was reduced earlier for being too bright)."
-textures: "2026-11-11 quality pass: wall granite tiles (stone/pale/grey_stone) 1024 px with bevelled joints, three-scale speckle, rain streaks and a gloss map; window atlas 2048 px with reveal shadow, curtains with folds, roller blinds and per-room light levels; tiled roof membrane, stone paving (steps, terrace), white shaft panels; white shutters with slats baked into the texture (painted slat strips removed). Texel density median 385 px/m (was 96). Details are baked into textures instead of thin overlay faces where possible."
-entrance_detail: "2026-11-11 (user-03/04/10; sizes estimated): vestibule glazing baked into one 1024 px texture (stainless frame, sidelights, a pair of doors with pull handles and kick plates, transom, warm lit lobby at night); porch soffit panels with recessed downlights; clerestory panes with baked mullions; centre handrail on the stair; warm wall lights on the two piers (on the faces towards the stair so the lot stays 5x4); low granite planter left of the stair (photo shows a conifer planter; the tree is not modeled). Sign lettering and numerals are not modeled."
-fix_2026_11_11_night: "No _Gls mesh (it flickered at night in game; user test). Emissive levels cut to about 1/3 for the helideck and the entrance (too bright in game; values estimated, not re-tested in game). Entrance: thin dark roof slab over both piers inside the old cap height (z 6.0-6.2, 0.1 m side overhang), canopy side towards the terrace pale band + clerestory, left handrail continued on the landing to the tower wall. Terrace extended from x 5.8 to the porch cheek wall (8.2) with 5-bar rails (user-03; extent estimated). Entrance and terrace rails also in LOD1."   # estimated
+style: modern
+zone: ResidentialHigh
+subservice: ResidentialHigh
+signature: true
+evidence:
+  photos:
+    - photos/view_ref.png
