@@ -15,11 +15,11 @@
         ],
         [
           1205,
-          470
+          475
         ],
         [
           880,
-          470
+          475
         ]
       ],
       "size_m": [
@@ -31,8 +31,8 @@
         9.5,
         -0.5,
         0.5,
-        8.18,
-        17.0
+        8.04,
+        16.68
       ],
       "confidence": "high",
       "occluded": "none in this band; tree covers storey 1 below it",

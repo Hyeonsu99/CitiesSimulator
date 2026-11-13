@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_112_cs2.py",
- "generator_hash": "ac252fbca2e61bd9b5297543cf99a536a3c69e4ff47a5f4bcb0042d349fcf4af",
- "current_preview_hash": "9051e0aa59fb283b8a01978350d689fd86295b5eaf1bb61048d8c429c48af7b9",
+ "generator_hash": "962d0f2f0334e78a51982fb1ddb67cf3ae7101056fee14f34043e17f183c2d87",
+ "current_preview_hash": "20f45574d383f0cf45a17eb829c326af4a374894dbd569f0238a0221102e4c2d",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-112",
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower112_L1_5x4\\_check\\report.json"
   },
   "asset": "HighriseTower112_L1_5x4",
-  "label": "roof-stair",
-  "time": "2026-11-12 16:42:21",
+  "label": "",
+  "time": "2026-11-13 15:08:12",
   "build": {
    "asset": "HighriseTower112_L1_5x4",
    "fbx": true,
@@ -41,9 +41,9 @@
    "warnings": [],
    "info": {
     "size": [
-     30.06,
-     27.13,
-     111.94
+     30.18,
+     27.31,
+     113.4
     ],
     "pivot_offset": [
      0.0,
@@ -52,20 +52,20 @@
     "zmin": 0.0,
     "coords": "generator coordinates (before pivot move)",
     "tris": {
-     "main": 46690,
-     "win": 1722,
-     "lod1": 8346,
-     "lod1_win": 1722,
-     "lod2": 284,
-     "lod2_win": 1722
+     "main": 64534,
+     "win": 1720,
+     "lod1": 9164,
+     "lod1_win": 1720,
+     "lod2": 458,
+     "lod2_win": 1720
     },
     "verts": {
-     "main": 93380,
-     "win": 3444,
-     "lod1": 16692,
-     "lod1_win": 3444,
-     "lod2": 568,
-     "lod2_win": 3444
+     "main": 129342,
+     "win": 3440,
+     "lod1": 18330,
+     "lod1_win": 3440,
+     "lod2": 916,
+     "lod2_win": 3440
     },
     "coplanar": {
      "main": 0,
@@ -86,18 +86,18 @@
      "LOD2_Emissive": "1024x1024 RGB"
     },
     "texel_px_per_m": {
-     "p10": 229.9,
+     "p10": 192.4,
      "median": 385.1,
      "p90": 385.1
     },
-    "windows": 861,
+    "windows": 860,
     "win_dropped": 0,
     "win_blocked": {
      "win": 0,
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 4.9
+    "time_s": 7.7
    },
    "report": "output\\HighriseTower112_L1_5x4\\_check\\report.json"
   },
@@ -120,15 +120,15 @@
   "lod": {
    "checked": true,
    "status": "PASS",
-   "line": "LODCHECK PASS main max 0.004% (az 22, el -10) bad_views 0/64 | lod1 max 0.000% (az 0, el -10) bad_views 0/64 | lod2 max 0.002% (az 68, el +25) bad_views 0/64  -> previews\\lod_check\\HighriseTower112_L1_5x4",
+   "line": "LODCHECK PASS main max 0.002% (az 22, el +5) bad_views 0/64 | lod1 max 0.002% (az 112, el +5) bad_views 0/64 | lod2 max 0.000% (az 0, el -10) bad_views 0/64  -> previews\\lod_check\\HighriseTower112_L1_5x4",
    "notes": []
   },
   "agent": {
    "status": "PASS",
    "verts": {
-    "LOD0": 93380,
-    "LOD1": 16692,
-    "LOD2": 568
+    "LOD0": 129342,
+    "LOD1": 18330,
+    "LOD2": 916
    },
    "action_tags": [],
    "exact_fix_instruction": "no fix needed"
@@ -145,13 +145,13 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-112",
- "updated_at": "2026-11-12T16:42:29",
- "visual_review_note": "Preview checked: identical to 104 (mitred roof parapet ring, closed stair cheeks). No own photo refs: photo/tiles NOT_APPLICABLE.",
+ "updated_at": "2026-11-13T15:08:29",
+ "visual_review_note": "Synced Type B roof detail & 12-seg open-front revolving door upgrade from exllu-104; front/back/iso preview verified clean.",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower112_L1_5x4.png",
-   "sha256": "9051e0aa59fb283b8a01978350d689fd86295b5eaf1bb61048d8c429c48af7b9"
+   "sha256": "20f45574d383f0cf45a17eb829c326af4a374894dbd569f0238a0221102e4c2d"
   }
  ],
- "reviewed_preview_hash": "9051e0aa59fb283b8a01978350d689fd86295b5eaf1bb61048d8c429c48af7b9"
+ "reviewed_preview_hash": "20f45574d383f0cf45a17eb829c326af4a374894dbd569f0238a0221102e4c2d"
 }

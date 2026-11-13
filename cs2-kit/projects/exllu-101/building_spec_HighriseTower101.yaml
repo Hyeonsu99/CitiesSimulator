@@ -5,7 +5,7 @@ lot:
 dimensions:
   width_m: 29.7   # OSM footprint way 934368139 (photo 155809 estimate 31 m, -4%)
   depth_m: 22.8   # OSM footprint way 934368139
-  height_m: 111.6   # roof slab 108.1 + core penthouse 3.5
+  height_m: 113.4   # roof slab 108.0 (GH 5.10 + 35*2.94) + penthouse coping 4.54 + beacons 0.56 / masts 0.86
 floors: 36
 style: modern
 zone: ResidentialHigh
@@ -17,4 +17,6 @@ evidence:
   plan: OpenStreetMap way 934368139 (B-type outline shared by 101/104/109/112, 531 m2); aerial grid.png: no helipad
 estimated:
   - side step x half-widths 11.6/9.4/11.8/10.2 symmetrised from OSM vertices (+-0.2 m)
-  - front bay split dark 5.35 / pale wing 8.0 / recess 3.0 from photo 155809 scaled to OSM width; pale from storey 5
+  - front bay split: outer 5.35 (set back 1.00 m), pale wing to 9.50 (1.10 m dark core reveal), front recess 3.00 (depth 4.50 m) from photo 155809 scaled to OSM width; pale from storey 5 (GH 5.10 + FH 2.94 m)
+  - glazing & trim: SILL 0.82 / HEAD 2.62 m (1.80 m height), 44% transom, twin upper QUAD hopper vents (0.36..0.47 / 0.53..0.64), 0.09 x 0.12 m floor ledges on 6F..35F
+  - roof & entrance: twin-spine/stair-overrun recessed decks + coping curbs (112.54 m), pilasters, hooded doors, rotary turbine vents, skylights, condenser & twin-fan HVAC units w/ stainless ducts, court guardrails, beacon pedestals (113.1 m), lightning masts (113.4 m); 12-seg open-front stainless revolving door (spindle + 3 angled leaves) & split vestibule transom
