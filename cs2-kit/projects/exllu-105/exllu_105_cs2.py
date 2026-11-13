@@ -33,7 +33,6 @@ W, D, FH, NF = 38.4, 44.6, 2.94, 50          # 50 floors, OSM C outline bounding
 GH = 5.24                                     # double-height lobby storey
 H = GH + FH * (NF - 1)                        # 149.3 m roof slab; crown apex ~159 m
 REF_F = 26                                    # refuge floor: louvre band instead of windows
-REF_F = None                                  # 36-floor tower has standard residential floors throughout
 
 
 def zf(f):
@@ -175,6 +174,12 @@ def mesh_grid(ctx, n, w, col):
     ctx.rgb[m] = np.array(col, np.float32)
 
 
+def foliage(ctx):
+    ctx.grain(amp=14.0, scale_px=2, height=0.6, seed=21)
+    ctx.rgb += ctx.noise(8, 14.0, 3, seed=22)[..., None]
+    ctx.rgb += ctx.noise(24, 6.0, 2, seed=23)[..., None]
+
+
 def flat_emis(v):
     return lambda c: c.emis.__setitem__(Ellipsis, v)
 
@@ -204,9 +209,13 @@ TEX = {
     "vestibule": dict(px=1024, painter=vestibule, emissive=(255, 226, 184)),
     "soffit": dict(tile=(1.2, 1.2), px=256, painter=soffit, emissive=(255, 226, 184)),
     "heli_net": dict(tile=(0.6, 0.6), px=64, painter=lambda c: mesh_grid(c, 4, 0.10, (178, 182, 184))),
+    "grating": dict(tile=(0.6, 0.6), px=64, painter=lambda c: mesh_grid(c, 12, 0.25, (70, 72, 74))),
+    "ent_light": dict(px=32, painter=flat_emis(0.25), emissive=(255, 226, 184)),
+    "under_light": dict(px=32, painter=flat_emis(0.15), emissive=(255, 214, 160)),
     "heli_light": dict(px=32, painter=flat_emis(0.35), emissive=(110, 255, 140)),
     "heli_light_y": dict(px=32, painter=flat_emis(0.35), emissive=(255, 214, 90)),
     "obst_light": dict(px=32, painter=flat_emis(0.6), emissive=(255, 58, 40)),
+    "foliage": dict(tile=(1.2, 1.2), px=64, painter=foliage),
     "crown_glass": dict(tile=(3.0, 4.0), px=512, painter=crown_glass, emissive=(210, 255, 230)),
 }
 
@@ -229,13 +238,18 @@ for name, color, metal, gloss, px in (
         ("canopy", (160, 163, 162), 0.2, 0.45, 128),
         ("grey_stone", (168, 168, 164), 0.0, 0.3, 128),
         ("heli_net", (72, 76, 80), 0.6, 0.4, 64),
+        ("grating", (128, 132, 134), 0.6, 0.35, 64),
         ("heli_light", (90, 230, 120), 0.0, 0.6, 32),
         ("clerestory", (44, 58, 66), 0.5, 0.9, 128),
         ("vestibule", (46, 62, 66), 0.3, 0.9, 1024),
         ("soffit", (206, 208, 204), 0.0, 0.3, 256),
+        ("ent_light", (250, 240, 220), 0.0, 0.6, 32),
+        ("under_light", (250, 236, 210), 0.0, 0.6, 32),
         ("heli_light_y", (240, 208, 96), 0.0, 0.6, 32),
         ("obst_light", (226, 62, 50), 0.0, 0.6, 32),
-        ("brand_gold", (212, 175, 55), 0.8, 0.7, 64),
+        ("windsock", (236, 112, 44), 0.0, 0.2, 32),
+        ("soil", (62, 50, 40), 0.0, 0.1, 64),
+        ("foliage", (48, 76, 44), 0.0, 0.12, 64),
         ("window", (70, 110, 110), 0.0, 0.9, 1024)):
     A.add(name, color=color, ctrl=(0, 0, 0), metal=metal, gloss=gloss, **dict(dict(px=px), **TEX.get(name, {})))
 
@@ -274,6 +288,7 @@ def louver(mb, stage, axis, c, s, a0, a1, z0, z1):
 WIDE = (0.1, 0.4, 0.46, 0.54, 0.6, 0.9)
 PAIR = (0.18, 0.46, 0.54, 0.82)
 QUAD = (0.22, 0.47, 0.53, 0.78)            # centre mullion pair: a single 0.5 bar trips the window-ray check
+COMM6 = (0.16, 0.33, 0.47, 0.53, 0.67, 0.84)
 HALF = (0.47, 0.53)
 CW = 0.15
 
@@ -341,6 +356,25 @@ def facade_floor(mb, stage, f, skip=None):
     for axis, c, s, a0, a1, kind, _ in WALLS:
         if kind != "win":
             continue
+        if f == 0 and axis == "y" and c == 15.4 and a0 == -2.8:
+            # 105/106/108 photo: 1F left of portico has 2 horizontal mechanical louvers behind the ramp + landing window
+            louver(mb, stage, axis, c, s, 0.4, 3.0, 1.75, 3.15)
+            louver(mb, stage, axis, c, s, 3.6, 6.2, 1.75, 3.15)
+            window(mb, stage, axis, c, s, 7.7, 10.1, 1.15, 3.4, f, u, HALF)
+            u += 1
+            continue
+        if f == 0 and axis == "x" and c == 19.2 and a0 == 14.4:
+            # 105 side photo: deeply recessed wide 6-bay horizontal community window + dark granite surround & safety bar
+            window(mb, stage, axis, c, s, 16.4, 23.8, 0.90, 3.55, f, u, COMM6)
+            if stage < 2:
+                mb.box(c, c + 0.32, 16.02, 24.18, 0.55, 0.78, "stone_trim", skip=("left",))
+                mb.box(c, c + 0.32, 16.02, 24.18, 3.67, 3.98, "stone_trim", skip=("left",))
+                mb.box(c, c + 0.32, 16.02, 16.24, 0.78, 3.67, "stone_trim", skip=("left", "bottom", "top"))
+                mb.box(c, c + 0.32, 23.96, 24.18, 0.78, 3.67, "stone_trim", skip=("left", "bottom", "top"))
+                if stage == 0:
+                    prism(mb, (c + 0.16, 16.32, 1.40), (c + 0.16, 23.88, 1.40), 0.04, "railing")
+            u += 1
+            continue
         for b0, b1, mull in ENT_SPANS.get((axis, c, a0)) or bays(a0, a1):
             if skip and axis == "y" and c == ENT_Y and s < 0 and b1 > skip[0] and b0 < skip[1]:
                 continue
@@ -352,13 +386,16 @@ def facade_floor(mb, stage, f, skip=None):
 
 
 def ledges(mb):
-    """Per-floor balcony ledges on the sunny south (+Y) and west (+X) faces."""
+    """Per-floor balcony ledges on the SW/south residential balcony wings (view_mid_hi, view_w_full, 108 photo)."""
     for axis, c, s, a0, a1, kind, _ in WALLS:
         if kind != "win" or s < 0 or a1 - a0 < 4.0:
             continue
+        if not ((axis == "y" and c == 44.6) or (axis == "x" and a0 >= 26.8)):
+            continue
         for f in range(1, NF):
             z = zf(f)
-            K.axbox(mb, axis, c, s, a0 + 0.1, a1 - 0.1, 0, LEDGE_P, z, z + LEDGE_T, "pale",
+            mat = "grey_stone" if f < PALE_F else "pale"
+            K.axbox(mb, axis, c, s, a0 + 0.1, a1 - 0.1, 0, LEDGE_P, z, z + LEDGE_T, mat,
                     skip=("front",) if axis == "y" else ("left",))   # world face names: drop only the wall side
 
 
@@ -427,33 +464,66 @@ CX0, CX1, CY0, CY1 = -7.2, 7.6, 19.0, 33.0
 CZ0, CZE, CZA = H + 0.6, H + 4.2, H + 9.5               # plinth top, eaves, apex
 
 
+def _gable_ear(mb, x0, x1, y0, ym, y1, z0, ze, za, region="crown_white"):
+    """Closed solid pentagonal gable wall (no protruding rectangular corners past the sloped roof)."""
+    # Two contiguous closed trapezoids meeting cleanly along y=ym
+    for ya, yb, zta, ztb in ((y0, ym, ze, za), (ym, y1, za, ze)):
+        q_l = [(x0, ya, z0), (x0, yb, z0), (x0, yb, ztb), (x0, ya, zta)][::-1]   # -X outward
+        q_r = [(x1, ya, z0), (x1, yb, z0), (x1, yb, ztb), (x1, ya, zta)]         # +X outward
+        q_t = [(x0, ya, zta), (x1, ya, zta), (x1, yb, ztb), (x0, yb, ztb)]       # sloped top (+Z)
+        mb.rect(q_l, region)
+        mb.rect(q_r, region)
+        mb.rect(q_t, region)
+    # Front (y0, -Y), back (y1, +Y) vertical gable ends
+    mb.rect([(x0, y0, z0), (x1, y0, z0), (x1, y0, ze), (x0, y0, ze)], region)
+    mb.rect([(x1, y1, z0), (x0, y1, z0), (x0, y1, ze), (x1, y1, ze)], region)
+
+
+def _sloped_slab(mb, x0, x1, ya, za, yb, zb, th, mat_top, mat_bot, mat_edge):
+    """Closed sloped roof panel of vertical thickness th between y=ya(za) and y=yb(zb)."""
+    # top surface normal upward (+Z component), bottom normal downward
+    flip = yb < ya
+    top = [(x0, ya, za), (x1, ya, za), (x1, yb, zb), (x0, yb, zb)]
+    bot = [(x0, ya, za - th), (x1, ya, za - th), (x1, yb, zb - th), (x0, yb, zb - th)]
+    mb.rect(top[::-1] if flip else top, mat_top)
+    mb.rect(bot if flip else bot[::-1], mat_bot)
+    # outer eaves/ridge faces along ya (-Y/+Y) and yb
+    ey0 = [(x0, ya, za - th), (x1, ya, za - th), (x1, ya, za), (x0, ya, za)]
+    ey1 = [(x0, yb, zb - th), (x1, yb, zb - th), (x1, yb, zb), (x0, yb, zb)]
+    mb.rect(ey0[::-1] if flip else ey0, mat_edge)
+    mb.rect(ey1 if flip else ey1[::-1], mat_edge)
+
+
 def crown(mb, stage):
     ym = (CY0 + CY1) / 2
-    mb.box(CX0 + 0.15, CX1 - 0.15, CY0 + 0.2, CY1 - 0.2, H, CZ0, "pale", skip=("bottom",))
-    mb.rect([(CX0 - 0.1, CY0, CZE), (CX1 + 0.1, CY0, CZE), (CX1 + 0.1, ym, CZA), (CX0 - 0.1, ym, CZA)], "crown_glass")
-    mb.rect([(CX0 - 0.1, ym, CZA), (CX1 + 0.1, ym, CZA), (CX1 + 0.1, CY1, CZE), (CX0 - 0.1, CY1, CZE)], "crown_glass")
-    mb.box(CX0 + 0.05, CX0 + 0.35, CY0 + 0.25, CY1 - 0.25, CZ0, CZA, "crown_white", skip=("bottom",))
-    mb.box(CX1 - 0.35, CX1 - 0.05, CY0 + 0.25, CY1 - 0.25, CZ0, CZA, "crown_white", skip=("bottom",))
-    mb.box(CX0 + 0.4, CX1 - 0.4, CY0 + 0.25, CY0 + 0.45, CZ0, CZE, "crown_glass", skip=("bottom", "top"))
-    mb.box(CX0 + 0.4, CX1 - 0.4, CY1 - 0.45, CY1 - 0.25, CZ0, CZE, "crown_glass", skip=("bottom", "top"))
-    mb.rect([(CX0 - 0.1, CY0 + 0.45, CZE), (CX1 + 0.1, CY0 + 0.45, CZE), (CX1 + 0.1, CY0, CZE), (CX0 - 0.1, CY0, CZE)],
-            "crown_white")
-    mb.rect([(CX0 - 0.1, CY1, CZE), (CX1 + 0.1, CY1, CZE), (CX1 + 0.1, CY1 - 0.45, CZE), (CX0 - 0.1, CY1 - 0.45, CZE)],
-            "crown_white")
-    mb.box(CX0 - 0.1, CX1 + 0.1, ym - 0.2, ym + 0.2, CZA - 0.1, CZA + 0.2, "crown_white")
+    mb.box(CX0, CX1, CY0, CY1, H, CZ0, "pale", skip=("bottom",))
+    if stage == 2:
+        # Lightweight closed gable massing for LOD2
+        _gable_ear(mb, CX0, CX1, CY0, ym, CY1, CZ0, CZE, CZA, "crown_glass")
+        return
+    ew = 0.42
+    _gable_ear(mb, CX0, CX0 + ew, CY0, ym, CY1, CZ0, CZE, CZA + 0.35, "crown_white")
+    _gable_ear(mb, CX1 - ew, CX1, CY0, ym, CY1, CZ0, CZE, CZA + 0.35, "crown_white")
+    # Solid glass slopes between the gable ears (closed underside soffit + eaves fascia)
+    _sloped_slab(mb, CX0 + ew, CX1 - ew, CY0 - 0.1, CZE, ym, CZA, 0.22, "crown_glass", "soffit", "crown_white")
+    _sloped_slab(mb, CX0 + ew, CX1 - ew, CY1 + 0.1, CZE, ym, CZA, 0.22, "crown_glass", "soffit", "crown_white")
+    # North/south vertical glazed curtainwalls rising cleanly to the underside of the eaves (CZE - 0.22)
+    mb.box(CX0 + ew, CX1 - ew, CY0 + 0.05, CY0 + 0.28, CZ0, CZE - 0.22, "crown_glass", skip=("bottom", "top"))
+    mb.box(CX0 + ew, CX1 - ew, CY1 - 0.28, CY1 - 0.05, CZ0, CZE - 0.22, "crown_glass", skip=("bottom", "top"))
+    mb.box(CX0 + ew, CX1 - ew, ym - 0.2, ym + 0.2, CZA - 0.12, CZA + 0.18, "crown_white")
     if stage == 0:
-        for x in (CX0 + 0.5, CX1 - 0.8):
-            mb.box(x, x + 0.3, ym - 0.15, ym + 0.15, CZA + 0.2, CZA + 0.6, "obst_light", skip=("bottom",))
+        for x in (CX0 + ew / 2, CX1 - ew / 2):
+            mb.box(x - 0.12, x + 0.12, ym - 0.12, ym + 0.12, CZA + 0.35, CZA + 0.68, "obst_light", skip=("bottom",))
 
 
 # Round elevated helipad over the north wing (aerial: ~17 m deck with a net ring)  # estimated
 HX, HY = 8.0 - X, 7.7
-RDK, RG, HCORE = 7.6, 6.5, 1.3                # net ring 0.6 m keeps the deck inside the 40 m lot width
-HZ0, HZ1, HZT = H + 2.5, H + 5.0, H + 5.6
+RDK, RG, HCORE, HNET = 7.6, 6.5, 1.3, 0.72      # net 0.72 m -> min x = -19.52 (inside 40 m lot)
+HZ0, HZ1, HZT = H + 3.0, H + 5.4, H + 6.0        # taller core clearance under V-struts (roof_view_top_far_w)
 
 
 def helipad(mb, stage):
-    n = (32, 24, 12)[stage]
+    n = (32, 24, 10)[stage]
     ring(mb, HX, HY, HCORE, H, HCORE, HZ0, "crown_white", n)              # core column
     ring(mb, HX, HY, HCORE, HZ0, RDK, HZ1, "deck_under", n)               # conical underside
     ring(mb, HX, HY, RDK, HZ1, RDK, HZT, "crown_white", n)                # deck edge
@@ -461,25 +531,83 @@ def helipad(mb, stage):
     ring(mb, HX, HY, RG, HZT, 0.05, HZT, "heli_green", n)                 # green pad
     if stage == 2:
         return
+    # Core collar where struts fan out
+    zc0, zc1 = H + 0.8, H + 1.4
+    ring(mb, HX, HY, HCORE + 0.16, zc0, HCORE + 0.16, zc1, "crown_white", n)
+    ring(mb, HX, HY, HCORE + 0.16, zc1, HCORE, zc1, "crown_white", n)
+    ring(mb, HX, HY, HCORE + 0.16, zc0, HCORE, zc0, "crown_white", n, flip=True)
     zt = HZT + 0.03
     for x0, x1, y0, y1 in ((-4.3, -4.15, -4.3, 4.3), (4.15, 4.3, -4.3, 4.3), (-4.15, 4.15, -4.3, -4.15),
                            (-4.15, 4.15, 4.15, 4.3), (-1.2, -0.95, -1.6, 1.6), (0.95, 1.2, -1.6, 1.6),
                            (-0.95, 0.95, -0.12, 0.12)):
         mb.box(HX + x0, HX + x1, HY + y0, HY + y1, zt - 0.02, zt, "heli_white", skip=("bottom",))
     ring(mb, HX, HY, RG - 0.2, zt, RG - 0.45, zt, "heli_white", n)        # touchdown circle
-    ring(mb, HX, HY, RDK, HZT - 0.12, RDK + 0.6, HZT - 0.12, "heli_net", n)             # net top
-    ring(mb, HX, HY, RDK, HZT - 0.18, RDK + 0.6, HZT - 0.18, "heli_net", n, flip=True)  # net underside
-    ring(mb, HX, HY, RDK + 0.6, HZT - 0.18, RDK + 0.6, HZT - 0.12, "heli_net", n)       # net rim
-    for i in range(8):                                                     # struts core -> underside
+    # Safety net: fixed winding (r0 > r1 faces +Z up, r0 < r1 faces -Z down -> zero back-face holes)
+    ring(mb, HX, HY, RDK + HNET, HZT - 0.12, RDK, HZT - 0.12, "heli_net", n)              # net top (+Z)
+    ring(mb, HX, HY, RDK, HZT - 0.18, RDK + HNET, HZT - 0.18, "heli_net", n)              # net bottom (-Z)
+    ring(mb, HX, HY, RDK + HNET, HZT - 0.18, RDK + HNET, HZT - 0.12, "heli_net", n)       # net outer rim
+    # Perimeter safety railing + posts round the net outer edge
+    rn = RDK + HNET - 0.04
+    for i in range(n):
+        a, b = 2 * math.pi * i / n, 2 * math.pi * (i + 1) / n
+        p0, p1 = (HX + rn * math.cos(a), HY + rn * math.sin(a)), (HX + rn * math.cos(b), HY + rn * math.sin(b))
+        prism(mb, (p0[0], p0[1], HZT + 0.78), (p1[0], p1[1], HZT + 0.78), 0.045, "railing")
+        if stage == 0:
+            prism(mb, (p0[0], p0[1], HZT + 0.36), (p1[0], p1[1], HZT + 0.36), 0.035, "railing")
+            if i % 2 == 0:
+                mb.box(p0[0] - 0.025, p0[0] + 0.025, p0[1] - 0.025, p0[1] + 0.025,
+                       HZT - 0.12, HZT + 0.80, "railing", skip=("bottom",))
+    for i in range(8):                                                     # struts collar -> underside
         a = 2 * math.pi * (i + 0.5) / 8
-        prism(mb, (HX + HCORE * math.cos(a), HY + HCORE * math.sin(a), H + 0.5),
+        prism(mb, (HX + (HCORE + 0.08) * math.cos(a), HY + (HCORE + 0.08) * math.sin(a), (zc0 + zc1) / 2),
               (HX + 0.8 * RDK * math.cos(a), HY + 0.8 * RDK * math.sin(a), HZ0 + 0.8 * (HZ1 - HZ0) - 0.15),
-              0.3, "crown_white")
+              0.32, "crown_white")
+    # Access stair + landing on the south roof (between helipad deck and crown plinth, y=15.3..18.8)
+    _heli_access(mb, stage)
     if stage == 0:
         for i in range(16):
             a = 2 * math.pi * (i + 0.5) / 16
             x, y = HX + (RDK - 0.4) * math.cos(a), HY + (RDK - 0.4) * math.sin(a)
             mb.box(x - 0.08, x + 0.08, y - 0.08, y + 0.08, HZT, HZT + 0.1, "heli_light", skip=("bottom",))
+        for i in range(12):
+            a = 2 * math.pi * (i + 0.5) / 12
+            x, y = HX + (RG - 0.32) * math.cos(a), HY + (RG - 0.32) * math.sin(a)
+            mb.box(x - 0.06, x + 0.06, y - 0.06, y + 0.06, HZT, HZT + 0.08, "heli_light_y", skip=("bottom",))
+        for i in range(8):
+            a = 2 * math.pi * (i + 0.5) / 8
+            d = 4.6
+            x, y = HX + d * math.cos(a), HY + d * math.sin(a)
+            z = HZ0 + (HZ1 - HZ0) * (d - HCORE) / (RDK - HCORE)
+            mb.box(x - 0.25, x + 0.25, y - 0.25, y + 0.25, z - 0.14, z - 0.02, "under_light", skip=("top",))
+        # Windsock mast on NE net corner
+        mx, my, zn = HX + (RDK + HNET - 0.25) * math.cos(-0.65), HY + (RDK + HNET - 0.25) * math.sin(-0.65), HZT - 0.12
+        mb.box(mx - 0.05, mx + 0.05, my - 0.05, my + 0.05, zn, zn + 2.8, "crown_white", skip=("bottom", "top"))
+        mb.box(mx - 0.08, mx + 0.08, my - 0.08, my + 0.08, zn + 2.8, zn + 3.0, "obst_light", skip=("bottom",))
+        mb.box(mx + 0.05, mx + 0.85, my - 0.15, my + 0.15, zn + 2.3, zn + 2.6, "windsock", skip=("left",))
+
+
+def _heli_access(mb, stage):
+    """Straight steel access stair rising from main roof (y=18.8) to the helipad south bridge (y=15.3)."""
+    x0, x1 = HX - 0.65, HX + 0.65
+    ya, yb = 18.7, HY + RDK - 0.2
+    y_br0 = HY + RDK + HNET + 0.1
+    # Top bridge over the net (kept clear above HZT - 0.12 so no overlap)
+    mb.box(x0, x1, yb, y_br0, HZT, HZT + 0.08, "grating")
+    for x in (x0 + 0.06, x1 - 0.06):
+        mb.box(x - 0.06, x + 0.06, y_br0 - 0.06, y_br0 + 0.06, H, HZT, "crown_white", skip=("bottom", "top"))
+        prism(mb, (x, ya, H - 0.12), (x, y_br0, HZT - 0.02), 0.08, "crown_white")
+        prism(mb, (x, ya, H + 0.9), (x, y_br0, HZT + 0.9), 0.04, "railing")
+        prism(mb, (x, y_br0, HZT + 0.9), (x, yb, HZT + 0.9), 0.04, "railing")
+        if stage == 0:
+            for py, pz in ((ya, H), ((ya + y_br0) / 2, (H + HZT) / 2), (y_br0, HZT), (yb + 0.1, HZT)):
+                mb.box(x - 0.03, x + 0.03, py - 0.03, py + 0.03, pz, pz + 0.90, "railing", skip=("bottom",))
+    if stage == 0:
+        n = 18
+        for i in range(n):
+            yy0 = ya + (y_br0 - ya) * i / n
+            yy1 = ya + (y_br0 - ya) * (i + 1) / n
+            zt = H + (HZT - H) * (i + 1) / n
+            mb.box(x0 + 0.11, x1 - 0.11, yy1 + 0.02, yy0 - 0.02, zt - 0.05, zt, "grating")
 
 
 def roof(mb, stage):
@@ -511,8 +639,13 @@ def entrance(stage):
     mb.box(PORTICO_X0, PORTICO_X1, EY, 0, EZ0, ZS, dict(front="pale", right="pale", left="pale", bottom="soffit"),
            skip=("back", "top"))
     mb.box(PORTICO_X0 - 0.1, PORTICO_X0 + LP, EY - 0.1, EY + 1.1, 0, ZS, "stone_trim", skip=("bottom", "top"))
-    mb.box(PIER_X0, PORTICO_X1 + 0.2, EY - 0.2, EY + 1.8, 0, ZS,
-           dict(front="pier_pink", right="pier_pink", left="stone_trim", default="pier_pink"), skip=("bottom", "top"))
+    # Right corner pier: front wrap pink, rear/outer wrap dark granite (view_nw_base + 105 side photo)
+    mb.box(PIER_X0, PORTICO_X1 + 0.2, EY - 0.2, EY + 0.65, 0, ZS,
+           dict(front="pier_pink", right="pier_pink", left="stone_trim", default="pier_pink"),
+           skip=("bottom", "top", "back"))
+    mb.box(PIER_X0, PORTICO_X1 + 0.2, EY + 0.65, EY + 1.8, 0, ZS,
+           dict(right="stone", left="stone_trim", back="stone", default="stone"),
+           skip=("bottom", "top", "front"))
     mb.box(PORTICO_X0 - 0.2, PORTICO_X1 + 0.3, EY - 0.2, 0.0, ZS, EZT, dict(top="roof", default="stone_trim"),
            skip=("back",))
     if stage < 2:
@@ -524,9 +657,19 @@ def entrance(stage):
             K.paint(mb, axis, c, s, a0, a1, EZB, EZB + 0.08, "frame", layer=3)
         yl = EY + ST_N * ST_T
         zl = ST_N * ST_R
-        mb.box(PORTICO_X0 + LP - 0.3, PORTICO_X0 + LP, EY + 1.1, 0.0, 0, zl + 0.15, "stone_trim",
+        # Left stair cheek ends at yl so the behind-pillar bridge opens onto the main landing (ㄷ자 ramp entry)
+        mb.box(PORTICO_X0 + LP - 0.3, PORTICO_X0 + LP, EY + 1.1, yl, 0, zl, "stone_trim",
                skip=("bottom", "front", "back"))
-        mb.box(PIER_X0, PIER_X0 + 0.3, EY + 1.8, 0.0, 0, zl + 0.15, "stone_trim", skip=("bottom", "front", "back"))
+        mb.box(PORTICO_X0, PORTICO_X0 + LP, yl, 0.0, 0, zl, dict(top="canopy", default="stone_trim"),
+               skip=("bottom", "back", "left", "right"))
+        # Right cheek curb inside portico right opening: low step along stairs + landing height in back
+        mb.box(PIER_X0, PIER_X0 + 0.25, EY + 1.8, yl, 0, 0.68, "stone_trim", skip=("bottom", "front", "back"))
+        mb.box(PIER_X0, PIER_X0 + 0.25, yl, 0.0, 0, zl, "stone_trim", skip=("bottom", "front", "back"))
+        # Built-in granite planter & green shrubs inside the portico right portal (view_nw_base + side photo)
+        mb.box(PIER_X0 + 0.25, PORTICO_X1 + 0.08, EY + 1.8, 0.0, 0, 0.42,
+               dict(top="soil", default="stone_trim"), skip=("bottom", "front", "back", "left"))
+        for ya_s, yb_s, z_s in ((EY + 1.92, EY + 2.54, 0.78), (EY + 2.58, EY + 3.24, 0.92), (EY + 3.28, -0.08, 0.84)):
+            mb.box(PIER_X0 + 0.34, PORTICO_X1 - 0.02, ya_s, yb_s, 0.42, z_s, "foliage", skip=("bottom",))
         for i in range(ST_N):
             y0 = EY + i * ST_T
             mb.box(PORTICO_X0 + LP, PIER_X0, y0, y0 + ST_T, 0, ST_R * (i + 1), "canopy",
@@ -534,7 +677,84 @@ def entrance(stage):
         mb.box(PORTICO_X0 + LP, PIER_X0, yl, 0, 0, zl, "canopy", skip=("bottom", "back", "left", "right"))
         mb.box(PORTICO_X0 + LP, PIER_X0, -0.05, 0.0, zl, EZ0, {"front": "vestibule", "default": "stone_trim"},
                skip=("bottom", "top", "back", "left", "right"))
+        # Revolving door housing + soffit-level trim forward of the glass doors (105/106/108 photos)
+        cx_ent = (PORTICO_X0 + LP + PIER_X0) / 2 - 0.35
+        mb.box(cx_ent - 0.95, cx_ent + 0.95, -0.45, -0.05, zl, zl + 2.45,
+               dict(front="vestibule", left="vestibule", right="vestibule", top="stone_trim", default="stone_trim"),
+               skip=("bottom", "back"))
+        # Multi-bar stair and landing handrails + vertical posts on both sides (posts 0.06 > rails 0.04 -> zero coplanar)
+        ya = EY + 0.2
+        rail_z = lambda y: ST_R + (y - ya) / (yl + 0.06 - ya) * (zl - ST_R)
+        xl, xr = PORTICO_X0 + LP + 0.10, PIER_X0 - 0.08
+        for dz in (0.90, 0.72, 0.54, 0.36, 0.18):
+            rw = 0.028 if dz < 0.9 else 0.04
+            prism(mb, (xl, ya, dz + rail_z(ya)), (xl, yl + 0.06, dz + zl), rw, "railing")
+            prism(mb, (xr, ya, dz + rail_z(ya)), (xr, yl + 0.06, dz + zl), rw, "railing")
+            prism(mb, (xr, yl + 0.06, dz + zl), (xr, -0.05, dz + zl), rw, "railing")
+        for x_side in (xl, xr):
+            for k in range(4):
+                yy = ya + k * (yl + 0.06 - ya) / 3
+                zb = min(zl, ST_R * min(ST_N, 1 + int((yy - EY) / ST_T)))
+                mb.box(x_side - 0.03, x_side + 0.03, yy - 0.03, yy + 0.03, zb, 0.90 + rail_z(yy), "railing", skip=("bottom",))
+        for yy in ((yl + 0.06) / 2, -0.05):
+            mb.box(xr - 0.03, xr + 0.03, yy - 0.03, yy + 0.03, zl, zl + 0.90, "railing", skip=("bottom",))
     mb.verts = [(x, y + ENT_Y, z) for x, y, z in mb.verts]
+    if stage < 2:
+        # Left ㄷ자 folded accessible ramp (106/108 photo: ground entry -> lower run left -> U-turn landing -> inner run right -> terrace behind pillar)
+        y_lf = ENT_Y + yl
+        rx_t0, rx_t1, rx_r1, rx_o1 = -2.0, -0.6, 6.8, 5.8
+        yo0, yo1, yc0, yc1, yi0, yi1 = 12.70, 13.95, 13.95, 14.10, 14.10, 15.40
+        z_r0, z_mid, zl = 0.04, 0.54, ST_N * ST_R
+        zo_at = lambda x: z_mid + max(0.0, min(1.0, (x - rx_t1) / (rx_o1 - rx_t1))) * (z_r0 - z_mid)
+        zi_at = lambda x: z_mid + max(0.0, min(1.0, (x - rx_t1) / (rx_r1 - rx_t1))) * (zl - z_mid)
+        # Mid-landing 180-deg turn on left
+        mb.box(rx_t0, rx_t1, yo0, yi1, 0.0, z_mid, dict(top="canopy", default="stone_trim"), skip=("bottom", "back", "right"))
+        # Outer lower ramp wedge (slopes down rightwards to ground plaza threshold at x=5.8)
+        mb.rect([(rx_t1, yo0, z_mid), (rx_o1, yo0, z_r0), (rx_o1, yo1, z_r0), (rx_t1, yo1, z_mid)], "canopy")
+        mb.rect([(rx_t1, yo0, 0.0), (rx_o1, yo0, 0.0), (rx_o1, yo0, z_r0), (rx_t1, yo0, z_mid)], "stone_trim")
+        mb.rect([(rx_o1, yo0, 0.0), (rx_o1, yo1, 0.0), (rx_o1, yo1, z_r0), (rx_o1, yo0, z_r0)], "stone_trim")
+        # Center divider retaining wall (follows inner ramp height -> flush zl at x=6.8)
+        mb.rect([(rx_t1, yc0, z_mid), (rx_r1, yc0, zl), (rx_r1, yc1, zl), (rx_t1, yc1, z_mid)], "stone_trim")
+        mb.rect([(rx_t1, yc0, 0.0), (rx_r1, yc0, 0.0), (rx_r1, yc0, zl), (rx_t1, yc0, z_mid)], "stone_trim")
+        # Inner upper ramp sloped surface (0.54 at -0.6 up to 1.05 at 6.8 along y=15.4 wall)
+        mb.rect([(rx_t1, yi0, z_mid), (rx_r1, yi0, zl), (rx_r1, yi1, zl), (rx_t1, yi1, z_mid)], "canopy")
+        # Upper terrace in front of 1F landing window (x=6.8..10.6 -> connects behind left pillar onto portico landing)
+        mb.box(rx_r1, PORTICO_X0, y_lf, yi1, 0.0, zl, dict(top="canopy", default="stone_trim"), skip=("bottom", "back", "right"))
+        # Small foreground shrub planter beside plaza ramp entry (106 photo)
+        mb.box(rx_r1 + 0.3, PORTICO_X0 - 0.15, y_lf - 0.65, y_lf, 0.0, 0.42,
+               dict(top="soil", default="stone_trim"), skip=("bottom", "back"))
+        mb.box(rx_r1 + 0.42, PORTICO_X0 - 0.27, y_lf - 0.55, y_lf - 0.08, 0.42, 0.80, "foliage", skip=("bottom",))
+        # Continuous 5-bar guardrails + posts for the entire ㄷ자 path
+        yo_r, xl_r, yc_r, yt_r, x_lport = yo0 + 0.06, rx_t0 + 0.06, (yc0 + yc1) / 2, y_lf + 0.06, PORTICO_X0 + LP + 0.10
+        for dz in (0.90, 0.72, 0.54, 0.36, 0.18):
+            rw = 0.028 if dz < 0.9 else 0.04
+            prism(mb, (rx_o1 - 0.1, yo_r, dz + zo_at(rx_o1 - 0.1)), (rx_t1, yo_r, dz + z_mid), rw, "railing")
+            prism(mb, (rx_t1, yo_r, dz + z_mid), (xl_r, yo_r, dz + z_mid), rw, "railing")
+            prism(mb, (xl_r, yo_r, dz + z_mid), (xl_r, yi1 - 0.06, dz + z_mid), rw, "railing")
+            prism(mb, (rx_t1 + 0.1, yc_r, dz + zi_at(rx_t1 + 0.1)), (rx_r1, yc_r, dz + zl), rw, "railing")
+            prism(mb, (rx_r1, yc_r, dz + zl), (rx_r1, yt_r, dz + zl), rw, "railing")
+            prism(mb, (rx_r1, yt_r, dz + zl), (x_lport, yt_r, dz + zl), rw, "railing")
+        def _post(px, py, zb, z_base_rail=None):
+            zr = zb if z_base_rail is None else z_base_rail
+            mb.box(px - 0.03, px + 0.03, py - 0.03, py + 0.03, zb, zr + 0.90, "railing", skip=("bottom",))
+        for k in range(6):
+            xx = (rx_o1 - 0.1) + (rx_t1 - (rx_o1 - 0.1)) * k / 5
+            _post(xx, yo_r, zo_at(xx))
+        _post(xl_r, yo_r, z_mid)
+        _post(xl_r, (yo_r + yi1 - 0.06) / 2, z_mid)
+        _post(xl_r, yi1 - 0.06, z_mid)
+        for k in range(6):
+            xx = (rx_t1 + 0.1) + (rx_r1 - (rx_t1 + 0.1)) * k / 5
+            _post(xx, yc_r, zi_at(xx))
+        _post(rx_r1, yt_r, zl)
+        _post((rx_r1 + PORTICO_X0) / 2, yt_r, zl)
+        _post(PORTICO_X0, yt_r, zl)
+    if stage == 0:
+        # Warm pier sconces
+        mb.box(PORTICO_X0 + LP, PORTICO_X0 + LP + 0.05, ENT_Y + EY + 0.4, ENT_Y + EY + 0.7, 2.5, 2.85,
+               "ent_light", skip=("left",))
+        mb.box(PIER_X0 - 0.05, PIER_X0, ENT_Y + EY + 0.4, ENT_Y + EY + 0.7, 2.5, 2.85,
+               "ent_light", skip=("right",))
     return mb
 
 

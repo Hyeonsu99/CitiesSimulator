@@ -49,8 +49,10 @@ def build_dong_fbx(dong, copy_viewer=True):
 
     # Copy files to asset viewer preview
     if copy_viewer and os.path.exists(VIEWER_PREVIEW_DIR):
-        asset_folder = os.path.join(out_dir, f"HighriseTower{dong}_L1_5x4")
-        if os.path.exists(asset_folder):
+        matches = [d for d in sorted(os.listdir(out_dir))
+                   if d.startswith(f"HighriseTower{dong}_") and os.path.isdir(os.path.join(out_dir, d))]
+        if matches:
+            asset_folder = os.path.join(out_dir, matches[-1])
             copied = 0
             for f in os.listdir(asset_folder):
                 if f.endswith((".fbx", ".png")):
