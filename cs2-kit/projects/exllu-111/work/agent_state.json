@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_111_cs2.py",
- "generator_hash": "897181225d9a81aa4eb3eb7497f8c6f420f59c056a1d663de64b224da39f81b0",
- "current_preview_hash": "7b1b56f79c3a0abed1f2e119c8ece11a6d9bdae47ade930dac07cb6caa68d443",
+ "generator_hash": "51f4fe8a0a456df67d6dd05fc9b0040056db59ce0f6f86dafc6e14e31c1f5fb9",
+ "current_preview_hash": "044cc4c9cce152524501924fb87db9b74bc35d565f538997f53bc8e4c72c2a15",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-111",
@@ -30,7 +30,7 @@
   },
   "asset": "HighriseTower111_L1_5x4",
   "label": "",
-  "time": "2026-11-13 14:52:14",
+  "time": "2026-11-13 17:25:07",
   "build": {
    "asset": "HighriseTower111_L1_5x4",
    "fbx": true,
@@ -44,7 +44,7 @@
    "info": {
     "size": [
      28.9,
-     28.84,
+     28.87,
      161.82
     ],
     "pivot_offset": [
@@ -54,17 +54,17 @@
     "zmin": 0.0,
     "coords": "generator coordinates (before pivot move)",
     "tris": {
-     "main": 77404,
+     "main": 77426,
      "win": 2970,
-     "lod1": 11970,
+     "lod1": 11982,
      "lod1_win": 2970,
      "lod2": 266,
      "lod2_win": 2970
     },
     "verts": {
-     "main": 154808,
+     "main": 154852,
      "win": 5940,
-     "lod1": 23940,
+     "lod1": 23964,
      "lod1_win": 5940,
      "lod2": 532,
      "lod2_win": 5940
@@ -99,7 +99,7 @@
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 11.2
+    "time_s": 16.7
    },
    "report": "output\\HighriseTower111_L1_5x4\\_check\\report.json"
   },
@@ -160,14 +160,14 @@
   "lod": {
    "checked": true,
    "status": "PASS",
-   "line": "LODCHECK PASS main max 0.015% (az 112, el -10) bad_views 0/64 | lod1 max 0.006% (az 248, el +50) bad_views 0/64 | lod2 max 0.021% (az 248, el +50) bad_views 0/64  -> previews\\lod_check\\HighriseTower111_L1_5x4",
+   "line": "LODCHECK PASS main max 0.015% (az 292, el -10) bad_views 0/64 | lod1 max 0.006% (az 248, el +50) bad_views 0/64 | lod2 max 0.024% (az 248, el +50) bad_views 0/64  -> previews\\lod_check\\HighriseTower111_L1_5x4",
    "notes": []
   },
   "agent": {
    "status": "PASS",
    "verts": {
-    "LOD0": 154808,
-    "LOD1": 23940,
+    "LOD0": 154852,
+    "LOD1": 23964,
     "LOD2": 532
    },
    "action_tags": [],
@@ -185,12 +185,12 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-111",
- "updated_at": "2026-11-13T14:53:01",
- "visual_review_note": "reviewed current artifacts (Phase 1+2 Type-A synced from exllu-103)",
+ "updated_at": "2026-11-13T17:26:05",
+ "visual_review_note": "reviewed current artifacts",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower111_L1_5x4.png",
-   "sha256": "7b1b56f79c3a0abed1f2e119c8ece11a6d9bdae47ade930dac07cb6caa68d443"
+   "sha256": "044cc4c9cce152524501924fb87db9b74bc35d565f538997f53bc8e4c72c2a15"
   },
   {
    "file": "previews/photo_check/facade_front.png",
@@ -217,5 +217,5 @@
    "sha256": "dc56f0ef40c7eaa54096b4e3cf15046307bc4c9e58d8e9ab38df139efe0af254"
   }
  ],
- "reviewed_preview_hash": "7b1b56f79c3a0abed1f2e119c8ece11a6d9bdae47ade930dac07cb6caa68d443"
+ "reviewed_preview_hash": "044cc4c9cce152524501924fb87db9b74bc35d565f538997f53bc8e4c72c2a15"
 }

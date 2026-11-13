@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_106_cs2.py",
- "generator_hash": "39b0e8cd7069c8d62fbd592fff2de5d742667f49a713c16022c513cd19e14c67",
- "current_preview_hash": "4d790245475285534230d9092b1250b64391602902b137a92f82f5529ca459d8",
+ "generator_hash": "f1be98cd22ec6f75a799d1a5c3a3ac2033834b52aeab4a1be8525a914db7bfd1",
+ "current_preview_hash": "757f4cd29066ee4f27cecce142f0daca8c06e03784b0cf9852b3e1ec182ff5d1",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-106",
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower106_L1_5x6\\_check\\report.json"
   },
   "asset": "HighriseTower106_L1_5x6",
-  "label": "typec-upgrade",
-  "time": "2026-11-13 16:37:16",
+  "label": "",
+  "time": "2026-11-13 17:23:24",
   "build": {
    "asset": "HighriseTower106_L1_5x6",
    "fbx": true,
@@ -52,20 +52,20 @@
     "zmin": 0.0,
     "coords": "generator coordinates (before pivot move)",
     "tris": {
-     "main": 86962,
-     "win": 2810,
-     "lod1": 17826,
-     "lod1_win": 2810,
+     "main": 88254,
+     "win": 2908,
+     "lod1": 17850,
+     "lod1_win": 2908,
      "lod2": 392,
-     "lod2_win": 2810
+     "lod2_win": 2908
     },
     "verts": {
-     "main": 173924,
-     "win": 5620,
-     "lod1": 35652,
-     "lod1_win": 5620,
+     "main": 176508,
+     "win": 5816,
+     "lod1": 35700,
+     "lod1_win": 5816,
      "lod2": 784,
-     "lod2_win": 5620
+     "lod2_win": 5816
     },
     "coplanar": {
      "main": 0,
@@ -90,14 +90,14 @@
      "median": 229.9,
      "p90": 385.1
     },
-    "windows": 1405,
+    "windows": 1454,
     "win_dropped": 0,
     "win_blocked": {
      "win": 0,
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 19.3
+    "time_s": 20.1
    },
    "report": "output\\HighriseTower106_L1_5x6\\_check\\report.json"
   },
@@ -116,7 +116,7 @@
    "status": "PASS",
    "simplified": [],
    "detail": [
-    "DETAIL front recall 58% precision 64% worst r0c0 (58%) simplified_tiles 0/1"
+    "DETAIL front recall 59% precision 64% worst r0c0 (59%) simplified_tiles 0/1"
    ],
    "detail_color": [
     "DETAIL_COLOR front tiles_off 0/1 (dE>14; trusted tiles only)"
@@ -128,14 +128,14 @@
   "lod": {
    "checked": true,
    "status": "PASS",
-   "line": "LODCHECK PASS main max 0.004% (az 135, el -10) bad_views 0/64 | lod1 max 0.000% (az 0, el -10) bad_views 0/64 | lod2 max 0.000% (az 0, el -10) bad_views 0/64  -> previews\\lod_check\\HighriseTower106_L1_5x6",
+   "line": "LODCHECK PASS main max 0.008% (az 202, el -10) bad_views 0/64 | lod1 max 0.000% (az 0, el -10) bad_views 0/64 | lod2 max 0.000% (az 0, el -10) bad_views 0/64  -> previews\\lod_check\\HighriseTower106_L1_5x6",
    "notes": []
   },
   "agent": {
    "status": "PASS",
    "verts": {
-    "LOD0": 173924,
-    "LOD1": 35652,
+    "LOD0": 176508,
+    "LOD1": 35700,
     "LOD2": 784
    },
    "action_tags": [],
@@ -153,21 +153,21 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-106",
- "updated_at": "2026-11-13T16:40:24",
- "visual_review_note": "Type C visual realism upgrade verified: stepped 4F/5F podium, multi-tone zoning, crown EXLLU TOWER signage, 106 front/+X numerals + pier_course + revolving door, photo_check (0 mismatch) and close-up inspection pass.",
+ "updated_at": "2026-11-13T17:23:55",
+ "visual_review_note": "reviewed current artifacts",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower106_L1_5x6.png",
-   "sha256": "4d790245475285534230d9092b1250b64391602902b137a92f82f5529ca459d8"
+   "sha256": "757f4cd29066ee4f27cecce142f0daca8c06e03784b0cf9852b3e1ec182ff5d1"
   },
   {
    "file": "previews/photo_check/facade_front.png",
-   "sha256": "62b97a178b7cb6635f74382c5c9b435ebfc212630f137bf2ebbca787b8bf402d"
+   "sha256": "2db236380049b80e69fcd0ad35ea4e3e867dbf93069a76c2c33e610d205f60a6"
   },
   {
    "file": "previews/tiles/front_map.png",
-   "sha256": "e8ffb8abf3f04ef89a33d53d80d0490005c27433d287757249e617164ca19f41"
+   "sha256": "c129c3adc25fdb3ef8dc9733ed852ba316d5a0279fc315f8b0adfb1eed84e2e6"
   }
  ],
- "reviewed_preview_hash": "4d790245475285534230d9092b1250b64391602902b137a92f82f5529ca459d8"
+ "reviewed_preview_hash": "757f4cd29066ee4f27cecce142f0daca8c06e03784b0cf9852b3e1ec182ff5d1"
 }

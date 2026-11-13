@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_108_cs2.py",
- "generator_hash": "5d3bc23fda4de8c23e3c8cb13399e60c66291982ffe35993e9557ad03aa76bb9",
- "current_preview_hash": "4c91cbafe99890b08b8c75e7e1262927c7ac5a0e547aa5575a56abb0c8fb422a",
+ "generator_hash": "7b3fe83e39c8509a27434efcaeb72dd09e6aeb7f51b1573a246d151ffc3690f7",
+ "current_preview_hash": "66845f573014ba8436d596466082c642244bf2b790d66e60c1d13a37fbd8c1f4",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-108",
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower108_L1_5x6\\_check\\report.json"
   },
   "asset": "HighriseTower108_L1_5x6",
-  "label": "typec-upgrade",
-  "time": "2026-11-13 16:41:39",
+  "label": "",
+  "time": "2026-11-13 17:23:50",
   "build": {
    "asset": "HighriseTower108_L1_5x6",
    "fbx": true,
@@ -52,20 +52,20 @@
     "zmin": 0.0,
     "coords": "generator coordinates (before pivot move)",
     "tris": {
-     "main": 86962,
-     "win": 2810,
-     "lod1": 17826,
-     "lod1_win": 2810,
+     "main": 88254,
+     "win": 2908,
+     "lod1": 17850,
+     "lod1_win": 2908,
      "lod2": 392,
-     "lod2_win": 2810
+     "lod2_win": 2908
     },
     "verts": {
-     "main": 173924,
-     "win": 5620,
-     "lod1": 35652,
-     "lod1_win": 5620,
+     "main": 176508,
+     "win": 5816,
+     "lod1": 35700,
+     "lod1_win": 5816,
      "lod2": 784,
-     "lod2_win": 5620
+     "lod2_win": 5816
     },
     "coplanar": {
      "main": 0,
@@ -90,14 +90,14 @@
      "median": 229.9,
      "p90": 385.1
     },
-    "windows": 1405,
+    "windows": 1454,
     "win_dropped": 0,
     "win_blocked": {
      "win": 0,
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 19.2
+    "time_s": 20.3
    },
    "report": "output\\HighriseTower108_L1_5x6\\_check\\report.json"
   },
@@ -106,7 +106,7 @@
    "mismatch": 0,
    "lines": [
     "INFO     back floor pitch: photo 2.20 m / model 2.95 m (+34%)  -> photo shows ~48 floor bands over the wall height, model ~36 (model needs MORE floors or lower floor height) (low-confidence photo evidence - do not auto-change floors)",
-    "INFO     back window bay pitch: photo 3.35 m / model 1.95 m (-42%)  (bays differ - check window columns)",
+    "MATCH    back window bay pitch: photo 3.35 m / model 2.75 m (-18%)",
     "INFO     back edge agreement 67%",
     "INFO     front floor pitch: photo 1.25 m / model 2.50 m (+100%)  -> photo shows ~5 floor bands over the wall height, model ~2 (model needs MORE floors or lower floor height) (low-confidence photo evidence - do not auto-change floors)",
     "MATCH    front window bay pitch: photo 1.90 m / model 1.55 m (-18%)",
@@ -118,13 +118,13 @@
    "checked": true,
    "status": "PASS",
    "simplified": [
-    "TILE back r0c0 x[0,10]m z[97,106]m recall 18% precision 22%  SIMPLIFIED",
-    "TILE back r1c1 x[10,20]m z[88,97]m recall 24% precision 16%  SIMPLIFIED",
-    "TILE back r7c2 x[20,30]m z[35,44]m recall 25% precision 55%  SIMPLIFIED",
+    "TILE back r0c1 x[10,20]m z[97,106]m recall 20% precision 25%  SIMPLIFIED",
+    "TILE back r7c2 x[20,30]m z[35,44]m recall 30% precision 49%  SIMPLIFIED",
+    "TILE back r0c0 x[0,10]m z[97,106]m recall 32% precision 23%  SIMPLIFIED",
     "TILE front r0c0 x[0,7]m z[0,6]m recall 42% precision 47%  SIMPLIFIED"
    ],
    "detail": [
-    "DETAIL back recall 47% precision 48% worst r0c0 (18%) simplified_tiles 21/36",
+    "DETAIL back recall 47% precision 48% worst r0c1 (20%) simplified_tiles 23/36",
     "DETAIL front recall 42% precision 47% worst r0c0 (42%) simplified_tiles 1/1"
    ],
    "detail_color": [
@@ -138,14 +138,14 @@
   "lod": {
    "checked": true,
    "status": "PASS",
-   "line": "LODCHECK PASS main max 0.004% (az 135, el -10) bad_views 0/64 | lod1 max 0.000% (az 0, el -10) bad_views 0/64 | lod2 max 0.000% (az 0, el -10) bad_views 0/64  -> previews\\lod_check\\HighriseTower108_L1_5x6",
+   "line": "LODCHECK PASS main max 0.008% (az 202, el -10) bad_views 0/64 | lod1 max 0.000% (az 0, el -10) bad_views 0/64 | lod2 max 0.000% (az 0, el -10) bad_views 0/64  -> previews\\lod_check\\HighriseTower108_L1_5x6",
    "notes": []
   },
   "agent": {
    "status": "PASS",
    "verts": {
-    "LOD0": 173924,
-    "LOD1": 35652,
+    "LOD0": 176508,
+    "LOD1": 35700,
     "LOD2": 784
    },
    "action_tags": [],
@@ -163,16 +163,16 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-108",
- "updated_at": "2026-11-13T16:43:00",
- "visual_review_note": "Visual review PASS: glazed flush crown + gold EXLLU TOWER crown sign, multi-tone facade zoning, stepped 4F/5F podium, raised entrance portico + 108 sign + revolving door, Wall 14 (67%) & Wall 6 (51%) photo_check & tiles clean.",
+ "updated_at": "2026-11-13T17:24:19",
+ "visual_review_note": "reviewed current artifacts",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower108_L1_5x6.png",
-   "sha256": "4c91cbafe99890b08b8c75e7e1262927c7ac5a0e547aa5575a56abb0c8fb422a"
+   "sha256": "66845f573014ba8436d596466082c642244bf2b790d66e60c1d13a37fbd8c1f4"
   },
   {
    "file": "previews/photo_check/facade_back.png",
-   "sha256": "4478da097f43518e6e09df44feac17d31f8fd807c1057c60715ac64d0716ae8f"
+   "sha256": "2d90e94513d8f4a97dd86cda2af18dc73abcadb626122b3a230cd7ade75ef74e"
   },
   {
    "file": "previews/photo_check/facade_front.png",
@@ -180,12 +180,12 @@
   },
   {
    "file": "previews/tiles/back_map.png",
-   "sha256": "512b279c786f9366e4dafd5d96ed103c92e60b3ec5ab32ffc4e381e9eba894cd"
+   "sha256": "668af1aee789564fc1e8fbc9d8bc1c388106cd76aaf3649dab4edc500662ba18"
   },
   {
    "file": "previews/tiles/front_map.png",
    "sha256": "abb83bffd9753cbc01b5c27cbbe10dad04ee1afb2fdc92e83e531db982d2a4c9"
   }
  ],
- "reviewed_preview_hash": "4c91cbafe99890b08b8c75e7e1262927c7ac5a0e547aa5575a56abb0c8fb422a"
+ "reviewed_preview_hash": "66845f573014ba8436d596466082c642244bf2b790d66e60c1d13a37fbd8c1f4"
 }

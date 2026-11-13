@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "0ca71eb91fb9e4c2449e394b4bbacc14ab03e574cd6395a905a7b92df93f3e07",
- "current_preview_hash": "67f5b6b38a68e1296056f2a39cffe09b53ecbbd81d1998eed8a2a7845cd6c390",
+ "generator_hash": "b4e7a4399d7600a16e6795895c7a219abd07bb3e6c96127bf356dba1af5b2a19",
+ "current_preview_hash": "85ab69136ee5ad0f6814b9c65a12bbff83f19ccebbbe2166a56b7a0a29556192",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-103",
@@ -30,7 +30,7 @@
   },
   "asset": "HighriseTower103_L1_5x4",
   "label": "",
-  "time": "2026-11-13 14:34:22",
+  "time": "2026-11-13 17:18:32",
   "build": {
    "asset": "HighriseTower103_L1_5x4",
    "fbx": true,
@@ -44,7 +44,7 @@
    "info": {
     "size": [
      28.9,
-     28.84,
+     28.87,
      161.82
     ],
     "pivot_offset": [
@@ -54,17 +54,17 @@
     "zmin": 0.0,
     "coords": "generator coordinates (before pivot move)",
     "tris": {
-     "main": 77404,
+     "main": 77426,
      "win": 2970,
-     "lod1": 11970,
+     "lod1": 11982,
      "lod1_win": 2970,
      "lod2": 266,
      "lod2_win": 2970
     },
     "verts": {
-     "main": 154808,
+     "main": 154852,
      "win": 5940,
-     "lod1": 23940,
+     "lod1": 23964,
      "lod1_win": 5940,
      "lod2": 532,
      "lod2_win": 5940
@@ -99,7 +99,7 @@
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 14.7
+    "time_s": 19.2
    },
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
@@ -160,14 +160,14 @@
   "lod": {
    "checked": true,
    "status": "PASS",
-   "line": "LODCHECK PASS main max 0.015% (az 112, el -10) bad_views 0/64 | lod1 max 0.006% (az 248, el +50) bad_views 0/64 | lod2 max 0.021% (az 248, el +50) bad_views 0/64  -> previews\\lod_check\\HighriseTower103_L1_5x4",
+   "line": "LODCHECK PASS main max 0.015% (az 292, el -10) bad_views 0/64 | lod1 max 0.006% (az 248, el +50) bad_views 0/64 | lod2 max 0.024% (az 248, el +50) bad_views 0/64  -> previews\\lod_check\\HighriseTower103_L1_5x4",
    "notes": []
   },
   "agent": {
    "status": "PASS",
    "verts": {
-    "LOD0": 154808,
-    "LOD1": 23940,
+    "LOD0": 154852,
+    "LOD1": 23964,
     "LOD2": 532
    },
    "action_tags": [],
@@ -185,12 +185,12 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-103",
- "updated_at": "2026-11-13T14:34:52",
- "visual_review_note": "reviewed Phase 2 entrance/ramp/ground details and photo_check/tiles overlay sheets (front, left SE, right NW)",
+ "updated_at": "2026-11-13T17:22:24",
+ "visual_review_note": "Reviewed Type A entrance EXLLU TOWER lintel + gold 103 numerals on pink pier front and +X dark stone side; close-up verified.",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower103_L1_5x4.png",
-   "sha256": "67f5b6b38a68e1296056f2a39cffe09b53ecbbd81d1998eed8a2a7845cd6c390"
+   "sha256": "85ab69136ee5ad0f6814b9c65a12bbff83f19ccebbbe2166a56b7a0a29556192"
   },
   {
    "file": "previews/photo_check/facade_front.png",
@@ -217,5 +217,5 @@
    "sha256": "dc56f0ef40c7eaa54096b4e3cf15046307bc4c9e58d8e9ab38df139efe0af254"
   }
  ],
- "reviewed_preview_hash": "67f5b6b38a68e1296056f2a39cffe09b53ecbbd81d1998eed8a2a7845cd6c390"
+ "reviewed_preview_hash": "85ab69136ee5ad0f6814b9c65a12bbff83f19ccebbbe2166a56b7a0a29556192"
 }

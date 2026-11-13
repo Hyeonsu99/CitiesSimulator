@@ -3,7 +3,7 @@
  "project": "exllu-111",
  "stages": {
   "final": {
-   "at": "2026-11-13T14:52:14",
+   "at": "2026-11-13T17:25:07",
    "mode": "final",
    "status": "INCOMPLETE",
    "label": "",
@@ -18,22 +18,22 @@
     "fbx": "PASS",
     "visual_review": "NOT_CHECKED"
    },
-   "generator_hash": "897181225d9a81aa4eb3eb7497f8c6f420f59c056a1d663de64b224da39f81b0",
+   "generator_hash": "51f4fe8a0a456df67d6dd05fc9b0040056db59ce0f6f86dafc6e14e31c1f5fb9",
    "preview": {
     "path": "previews/HighriseTower111_L1_5x4.png",
     "exists": true,
-    "sha256": "7b1b56f79c3a0abed1f2e119c8ece11a6d9bdae47ade930dac07cb6caa68d443",
+    "sha256": "044cc4c9cce152524501924fb87db9b74bc35d565f538997f53bc8e4c72c2a15",
     "key": null
    },
    "fbx": null
   }
  },
- "updated_at": "2026-11-13T14:52:14",
+ "updated_at": "2026-11-13T17:25:07",
  "current_stage": "final:INCOMPLETE",
  "generator": "exllu_111_cs2.py",
- "generator_hash": "897181225d9a81aa4eb3eb7497f8c6f420f59c056a1d663de64b224da39f81b0",
+ "generator_hash": "51f4fe8a0a456df67d6dd05fc9b0040056db59ce0f6f86dafc6e14e31c1f5fb9",
  "visual_review": "NOT_CHECKED",
- "reviewed_preview_hash": null,
+ "reviewed_preview_hash": "7b1b56f79c3a0abed1f2e119c8ece11a6d9bdae47ade930dac07cb6caa68d443",
  "last_gate": {
   "mode": "final",
   "status": "INCOMPLETE",

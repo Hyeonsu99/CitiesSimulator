@@ -24,6 +24,9 @@ import cs2kit as K  # noqa: E402
 
 # No _Gls glass mesh: the pane in front of the _Win quads flickered at night in game (user test 2026-11-11).
 
+DONG = "103"
+ASSET = f"HighriseTower{DONG}"
+
 D, FH, NF = 23.80, 2.94, 50                    # OSM way 934368144 depth (23.8 m), 2.94 m storey, 50 floors
 GH = 5.24                                       # lobby storey: raised so the helipad rail top ~ 160 m
 H = GH + FH * (NF - 1)                          # 149.30
@@ -267,6 +270,125 @@ def foliage_tex(ctx):
     ctx.rgb += ctx.noise(16, 10.0, 2, seed=23)[..., None]
 
 
+_GLYPHS = {
+    "E": ((0.15, 0.10, 0.15, 0.90), (0.15, 0.90, 0.85, 0.90), (0.15, 0.52, 0.72, 0.52), (0.15, 0.10, 0.85, 0.10)),
+    "X": ((0.15, 0.10, 0.85, 0.90), (0.15, 0.90, 0.85, 0.10)),
+    "L": ((0.22, 0.10, 0.22, 0.90), (0.22, 0.10, 0.82, 0.10)),
+    "U": ((0.15, 0.90, 0.15, 0.28), (0.15, 0.28, 0.30, 0.10), (0.30, 0.10, 0.70, 0.10),
+          (0.70, 0.10, 0.85, 0.28), (0.85, 0.28, 0.85, 0.90)),
+    "T": ((0.10, 0.90, 0.90, 0.90), (0.50, 0.10, 0.50, 0.90)),
+    "O": ((0.28, 0.10, 0.72, 0.10), (0.72, 0.10, 0.86, 0.28), (0.86, 0.28, 0.86, 0.72), (0.86, 0.72, 0.72, 0.90),
+          (0.72, 0.90, 0.28, 0.90), (0.28, 0.90, 0.14, 0.72), (0.14, 0.72, 0.14, 0.28), (0.14, 0.28, 0.28, 0.10)),
+    "W": ((0.08, 0.90, 0.26, 0.10), (0.26, 0.10, 0.50, 0.62), (0.50, 0.62, 0.74, 0.10), (0.74, 0.10, 0.92, 0.90)),
+    "R": ((0.16, 0.10, 0.16, 0.90), (0.16, 0.90, 0.70, 0.90), (0.70, 0.90, 0.84, 0.78), (0.84, 0.78, 0.84, 0.58),
+          (0.84, 0.58, 0.70, 0.48), (0.70, 0.48, 0.16, 0.48), (0.52, 0.48, 0.86, 0.10)),
+    "0": ((0.28, 0.10, 0.72, 0.10), (0.72, 0.10, 0.86, 0.28), (0.86, 0.28, 0.86, 0.72), (0.86, 0.72, 0.72, 0.90),
+          (0.72, 0.90, 0.28, 0.90), (0.28, 0.90, 0.14, 0.72), (0.14, 0.72, 0.14, 0.28), (0.14, 0.28, 0.28, 0.10)),
+    "1": ((0.28, 0.74, 0.54, 0.90), (0.54, 0.90, 0.54, 0.10), (0.24, 0.10, 0.82, 0.10)),
+    "2": ((0.18, 0.74, 0.32, 0.90), (0.32, 0.90, 0.70, 0.90), (0.70, 0.90, 0.84, 0.76), (0.84, 0.76, 0.84, 0.62),
+          (0.84, 0.62, 0.16, 0.10), (0.16, 0.10, 0.86, 0.10)),
+    "3": ((0.18, 0.76, 0.32, 0.90), (0.32, 0.90, 0.70, 0.90), (0.70, 0.90, 0.84, 0.76), (0.84, 0.76, 0.84, 0.62),
+          (0.84, 0.62, 0.70, 0.52), (0.70, 0.52, 0.42, 0.52), (0.70, 0.52, 0.86, 0.38), (0.86, 0.38, 0.86, 0.24),
+          (0.86, 0.24, 0.70, 0.10), (0.70, 0.10, 0.30, 0.10), (0.30, 0.10, 0.16, 0.22)),
+    "4": ((0.70, 0.10, 0.70, 0.90), (0.70, 0.90, 0.14, 0.34), (0.14, 0.34, 0.88, 0.34)),
+    "5": ((0.82, 0.90, 0.20, 0.90), (0.20, 0.90, 0.18, 0.56), (0.18, 0.56, 0.68, 0.56), (0.68, 0.56, 0.84, 0.40),
+          (0.84, 0.40, 0.84, 0.24), (0.84, 0.24, 0.68, 0.10), (0.68, 0.10, 0.20, 0.10)),
+    "6": ((0.76, 0.90, 0.34, 0.90), (0.34, 0.90, 0.16, 0.70), (0.16, 0.70, 0.16, 0.26), (0.16, 0.26, 0.34, 0.10),
+          (0.34, 0.10, 0.72, 0.10), (0.72, 0.10, 0.86, 0.26), (0.86, 0.26, 0.86, 0.42), (0.86, 0.42, 0.70, 0.54),
+          (0.70, 0.54, 0.16, 0.54)),
+    "7": ((0.14, 0.90, 0.86, 0.90), (0.86, 0.90, 0.42, 0.10)),
+    "8": ((0.28, 0.52, 0.72, 0.52), (0.28, 0.10, 0.72, 0.10), (0.72, 0.10, 0.86, 0.24), (0.86, 0.24, 0.86, 0.38),
+          (0.86, 0.38, 0.72, 0.52), (0.28, 0.52, 0.14, 0.38), (0.14, 0.38, 0.14, 0.24), (0.14, 0.24, 0.28, 0.10),
+          (0.28, 0.52, 0.16, 0.64), (0.16, 0.64, 0.16, 0.78), (0.16, 0.78, 0.30, 0.90), (0.30, 0.90, 0.70, 0.90),
+          (0.70, 0.90, 0.84, 0.78), (0.84, 0.78, 0.84, 0.64), (0.84, 0.64, 0.72, 0.52)),
+    "9": ((0.24, 0.10, 0.66, 0.10), (0.66, 0.10, 0.84, 0.30), (0.84, 0.30, 0.84, 0.74), (0.84, 0.74, 0.66, 0.90),
+          (0.66, 0.90, 0.28, 0.90), (0.28, 0.90, 0.14, 0.74), (0.14, 0.74, 0.14, 0.58), (0.14, 0.58, 0.30, 0.46),
+          (0.30, 0.46, 0.84, 0.46)),
+}
+
+
+def _sdf_segs(px, py, segs):
+    d = np.full(px.shape, 1e6, np.float32)
+    for x0, y0, x1, y1 in segs:
+        vx, vy = x1 - x0, y1 - y0
+        l2 = vx * vx + vy * vy + 1e-12
+        t = np.clip(((px - x0) * vx + (py - y0) * vy) / l2, 0.0, 1.0)
+        dist = np.hypot(px - (x0 + t * vx), py - (y0 + t * vy))
+        d = np.minimum(d, dist)
+    return d
+
+
+def _exllu_segs(cx, cy, ch_w, ch_h):
+    """Exact world-aspect strokes for EXLLU TOWER (twin skyscraper L spires + wide spaced TOWER)."""
+    segs = []
+    items = [("E", 1.0), ("X", 1.0), ("L", 1.44), ("L", 1.76), ("U", 1.0),
+             (" ", 0.72), ("T", 0.90), ("O", 0.90), ("W", 0.98), ("E", 0.90), ("R", 0.90)]
+    adv = ch_w * 1.18
+    x_pos = cx - adv * 5.05
+    for idx, (ch, hs) in enumerate(items):
+        gw = ch_w * (0.82 if ch == "L" else (1.06 if ch == "W" else (0.92 if idx > 5 else 0.96)))
+        gh = ch_h * hs
+        if ch == "L":
+            segs.append((x_pos + 0.14 * gw, cy, x_pos + 0.14 * gw, cy + gh))
+            segs.append((x_pos + 0.14 * gw, cy + gh, x_pos + 0.42 * gw, cy + gh * 0.91))
+            segs.append((x_pos + 0.14 * gw, cy, x_pos + 0.80 * gw, cy))
+        elif ch in _GLYPHS:
+            for a0, b0, a1, b1 in _GLYPHS[ch]:
+                segs.append((x_pos + a0 * gw, cy + (b0 - 0.10) * gh / 0.80,
+                             x_pos + a1 * gw, cy + (b1 - 0.10) * gh / 0.80))
+        x_pos += adv * (0.62 if ch == " " else (0.94 if ch == "L" else (0.92 if idx > 5 else 1.02)))
+    return segs
+
+
+def _num_segs(cx, cy, gw, gh, text):
+    segs = []
+    step = gw * 1.18
+    x0 = cx - 0.5 * ((len(text) - 1) * step + gw)
+    for k, ch in enumerate(text):
+        ox = x0 + k * step
+        for a0, b0, a1, b1 in _GLYPHS.get(ch, ()):
+            segs.append((ox + a0 * gw, cy + (b0 - 0.10) * gh / 0.80,
+                         ox + a1 * gw, cy + (b1 - 0.10) * gh / 0.80))
+    return segs
+
+
+def paint_ent_lintel(ctx, w_m=5.10, h_m=0.85):
+    granite(ctx, 5, 1, 0.12, 2.8, 0.08)
+    px, py = ctx.u * w_m, ctx.v * h_m
+    segs = _exllu_segs(w_m * 0.50, h_m * 0.25, 0.175, 0.27)
+    d = _sdf_segs(px, py, segs)
+    ds = _sdf_segs(px - 0.015, py + 0.015, segs)
+    shad = np.clip(1.0 - (ds - 0.025) / 0.014, 0.0, 1.0)
+    fg = np.clip(1.0 - (d - 0.025) / 0.012, 0.0, 1.0)
+    ctx.rgb[...] = ctx.rgb * (1.0 - 0.40 * shad[..., None])
+    ctx.rgb[...] = ctx.rgb * (1.0 - fg[..., None]) + np.array([62, 54, 46], np.float32) * fg[..., None]
+    ctx.height += fg * 1.6
+    ctx.gloss[...] = np.where(fg > 0.3, 0.58, ctx.gloss)
+
+
+def paint_pier_num(ctx, w_m=1.40, h_m=1.10, bg="pink"):
+    if bg == "pink":
+        granite(ctx, 2, 1, 0.18, 8.0, 0.15)
+    else:
+        granite(ctx, 1, 1, 0.25, 6.5, 0.12)
+    px, py = ctx.u * w_m, ctx.v * h_m
+    segs = _num_segs(w_m * 0.50, h_m * 0.30, 0.25, 0.42, DONG)
+    d = _sdf_segs(px, py, segs)
+    ds = _sdf_segs(px - 0.022, py + 0.022, segs)
+    shad = np.clip(1.0 - (ds - 0.036) / 0.018, 0.0, 1.0)
+    fg = np.clip(1.0 - (d - 0.036) / 0.014, 0.0, 1.0)
+    ctx.rgb[...] = ctx.rgb * (1.0 - 0.52 * shad[..., None])
+    ctx.rgb[...] = ctx.rgb * (1.0 - fg[..., None]) + np.array([218, 180, 74], np.float32) * fg[..., None]
+    ctx.height += fg * 2.4
+    ctx.gloss[...] = np.where(fg > 0.3, 0.88, ctx.gloss)
+
+
+def paint_pier_course(ctx):
+    ctx.joints(cols=1, rows=10, width_m=0.009, depth=1.5, stagger=0.0, darken=0.22, tone=7.0)
+    ctx.grain(amp=6.0, scale_px=2, height=0.6, seed=13)
+    ctx.rgb += ctx.noise(12, 4.0, 2, seed=17)[..., None]
+
+
 TEX = {  # tile = one 2.4 m x one storey, so joints line up with floors
     "foliage": dict(tile=(1.2, 1.2), px=64, painter=foliage_tex),
     "stone": dict(tile=(2.4, FH), px=1024, painter=lambda c: granite(c, 2, 4, 0.25, 6.5, 0.12)),
@@ -274,6 +396,10 @@ TEX = {  # tile = one 2.4 m x one storey, so joints line up with floors
     "grey_stone": dict(tile=(2.4, FH), px=1024, painter=lambda c: granite(c, 2, 4, 0.15, 3.8)),
     "window": dict(px=2048, painter=window_glass, emissive=(255, 205, 150)),
     "pier_pink": dict(tile=(1.2, 1.2), px=512, painter=lambda c: granite(c, 1, 2, 0.18, 8.0, 0.15)),
+    "pier_course": dict(tile=(0.60, 1.2), px=256, painter=paint_pier_course),
+    "pier_num": dict(tile=(1.40, 1.10), px=512, painter=lambda c: paint_pier_num(c, 1.40, 1.10, "pink")),
+    "pier_side_num": dict(tile=(1.50, 1.10), px=256, painter=lambda c: paint_pier_num(c, 1.50, 1.10, "dark")),
+    "ent_lintel": dict(tile=(5.10, 0.85), px=512, painter=paint_ent_lintel),
     "crown_glass": dict(tile=(1.2, OBS_GH), px=256, painter=obs_glass, emissive=(225, 250, 185)),
     "se_glass": dict(tile=(9.10 / 8, FH), px=512, painter=se_curtain, emissive=(255, 224, 175)),
     "obs_roof": dict(tile=(1.8, 1.8), px=256, painter=skylight),
@@ -316,6 +442,10 @@ for name, color, metal, gloss, px in (
         ("heli_green", (74, 142, 104), 0.0, 0.25, 64),
         ("heli_white", (234, 236, 228), 0.0, 0.25, 64),
         ("pier_pink", (184, 146, 136), 0.0, 0.4, 128),
+        ("pier_course", (190, 162, 152), 0.0, 0.35, 256),
+        ("pier_num", (184, 146, 136), 0.0, 0.45, 512),
+        ("pier_side_num", (102, 96, 94), 0.0, 0.45, 256),
+        ("ent_lintel", (232, 228, 218), 0.0, 0.32, 512),
         ("canopy", (166, 168, 166), 0.2, 0.45, 128),
         ("glass", (150, 185, 180), 0.0, 0.35, 64),
         ("grey_stone", (158, 156, 152), 0.0, 0.3, 128),
@@ -804,20 +934,39 @@ def entrance(mb, stage):
     mb.box(5.40, 6.50, EY + 1.15, 0.0, EZ0, ZS,
            dict(left="pale", bottom="soffit", default="pale"), skip=("back", "top", "front", "right"))
 
-    # Center recessed beam (0.35 m behind proud dark hood & piers) + right-side canopy extension
-    mb.box(6.50, 11.60, y_beam, 0.0, EZ0, ZS,
-           dict(front="pale", bottom="soffit", default="pale"), skip=("back", "top", "left", "right"))
+    # Center recessed beam (0.35 m behind proud dark hood & piers) + carved EXLLU TOWER lintel + right extension
+    mb.box(6.50, 11.60, y_beam, 0.0, EZ0, EZB,
+           dict(bottom="soffit", default="pale"), skip=("back", "top", "left", "right", "front"))
+    mb.quad(K.face_pts("y", y_beam, -1, 6.50, 11.60, EZ0, EZB), A.uv_full("ent_lintel"), "ent_lintel")
+    mb.box(6.50, 11.60, y_beam, 0.0, EZB, ZS,
+           dict(front="pale", default="pale"), skip=("back", "top", "left", "right", "bottom"))
     mb.box(11.60, 13.45, EY + 1.80, 0.0, EZ0, ZS,
            dict(right="pale", bottom="soffit", default="pale"), skip=("back", "top", "front", "left"))
 
-    # Right corner pier: base plinth + front pink granite wrap (wraps onto +X 0.5 m) + rear dark granite (user-04)
+    # Right corner pier: base plinth + front pink marble (smooth DONG plaque + split-face outer course) + rear dark granite
     mb.box(11.56, 13.64, EY - 0.24, EY + 1.84, 0.0, 0.16, "stone_trim", skip=("bottom",))
-    mb.box(11.60, 13.60, EY - 0.20, EY + 0.30, 0.16, ZS,
-           dict(front="pier_pink", right="pier_pink", left="stone_trim", default="pier_pink"),
-           skip=("bottom", "top", "back"))
+    px_mid = 13.00
+    mb.box(11.60, px_mid, EY - 0.20, EY + 0.30, 0.16, ZS,
+           dict(left="stone_trim", default="pier_pink"), skip=("bottom", "top", "back", "front", "right"))
+    for z0, z1, mat, full in ((0.16, 2.15, "pier_pink", False),
+                              (2.15, 3.25, "pier_num", True),
+                              (3.25, ZS, "pier_pink", False)):
+        pts = K.face_pts("y", EY - 0.20, -1, 11.60, px_mid, z0, z1)
+        mb.quad(pts, A.uv_full(mat), mat) if full else mb.rect(pts, mat)
+    if stage == 0:
+        mb.box(12.22, 12.38, EY - 0.27, EY - 0.20, 3.32, 3.48,
+               dict(bottom="ent_light", default="stone"), skip=("back",))
+    mb.box(px_mid, 13.60, EY - 0.20, EY + 0.30, 0.16, ZS,
+           dict(front="pier_course", right="pier_pink", default="pier_pink"),
+           skip=("bottom", "top", "back", "left"))
     mb.box(11.60, 13.60, EY + 0.30, EY + 1.80, 0.16, ZS,
-           dict(right="stone", left="stone_trim", back="stone", default="stone"),
-           skip=("bottom", "top", "front"))
+           dict(left="stone_trim", back="stone", default="stone"),
+           skip=("bottom", "top", "front", "right"))
+    for z0, z1, mat, full in ((0.16, 2.15, "stone", False),
+                              (2.15, 3.25, "pier_side_num", True),
+                              (3.25, ZS, "stone", False)):
+        pts = K.face_pts("x", 13.60, 1, EY + 0.30, EY + 1.80, z0, z1)
+        mb.quad(pts, A.uv_full(mat), mat) if full else mb.rect(pts, mat)
 
     # Proud dark granite roof slab capping whole portico cleanly to tower wall
     mb.box(5.20, 13.70, EY - 0.20, 0.0, ZS, EZT, dict(top="roof", default="stone_trim"), skip=("back",))
@@ -1102,5 +1251,5 @@ main = build(0)
 lod1 = build(1)
 lod2 = build(2)
 
-K.export_asset("HighriseTower103", 1, dict(main=main, lod1=lod1, lod2=lod2, windows=WS),
+K.export_asset(ASSET, 1, dict(main=main, lod1=lod1, lod2=lod2, windows=WS),
                A, K.out_dir_from_argv("output"), lot=(5, 4))
