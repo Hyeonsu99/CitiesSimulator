@@ -1,0 +1,42 @@
+{
+ "version": 1,
+ "project": "exllu-110",
+ "stages": {
+  "final": {
+   "at": "2026-11-13T14:51:27",
+   "mode": "final",
+   "status": "INCOMPLETE",
+   "label": "",
+   "gate": "output/HighriseTower110_L1_5x4/_check/gate.json",
+   "checks": {
+    "build": "PASS",
+    "geometry": "PASS",
+    "preview": "PASS",
+    "photo": "PASS",
+    "tiles": "PASS",
+    "lod": "PASS",
+    "fbx": "PASS",
+    "visual_review": "NOT_CHECKED"
+   },
+   "generator_hash": "d29e4155b684b62faa392d70dcd4b1d9ad1aeaa0651dfacd3b633d3748b065b3",
+   "preview": {
+    "path": "previews/HighriseTower110_L1_5x4.png",
+    "exists": true,
+    "sha256": "e41fd1aa0557e7af6ff32b5d4e3c89f77e5bbbb289379996e670cb874cb26e42",
+    "key": null
+   },
+   "fbx": null
+  }
+ },
+ "updated_at": "2026-11-13T14:51:27",
+ "current_stage": "final:INCOMPLETE",
+ "generator": "exllu_110_cs2.py",
+ "generator_hash": "d29e4155b684b62faa392d70dcd4b1d9ad1aeaa0651dfacd3b633d3748b065b3",
+ "visual_review": "NOT_CHECKED",
+ "reviewed_preview_hash": null,
+ "last_gate": {
+  "mode": "final",
+  "status": "INCOMPLETE",
+  "path": "output/HighriseTower110_L1_5x4/_check/gate.json"
+ }
+}

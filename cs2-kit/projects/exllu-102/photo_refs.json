@@ -1,1 +1,127 @@
-{"view_ref": {"file": "photos/view_ref.png", "description": "Kumgang Exllu Tower reference"}}
+{
+  "_note": "Tower 102 shares identical Type-A OSM footprint/orientation & elevation with Tower 103 (OSM way 934368143); synced from exllu-103 Phase 1/2 photo_refs.json.",
+  "facades": [
+    {
+      "file": "../exllu-103/photos/user-11-front.png",
+      "side": "front",
+      "name": "front_user11",
+      "corners": [
+        [
+          373,
+          15
+        ],
+        [
+          587,
+          80
+        ],
+        [
+          853,
+          1815
+        ],
+        [
+          40,
+          1850
+        ]
+      ],
+      "size_m": [
+        25.6,
+        150.6
+      ],
+      "box": [
+        -12.0,
+        13.6,
+        -0.6,
+        1.5,
+        0.0,
+        150.6
+      ],
+      "confidence": "low",
+      "occluded": "base behind trees and portico; ~25 px/m at base vs ~6.5 px/m at parapet top under steep upward perspective",
+      "paint": {
+        "use_for_color": false
+      }
+    },
+    {
+      "file": "../exllu-103/photos/user-12-se.png",
+      "side": "left",
+      "name": "se_user12",
+      "corners": [
+        [
+          197,
+          72
+        ],
+        [
+          370,
+          97
+        ],
+        [
+          600,
+          1765
+        ],
+        [
+          45,
+          1765
+        ]
+      ],
+      "size_m": [
+        23.8,
+        150.6
+      ],
+      "box": [
+        -14.3,
+        -11.9,
+        0.0,
+        23.8,
+        0.0,
+        150.6
+      ],
+      "confidence": "low",
+      "occluded": "base behind trees and parked cars; steep upward lens perspective",
+      "paint": {
+        "use_for_color": false
+      },
+      "yaw_deg": 90
+    },
+    {
+      "file": "../exllu-103/photos/sv-nw.png",
+      "side": "right",
+      "name": "nw_sv",
+      "corners": [
+        [
+          740,
+          92
+        ],
+        [
+          850,
+          62
+        ],
+        [
+          905,
+          935
+        ],
+        [
+          684,
+          935
+        ]
+      ],
+      "size_m": [
+        23.8,
+        150.6
+      ],
+      "box": [
+        11.9,
+        14.3,
+        0.0,
+        23.8,
+        0.0,
+        150.6
+      ],
+      "confidence": "low",
+      "occluded": "lower third behind pines; bottom corners extrapolated",
+      "paint": {
+        "use_for_color": false
+      },
+      "yaw_deg": -90
+    }
+  ]
+}

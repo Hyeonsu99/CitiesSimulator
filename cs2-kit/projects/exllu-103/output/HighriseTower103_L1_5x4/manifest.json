@@ -5,25 +5,25 @@
   4
  ],
  "size": [
-  33.2,
-  26.0,
-  162.48
+  28.9,
+  28.84,
+  161.82
  ],
  "pivot_shift": [
-  -0.0,
-  -8.600000000000001
+  -0.15000000000000036,
+  -9.98
  ],
  "tris": {
-  "main": 78922,
-  "win": 2808,
+  "main": 77404,
+  "win": 2970,
   "gls": 0,
-  "lod1": 17972,
-  "lod1_win": 2808,
+  "lod1": 11970,
+  "lod1_win": 2970,
   "lod1_gls": 0,
-  "lod2": 292,
-  "lod2_win": 2808
+  "lod2": 266,
+  "lod2_win": 2970
  },
- "windows": 1404,
+ "windows": 1485,
  "tex": 4096,
  "lod1_tex": 4096,
  "lod2_tex": 1024,
@@ -50,7 +50,7 @@
    },
    "stone_trim": {
     "rect": [
-     2608,
+     2864,
      3152,
      64,
      64
@@ -75,7 +75,7 @@
    },
    "crown_white": {
     "rect": [
-     2704,
+     2960,
      3152,
      64,
      64
@@ -84,9 +84,20 @@
     "variants": 1,
     "px": 64
    },
+   "core_glow": {
+    "rect": [
+     304,
+     3696,
+     32,
+     32
+    ],
+    "tile": null,
+    "variants": 1,
+    "px": 32
+   },
    "deck_under": {
     "rect": [
-     2800,
+     3056,
      3152,
      64,
      64
@@ -97,21 +108,21 @@
    },
    "crown_glass": {
     "rect": [
-     560,
+     1104,
      3152,
      256,
      256
     ],
     "tile": [
      1.2,
-     3.65
+     3.95
     ],
     "variants": 1,
     "px": 256
    },
    "obs_roof": {
     "rect": [
-     848,
+     1392,
      3152,
      256,
      256
@@ -125,7 +136,7 @@
    },
    "railing": {
     "rect": [
-     2896,
+     3152,
      3152,
      64,
      64
@@ -136,18 +147,21 @@
    },
    "se_glass": {
     "rect": [
-     2992,
-     3152,
-     64,
-     64
+     3184,
+     2096,
+     512,
+     512
     ],
-    "tile": null,
+    "tile": [
+     1.1375,
+     2.94
+    ],
     "variants": 1,
-    "px": 64
+    "px": 512
    },
    "frame": {
     "rect": [
-     3088,
+     3248,
      3152,
      64,
      64
@@ -158,7 +172,7 @@
    },
    "louver": {
     "rect": [
-     1136,
+     1680,
      3152,
      256,
      256
@@ -172,7 +186,7 @@
    },
    "louver_back": {
     "rect": [
-     3184,
+     3344,
      3152,
      64,
      64
@@ -183,8 +197,8 @@
    },
    "roof": {
     "rect": [
-     3184,
-     2096,
+     16,
+     3152,
      512,
      512
     ],
@@ -197,7 +211,7 @@
    },
    "deck": {
     "rect": [
-     3280,
+     3440,
      3152,
      64,
      64
@@ -208,7 +222,7 @@
    },
    "heli_green": {
     "rect": [
-     3376,
+     3536,
      3152,
      64,
      64
@@ -219,7 +233,7 @@
    },
    "heli_white": {
     "rect": [
-     3472,
+     3632,
      3152,
      64,
      64
@@ -230,7 +244,7 @@
    },
    "pier_pink": {
     "rect": [
-     16,
+     560,
      3152,
      512,
      512
@@ -244,7 +258,7 @@
    },
    "canopy": {
     "rect": [
-     1424,
+     1968,
      3152,
      256,
      256
@@ -258,7 +272,7 @@
    },
    "glass": {
     "rect": [
-     3568,
+     3728,
      3152,
      64,
      64
@@ -283,7 +297,7 @@
    },
    "pale_trim": {
     "rect": [
-     3664,
+     3824,
      3152,
      64,
      64
@@ -294,7 +308,7 @@
    },
    "grey_trim": {
     "rect": [
-     3760,
+     3920,
      3152,
      64,
      64
@@ -303,23 +317,9 @@
     "variants": 1,
     "px": 64
    },
-   "white_shaft": {
-    "rect": [
-     1712,
-     3152,
-     256,
-     256
-    ],
-    "tile": [
-     2.4,
-     2.94
-    ],
-    "variants": 1,
-    "px": 256
-   },
    "heli_net": {
     "rect": [
-     3856,
+     4016,
      3152,
      64,
      64
@@ -333,8 +333,8 @@
    },
    "grating": {
     "rect": [
-     3952,
-     3152,
+     16,
+     3696,
      64,
      64
     ],
@@ -347,7 +347,7 @@
    },
    "heli_light": {
     "rect": [
-     112,
+     368,
      3696,
      32,
      32
@@ -358,7 +358,7 @@
    },
    "clerestory": {
     "rect": [
-     2288,
+     2544,
      3152,
      128,
      128
@@ -383,7 +383,7 @@
    },
    "soffit": {
     "rect": [
-     2000,
+     2256,
      3152,
      256,
      256
@@ -397,7 +397,7 @@
    },
    "ent_light": {
     "rect": [
-     176,
+     432,
      3696,
      32,
      32
@@ -408,7 +408,7 @@
    },
    "soil": {
     "rect": [
-     16,
+     112,
      3696,
      64,
      64
@@ -417,15 +417,29 @@
     "variants": 1,
     "px": 64
    },
+   "foliage": {
+    "rect": [
+     208,
+     3696,
+     64,
+     64
+    ],
+    "tile": [
+     1.2,
+     1.2
+    ],
+    "variants": 1,
+    "px": 64
+   },
    "deck_lit": {
     "rect": [
-     2448,
+     2704,
      3152,
      128,
      128
     ],
     "tile": [
-     1.8357142857142856,
+     1.992857142857143,
      0.85
     ],
     "variants": 1,
@@ -433,7 +447,7 @@
    },
    "heli_light_y": {
     "rect": [
-     240,
+     496,
      3696,
      32,
      32
@@ -444,7 +458,7 @@
    },
    "obst_light": {
     "rect": [
-     304,
+     560,
      3696,
      32,
      32
@@ -455,7 +469,7 @@
    },
    "flood_light": {
     "rect": [
-     368,
+     624,
      3696,
      32,
      32
@@ -466,7 +480,7 @@
    },
    "windsock": {
     "rect": [
-     432,
+     688,
      3696,
      32,
      32
@@ -477,7 +491,7 @@
    },
    "under_light": {
     "rect": [
-     496,
+     752,
      3696,
      32,
      32
@@ -503,6 +517,7 @@
   "main": [
    "canopy",
    "clerestory",
+   "core_glow",
    "crown_glass",
    "crown_white",
    "deck",
@@ -510,11 +525,11 @@
    "deck_under",
    "ent_light",
    "flood_light",
+   "foliage",
    "frame",
    "glass",
    "grating",
    "grey_stone",
-   "grey_trim",
    "heli_green",
    "heli_light",
    "heli_light_y",
@@ -522,7 +537,6 @@
    "heli_white",
    "louver",
    "louver_back",
-   "obs_roof",
    "obst_light",
    "pale",
    "pale_trim",
@@ -536,7 +550,6 @@
    "stone_trim",
    "under_light",
    "vestibule",
-   "white_shaft",
    "windsock"
   ],
   "win": [
@@ -546,6 +559,7 @@
   "lod1": [
    "canopy",
    "clerestory",
+   "core_glow",
    "crown_glass",
    "crown_white",
    "deck",
@@ -554,12 +568,10 @@
    "frame",
    "grating",
    "grey_stone",
-   "grey_trim",
    "heli_green",
    "heli_net",
    "heli_white",
    "louver_back",
-   "obs_roof",
    "pale",
    "pale_trim",
    "pier_pink",
@@ -567,10 +579,10 @@
    "roof",
    "se_glass",
    "soffit",
+   "soil",
    "stone",
    "stone_trim",
-   "vestibule",
-   "white_shaft"
+   "vestibule"
   ],
   "lod1_win": [
    "window"
@@ -581,7 +593,6 @@
    "crown_white",
    "deck",
    "deck_under",
-   "grey_stone",
    "heli_green",
    "louver_back",
    "pale",
@@ -590,8 +601,7 @@
    "se_glass",
    "soffit",
    "stone",
-   "stone_trim",
-   "white_shaft"
+   "stone_trim"
   ],
   "lod2_win": [
    "window"

@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_103_cs2.py",
- "generator_hash": "0dd282b2f0abd43014e0f095e5de053877792965c060154fe2b156b50fbd1130",
- "current_preview_hash": "a9cde44cfd35810ee28856546f00e83a36973ae2136e1ec8254b2e145439b70e",
+ "generator_hash": "0ca71eb91fb9e4c2449e394b4bbacc14ab03e574cd6395a905a7b92df93f3e07",
+ "current_preview_hash": "67f5b6b38a68e1296056f2a39cffe09b53ecbbd81d1998eed8a2a7845cd6c390",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-103",
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
   "asset": "HighriseTower103_L1_5x4",
-  "label": "final",
-  "time": "2026-11-12 08:54:46",
+  "label": "",
+  "time": "2026-11-13 14:34:22",
   "build": {
    "asset": "HighriseTower103_L1_5x4",
    "fbx": true,
@@ -38,12 +38,14 @@
   },
   "check": {
    "errors": [],
-   "warnings": [],
+   "warnings": [
+    "TEXEL: 29% of faces > 1 m2 are below 64 px/m (blurry). Ignore for plain-color faces"
+   ],
    "info": {
     "size": [
-     33.2,
-     26.0,
-     162.48
+     28.9,
+     28.84,
+     161.82
     ],
     "pivot_offset": [
      0.0,
@@ -52,20 +54,20 @@
     "zmin": 0.0,
     "coords": "generator coordinates (before pivot move)",
     "tris": {
-     "main": 78922,
-     "win": 2808,
-     "lod1": 17972,
-     "lod1_win": 2808,
-     "lod2": 292,
-     "lod2_win": 2808
+     "main": 77404,
+     "win": 2970,
+     "lod1": 11970,
+     "lod1_win": 2970,
+     "lod2": 266,
+     "lod2_win": 2970
     },
     "verts": {
-     "main": 157844,
-     "win": 5616,
-     "lod1": 35944,
-     "lod1_win": 5616,
-     "lod2": 584,
-     "lod2_win": 5616
+     "main": 154808,
+     "win": 5940,
+     "lod1": 23940,
+     "lod1_win": 5940,
+     "lod2": 532,
+     "lod2_win": 5940
     },
     "coplanar": {
      "main": 0,
@@ -86,18 +88,18 @@
      "LOD2_Emissive": "1024x1024 RGB"
     },
     "texel_px_per_m": {
-     "p10": 31.9,
+     "p10": 16.6,
      "median": 385.1,
      "p90": 385.1
     },
-    "windows": 1404,
+    "windows": 1485,
     "win_dropped": 0,
     "win_blocked": {
      "win": 0,
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 9.9
+    "time_s": 14.7
    },
    "report": "output\\HighriseTower103_L1_5x4\\_check\\report.json"
   },
@@ -106,14 +108,14 @@
    "mismatch": 0,
    "lines": [
     "INFO     front floor pitch: photo 2.80 m / model 5.90 m (+111%)  -> photo shows ~54 floor bands over the wall height, model ~26 (model needs MORE floors or lower floor height) (low-confidence photo evidence - do not auto-change floors)",
-    "INFO     front window bay pitch: photo 2.10 m / model 3.65 m (+74%)  (bays differ - check window columns)",
-    "INFO     front edge agreement 51%",
-    "INFO     left floor pitch: photo 3.00 m / model 5.90 m (+97%)  -> photo shows ~50 floor bands over the wall height, model ~26 (model needs MORE floors or lower floor height) (low-confidence photo evidence - do not auto-change floors)",
-    "INFO     left window bay pitch: photo 4.15 m / model 2.45 m (-41%)  (bays differ - check window columns)",
-    "INFO     left edge agreement 59%",
+    "INFO     front window bay pitch: photo 1.60 m / model 2.00 m (+25%)  (bays differ - check window columns)",
+    "INFO     front edge agreement 58%",
+    "MATCH    left floor pitch: photo 3.00 m / model 2.90 m (-3%) (low-confidence photo evidence - do not auto-change floors)",
+    "INFO     left window bay pitch: photo 4.70 m / model 1.85 m (-61%)  (bays differ - check window columns)",
+    "INFO     left edge agreement 52%",
     "INFO     right floor pitch: photo 1.65 m / model 5.90 m (+258%)  -> photo shows ~91 floor bands over the wall height, model ~26 (model needs MORE floors or lower floor height) (weak pattern in photo or model - LOW_CONFIDENCE, check by eye) (low-confidence photo evidence - do not auto-change floors)",
-    "INFO     right window bay pitch: photo 11.85 m / model 1.65 m (-86%)  (bays differ - check window columns)",
-    "INFO     right edge agreement 55%"
+    "MATCH    right window bay pitch: photo 1.55 m / model 1.55 m (+0%)",
+    "INFO     right edge agreement 53%"
    ],
    "status": "PASS"
   },
@@ -121,52 +123,52 @@
    "checked": true,
    "status": "PASS",
    "simplified": [
-    "TILE front r0c0 x[0,11]m z[142,151]m recall 1% precision 0%  SIMPLIFIED",
-    "TILE front r1c0 x[0,11]m z[133,142]m recall 3% precision 1%  SIMPLIFIED",
-    "TILE front r2c0 x[0,11]m z[124,133]m recall 3% precision 2%  SIMPLIFIED",
-    "TILE left r7c0 x[0,10]m z[80,89]m recall 43% precision 56%  SIMPLIFIED",
-    "TILE left r13c0 x[0,10]m z[27,35]m recall 44% precision 62%  SIMPLIFIED",
-    "TILE left r11c1 x[10,21]m z[44,53]m recall 44% precision 59%  SIMPLIFIED",
-    "TILE right r1c0 x[0,10]m z[133,142]m recall 17% precision 10%  SIMPLIFIED",
-    "TILE right r7c1 x[10,21]m z[80,89]m recall 20% precision 35%  SIMPLIFIED",
-    "TILE right r16c1 x[10,21]m z[0,9]m recall 21% precision 8%  SIMPLIFIED"
+    "TILE front r4c0 x[0,9]m z[106,115]m recall 5% precision 8%  SIMPLIFIED",
+    "TILE front r3c0 x[0,9]m z[115,124]m recall 5% precision 7%  SIMPLIFIED",
+    "TILE front r2c0 x[0,9]m z[124,133]m recall 5% precision 6%  SIMPLIFIED",
+    "TILE left r8c0 x[0,12]m z[71,80]m recall 28% precision 29%  SIMPLIFIED",
+    "TILE left r9c0 x[0,12]m z[62,71]m recall 33% precision 33%  SIMPLIFIED",
+    "TILE left r7c1 x[12,24]m z[80,89]m recall 37% precision 38%  SIMPLIFIED",
+    "TILE right r16c1 x[12,24]m z[0,9]m recall 12% precision 7%  SIMPLIFIED",
+    "TILE right r7c1 x[12,24]m z[80,89]m recall 28% precision 35%  SIMPLIFIED",
+    "TILE right r7c0 x[0,12]m z[80,89]m recall 28% precision 37%  SIMPLIFIED"
    ],
    "detail": [
-    "DETAIL front recall 35% precision 39% worst r0c0 (1%) simplified_tiles 38/51",
-    "DETAIL left recall 52% precision 48% worst r7c0 (43%) simplified_tiles 13/34",
-    "DETAIL right recall 41% precision 42% worst r1c0 (17%) simplified_tiles 27/34"
+    "DETAIL front recall 42% precision 43% worst r4c0 (5%) simplified_tiles 30/51",
+    "DETAIL left recall 48% precision 42% worst r8c0 (28%) simplified_tiles 21/34",
+    "DETAIL right recall 41% precision 42% worst r16c1 (12%) simplified_tiles 30/34"
    ],
    "detail_color": [
-    "DETAIL_COLOR front tiles_off 13/51 (dE>14; trusted tiles only)",
-    "DETAIL_COLOR left tiles_off 4/34 (dE>14; trusted tiles only)",
-    "DETAIL_COLOR right tiles_off 7/29 (dE>14; trusted tiles only)"
+    "DETAIL_COLOR front tiles_off 12/51 (dE>14; trusted tiles only)",
+    "DETAIL_COLOR left tiles_off 5/34 (dE>14; trusted tiles only)",
+    "DETAIL_COLOR right tiles_off 5/29 (dE>14; trusted tiles only)"
    ],
    "color_off": [
-    "COLOR front r0c1 x[11,22]m photo #ffffd2 model #bbbab4 dE 31  COLOR_OFF confidence=trusted",
-    "COLOR front r14c2 x[22,33]m photo #b4b1aa model #5e7475 dE 27  COLOR_OFF confidence=trusted",
-    "COLOR front r13c1 x[11,22]m photo #6f7a7e model #b9b8b2 dE 25  COLOR_OFF confidence=trusted",
-    "COLOR left r13c0 x[0,10]m photo #717874 model #a2a19b dE 17  COLOR_OFF confidence=trusted",
-    "COLOR left r4c1 x[10,21]m photo #b7bcaf model #8c968f dE 15  COLOR_OFF confidence=trusted",
-    "COLOR left r2c1 x[10,21]m photo #bbc0b2 model #929990 dE 15  COLOR_OFF confidence=trusted",
-    "COLOR right r14c0 x[0,10]m photo #2f292d model #5d6963 dE 28  COLOR_OFF confidence=trusted",
-    "COLOR right r13c1 x[10,21]m photo #414140 model #7d7c78 dE 25  COLOR_OFF confidence=trusted",
-    "COLOR right r14c1 x[10,21]m photo #302c2e model #59645e dE 24  COLOR_OFF confidence=trusted"
+    "COLOR front r16c0 x[0,9]m photo #1f1f20 model #908f8c dE 48  COLOR_OFF confidence=trusted",
+    "COLOR front r13c1 x[9,17]m photo #778086 model #c7c5be dE 28  COLOR_OFF confidence=trusted",
+    "COLOR front r16c1 x[9,17]m photo #23232a model #595e5e dE 26  COLOR_OFF confidence=trusted",
+    "COLOR left r16c1 x[12,24]m photo #222425 model #4c4d4c dE 19  COLOR_OFF confidence=trusted",
+    "COLOR left r16c0 x[0,12]m photo #272929 model #4c4c4b dE 16  COLOR_OFF confidence=trusted",
+    "COLOR left r0c1 x[12,24]m photo #5e6f71 model #7c9797 dE 15  COLOR_OFF confidence=trusted",
+    "COLOR right r13c1 x[12,24]m photo #404343 model #84837e dE 27  COLOR_OFF confidence=trusted",
+    "COLOR right r10c1 x[12,24]m photo #484f51 model #84837e dE 22  COLOR_OFF confidence=trusted",
+    "COLOR right r16c0 x[0,12]m photo #1b1618 model #3a3a39 dE 17  COLOR_OFF confidence=trusted"
    ],
-   "tiles_off": 24,
+   "tiles_off": 22,
    "tiles_total": 114
   },
   "lod": {
    "checked": true,
    "status": "PASS",
-   "line": "LODCHECK PASS main max 0.015% (az 68, el -10) bad_views 0/64 | lod1 max 0.002% (az 338, el +5) bad_views 0/64 | lod2 max 0.000% (az 0, el -10) bad_views 0/64  -> previews\\lod_check\\HighriseTower103_L1_5x4",
+   "line": "LODCHECK PASS main max 0.015% (az 112, el -10) bad_views 0/64 | lod1 max 0.006% (az 248, el +50) bad_views 0/64 | lod2 max 0.021% (az 248, el +50) bad_views 0/64  -> previews\\lod_check\\HighriseTower103_L1_5x4",
    "notes": []
   },
   "agent": {
    "status": "PASS",
    "verts": {
-    "LOD0": 157844,
-    "LOD1": 35944,
-    "LOD2": 584
+    "LOD0": 154808,
+    "LOD1": 23940,
+    "LOD2": 532
    },
    "action_tags": [],
    "exact_fix_instruction": "no fix needed"
@@ -183,37 +185,37 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-103",
- "updated_at": "2026-11-12T08:55:04",
- "visual_review_note": "pull 후 재빌드(생성기 내용 동일, 줄바꿈만 CRLF). 미리보기 4방향: 덩어리·헬리포트·기단·현관 정상, _Gls 없음. 사진 비교: 창 열과 층 간격 유지, 정면 날개 상부 타일 낮은 일치도는 광각 사진 펼침 어긋남(이전 리뷰와 동일), 우측은 나무 가림",
+ "updated_at": "2026-11-13T14:34:52",
+ "visual_review_note": "reviewed Phase 2 entrance/ramp/ground details and photo_check/tiles overlay sheets (front, left SE, right NW)",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower103_L1_5x4.png",
-   "sha256": "a9cde44cfd35810ee28856546f00e83a36973ae2136e1ec8254b2e145439b70e"
+   "sha256": "67f5b6b38a68e1296056f2a39cffe09b53ecbbd81d1998eed8a2a7845cd6c390"
   },
   {
    "file": "previews/photo_check/facade_front.png",
-   "sha256": "94b3086c39bfb29ba98be7c25c441d5d26f1044fa357273f68364938b00444b6"
+   "sha256": "dfd996cfe12785b5910bdc968d6aa101dc55a0cce449687bee9e9cd2fd272bd1"
   },
   {
    "file": "previews/photo_check/facade_left.png",
-   "sha256": "c6b13989865a4a59445d12310b89f9943527ca90ae6da7cd7d8e7597a6359c11"
+   "sha256": "3d6d9c3e29ae99de7cb0359a4a346338534f6c577963fb00d50c1dbad1af7979"
   },
   {
    "file": "previews/photo_check/facade_right.png",
-   "sha256": "c0698b9243b180f5bf2ae5e97b36035edaa46b19f5be22c8b42a9ff75b61d812"
+   "sha256": "bac82e67b916de10525338de23501335d5a0d2bf4d1ca37f1392685bfdf5836f"
   },
   {
    "file": "previews/tiles/front_map.png",
-   "sha256": "0a02f5c9a9f6cff0024c71aa09b3335c6ef7b5a57534f1d1716a5bf117f18f39"
+   "sha256": "744d0c9a444936d672402844d316894531ab8557779cc849bd9ed654c0ebd9c3"
   },
   {
    "file": "previews/tiles/left_map.png",
-   "sha256": "02f512eaefb161d6396f6cb4f0771b44e0bc203353b63be10f06a998c1b69d75"
+   "sha256": "0ece0f08ea3fc00b053d6112db2ed2c73e80e5a72c0252fb0389daa36484087a"
   },
   {
    "file": "previews/tiles/right_map.png",
-   "sha256": "ff1ff4be71d10fd47f43e8a602823681ce04e334ec419e216024a2f21bcd01cf"
+   "sha256": "dc56f0ef40c7eaa54096b4e3cf15046307bc4c9e58d8e9ab38df139efe0af254"
   }
  ],
- "reviewed_preview_hash": "a9cde44cfd35810ee28856546f00e83a36973ae2136e1ec8254b2e145439b70e"
+ "reviewed_preview_hash": "67f5b6b38a68e1296056f2a39cffe09b53ecbbd81d1998eed8a2a7845cd6c390"
 }

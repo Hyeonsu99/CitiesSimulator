@@ -1,7 +1,7 @@
 # STATUS.md - agent handoff
 
 ## Current stage
-quick:PASS
+review:PASS
 
 ## Generator
 exllu_102_cs2.py
