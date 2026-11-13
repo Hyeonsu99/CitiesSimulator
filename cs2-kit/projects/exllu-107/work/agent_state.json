@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_107_cs2.py",
- "generator_hash": "159eb31e44ed7dc08069f9e9c70afd9a567f6ffb471f892b8e66bd99df8528f4",
- "current_preview_hash": "bc09f1a2a328727c85b8c3b03b7dbb1bc6e6db604ee57bb754e74902474f9873",
+ "generator_hash": "7bcec5f654fec70212e778bd0241df4121decf843cb1001771d25e64aba7f24d",
+ "current_preview_hash": "c26de941365bb50fa97824f315768422bf587c9bb0ff5a1ee390d64981194bbf",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-107",
@@ -13,8 +13,8 @@
    "build": "PASS",
    "geometry": "PASS",
    "preview": "PASS",
-   "photo": "NOT_APPLICABLE",
-   "tiles": "NOT_APPLICABLE",
+   "photo": "PASS",
+   "tiles": "PASS",
    "lod": "PASS",
    "fbx": "PASS",
    "visual_review": "PASS"
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower107_L1_5x6\\_check\\report.json"
   },
   "asset": "HighriseTower107_L1_5x6",
-  "label": "typec-ent-fix",
-  "time": "2026-11-13 15:46:44",
+  "label": "typec-upgrade",
+  "time": "2026-11-13 16:40:59",
   "build": {
    "asset": "HighriseTower107_L1_5x6",
    "fbx": true,
@@ -43,7 +43,7 @@
     "size": [
      39.04,
      45.77,
-     159.48
+     159.38
     ],
     "pivot_offset": [
      0.0,
@@ -52,20 +52,20 @@
     "zmin": 0.0,
     "coords": "generator coordinates (before pivot move)",
     "tris": {
-     "main": 70966,
-     "win": 2248,
-     "lod1": 18616,
-     "lod1_win": 2248,
-     "lod2": 378,
-     "lod2_win": 2248
+     "main": 86962,
+     "win": 2810,
+     "lod1": 17826,
+     "lod1_win": 2810,
+     "lod2": 392,
+     "lod2_win": 2810
     },
     "verts": {
-     "main": 141932,
-     "win": 4496,
-     "lod1": 37232,
-     "lod1_win": 4496,
-     "lod2": 756,
-     "lod2_win": 4496
+     "main": 173924,
+     "win": 5620,
+     "lod1": 35652,
+     "lod1_win": 5620,
+     "lod2": 784,
+     "lod2_win": 5620
     },
     "coplanar": {
      "main": 0,
@@ -86,49 +86,57 @@
      "LOD2_Emissive": "1024x1024 RGB"
     },
     "texel_px_per_m": {
-     "p10": 229.9,
-     "median": 385.1,
+     "p10": 96.0,
+     "median": 229.9,
      "p90": 385.1
     },
-    "windows": 1124,
+    "windows": 1405,
     "win_dropped": 0,
     "win_blocked": {
      "win": 0,
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 13.6
+    "time_s": 19.4
    },
    "report": "output\\HighriseTower107_L1_5x6\\_check\\report.json"
   },
   "photo": {
-   "checked": false,
-   "mismatch": null,
-   "lines": [],
-   "status": "NOT_APPLICABLE"
+   "checked": true,
+   "mismatch": 0,
+   "lines": [
+    "INFO     front floor pitch: photo 2.50 m / model 2.05 m (-18%)  -> photo shows ~1 floor bands over the wall height, model ~2 (model needs FEWER floors or taller floors) (low-confidence photo evidence - do not auto-change floors)",
+    "INFO     front window bay pitch: photo 1.95 m / model 1.55 m (-21%)  (bays differ - check window columns)",
+    "INFO     front edge agreement 65%"
+   ],
+   "status": "PASS"
   },
   "tiles": {
-   "checked": false,
-   "status": "NOT_APPLICABLE",
+   "checked": true,
+   "status": "PASS",
    "simplified": [],
-   "detail": [],
-   "detail_color": [],
+   "detail": [
+    "DETAIL front recall 62% precision 63% worst r0c0 (62%) simplified_tiles 0/1"
+   ],
+   "detail_color": [
+    "DETAIL_COLOR front tiles_off 0/1 (dE>14; trusted tiles only)"
+   ],
    "color_off": [],
    "tiles_off": 0,
-   "tiles_total": 0
+   "tiles_total": 1
   },
   "lod": {
    "checked": true,
    "status": "PASS",
-   "line": "LODCHECK PASS main max 0.004% (az 90, el -10) bad_views 0/64 | lod1 max 0.000% (az 0, el -10) bad_views 0/64 | lod2 max 0.002% (az 22, el +5) bad_views 0/64  -> previews\\lod_check\\HighriseTower107_L1_5x6",
+   "line": "LODCHECK PASS main max 0.004% (az 135, el -10) bad_views 0/64 | lod1 max 0.000% (az 0, el -10) bad_views 0/64 | lod2 max 0.000% (az 0, el -10) bad_views 0/64  -> previews\\lod_check\\HighriseTower107_L1_5x6",
    "notes": []
   },
   "agent": {
    "status": "PASS",
    "verts": {
-    "LOD0": 141932,
-    "LOD1": 37232,
-    "LOD2": 756
+    "LOD0": 173924,
+    "LOD1": 35652,
+    "LOD2": 784
    },
    "action_tags": [],
    "exact_fix_instruction": "no fix needed"
@@ -145,13 +153,21 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-107",
- "updated_at": "2026-11-13T15:47:37",
- "visual_review_note": "Preview HighriseTower107_L1_5x6 checked: identical Type-C geometry synced from 105 (26F refuge, crown gables, helipad, U-ramp, entrance/facade verified)",
+ "updated_at": "2026-11-13T16:43:00",
+ "visual_review_note": "Visual review PASS: glazed flush crown + gold EXLLU TOWER crown sign, multi-tone facade zoning, stepped 4F/5F podium, raised entrance portico + 107 sign + revolving door, Wall 6 photo_check (65%) & tile_compare (62%) clean.",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower107_L1_5x6.png",
-   "sha256": "bc09f1a2a328727c85b8c3b03b7dbb1bc6e6db604ee57bb754e74902474f9873"
+   "sha256": "c26de941365bb50fa97824f315768422bf587c9bb0ff5a1ee390d64981194bbf"
+  },
+  {
+   "file": "previews/photo_check/facade_front.png",
+   "sha256": "8e75df7cd45e794427355dba56ffdec44115fc888760c5f754c81c698b75aa87"
+  },
+  {
+   "file": "previews/tiles/front_map.png",
+   "sha256": "11e2a284161f515fa0eca1f5724255e7315926dad66faf48914011aad6100f05"
   }
  ],
- "reviewed_preview_hash": "bc09f1a2a328727c85b8c3b03b7dbb1bc6e6db604ee57bb754e74902474f9873"
+ "reviewed_preview_hash": "c26de941365bb50fa97824f315768422bf587c9bb0ff5a1ee390d64981194bbf"
 }

@@ -1,0 +1,25 @@
+{
+  "facades": [
+    {
+      "file": "photos/view_n_base.png",
+      "side": "front",
+      "name": "north_wall4_quad_louver_3f_4f",
+      "corners": [
+        [295, 44],
+        [685, 16],
+        [685, 315],
+        [295, 347]
+      ],
+      "size_m": [8.05, 5.88],
+      "box": [-0.6, 7.45, 15.0, 15.8, 8.18, 14.06],
+      "confidence": "low",
+      "occluded": "1F..2F masked by construction frame; unobstructed 3F..4F QUAD+louver bay",
+      "paint": {
+        "use_for_color": true
+      },
+      "paint_exclude": [],
+      "paint_include": [],
+      "note": "cropped strictly to the QUAD+louver bay (-0.6..7.3 m) on Wall 4 over 3F..4F (8.18..13.76 m)."
+    }
+  ]
+}

@@ -3,9 +3,9 @@ lot:
   width: 5
   depth: 6
 dimensions:
-  width_m: 38.4   # OSM way 934368148 (C outline shared by 105-108, 1148 m2)
+  width_m: 38.4   # OSM way 934368148 (C outline shared by 105-108, 1148 m2; mesh bounds 39.04 x 45.77 m)
   depth_m: 44.6   # OSM way 934368148
-  height_m: 159.4 # roof slab 149.3 + glass crown apex 9.5 (+ ridge cap)
+  height_m: 159.38 # roof slab 149.3 + glass crown apex 158.7 (+ ridge cap / obst light)
 floors: 50
 style: modern
 zone: ResidentialHigh
@@ -14,15 +14,15 @@ signature: true
 evidence:
   plan: OpenStreetMap way 934368148, overlaid on photos/dong_crops/grid.png (helipad over the north wing, west arm)
   photos:
-    - ../exllu-106/photos/auction_2022-112205_106_entrance.jpg   # 106 entrance, frontal: portico position, entrance-wall windows, podium height
-    - photos/site.jpg            # green glass gable crown
-    - photos/view_top_far_w.png  # round helipad ring on a C tower
-    - photos/view_n_base.png     # 105 portico, louvres + windows on the entrance wall
-    - photos/view_nw_base.png    # 105 portico close-up (pink + dark piers, canopy wrap)
+    - photos/reference_105_entrance_screenshot.png # 105 portico close-up: EXLLU TOWER lintel, pink pier + 105 numerals + split-face course, 3D revolving door
+    - photos/view_n_base.png     # 105 north Wall 4/6 podium & louver/window rhythm (used by photo_refs.json)
+    - photos/view_nw_base.png    # 105 portico side wrap & pink/dark pier junction
+    - photos/site.jpg            # green glass gable crown descending over upper floors
+    - photos/view_top_far_w.png  # round helipad ring & parapet on a C tower
     - photos/view_w_full.png     # per-floor balcony ledges
 estimated:
   - front (-Y) = north; +X = west; outline orthogonalised to +-0.3 m
-  - glass crown footprint x -7.2..7.6, y 19..33, eaves +4.2 m, apex +9.5 m (aerial dark frame)
-  - helipad deck radius 7.6 m centred on the north wing, deck top +5.6 m
-  - podium granite below storey 5; balcony ledges on south / west faces; window bay pitch 5.2 m elsewhere
-  - portico x 10.6..19.2 on the west-arm north wall (y 14.4), pink pier at the outer corner
+  - glass crown footprint x -7.2..5.2, y 31.6..44.6 (flush Wall 14 center core across 46F..49F + EXLLU TOWER crown sign above H; eaves +4.0 m, apex +9.4 m)
+  - multi-tone zoning: stepped granite podium (4F standard wings, 5F projecting entrance arm WALLS 5..8), 5-9F cool_pale, 10-13F & 36-39F mid_grey belts, Wall 14 tripartite facade
+  - helipad deck radius 7.6 m centred on the north wing, deck top +6.0 m
+  - portico x 10.6..19.2 on the west-arm north wall (y 14.4), EZT 5.98 m, travertine EXLLU TOWER lintel, 105 numerals on front pink pier & +X dark pier, 3D stainless revolving door, ㄷ자 barrier-free ramp

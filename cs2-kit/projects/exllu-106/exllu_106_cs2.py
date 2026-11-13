@@ -5,7 +5,7 @@ Evidence:
   plan  OpenStreetMap way 934368147 (C outline shared by 105-108, 38.4 x 44.6 m, 1148 m2), overlaid on
         exllu-105/photos/dong_crops/grid.png: north wing carries the round helipad, west arm, main body south.
   crown photos/site.jpg (green glass gable crown between white gables), view_top_far_w.png (round helipad ring).
-  base  photos/view_n_base.png, view_nw_base.png (105 numeral on the portico; louvres + windows on the entrance face).
+  base  photos/auction_2022-112205_106_entrance.jpg, verified_106_view_n_hi.png (106 numerals front/+X side on portico; crown & podium synchronized from 105).
 Model axes: front (-Y) = north; +X = west; y = distance south of the north wing face.
 """
 import math
@@ -28,6 +28,8 @@ sys.path.insert(0, find_kit())
 import cs2kit as K  # noqa: E402
 
 # No _Gls glass mesh: avoids night z-fighting flicker verified in tower 103 tests.
+DONG = "106"
+ASSET = f"HighriseTower{DONG}"
 
 W, D, FH, NF = 38.4, 44.6, 2.94, 50          # 50 floors, OSM C outline bounding box
 GH = 5.24                                     # double-height lobby storey
@@ -187,21 +189,175 @@ def flat_emis(v):
 def crown_glass(ctx):
     """Green glazed crown (site.jpg) with white mullions every 1.5 m and transoms every 2 m."""
     mx, mz = ctx.meters()
-    ctx.rgb[...] = np.array([80, 145, 138], np.float32)
-    ctx.rgb += (ctx.v * 35.0)[..., None]
-    fr = ((mx % 1.5) < 0.06) | (mz < 0.06) | (mz > ctx.tile[1] - 0.06) | ((mz % 2.0) < 0.06)
-    ctx.rgb[fr] = np.array([230, 234, 232], np.float32)
-    ctx.gloss[...] = np.where(fr, 0.4, 0.92)
+    ctx.rgb[...] = np.array([76, 146, 140], np.float32)
+    ctx.rgb += (ctx.v * 32.0)[..., None]
+    fr = ((mx % 1.5) < 0.055) | (mz < 0.05) | (mz > ctx.tile[1] - 0.05) | ((mz % 2.94) < 0.065)
+    ctx.rgb[fr] = np.array([224, 229, 227], np.float32)
+    ctx.gloss[...] = np.where(fr, 0.42, 0.92)
     ctx.emis[...] = np.where(fr, 0.0, 0.05)
+
+
+# Pure-NumPy anti-aliased vector SDF typography for crisp signage without external font/PIL dependencies
+_GLYPHS = {
+    "E": ((0.15, 0.10, 0.15, 0.90), (0.15, 0.90, 0.85, 0.90), (0.15, 0.52, 0.72, 0.52), (0.15, 0.10, 0.85, 0.10)),
+    "X": ((0.15, 0.10, 0.85, 0.90), (0.15, 0.90, 0.85, 0.10)),
+    "L": ((0.22, 0.10, 0.22, 0.90), (0.22, 0.10, 0.82, 0.10)),
+    "U": ((0.15, 0.90, 0.15, 0.28), (0.15, 0.28, 0.30, 0.10), (0.30, 0.10, 0.70, 0.10),
+          (0.70, 0.10, 0.85, 0.28), (0.85, 0.28, 0.85, 0.90)),
+    "T": ((0.10, 0.90, 0.90, 0.90), (0.50, 0.10, 0.50, 0.90)),
+    "O": ((0.28, 0.10, 0.72, 0.10), (0.72, 0.10, 0.86, 0.28), (0.86, 0.28, 0.86, 0.72), (0.86, 0.72, 0.72, 0.90),
+          (0.72, 0.90, 0.28, 0.90), (0.28, 0.90, 0.14, 0.72), (0.14, 0.72, 0.14, 0.28), (0.14, 0.28, 0.28, 0.10)),
+    "W": ((0.08, 0.90, 0.26, 0.10), (0.26, 0.10, 0.50, 0.62), (0.50, 0.62, 0.74, 0.10), (0.74, 0.10, 0.92, 0.90)),
+    "R": ((0.16, 0.10, 0.16, 0.90), (0.16, 0.90, 0.70, 0.90), (0.70, 0.90, 0.84, 0.78), (0.84, 0.78, 0.84, 0.58),
+          (0.84, 0.58, 0.70, 0.48), (0.70, 0.48, 0.16, 0.48), (0.52, 0.48, 0.86, 0.10)),
+    "0": ((0.28, 0.10, 0.72, 0.10), (0.72, 0.10, 0.86, 0.28), (0.86, 0.28, 0.86, 0.72), (0.86, 0.72, 0.72, 0.90),
+          (0.72, 0.90, 0.28, 0.90), (0.28, 0.90, 0.14, 0.72), (0.14, 0.72, 0.14, 0.28), (0.14, 0.28, 0.28, 0.10)),
+    "1": ((0.28, 0.74, 0.54, 0.90), (0.54, 0.90, 0.54, 0.10), (0.24, 0.10, 0.82, 0.10)),
+    "5": ((0.82, 0.90, 0.20, 0.90), (0.20, 0.90, 0.18, 0.56), (0.18, 0.56, 0.68, 0.56), (0.68, 0.56, 0.84, 0.40),
+          (0.84, 0.40, 0.84, 0.24), (0.84, 0.24, 0.68, 0.10), (0.68, 0.10, 0.20, 0.10)),
+    "6": ((0.76, 0.90, 0.34, 0.90), (0.34, 0.90, 0.16, 0.70), (0.16, 0.70, 0.16, 0.26), (0.16, 0.26, 0.34, 0.10),
+          (0.34, 0.10, 0.72, 0.10), (0.72, 0.10, 0.86, 0.26), (0.86, 0.26, 0.86, 0.42), (0.86, 0.42, 0.70, 0.54),
+          (0.70, 0.54, 0.16, 0.54)),
+    "7": ((0.14, 0.90, 0.86, 0.90), (0.86, 0.90, 0.42, 0.10)),
+    "8": ((0.28, 0.52, 0.72, 0.52), (0.28, 0.10, 0.72, 0.10), (0.72, 0.10, 0.86, 0.24), (0.86, 0.24, 0.86, 0.38),
+          (0.86, 0.38, 0.72, 0.52), (0.28, 0.52, 0.14, 0.38), (0.14, 0.38, 0.14, 0.24), (0.14, 0.24, 0.28, 0.10),
+          (0.28, 0.52, 0.16, 0.64), (0.16, 0.64, 0.16, 0.78), (0.16, 0.78, 0.30, 0.90), (0.30, 0.90, 0.70, 0.90),
+          (0.70, 0.90, 0.84, 0.78), (0.84, 0.78, 0.84, 0.64), (0.84, 0.64, 0.72, 0.52)),
+}
+
+
+def _sdf_segs(px, py, segs):
+    d = np.full(px.shape, 1e6, np.float32)
+    for x0, y0, x1, y1 in segs:
+        vx, vy = x1 - x0, y1 - y0
+        l2 = vx * vx + vy * vy + 1e-12
+        t = np.clip(((px - x0) * vx + (py - y0) * vy) / l2, 0.0, 1.0)
+        dist = np.hypot(px - (x0 + t * vx), py - (y0 + t * vy))
+        d = np.minimum(d, dist)
+    return d
+
+
+def _exllu_segs(cx, cy, ch_w, ch_h):
+    """Exact world-aspect strokes for EXLLU TOWER (twin skyscraper L spires + wide spaced TOWER)."""
+    segs = []
+    # Ref portico & crown wordmark: uppercase E X L L U with staggered architectural L spires + TOWER
+    items = [("E", 1.0), ("X", 1.0), ("L", 1.44), ("L", 1.76), ("U", 1.0),
+             (" ", 0.72), ("T", 0.90), ("O", 0.90), ("W", 0.98), ("E", 0.90), ("R", 0.90)]
+    adv = ch_w * 1.18
+    x_pos = cx - adv * 5.05
+    for idx, (ch, hs) in enumerate(items):
+        gw = ch_w * (0.82 if ch == "L" else (1.06 if ch == "W" else (0.92 if idx > 5 else 0.96)))
+        gh = ch_h * hs
+        if ch == "L":
+            # Crisp skyscraper L spire + distinct horizontal L base foot so twin L's never read as "ll"
+            segs.append((x_pos + 0.14 * gw, cy, x_pos + 0.14 * gw, cy + gh))
+            segs.append((x_pos + 0.14 * gw, cy + gh, x_pos + 0.42 * gw, cy + gh * 0.91))
+            segs.append((x_pos + 0.14 * gw, cy, x_pos + 0.80 * gw, cy))
+        elif ch in _GLYPHS:
+            for a0, b0, a1, b1 in _GLYPHS[ch]:
+                segs.append((x_pos + a0 * gw, cy + (b0 - 0.10) * gh / 0.80,
+                             x_pos + a1 * gw, cy + (b1 - 0.10) * gh / 0.80))
+        x_pos += adv * (0.62 if ch == " " else (0.94 if ch == "L" else (0.92 if idx > 5 else 1.02)))
+    return segs
+
+
+def _num_segs(cx, cy, gw, gh, text):
+    segs = []
+    step = gw * 1.18
+    x0 = cx - 0.5 * ((len(text) - 1) * step + gw)
+    for k, ch in enumerate(text):
+        ox = x0 + k * step
+        for a0, b0, a1, b1 in _GLYPHS.get(ch, ()):
+            segs.append((ox + a0 * gw, cy + (b0 - 0.10) * gh / 0.80,
+                         ox + a1 * gw, cy + (b1 - 0.10) * gh / 0.80))
+    return segs
+
+
+def paint_ent_lintel(ctx, w_m=5.25, h_m=1.02):
+    granite(ctx, 5, 2, 0.16, 4.0, 0.08)
+    px, py = ctx.u * w_m, ctx.v * h_m
+    segs = _exllu_segs(w_m * 0.52, h_m * 0.30, 0.18, 0.30)
+    d = _sdf_segs(px, py, segs)
+    ds = _sdf_segs(px - 0.015, py + 0.015, segs)
+    shad = np.clip(1.0 - (ds - 0.024) / 0.014, 0.0, 1.0)
+    fg = np.clip(1.0 - (d - 0.024) / 0.012, 0.0, 1.0)
+    ctx.rgb[...] = ctx.rgb * (1.0 - 0.38 * shad[..., None])
+    ctx.rgb[...] = ctx.rgb * (1.0 - fg[..., None]) + np.array([76, 66, 56], np.float32) * fg[..., None]
+    ctx.height += fg * 1.4
+    ctx.gloss[...] = np.where(fg > 0.3, 0.55, ctx.gloss)
+
+
+def paint_pier_num(ctx, w_m=1.40, h_m=1.10, bg="pink"):
+    if bg == "pink":
+        granite(ctx, 2, 1, 0.18, 7.0, 0.15)
+    else:
+        granite(ctx, 1, 1, 0.28, 7.0, 0.15)
+    px, py = ctx.u * w_m, ctx.v * h_m
+    segs = _num_segs(w_m * 0.50, h_m * 0.32, 0.25, 0.40, DONG)
+    d = _sdf_segs(px, py, segs)
+    ds = _sdf_segs(px - 0.022, py + 0.022, segs)
+    shad = np.clip(1.0 - (ds - 0.036) / 0.018, 0.0, 1.0)
+    fg = np.clip(1.0 - (d - 0.036) / 0.014, 0.0, 1.0)
+    ctx.rgb[...] = ctx.rgb * (1.0 - 0.52 * shad[..., None])
+    ctx.rgb[...] = ctx.rgb * (1.0 - fg[..., None]) + np.array([218, 180, 74], np.float32) * fg[..., None]
+    ctx.height += fg * 2.4
+    ctx.gloss[...] = np.where(fg > 0.3, 0.88, ctx.gloss)
+
+
+def paint_pier_course(ctx):
+    ctx.joints(cols=1, rows=10, width_m=0.009, depth=1.5, stagger=0.0, darken=0.22, tone=7.0)
+    ctx.grain(amp=6.0, scale_px=2, height=0.6, seed=13)
+    ctx.rgb += ctx.noise(12, 4.0, 2, seed=17)[..., None]
+
+
+def paint_stainless(ctx):
+    ctx.rgb += ctx.noise(4, 5.0, 1, seed=31)[..., None]
+    streak = (np.sin(ctx.v * 180.0) * 3.0 + np.sin(ctx.v * 410.0) * 2.0)[..., None]
+    ctx.rgb += streak
+    ctx.gloss[...] = 0.86
+
+
+def paint_rev_glass(ctx):
+    ctx.rgb += (ctx.v * 26.0 - 4.0)[..., None]
+    spec = (np.exp(-((ctx.u - 0.32) / 0.10) ** 2) * 34.0)[..., None]
+    ctx.rgb += spec
+    ctx.gloss[...] = 0.92
+    ctx.emis[...] = 0.08
+
+
+def paint_crown_sign(ctx, w_m=11.40, h_m=3.78):
+    px, py = ctx.u * w_m, ctx.v * h_m
+    ctx.rgb[...] = np.array([76, 146, 140], np.float32) + (ctx.v * 32.0)[..., None]
+    fr = ((px % 1.5) < 0.055) | (py < 0.05) | (py > h_m - 0.05) | ((py % 2.0) < 0.055)
+    ctx.rgb[fr] = np.array([224, 229, 227], np.float32)
+    segs = _exllu_segs(w_m * 0.50, h_m * 0.34, 0.62, 0.92)
+    d = _sdf_segs(px, py, segs)
+    ds = _sdf_segs(px - 0.05, py + 0.05, segs)
+    shad = np.clip(1.0 - (ds - 0.085) / 0.045, 0.0, 1.0)
+    fg = np.clip(1.0 - (d - 0.085) / 0.032, 0.0, 1.0)
+    ctx.rgb[...] = ctx.rgb * (1.0 - 0.45 * shad[..., None])
+    ctx.rgb[...] = ctx.rgb * (1.0 - fg[..., None]) + np.array([222, 186, 82], np.float32) * fg[..., None]
+    ctx.height += fg * 2.0
+    ctx.gloss[...] = np.where(fg > 0.3, 0.90, np.where(fr, 0.42, 0.92))
+    ctx.emis[...] = np.where(fg > 0.3, 0.38, np.where(fr, 0.0, 0.08))
 
 
 TEX = {
     "stone": dict(tile=(2.4, FH), px=1024, painter=lambda c: granite(c, 2, 4, 0.3, 7.0, 0.12)),
-    "maroon": dict(tile=(2.4, FH), px=512, painter=lambda c: granite(c, 2, 4, 0.18, 3.0)),
     "pale": dict(tile=(2.4, FH), px=1024, painter=lambda c: granite(c, 2, 3, 0.12, 2.5)),
-    "grey_stone": dict(tile=(2.4, FH), px=1024, painter=lambda c: granite(c, 2, 4, 0.18, 4.0)),
+    "cool_pale": dict(tile=(2.4, FH), px=256, painter=lambda c: granite(c, 2, 3, 0.14, 2.8)),
+    "mid_grey": dict(tile=(2.4, FH), px=256, painter=lambda c: granite(c, 2, 3, 0.18, 3.6)),
+    "dark_paint": dict(tile=(2.4, FH), px=256, painter=lambda c: granite(c, 2, 3, 0.24, 5.0)),
+    "grey_stone": dict(tile=(2.4, FH), px=512, painter=lambda c: granite(c, 2, 4, 0.18, 4.0)),
     "window": dict(px=2048, painter=window_glass, emissive=(255, 205, 150)),
-    "pier_pink": dict(tile=(1.2, 1.2), px=512, painter=lambda c: granite(c, 1, 2, 0.2, 9.0, 0.15)),
+    "pier_pink": dict(tile=(1.4, 1.2), px=512, painter=lambda c: granite(c, 2, 1, 0.18, 7.0, 0.15)),
+    "pier_course": dict(tile=(0.65, 1.2), px=256, painter=paint_pier_course),
+    "pier_num": dict(tile=(1.40, 1.10), px=512, painter=lambda c: paint_pier_num(c, 1.40, 1.10, "pink")),
+    "pier_side_num": dict(tile=(1.15, 1.10), px=256, painter=lambda c: paint_pier_num(c, 1.15, 1.10, "dark")),
+    "ent_lintel": dict(tile=(5.25, 1.02), px=512, painter=paint_ent_lintel),
+    "crown_sign": dict(px=512, painter=paint_crown_sign, emissive=(215, 255, 228)),
+    "stainless": dict(tile=(1.0, 1.0), px=128, painter=paint_stainless),
+    "rev_glass": dict(tile=(1.0, 1.0), px=128, painter=paint_rev_glass, emissive=(185, 230, 215)),
     "roof": dict(tile=(4.0, 4.0), px=512, painter=roofing),
     "canopy": dict(tile=(1.2, 1.2), px=256, painter=lambda c: paving(c, 2)),
     "louver": dict(tile=(0.6, 2.05), px=256, painter=shutter),
@@ -224,19 +380,28 @@ for name, color, metal, gloss, px in (
         ("stone", (92, 92, 104), 0.0, 0.35, 128),          # view_n_base: lavender-grey granite podium
         ("stone_trim", (64, 66, 76), 0.0, 0.35, 64),
         ("crown_glass", (100, 165, 155), 0.4, 0.9, 128),
+        ("crown_sign", (100, 165, 155), 0.35, 0.9, 512),
         ("deck_under", (62, 66, 70), 0.2, 0.35, 64),
         ("pale", (224, 222, 214), 0.0, 0.3, 128),
-        ("maroon", (96, 48, 54), 0.0, 0.3, 128),
+        ("cool_pale", (206, 212, 218), 0.0, 0.3, 256),
+        ("mid_grey", (152, 154, 154), 0.0, 0.28, 256),
+        ("dark_paint", (88, 90, 96), 0.0, 0.26, 256),
         ("crown_white", (232, 233, 230), 0.1, 0.4, 64),
         ("railing", (200, 203, 205), 0.6, 0.5, 64),
+        ("stainless", (198, 202, 206), 0.9, 0.85, 128),
+        ("rev_glass", (38, 58, 62), 0.15, 0.92, 128),
         ("frame", (236, 237, 235), 0.3, 0.5, 64),
         ("louver", (230, 231, 229), 0.2, 0.4, 64),
         ("roof", (120, 122, 122), 0.0, 0.3, 64),
         ("heli_green", (74, 140, 104), 0.0, 0.25, 64),
         ("heli_white", (232, 234, 226), 0.0, 0.25, 64),
-        ("pier_pink", (176, 140, 130), 0.0, 0.4, 128),
+        ("pier_pink", (184, 150, 142), 0.0, 0.4, 512),
+        ("pier_course", (190, 168, 158), 0.0, 0.35, 256),
+        ("pier_num", (184, 150, 142), 0.0, 0.45, 512),
+        ("pier_side_num", (92, 92, 104), 0.0, 0.45, 256),
+        ("ent_lintel", (198, 182, 160), 0.0, 0.32, 512),
         ("canopy", (160, 163, 162), 0.2, 0.45, 128),
-        ("grey_stone", (168, 168, 164), 0.0, 0.3, 128),
+        ("grey_stone", (168, 168, 164), 0.0, 0.3, 512),
         ("heli_net", (72, 76, 80), 0.6, 0.4, 64),
         ("grating", (128, 132, 134), 0.6, 0.35, 64),
         ("heli_light", (90, 230, 120), 0.0, 0.6, 32),
@@ -292,12 +457,14 @@ COMM6 = (0.16, 0.33, 0.47, 0.53, 0.67, 0.84)
 HALF = (0.47, 0.53)
 CW = 0.15
 
-PALE_F = 5                                    # granite podium below storey 5 (106 entrance photo), pale stone above
+PALE_F = 4                                    # standard wings switch from dark granite podium after 4F
+PORTICO_PALE_F = 5                            # projecting entrance block (WALLS 5..8) keeps granite through 5F
+CROWN_F0 = 46                                 # top 4 residential floors (46..49) in South center merge into glass crown
 CELL = 5.2                                    # window bay pitch (large units; keeps main < 95k tris)
 LEDGE_P, LEDGE_T = 0.55, 0.28                 # per-floor balcony ledge on the south / west faces (view_w_full.png)
 
 # ------------------------------------------------------------------------------
-# PLAN: OSM way 934368147 in (u = west, v = south) metres, orthogonalised to +-0.3 m.  x = u - 19.2, y = v.
+# PLAN: OSM way 934368148 in (u = west, v = south) metres, orthogonalised to +-0.3 m.  x = u - 19.2, y = v.
 # North wing (helipad) u 0..16.4 / v 0..15.4; main body u 1.6..29.8 / v 15.4..44.6; west arm u 29.8..38.4 / v 14.4..24.6.
 # ------------------------------------------------------------------------------
 _UV = ((0, 0), (15, 0), (15, 5.7), (16.4, 5.7), (16.4, 15.4), (29.8, 15.4), (29.8, 14.4), (38.4, 14.4),
@@ -308,13 +475,34 @@ _RECTS_UV = ((0, 15, 0, 5.7), (0, 16.4, 5.7, 15.4), (29.8, 38.4, 14.4, 15.4), (1
              (1.6, 29.2, 24.6, 26.8), (1.6, 28, 26.8, 34.9), (0, 29.8, 34.9, 44.6))
 ROOF_RECTS = [(round(u0 - X, 3), round(u1 - X, 3), v0, v1) for u0, u1, v0, v1 in _RECTS_UV]
 ENT_Y = 14.4                                   # entrance face: west arm north wall; pink pier at its west corner (x 19.2)
-# Window spans of the north walls next to the entrance, read from exllu-106/photos/auction_2022-112205_106_entrance.jpg
-# (frontal, ~16 px/m): arm wall = 1-pane + 2-pane; main body wall = 4-pane + louvre + 2-pane.
-ENT_SPANS = {
+# Verified multi-wall window & louver rhythm (exllu-106 entrance/hi, exllu-108 tower, view_ne/nw_hi)
+WALL_SPANS = {
+    ("y", 0.0, -19.2): ((-18.1, -14.9, WIDE), (-12.5, -10.1, PAIR), (-9.0, -5.6, WIDE)),
+    ("x", -2.8, 5.7): ((12.2, 14.0, HALF),),                         # single stairwell bay on north court wall
     ("y", 14.4, 10.6): ((13.0, 14.2, ()), (15.3, 18.1, HALF)),
-    ("y", 15.4, -2.8): ((-0.3, 5.6, QUAD), (7.7, 10.3, HALF)),
+    ("y", 15.4, -2.8): ((-0.3, 5.5, QUAD), (7.7, 10.3, HALF)),
+    ("x", 19.2, 14.4): ((15.5, 18.3, WIDE), (20.2, 23.0, PAIR)),
+    ("x", 8.8, 26.8): ((28.0, 30.2, PAIR), (31.6, 33.8, PAIR)),
+    ("x", 10.6, 34.9): ((36.0, 39.2, WIDE), (40.8, 43.4, PAIR)),
+    ("y", 44.6, -19.2): (
+        (-18.2, -14.8, WIDE), (-12.4, -8.8, WIDE),
+        (-6.1, -2.3, QUAD), (-0.8, 1.8, HALF), (2.2, 4.4, PAIR),
+        (5.9, 9.1, WIDE),
+    ),
+    ("x", -19.2, 0.0): ((1.0, 4.2, WIDE), (6.0, 8.6, PAIR), (10.4, 14.0, WIDE)),
 }
-ENT_LOUVRES = (("y", 15.4, -1, 5.8, 7.0),)
+ADJ_LOUVRES = (
+    ("y", 15.4, -1, 5.75, 7.05),
+    ("y", 0.0, -1, -14.65, -13.70),
+    ("x", 19.2, 1, 18.55, 19.45),
+    ("x", 10.6, 1, 39.45, 40.25),
+    ("y", 44.6, 1, -14.55, -13.70),
+    ("y", 44.6, 1, -8.55, -7.75),
+    ("y", 44.6, 1, 9.35, 10.15),
+    ("x", -19.2, -1, 4.40, 5.25),
+)
+# Back Wall 14 horizontal range replaced by vertical crown curtainwall on f >= CROWN_F0
+CROWN_X0, CROWN_X1 = -7.2, 5.2
 
 
 def _walls():
@@ -375,28 +563,44 @@ def facade_floor(mb, stage, f, skip=None):
                     prism(mb, (c + 0.16, 16.32, 1.40), (c + 0.16, 23.88, 1.40), 0.04, "railing")
             u += 1
             continue
-        for b0, b1, mull in ENT_SPANS.get((axis, c, a0)) or bays(a0, a1):
+        for b0, b1, mull in WALL_SPANS.get((axis, c, a0)) or bays(a0, a1):
             if skip and axis == "y" and c == ENT_Y and s < 0 and b1 > skip[0] and b0 < skip[1]:
+                continue
+            if f >= CROWN_F0 and axis == "y" and c == 44.6 and b1 > CROWN_X0 and b0 < CROWN_X1:
                 continue
             window(mb, stage, axis, c, s, b0, b1, z0, z1, f, u, mull)
             u += 1
     if f > 0:
-        for axis, c, s, a0, a1 in ENT_LOUVRES:
+        for axis, c, s, a0, a1 in ADJ_LOUVRES:
+            if f >= CROWN_F0 and axis == "y" and c == 44.6 and a1 > CROWN_X0 and a0 < CROWN_X1:
+                continue
             louver(mb, stage, axis, c, s, a0, a1, z + 0.4, z1)
 
 
+def _zone_mat(f):
+    if f < PALE_F:
+        return "grey_stone"
+    if f < 10:
+        return "cool_pale"
+    if (10 <= f < 14) or (36 <= f < 40):
+        return "mid_grey"
+    return "pale"
+
+
 def ledges(mb):
-    """Per-floor balcony ledges on the SW/south residential balcony wings (view_mid_hi, view_w_full, 108 photo)."""
+    """Per-floor balcony ledges on SW/south residential wings (flush center core on Wall 14 omitted)."""
     for axis, c, s, a0, a1, kind, _ in WALLS:
         if kind != "win" or s < 0 or a1 - a0 < 4.0:
             continue
         if not ((axis == "y" and c == 44.6) or (axis == "x" and a0 >= 26.8)):
             continue
+        spans = ((a0 + 0.1, CROWN_X0 - 0.1), (CROWN_X1 + 0.1, a1 - 0.1)) if (axis == "y" and c == 44.6) else ((a0 + 0.1, a1 - 0.1),)
         for f in range(1, NF):
             z = zf(f)
-            mat = "grey_stone" if f < PALE_F else "pale"
-            K.axbox(mb, axis, c, s, a0 + 0.1, a1 - 0.1, 0, LEDGE_P, z, z + LEDGE_T, mat,
-                    skip=("front",) if axis == "y" else ("left",))   # world face names: drop only the wall side
+            mat = _zone_mat(f)
+            for s0, s1 in spans:
+                K.axbox(mb, axis, c, s, s0, s1, 0, LEDGE_P, z, z + LEDGE_T, mat,
+                        skip=("front",) if axis == "y" else ("left",))   # world face names: drop only the wall side
 
 
 def ring(mb, cx, cy, r0, z0, r1, z1, region, n, flip=False, rot=0.0):
@@ -454,14 +658,23 @@ def parapet_ring(mb):
     for i in range(n):
         j = (i + 1) % n
         (ax, ay), (bx, by), (cx, cy), (dx, dy) = P[i], P[j], Q[j], Q[i]
+        if i == 14:
+            # Leave Wall 14 center (CROWN_X0..CROWN_X1) open so the glazed crown rises seamlessly above H
+            for ox0, ox1, ix0, ix1 in ((ax, CROWN_X1, CROWN_X1, dx), (CROWN_X0, bx, cx, CROWN_X0)):
+                mb.rect([(ox0, ay, H), (ox1, by, H), (ox1, by, PH), (ox0, ay, PH)], "pale")
+                mb.rect([(ix0, cy, H), (ix1, dy, H), (ix1, dy, PH), (ix0, cy, PH)], "pale")
+                mb.quad([(ox0, ay, PH), (ox1, by, PH), (ix0, cy, PH), (ix1, dy, PH)], uv, "crown_white")
+            mb.rect([(CROWN_X1, ay, H), (CROWN_X1, cy, H), (CROWN_X1, cy, PH), (CROWN_X1, ay, PH)], "pale")
+            mb.rect([(CROWN_X0, dy, H), (CROWN_X0, by, H), (CROWN_X0, by, PH), (CROWN_X0, dy, PH)], "pale")
+            continue
         mb.rect([(ax, ay, H), (bx, by, H), (bx, by, PH), (ax, ay, PH)], "pale")
         mb.rect([(cx, cy, H), (dx, dy, H), (dx, dy, PH), (cx, cy, PH)], "pale")
         mb.quad([(ax, ay, PH), (bx, by, PH), (cx, cy, PH), (dx, dy, PH)], uv, "crown_white")
 
 
-# Crown footprint on the main body (aerial: dark glazed frame between the helipad and the west arm)  # estimated
-CX0, CX1, CY0, CY1 = -7.2, 7.6, 19.0, 33.0
-CZ0, CZE, CZA = H + 0.6, H + 4.2, H + 9.5               # plinth top, eaves, apex
+# South-center glazed crown flush with Wall 14 (y=44.6), merging top 4 floors into pitched gable (site.jpg / 108_tower)
+CX0, CX1, CY0, CY1 = CROWN_X0, CROWN_X1, 31.6, 44.6
+CZ0, CZE, CZA = H, H + 4.0, H + 9.4                      # parapet top, eaves, apex
 
 
 def _gable_ear(mb, x0, x1, y0, ym, y1, z0, ze, za, region="crown_white"):
@@ -496,20 +709,22 @@ def _sloped_slab(mb, x0, x1, ya, za, yb, zb, th, mat_top, mat_bot, mat_edge):
 
 def crown(mb, stage):
     ym = (CY0 + CY1) / 2
-    mb.box(CX0, CX1, CY0, CY1, H, CZ0, "pale", skip=("bottom",))
     if stage == 2:
         # Lightweight closed gable massing for LOD2
         _gable_ear(mb, CX0, CX1, CY0, ym, CY1, CZ0, CZE, CZA, "crown_glass")
         return
-    ew = 0.42
+    ew = 0.50
     _gable_ear(mb, CX0, CX0 + ew, CY0, ym, CY1, CZ0, CZE, CZA + 0.35, "crown_white")
     _gable_ear(mb, CX1 - ew, CX1, CY0, ym, CY1, CZ0, CZE, CZA + 0.35, "crown_white")
     # Solid glass slopes between the gable ears (closed underside soffit + eaves fascia)
     _sloped_slab(mb, CX0 + ew, CX1 - ew, CY0 - 0.1, CZE, ym, CZA, 0.22, "crown_glass", "soffit", "crown_white")
     _sloped_slab(mb, CX0 + ew, CX1 - ew, CY1 + 0.1, CZE, ym, CZA, 0.22, "crown_glass", "soffit", "crown_white")
-    # North/south vertical glazed curtainwalls rising cleanly to the underside of the eaves (CZE - 0.22)
-    mb.box(CX0 + ew, CX1 - ew, CY0 + 0.05, CY0 + 0.28, CZ0, CZE - 0.22, "crown_glass", skip=("bottom", "top"))
-    mb.box(CX0 + ew, CX1 - ew, CY1 - 0.28, CY1 - 0.05, CZ0, CZE - 0.22, "crown_glass", skip=("bottom", "top"))
+    # Rear (north) curtainwall + parapet plinth
+    mb.box(CX0 + ew, CX1 - ew, CY0, CY0 + 0.30, H, H + 0.45, "pale", skip=("bottom",))
+    mb.box(CX0 + ew, CX1 - ew, CY0 + 0.05, CY0 + 0.28, H + 0.45, CZE - 0.22, "crown_glass", skip=("bottom", "top"))
+    # Front (south, y=CY1=44.6) glazed curtainwall fascia with EXLLU TOWER signage (flush continuation from zf(46))
+    mb.box(CX0 + ew, CX1 - ew, CY1 - 0.28, CY1, H, CZE - 0.22, "crown_glass", skip=("bottom", "top", "back"))
+    mb.quad(K.face_pts("y", CY1, 1, CX0 + ew, CX1 - ew, H, CZE - 0.22), A.uv_full("crown_sign"), "crown_sign")
     mb.box(CX0 + ew, CX1 - ew, ym - 0.2, ym + 0.2, CZA - 0.12, CZA + 0.18, "crown_white")
     if stage == 0:
         for x in (CX0 + ew / 2, CX1 - ew / 2):
@@ -626,40 +841,136 @@ def roof(mb, stage):
 # ENTRANCE PORTICO on the main body north wall (y = ENT_Y): built at y = 0, then shifted
 # ==============================================================================
 EY = -3.95
-EZ0, EZB, EZC, EZT = 3.8, 4.65, 5.45, 5.85
-PORTICO_X0, PORTICO_X1 = 10.6, 19.2           # 106 entrance photo: portico on the arm wall, pink pier at the outer corner
+EZ0, EZB, EZC, EZT = 3.70, 4.72, 5.48, 5.98     # EZT=5.98 kisses 2F sill (5.99) with win_blocked=0
+PORTICO_X0, PORTICO_X1 = 10.6, 19.2             # portico on the arm wall, pink pier at outer corner
 LP = 1.2
-PIER_X0 = PORTICO_X1 - 1.95
-ST_N, ST_R, ST_T = 7, 0.15, 0.36
+PIER_X0 = PORTICO_X1 - 2.15                     # 17.05 -> 5.25 m lintel span (matches paint_ent_lintel)
+ST_N, ST_R, ST_T = 7, 0.15, 0.34                # yl=-1.57 -> ENT_Y+yl=12.83 > ㄷ자 ramp yo0=12.70
+
+
+def _revolving_door(mb, cx, cy, z0, z1, r=1.05):
+    """Cylindrical brushed-stainless revolving canopy & glass quadrants in local portico coords."""
+    zc0, zc1 = z1 - 0.32, z1
+    n = 16
+    pts = [(cx + r * math.cos(math.pi + math.pi * k / n), cy + r * math.sin(math.pi + math.pi * k / n))
+           for k in range(n + 1)]
+    for k in range(n):
+        (x0, y0), (x1, y1) = pts[k], pts[k + 1]
+        mb.rect([(x0, y0, zc0), (x1, y1, zc0), (x1, y1, zc1), (x0, y0, zc1)], "stainless")
+    for k in range(0, n, 2):
+        (x0, y0), (xm, ym), (x1, y1) = pts[k], pts[k + 1], pts[k + 2]
+        mb.rect([(cx, cy, zc1), (x0, y0, zc1), (xm, ym, zc1), (x1, y1, zc1)], "stainless")
+        mb.rect([(cx, cy, zc0), (x1, y1, zc0), (xm, ym, zc0), (x0, y0, zc0)], "stainless")
+    mb.rect([(cx + r, cy, zc0), (cx - r, cy, zc0), (cx - r, cy, zc1), (cx + r, cy, zc1)], "stainless")
+    # Two curved fixed glass wings flanking the open front entryway
+    rin = r - 0.06
+    for th0, th1, steps in ((math.pi, math.pi * 1.34, 4), (math.pi * 1.66, math.pi * 2.0, 4)):
+        ths = [th0 + (th1 - th0) * k / steps for k in range(steps + 1)]
+        for zb, zt, mat in ((z0, z0 + 0.14, "stainless"), (z0 + 0.14, zc0 - 0.06, "rev_glass"),
+                            (zc0 - 0.06, zc0, "stainless")):
+            for k in range(steps):
+                a, b = ths[k], ths[k + 1]
+                ox0, oy0 = cx + r * math.cos(a), cy + r * math.sin(a)
+                ox1, oy1 = cx + r * math.cos(b), cy + r * math.sin(b)
+                ix0, iy0 = cx + rin * math.cos(a), cy + rin * math.sin(a)
+                ix1, iy1 = cx + rin * math.cos(b), cy + rin * math.sin(b)
+                mb.rect([(ox0, oy0, zb), (ox1, oy1, zb), (ox1, oy1, zt), (ox0, oy0, zt)], mat)
+                mb.rect([(ix1, iy1, zb), (ix0, iy0, zb), (ix0, iy0, zt), (ix1, iy1, zt)], mat)
+        for edge_th, flip in ((th0, False), (th1, True)):
+            ox, oy = cx + r * math.cos(edge_th), cy + r * math.sin(edge_th)
+            ix, iy = cx + rin * math.cos(edge_th), cy + rin * math.sin(edge_th)
+            q = [(ox, oy, z0), (ix, iy, z0), (ix, iy, zc0), (ox, oy, zc0)]
+            mb.rect(q if flip else q[::-1], "stainless")
+    # Central hub + angled revolving rotor leaves strictly forward of the vestibule wall (y <= -0.10)
+    hc_y = cy - 0.12
+    mb.box(cx - 0.08, cx + 0.08, hc_y - 0.08, hc_y + 0.08, z0, zc0, "stainless", skip=("bottom", "top"))
+    for ang_deg in (236, 304):
+        rad = math.radians(ang_deg)
+        dx, dy = math.cos(rad), math.sin(rad)
+        nx, ny = -dy * 0.022, dx * 0.022
+        px0, py0 = cx + 0.08 * dx, hc_y + 0.08 * dy
+        px1, py1 = cx + 0.84 * dx, hc_y + 0.84 * dy
+        for z_a, z_b, mat in ((z0 + 0.08, zc0 - 0.08, "rev_glass"),):
+            mb.rect([(px0 + nx, py0 + ny, z_a), (px1 + nx, py1 + ny, z_a),
+                     (px1 + nx, py1 + ny, z_b), (px0 + nx, py0 + ny, z_b)], mat)
+            mb.rect([(px1 - nx, py1 - ny, z_a), (px0 - nx, py0 - ny, z_a),
+                     (px0 - nx, py0 - ny, z_b), (px1 - nx, py1 - ny, z_b)], mat)
+            mb.rect([(px1 + nx, py1 + ny, z_a), (px1 - nx, py1 - ny, z_a),
+                     (px1 - nx, py1 - ny, z_b), (px1 + nx, py1 + ny, z_b)], "stainless")
 
 
 def entrance(stage):
     mb = K.MeshBuilder(A, split_tiles=(stage < 2))
-    ZS = EZT - 0.2
-    mb.box(PORTICO_X0, PORTICO_X1, EY, 0, EZ0, ZS, dict(front="pale", right="pale", left="pale", bottom="soffit"),
-           skip=("back", "top"))
-    mb.box(PORTICO_X0 - 0.1, PORTICO_X0 + LP, EY - 0.1, EY + 1.1, 0, ZS, "stone_trim", skip=("bottom", "top"))
-    # Right corner pier: front wrap pink, rear/outer wrap dark granite (view_nw_base + 105 side photo)
-    mb.box(PIER_X0, PORTICO_X1 + 0.2, EY - 0.2, EY + 0.65, 0, ZS,
-           dict(front="pier_pink", right="pier_pink", left="stone_trim", default="pier_pink"),
-           skip=("bottom", "top", "back"))
-    mb.box(PIER_X0, PORTICO_X1 + 0.2, EY + 0.65, EY + 1.8, 0, ZS,
-           dict(right="stone", left="stone_trim", back="stone", default="stone"),
-           skip=("bottom", "top", "front"))
-    mb.box(PORTICO_X0 - 0.2, PORTICO_X1 + 0.3, EY - 0.2, 0.0, ZS, EZT, dict(top="roof", default="stone_trim"),
-           skip=("back",))
+    x_l = PORTICO_X0 + LP
+    mb.box(PORTICO_X0 - 0.1, x_l, EY - 0.15, EY + 1.1, 0, EZC, "stone", skip=("bottom", "top"))
+    # Side-portal soffits & outer clerestory bands behind the left column and right pier
+    mb.box(PORTICO_X0, x_l, EY + 1.1, 0.0, EZ0, EZC,
+           dict(left="pale", right="pale", bottom="soffit", default="pale"), skip=("back", "top", "front"))
+    mb.box(PIER_X0, PORTICO_X1, EY + 1.8, 0.0, EZ0, EZC,
+           dict(right="pale", left="pale", bottom="soffit", default="pale"), skip=("back", "top", "front"))
+    # Travertine EXLLU TOWER lintel (3.70..4.72) + recessed transom clerestory (4.72..5.48) + continuous top coping (5.48..5.98)
+    mb.box(x_l, PIER_X0, EY + 0.02, 0.0, EZ0, EZB,
+           dict(bottom="soffit", top="stone_trim", default="pale"),
+           skip=("back", "left", "right", "front"))
+    mb.box(x_l, PIER_X0, EY + 0.12, 0.0, EZB, EZC,
+           dict(bottom="soffit", default="stone_trim"), skip=("back", "top", "left", "right"))
+    mb.box(PORTICO_X0 - 0.15, PORTICO_X1 + 0.25, EY - 0.20, 0.0, EZC, EZT,
+           dict(top="roof", default="stone"), skip=("back",))
+    if stage == 2:
+        mb.rect(K.face_pts("y", EY + 0.02, -1, x_l, PIER_X0, EZ0, EZB), "pale")
+        mb.box(PIER_X0, PORTICO_X1 + 0.2, EY - 0.15, EY + 0.65, 0, EZC, "pier_pink", skip=("bottom", "top", "back"))
+        mb.box(PIER_X0, PORTICO_X1 + 0.2, EY + 0.65, EY + 1.8, 0, EZC, "stone", skip=("bottom", "top", "front"))
     if stage < 2:
-        for axis, c, s, a0, a1 in (("y", EY, -1, PORTICO_X0 + LP, PIER_X0),
-                                   ("x", PORTICO_X1, 1, EY + 1.8, 0.0),
-                                   ("x", PORTICO_X0, -1, EY + 1.1, 0.0)):
-            K.paint(mb, axis, c, s, a0, a1, EZC, ZS, "stone", layer=2)
-            K.paint(mb, axis, c, s, a0 + 0.2, a1 - 0.2, EZB + 0.08, EZC - 0.08, "clerestory", layer=2)
-            K.paint(mb, axis, c, s, a0, a1, EZB, EZB + 0.08, "frame", layer=3)
+        # Carved travertine lintel front face (11.80..17.05 x 3.70..4.72 = 5.25 x 1.02 m)
+        mb.quad(K.face_pts("y", EY + 0.02, -1, x_l, PIER_X0, EZ0, EZB), A.uv_full("ent_lintel"), "ent_lintel")
+        # Front transom clerestory + 4 vertical + 1 horizontal center mullion bars
+        K.paint(mb, "y", EY + 0.12, -1, x_l + 0.15, PIER_X0 - 0.15, EZB + 0.07, EZC - 0.07, "clerestory", layer=2)
+        for mx in (x_l + 1.05, x_l + 2.10, x_l + 3.15, x_l + 4.20):
+            K.paint(mb, "y", EY + 0.12, -1, mx - 0.025, mx + 0.025, EZB + 0.04, EZC - 0.04, "frame", layer=3)
+        zm = (EZB + EZC) / 2
+        K.paint(mb, "y", EY + 0.12, -1, x_l, PIER_X0, zm - 0.025, zm + 0.025, "frame", layer=4)
+        # Side portal clerestories
+        for c, s, a0, a1 in ((PORTICO_X0, -1, EY + 1.1, 0.0), (PORTICO_X1, 1, EY + 1.8, 0.0)):
+            K.paint(mb, "x", c, s, a0, a1, EZ0, EZB, "stone", layer=2)
+            K.paint(mb, "x", c, s, a0 + 0.2, a1 - 0.2, EZB + 0.07, EZC - 0.07, "clerestory", layer=2)
+            K.paint(mb, "x", c, s, a0, a1, EZB, EZB + 0.07, "frame", layer=3)
+        # Right corner pier: smooth pink inner slab (1.40 m, DONG gold numerals) + split-face outer course (0.65 m) + dark outer frame
+        px_mid = PIER_X0 + 1.40
+        px_out = px_mid + 0.65
+        mb.box(PIER_X0, px_mid, EY - 0.15, EY + 0.65, 0, EZC, dict(left="pier_pink", default="pier_pink"),
+               skip=("bottom", "top", "back", "front", "right"))
+        for z0, z1, mat, full in ((0.0, 2.05, "pier_pink", False),
+                                  (2.05, 3.15, "pier_num", True),
+                                  (3.15, EZC, "pier_pink", False)):
+            pts = K.face_pts("y", EY - 0.15, -1, PIER_X0, px_mid, z0, z1)
+            if full:
+                mb.quad(pts, A.uv_full(mat), mat)
+            else:
+                mb.rect(pts, mat)
+        mb.box(px_mid, px_out, EY - 0.15, EY + 0.65, 0, EZC,
+               dict(front="pier_course", right="pier_pink", default="pier_pink"),
+               skip=("bottom", "top", "left", "back"))
+        mb.box(px_out, PORTICO_X1 + 0.20, EY - 0.15, EY - 0.04, 0, EZC, "stone", skip=("bottom", "top", "left"))
+        mb.box(px_out, PORTICO_X1 + 0.20, EY - 0.04, EY + 0.65, 0, EZC, "pier_pink", skip=("bottom", "top", "left", "front", "back"))
+        # Tiny dark granite/steel square sconce centered above gold DONG numerals on pink pier
+        mb.box(PIER_X0 + 0.62, PIER_X0 + 0.78, EY - 0.22, EY - 0.15, 3.22, 3.38,
+               dict(bottom="ent_light", default="stone"), skip=("back",))
+        # Rear dark granite pier wrap + gold DONG numerals on +X face (1.15 x 1.10 m)
+        mb.box(PIER_X0, PORTICO_X1 + 0.20, EY + 0.65, EY + 1.80, 0, EZC,
+               dict(left="stone_trim", back="stone", default="stone"),
+               skip=("bottom", "top", "front", "right"))
+        for z0, z1, mat, full in ((0.0, 2.05, "stone", False),
+                                  (2.05, 3.15, "pier_side_num", True),
+                                  (3.15, EZC, "stone", False)):
+            pts = K.face_pts("x", PORTICO_X1 + 0.20, 1, EY + 0.65, EY + 1.80, z0, z1)
+            if full:
+                mb.quad(pts, A.uv_full(mat), mat)
+            else:
+                mb.rect(pts, mat)
         yl = EY + ST_N * ST_T
         zl = ST_N * ST_R
         # Left stair cheek ends at yl so the behind-pillar bridge opens onto the main landing (ㄷ자 ramp entry)
-        mb.box(PORTICO_X0 + LP - 0.3, PORTICO_X0 + LP, EY + 1.1, yl, 0, zl, "stone_trim",
-               skip=("bottom", "front", "back"))
+        mb.box(x_l - 0.3, x_l, EY + 1.1, yl, 0, zl, "stone_trim", skip=("bottom", "front", "back"))
         mb.box(PORTICO_X0, PORTICO_X0 + LP, yl, 0.0, 0, zl, dict(top="canopy", default="stone_trim"),
                skip=("bottom", "back", "left", "right"))
         # Right cheek curb inside portico right opening: low step along stairs + landing height in back
@@ -677,11 +988,8 @@ def entrance(stage):
         mb.box(PORTICO_X0 + LP, PIER_X0, yl, 0, 0, zl, "canopy", skip=("bottom", "back", "left", "right"))
         mb.box(PORTICO_X0 + LP, PIER_X0, -0.05, 0.0, zl, EZ0, {"front": "vestibule", "default": "stone_trim"},
                skip=("bottom", "top", "back", "left", "right"))
-        # Revolving door housing + soffit-level trim forward of the glass doors (105/106/108 photos)
-        cx_ent = (PORTICO_X0 + LP + PIER_X0) / 2 - 0.35
-        mb.box(cx_ent - 0.95, cx_ent + 0.95, -0.45, -0.05, zl, zl + 2.45,
-               dict(front="vestibule", left="vestibule", right="vestibule", top="stone_trim", default="stone_trim"),
-               skip=("bottom", "back"))
+        # Cylindrical brushed-stainless revolving door + right vestibule swing doors
+        _revolving_door(mb, 13.70, -0.10, zl, zl + 2.55, r=1.05)
         # Multi-bar stair and landing handrails + vertical posts on both sides (posts 0.06 > rails 0.04 -> zero coplanar)
         ya = EY + 0.2
         rail_z = lambda y: ST_R + (y - ya) / (yl + 0.06 - ya) * (zl - ST_R)
@@ -761,14 +1069,52 @@ def entrance(stage):
 # ==============================================================================
 # MAIN BUILDING ASSEMBLY
 # ==============================================================================
+CORE_WALLS = {1, 2, 3, 5, 9, 10, 11, 12, 16, 18}
+
+
+def _wall_span(mb, x0, y0, x1, y1, z0, z1, mat):
+    mb.rect([(x0, y0, z0), (x1, y1, z0), (x1, y1, z1), (x0, y0, z1)], mat)
+
+
+def _zoned_wall(mb, idx, ax, ay, bx, by, zp, stage):
+    if stage == 2:
+        _wall_span(mb, ax, ay, bx, by, 0.0, zp, "stone")
+        _wall_span(mb, ax, ay, bx, by, zp, H, "pale")
+        return
+    if idx in CORE_WALLS:
+        _wall_span(mb, ax, ay, bx, by, 0.0, zp, "stone")
+        _wall_span(mb, ax, ay, bx, by, zp, H, "mid_grey")
+        return
+    belts = ((0.0, zp, "stone"), (zp, zf(10), "cool_pale"), (zf(10), zf(14), "mid_grey"),
+             (zf(14), zf(36), "pale"), (zf(36), zf(40), "mid_grey"), (zf(40), H, "pale"))
+    if idx != 14:
+        for z0, z1, mat in belts:
+            _wall_span(mb, ax, ay, bx, by, z0, z1, mat)
+        return
+    # Wall 14 (south main facade, ax=10.6 -> bx=-19.2 at y=44.6): tripartite wings + flush central crown shaft
+    for x0, x1 in ((ax, CROWN_X1), (CROWN_X0, bx)):
+        for z0, z1, mat in belts:
+            _wall_span(mb, x0, ay, x1, by, z0, z1, mat)
+    ew = 0.50
+    _wall_span(mb, CROWN_X1, ay, CROWN_X0, by, 0.0, zp, "stone")
+    zc0 = zf(CROWN_F0)
+    for x0, x1, mat in ((CROWN_X1, CROWN_X1 - ew, "dark_paint"),
+                        (CROWN_X1 - ew, CROWN_X0 + ew, "mid_grey"),
+                        (CROWN_X0 + ew, CROWN_X0, "dark_paint")):
+        _wall_span(mb, x0, ay, x1, by, zp, zc0, mat)
+    for x0, x1, mat in ((CROWN_X1, CROWN_X1 - ew, "crown_white"),
+                        (CROWN_X1 - ew, CROWN_X0 + ew, "crown_glass"),
+                        (CROWN_X0 + ew, CROWN_X0, "crown_white")):
+        _wall_span(mb, x0, ay, x1, by, zc0, H, mat)
+
+
 def build(stage):
     mb = K.MeshBuilder(A, split_tiles=(stage < 2))
     n = len(OUTLINE)
     for i in range(n):                         # outer walls straight from the outline
         (ax, ay), (bx, by) = OUTLINE[i], OUTLINE[(i + 1) % n]
-        zp = zf(PALE_F)                        # two real faces instead of a paint decal: a decal 1 cm proud of the
-        mb.rect([(ax, ay, 0.0), (bx, by, 0.0), (bx, by, zp), (ax, ay, zp)], "stone")    # wall overhangs convex
-        mb.rect([(ax, ay, zp), (bx, by, zp), (bx, by, H), (ax, ay, H)], "pale")          # corners (LOD seam hole)
+        zp = zf(PORTICO_PALE_F if i in (5, 6, 7, 8) else PALE_F)
+        _zoned_wall(mb, i, ax, ay, bx, by, zp, stage)
     roof(mb, stage)
     mb.merge(entrance(stage))
     if stage < 2:
@@ -784,5 +1130,5 @@ main = build(0)
 lod1 = build(1)
 lod2 = build(2)
 
-K.export_asset("HighriseTower106", 1, dict(main=main, lod1=lod1, lod2=lod2, windows=WS),
+K.export_asset(ASSET, 1, dict(main=main, lod1=lod1, lod2=lod2, windows=WS),
                A, K.out_dir_from_argv("output"), lot=(5, 6))

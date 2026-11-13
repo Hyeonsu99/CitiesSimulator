@@ -1,0 +1,46 @@
+{
+  "facades": [
+    {
+      "file": "photos/auction_2025-3811_108_tower.jpg",
+      "side": "back",
+      "name": "south_main_wall_14f_49f",
+      "corners": [
+        [162, 4],
+        [254, 52],
+        [350, 440],
+        [123, 420]
+      ],
+      "size_m": [29.8, 105.84],
+      "box": [-19.2, 10.6, 44.2, 45.0, 43.46, 149.3],
+      "confidence": "low",
+      "occluded": "trees mask podium below 14F; 14F..49F upper tower unobstructed",
+      "paint": {
+        "use_for_color": true
+      },
+      "paint_exclude": [],
+      "paint_include": [],
+      "note": "Tower 108 verified auction photo (2025-3811): full-width 29.8 m Wall 14 tripartite facade (14F..49F) showing dark center shaft, glazed crown, and 36F..39F mid-grey belt."
+    },
+    {
+      "file": "photos/verified_108_entrance_2018-8170.jpg",
+      "side": "front",
+      "name": "west_arm_north_wall_3f_5f",
+      "corners": [
+        [366, 2],
+        [516, 0],
+        [516, 142],
+        [366, 146]
+      ],
+      "size_m": [6.8, 5.95],
+      "box": [12.4, 19.2, 14.0, 14.8, 7.65, 13.60],
+      "confidence": "low",
+      "occluded": "portico below; pine foliage partially left of 366 px",
+      "paint": {
+        "use_for_color": false
+      },
+      "paint_exclude": [],
+      "paint_include": [],
+      "note": "Tower 108 verified entrance photo (2018-8170): unobstructed 3F..5F bays on Wall 6 right half (12.4..19.2 m)."
+    }
+  ]
+}

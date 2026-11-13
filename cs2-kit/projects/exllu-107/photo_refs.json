@@ -1,0 +1,25 @@
+{
+  "facades": [
+    {
+      "file": "photos/verified_107_entrance_2024-6496.jpg",
+      "side": "front",
+      "name": "west_arm_north_wall_2f",
+      "corners": [
+        [268, 4],
+        [482, 2],
+        [482, 136],
+        [268, 140]
+      ],
+      "size_m": [6.8, 3.45],
+      "box": [12.4, 19.2, 14.0, 14.8, 5.45, 8.90],
+      "confidence": "low",
+      "occluded": "portico below 5.45 m; 3F above image top",
+      "paint": {
+        "use_for_color": true
+      },
+      "paint_exclude": [],
+      "paint_include": [],
+      "note": "Tower 107 verified street photo (2024-6496): unobstructed 2F bay above portico on Wall 6 (12.4..19.2 m)."
+    }
+  ]
+}
