@@ -2,8 +2,8 @@
  "visual_review": "PASS",
  "current_stage": "review:PASS",
  "generator": "exllu_108_cs2.py",
- "generator_hash": "20216405c5994274be0ca360bbef6fa0f5879e40f5ea7e945f3cc83f335349e3",
- "current_preview_hash": "d9e728761b802f2a0a97d7082b3fb7c531b0cecc37913b32dfcf96c8aebafe5b",
+ "generator_hash": "f58339e2bbdae3f828e07f017b40156fad65ae79095862036d4eecfc4096320a",
+ "current_preview_hash": "53e2a3a8a85ae5accf6aa44cfe6763d6a5d20927c64fbcf310b2f0ff817699d6",
  "last_gate": {
   "status": "PASS",
   "project": "exllu-108",
@@ -29,8 +29,8 @@
    "report": "output\\HighriseTower108_L1_5x6\\_check\\report.json"
   },
   "asset": "HighriseTower108_L1_5x6",
-  "label": "c-entrance",
-  "time": "2026-11-12 17:15:50",
+  "label": "typec-ent-fix",
+  "time": "2026-11-13 15:47:10",
   "build": {
    "asset": "HighriseTower108_L1_5x6",
    "fbx": true,
@@ -41,9 +41,9 @@
    "warnings": [],
    "info": {
     "size": [
-     39.15,
-     45.65,
-     159.4
+     39.04,
+     45.77,
+     159.48
     ],
     "pivot_offset": [
      0.0,
@@ -52,20 +52,20 @@
     "zmin": 0.0,
     "coords": "generator coordinates (before pivot move)",
     "tris": {
-     "main": 73428,
-     "win": 2296,
-     "lod1": 22042,
-     "lod1_win": 2296,
-     "lod2": 434,
-     "lod2_win": 2296
+     "main": 70966,
+     "win": 2248,
+     "lod1": 18616,
+     "lod1_win": 2248,
+     "lod2": 378,
+     "lod2_win": 2248
     },
     "verts": {
-     "main": 146856,
-     "win": 4592,
-     "lod1": 44084,
-     "lod1_win": 4592,
-     "lod2": 868,
-     "lod2_win": 4592
+     "main": 141932,
+     "win": 4496,
+     "lod1": 37232,
+     "lod1_win": 4496,
+     "lod2": 756,
+     "lod2_win": 4496
     },
     "coplanar": {
      "main": 0,
@@ -86,18 +86,18 @@
      "LOD2_Emissive": "1024x1024 RGB"
     },
     "texel_px_per_m": {
-     "p10": 385.1,
+     "p10": 229.9,
      "median": 385.1,
      "p90": 385.1
     },
-    "windows": 1148,
+    "windows": 1124,
     "win_dropped": 0,
     "win_blocked": {
      "win": 0,
      "lod1_win": 0,
      "lod2_win": 0
     },
-    "time_s": 8.8
+    "time_s": 13.9
    },
    "report": "output\\HighriseTower108_L1_5x6\\_check\\report.json"
   },
@@ -120,17 +120,15 @@
   "lod": {
    "checked": true,
    "status": "PASS",
-   "line": "LODCHECK PASS main max 0.031% (az 180, el +50) bad_views 0/64 | lod1 max 0.012% (az 135, el +50) bad_views 0/64 | lod2 max 0.000% (az 0, el -10) bad_views 0/64 marginal=1  -> previews\\lod_check\\HighriseTower108_L1_5x6",
-   "notes": [
-    "LOD margin is close to the 0.05% limit"
-   ]
+   "line": "LODCHECK PASS main max 0.004% (az 90, el -10) bad_views 0/64 | lod1 max 0.000% (az 0, el -10) bad_views 0/64 | lod2 max 0.002% (az 22, el +5) bad_views 0/64  -> previews\\lod_check\\HighriseTower108_L1_5x6",
+   "notes": []
   },
   "agent": {
    "status": "PASS",
    "verts": {
-    "LOD0": 146856,
-    "LOD1": 44084,
-    "LOD2": 868
+    "LOD0": 141932,
+    "LOD1": 37232,
+    "LOD2": 756
    },
    "action_tags": [],
    "exact_fix_instruction": "no fix needed"
@@ -147,13 +145,13 @@
   "reason": "all requested checks passed"
  },
  "project": "exllu-108",
- "updated_at": "2026-11-12T17:15:51",
- "visual_review_note": "Preview checked: same generator as 106 (entrance on the west-arm north wall per 106 photo, podium to storey 5). No own photo refs: photo/tiles NOT_APPLICABLE.",
+ "updated_at": "2026-11-13T15:47:37",
+ "visual_review_note": "Preview HighriseTower108_L1_5x6 checked: identical Type-C geometry synced from 105 (26F refuge, crown gables, helipad, U-ramp, entrance/facade verified)",
  "visual_review_artifacts": [
   {
    "file": "previews/HighriseTower108_L1_5x6.png",
-   "sha256": "d9e728761b802f2a0a97d7082b3fb7c531b0cecc37913b32dfcf96c8aebafe5b"
+   "sha256": "53e2a3a8a85ae5accf6aa44cfe6763d6a5d20927c64fbcf310b2f0ff817699d6"
   }
  ],
- "reviewed_preview_hash": "d9e728761b802f2a0a97d7082b3fb7c531b0cecc37913b32dfcf96c8aebafe5b"
+ "reviewed_preview_hash": "53e2a3a8a85ae5accf6aa44cfe6763d6a5d20927c64fbcf310b2f0ff817699d6"
 }
